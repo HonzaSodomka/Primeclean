@@ -25,19 +25,19 @@ const services = [
     title: "Kanceláře a firmy",
     description: "Pravidelný úklid přizpůsobený provozu vaší firmy. Stálý tým, jasný rozsah prací a přehled o úklidech bez starostí.",
     image: "/sluzba-kancelare.jpg", 
-    link: "#" // Zde se pak přidá odkaz
+    link: "#"
   },
   {
     title: "SVJ a bytové domy",
     description: "Pravidelný úklid vchodů, chodeb a společných prostor. Spolehlivé řešení pro bytová družstva a správce nemovitostí.",
     image: "/sluzba-svj.jpg", 
-    link: "#" // Zde se pak přidá odkaz
+    link: "#"
   },
   {
     title: "Airbnb a apartmány",
     description: "Spolehlivý úklid pro krátkodobé pronájmy mezi pobyty hostů. Rychlá příprava bytu a přehled o každém úklidu online.",
     image: "/sluzba-airbnb.jpg", 
-    link: "#" // Zde se pak přidá odkaz
+    link: "#"
   }
 ];
 ---
@@ -82,14 +82,16 @@ const services = [
             <img src="/hero-image.jpg" alt="PrimeClean úklid" class="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.02]" fetchpriority="high" />
           </div>
           
-          <div class="absolute -bottom-6 -left-2 sm:-bottom-8 sm:left-8 bg-white p-5 rounded-2xl shadow-lg border border-zinc-100 flex gap-4 items-center z-20 max-w-[calc(100%-16px)] sm:max-w-[340px]">
-            <div class="flex-shrink-0 w-12 h-12 bg-zinc-100 rounded-full flex items-center justify-center text-[#6a9438]">
-              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+          <!-- Hero floating toast -->
+          <div class="absolute -bottom-5 left-1/2 -translate-x-1/2 sm:left-8 sm:translate-x-0 sm:-bottom-7 bg-white pl-2 pr-5 py-2 rounded-full shadow-lg border border-zinc-100 flex items-center gap-3 z-20 whitespace-nowrap">
+            <div class="flex-shrink-0 w-9 h-9 bg-[#81b344]/10 rounded-full flex items-center justify-center text-[#6a9438]">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
             </div>
-            <div class="text-left">
-              <p class="text-[14px] md:text-[15px] font-bold text-zinc-950 leading-tight">Fotografie z úklidu</p>
-              <p class="text-[12.5px] md:text-[13px] font-medium text-zinc-500 mt-1 leading-snug">Prohlížejte si fotoreporty po každém úklidu rovnou v aplikaci.</p>
+            <div class="flex items-center gap-2">
+              <span class="text-[13px] font-bold text-zinc-900">Fotoreport dokončen</span>
+              <span class="text-[12px] font-medium text-zinc-400">· právě teď</span>
             </div>
+            <span class="flex-shrink-0 w-2 h-2 rounded-full bg-[#81b344] animate-pulse"></span>
           </div>
         </div>
 
@@ -170,36 +172,40 @@ const services = [
     <!-- 3. SEKCE: STATISTIKY -->
     <section class="py-16 lg:py-24 bg-[#81b344] relative overflow-hidden count-up-container">
       <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10 scroll-animate opacity-0">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-y-12 md:gap-y-0 divide-x divide-white/20 text-center">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-y-12 md:gap-y-0 text-center">
           
-          <div class="flex flex-col items-center justify-center px-4">
-            <div class="flex items-start justify-center text-white mb-2">
+          <!-- 1. stat: border vpravo vždy -->
+          <div class="flex flex-col items-center justify-center px-4 border-r border-white/20">
+            <div class="flex items-end justify-center text-white mb-2">
               <span class="text-[3rem] md:text-[4rem] lg:text-[4.5rem] font-extrabold tracking-tighter leading-none count-up" data-target="295">0</span>
-              <span class="text-[2rem] md:text-[3rem] font-bold text-white/80 leading-none ml-1 mt-1">+</span>
+              <span class="text-[2rem] md:text-[3rem] font-bold text-white/80 leading-none ml-1 mb-1">+</span>
             </div>
             <div class="text-[12px] md:text-[13px] font-bold uppercase tracking-[0.1em] text-white/90">Aktivních úklidů</div>
           </div>
 
-          <div class="flex flex-col items-center justify-center px-4">
-            <div class="flex items-start justify-center text-white mb-2">
+          <!-- 2. stat: border vpravo jen na md+ -->
+          <div class="flex flex-col items-center justify-center px-4 md:border-r md:border-white/20">
+            <div class="flex items-end justify-center text-white mb-2">
               <span class="text-[3rem] md:text-[4rem] lg:text-[4.5rem] font-extrabold tracking-tighter leading-none count-up" data-target="400">0</span>
-              <span class="text-[2rem] md:text-[3rem] font-bold text-white/80 leading-none ml-1 mt-1">+</span>
+              <span class="text-[2rem] md:text-[3rem] font-bold text-white/80 leading-none ml-1 mb-1">+</span>
             </div>
             <div class="text-[12px] md:text-[13px] font-bold uppercase tracking-[0.1em] text-white/90">Spokojených klientů</div>
           </div>
 
-          <div class="flex flex-col items-center justify-center px-4">
-            <div class="flex items-start justify-center text-white mb-2">
+          <!-- 3. stat: border vpravo vždy -->
+          <div class="flex flex-col items-center justify-center px-4 border-r border-white/20">
+            <div class="flex items-end justify-center text-white mb-2">
               <span class="text-[3rem] md:text-[4rem] lg:text-[4.5rem] font-extrabold tracking-tighter leading-none count-up" data-target="527">0</span>
-              <span class="text-[2rem] md:text-[3rem] font-bold text-white/80 leading-none ml-1 mt-1">+</span>
+              <span class="text-[2rem] md:text-[3rem] font-bold text-white/80 leading-none ml-1 mb-1">+</span>
             </div>
             <div class="text-[12px] md:text-[13px] font-bold uppercase tracking-[0.1em] text-white/90">Dokončených zakázek</div>
           </div>
 
+          <!-- 4. stat: žádný border -->
           <div class="flex flex-col items-center justify-center px-4">
-            <div class="flex items-start justify-center text-white mb-2">
+            <div class="flex items-end justify-center text-white mb-2">
               <span class="text-[3rem] md:text-[4rem] lg:text-[4.5rem] font-extrabold tracking-tighter leading-none count-up" data-target="21">0</span>
-              <span class="text-[2rem] md:text-[3rem] font-bold text-white/80 leading-none ml-1 mt-1">+</span>
+              <span class="text-[2rem] md:text-[3rem] font-bold text-white/80 leading-none ml-1 mb-1">+</span>
             </div>
             <div class="text-[12px] md:text-[13px] font-bold uppercase tracking-[0.1em] text-white/90">Pravidelných objektů</div>
           </div>
@@ -224,7 +230,6 @@ const services = [
           </p>
         </div>
 
-        <!-- Karty služeb (Upraveno dle předlohy z obrázku) -->
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
           {services.map((service, index) => (
             <div class="scroll-animate opacity-0 flex flex-col bg-white rounded-[2rem] border border-zinc-200 shadow-sm transition-all duration-300 ease-out hover:shadow-lg hover:-translate-y-1 overflow-hidden" style={`animation-delay: ${index * 150}ms`}>
@@ -306,7 +311,7 @@ const services = [
       </div>
     </section>
 
-    <!-- 6. SEKCE: O NÁS & ZÁVĚREČNÉ CTA (Prosvětlená verze) -->
+    <!-- 6. SEKCE: O NÁS & ZÁVĚREČNÉ CTA -->
     <section id="o-nas" class="pt-16 pb-24 md:pt-24 md:pb-36 bg-zinc-50 relative overflow-hidden">
       <div class="max-w-[1000px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
         

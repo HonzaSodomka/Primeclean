@@ -36,17 +36,22 @@ const currentPath = Astro.url.pathname;
       
       <div class="w-px h-5 bg-zinc-200 mx-1"></div>
       
-      <a href="/kontakt" class="inline-flex items-center justify-center px-6 py-2.5 text-[14px] font-bold text-white transition-all duration-300 bg-zinc-950 rounded-[0.85rem] shadow-[0_4px_10px_rgba(0,0,0,0.1)] hover:bg-[#81b344] hover:shadow-[0_8px_20px_rgba(129,179,68,0.25)] hover:-translate-y-0.5 active:scale-95 group">
+      <a href="/kontakt" class="inline-flex items-center justify-center px-6 py-2.5 text-[14px] font-bold text-white transition-all duration-300 bg-[#81b344] rounded-[0.85rem] shadow-[0_4px_10px_rgba(129,179,68,0.15)] hover:bg-[#6a9438] hover:shadow-[0_8px_20px_rgba(129,179,68,0.3)] hover:-translate-y-0.5 active:scale-95">
         Poptat úklid
       </a>
     </nav>
 
-    <!-- Mobile Menu Button (Hamburger) -->
-    <button id="mobile-menu-btn" class="md:hidden relative w-10 h-10 flex flex-col items-center justify-center gap-[5px] text-zinc-600 hover:text-zinc-950 transition-colors z-50" aria-label="Otevřít menu">
-      <span class="w-5 h-[2px] bg-current rounded-full transition-all duration-300 origin-center"></span>
-      <span class="w-5 h-[2px] bg-current rounded-full transition-all duration-300 origin-center"></span>
-      <span class="w-5 h-[2px] bg-current rounded-full transition-all duration-300 origin-center"></span>
-    </button>
+    <!-- Mobile: CTA tlačítko + Hamburger -->
+    <div class="md:hidden flex items-center gap-3">
+      <a href="/kontakt" class="inline-flex items-center justify-center px-4 py-2 text-[13px] font-bold text-white bg-[#81b344] rounded-xl shadow-sm active:scale-95 transition-transform hover:bg-[#6a9438]">
+        Poptat úklid
+      </a>
+      <button id="mobile-menu-btn" class="relative w-10 h-10 flex flex-col items-center justify-center gap-[5px] text-zinc-600 hover:text-zinc-950 transition-colors z-50" aria-label="Otevřít menu">
+        <span class="w-5 h-[2px] bg-current rounded-full transition-all duration-300 origin-center"></span>
+        <span class="w-5 h-[2px] bg-current rounded-full transition-all duration-300 origin-center"></span>
+        <span class="w-5 h-[2px] bg-current rounded-full transition-all duration-300 origin-center"></span>
+      </button>
+    </div>
   </div>
 
   <!-- Mobile Menu Dropdown -->
@@ -61,7 +66,7 @@ const currentPath = Astro.url.pathname;
         );
       })}
       <div class="h-px bg-zinc-100 my-3 mx-4"></div>
-      <a href="/kontakt" class="mt-2 mx-4 inline-flex items-center justify-center px-6 py-4 text-[16px] font-bold text-white bg-[#81b344] rounded-xl shadow-md active:scale-95 transition-transform">
+      <a href="/kontakt" class="mt-2 mx-4 inline-flex items-center justify-center px-6 py-4 text-[16px] font-bold text-white bg-[#81b344] rounded-xl shadow-md active:scale-95 transition-transform hover:bg-[#6a9438]">
         Chci nezávaznou nabídku
       </a>
     </div>
