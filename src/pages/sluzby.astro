@@ -1,0 +1,375 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const tabs = [
+  { id: 'kancelare', label: 'Kanceláře a firmy', icon: 'briefcase' },
+  { id: 'svj', label: 'SVJ a bytové domy', icon: 'building-2' },
+  { id: 'airbnb', label: 'Airbnb a apartmány', icon: 'key-round' },
+];
+
+const kancelare = {
+  tag: 'Pravidelný úklid',
+  headline: 'Úklid kanceláří,\nkterý prostě funguje.',
+  sub: 'Zajistíme pravidelný úklid přizpůsobený provozu vaší firmy. Stálý tým, jasný rozsah prací a přehled o každém úklidu bez telefonování.',
+  image: '/sluzba-kancelare.jpg',
+  features: [
+    { icon: 'calendar-check', title: 'Pravidelný harmonogram', desc: 'Denní, týdenní nebo vlastní frekvence úklidu přesně podle potřeb vašeho provozu.' },
+    { icon: 'users', title: 'Stálý tým', desc: 'Úklid provádí vždy stejná parta — žádní cizí lidé, o nichž nic nevíte.' },
+    { icon: 'smartphone', title: 'Přehled v aplikaci', desc: 'Po každém úklidu dostanete fotoreport přímo do aplikace. Víte, co bylo uklizeno, kdy a kým.' },
+    { icon: 'shield-check', title: 'Pojištění 5 mil. Kč', desc: 'Veškerá naše práce je kryta pojištěním. Pracujeme zodpovědně a bez výmluv.' },
+    { icon: 'clipboard-list', title: 'Jasný rozsah prací', desc: 'Předem definovaný checklist úklidů — víte přesně, co zahrnuje každá návštěva.' },
+    { icon: 'zap', title: 'Profesionální technika', desc: 'Používáme profesionální stroje a přípravky, které běžný úklid jednoduše nezvládne.' },
+  ],
+  includes: [
+    'Vysávání a vytírání podlah',
+    'Úklid sociálních zařízení a kuchyněk',
+    'Otírání pracovních ploch a nábytku',
+    'Čištění oken a prosklených ploch',
+    'Vynášení odpadků a výměna pytlů',
+    'Dezinfekce kontaktních ploch',
+    'Úklid zasedacích místností a recepce',
+    'Doplňování spotřebního materiálu (volitelně)',
+  ],
+  forWhom: [
+    { icon: 'building', label: 'Administrativní budovy' },
+    { icon: 'laptop', label: 'Coworkingy a sdílené kanceláře' },
+    { icon: 'stethoscope', label: 'Ordinace a zdravotnická zařízení' },
+    { icon: 'utensils', label: 'Restaurace a kavárny' },
+    { icon: 'store', label: 'Obchody a prodejny' },
+    { icon: 'warehouse', label: 'Sklady a provozovny' },
+  ],
+};
+
+const svj = {
+  tag: 'Správa budov',
+  headline: 'Čisté společné prostory\nbez starostí.',
+  sub: 'Pravidelný a spolehlivý úklid vchodů, chodeb, schodišť a dalších společných prostor bytových domů. Ideální řešení pro SVJ, bytová družstva i správce nemovitostí.',
+  image: '/sluzba-svj.jpg',
+  features: [
+    { icon: 'calendar-check', title: 'Pravidelný harmonogram', desc: 'Frekvenci úklidů nastavíme přesně podle velikosti objektu a počtu bytových jednotek.' },
+    { icon: 'clipboard-list', title: 'Transparentní rozsah', desc: 'Přesně definovaný plán prací — každý obyvatel ví, co a kdy se uklízí.' },
+    { icon: 'smartphone', title: 'Fotoreporty po úklidu', desc: 'Správce i výbor SVJ vidí fotodokumentaci každého úklidu přímo v aplikaci.' },
+    { icon: 'leaf', title: 'Ekologické přípravky', desc: 'Používáme šetrné čistící prostředky bezpečné pro všechny obyvatele domu.' },
+    { icon: 'shield-check', title: 'Pojištění 5 mil. Kč', desc: 'Plně pojištěný servis — žádné riziko pro výbor ani správce nemovitosti.' },
+    { icon: 'users', title: 'Stálý pracovní tým', desc: 'Obyvatelé domu vidí vždy stejné obličeje. Žádní neznámí lidé ve vchodě.' },
+  ],
+  includes: [
+    'Zametání a vytírání schodišť a chodeb',
+    'Úklid a dezinfekce poštovních schránek',
+    'Čištění vstupních dveří a prosklení',
+    'Úklid výtahové kabiny',
+    'Mytí oken ve společných prostorách',
+    'Čištění sklepních chodeb (dle dohody)',
+    'Úklid kotelny a technických místností (dle dohody)',
+    'Vynášení komunálního odpadu',
+  ],
+  forWhom: [
+    { icon: 'building-2', label: 'Společenství vlastníků jednotek (SVJ)' },
+    { icon: 'key-round', label: 'Bytová družstva' },
+    { icon: 'briefcase', label: 'Správci nemovitostí' },
+    { icon: 'home', label: 'Majitelé bytových domů' },
+    { icon: 'landmark', label: 'Realitní kanceláře' },
+    { icon: 'users', label: 'Developerské společnosti' },
+  ],
+};
+
+const airbnb = {
+  tag: 'Krátkodobé pronájmy',
+  headline: 'Apartmán připravený\npro každého hosta.',
+  sub: 'Spolehlivý a rychlý úklid mezi pobyty hostů. Postaráme se o čistotu, výměnu ložního prádla i doplnění spotřebního materiálu — vše sledujete v aplikaci online.',
+  image: '/sluzba-airbnb.jpg',
+  features: [
+    { icon: 'zap', title: 'Rychlá příprava', desc: 'Zvládneme úklid ve vašem časovém okně mezi odjezdem a příjezdem hostů.' },
+    { icon: 'smartphone', title: 'Fotoreport po každém úklidu', desc: 'Fotodokumentace stavu apartmánu po úklidu. Vždy víte, v jakém stavu ho hosté přebírají.' },
+    { icon: 'shirt', title: 'Výměna ložního prádla', desc: 'Zajistíme výměnu a doplnění čistého prádla a ručníků před každým příjezdem.' },
+    { icon: 'package', title: 'Doplnění spotřebního materiálu', desc: 'Toaletní papír, mýdlo, přípravky do kuchyně — vše doplníme dle vašeho seznamu.' },
+    { icon: 'calendar-check', title: 'Flexibilní termíny', desc: 'Přizpůsobíme se vašemu kalendáři rezervací. Propojení s Airbnb a Booking.com na vyžádání.' },
+    { icon: 'shield-check', title: 'Prověřený personál', desc: 'Do vašeho soukromého prostoru vstupují pouze prověření pracovníci s naší garancí.' },
+  ],
+  includes: [
+    'Kompletní úklid koupelny a WC',
+    'Úklid kuchyně vč. spotřebičů',
+    'Vysávání a vytírání podlah',
+    'Výměna a přeložení ložního prádla',
+    'Výměna ručníků a koupelnového textilu',
+    'Doplnění spotřebního materiálu',
+    'Kontrola a hlášení poškození',
+    'Větrání a příprava prostoru pro hosty',
+  ],
+  forWhom: [
+    { icon: 'home', label: 'Majitelé Airbnb apartmánů' },
+    { icon: 'building', label: 'Správci více nemovitostí' },
+    { icon: 'key-round', label: 'Provozovatelé apartmánových domů' },
+    { icon: 'globe', label: 'Booking.com pronajímatelé' },
+    { icon: 'briefcase', label: 'Realitní kanceláře' },
+    { icon: 'landmark', label: 'Penziony a malé hotely' },
+  ],
+};
+
+const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
+---
+
+<Layout title="Naše služby | PrimeClean">
+  <main class="bg-white selection:bg-[#81b344]/30 selection:text-zinc-900">
+
+    <!-- HERO -->
+    <section class="relative pt-28 pb-16 md:pt-36 md:pb-20 bg-zinc-50 overflow-hidden">
+      <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12 text-center">
+
+        <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-white border border-zinc-200 shadow-sm mb-6 opacity-0 animate-fade-in-up" style="animation-delay: 0ms;">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#81b344] animate-pulse flex-shrink-0"></span>
+          <span class="text-[11px] sm:text-xs font-bold text-zinc-600 tracking-[0.15em] uppercase">Profesionální úklid Brno a okolí</span>
+        </div>
+
+        <h1 class="text-[2.75rem] sm:text-[3.75rem] md:text-6xl lg:text-[5.5rem] font-extrabold text-zinc-950 tracking-tighter leading-[1.05] mb-6 opacity-0 animate-fade-in-up" style="animation-delay: 150ms;">
+          Naše <span class="text-[#6a9438]">služby.</span>
+        </h1>
+
+        <p class="text-base sm:text-lg md:text-[19px] text-zinc-600 max-w-xl mx-auto leading-relaxed font-medium mb-10 opacity-0 animate-fade-in-up" style="animation-delay: 300ms;">
+          Specializujeme se na tři oblasti, kde máme vyladěné procesy a prověřené týmy. Vyberte si tu vaši.
+        </p>
+
+        <!-- TAB SWITCHER -->
+        <div class="opacity-0 animate-fade-in-up" style="animation-delay: 450ms;">
+          <div id="tab-switcher" class="inline-flex flex-wrap justify-center gap-2 p-1.5 bg-white border border-zinc-200 rounded-2xl shadow-sm">
+            {tabs.map((tab, i) => (
+              <button
+                data-tab={tab.id}
+                class={`tab-btn flex items-center gap-2 px-5 py-3 rounded-xl text-[14px] font-bold transition-all duration-200 ${i === 0 ? 'bg-[#81b344] text-white shadow-md' : 'text-zinc-500 hover:text-zinc-800 hover:bg-zinc-50'}`}
+              >
+                <i data-lucide={tab.icon} class="w-4 h-4 flex-shrink-0"></i>
+                {tab.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TAB CONTENT -->
+    {Object.entries(tabData).map(([id, data]) => (
+      <div id={`tab-${id}`} class={`tab-content ${id !== 'kancelare' ? 'hidden' : ''}`}>
+
+        <!-- MAIN PANEL -->
+        <section class="py-20 md:py-28 bg-white">
+          <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
+            <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+
+              <div class="w-full lg:w-1/2">
+                <div class="inline-block px-3 py-1.5 rounded-md bg-[#81b344]/10 mb-5">
+                  <span class="text-[12px] font-bold text-[#6a9438] tracking-[0.1em] uppercase">{data.tag}</span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-6 whitespace-pre-line">
+                  {data.headline}
+                </h2>
+                <p class="text-[17px] md:text-[19px] text-zinc-600 font-medium leading-relaxed mb-8">
+                  {data.sub}
+                </p>
+                <a href="/kontakt" class="inline-flex items-center justify-center gap-2 px-8 py-4 text-[16px] font-bold text-white transition-all duration-300 ease-out bg-[#81b344] rounded-xl hover:bg-[#729f3c] hover:-translate-y-1 shadow-md shadow-[#81b344]/20">
+                  Chci nezávaznou nabídku
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+              </div>
+
+              <div class="w-full lg:w-1/2">
+                <div class="relative aspect-[4/3] rounded-[2rem] overflow-hidden bg-zinc-100 border border-zinc-200/50 shadow-sm group">
+                  <img src={data.image} alt={data.tag} class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]" loading="lazy" />
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- FEATURES GRID -->
+        <section class="py-20 md:py-28 bg-zinc-50">
+          <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
+
+            <div class="text-center max-w-2xl mx-auto mb-16">
+              <div class="mb-4">
+                <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">Proč zvolit PrimeClean</span>
+              </div>
+              <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1]">
+                Co od nás <span class="text-[#6a9438]">dostanete.</span>
+              </h2>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+              {data.features.map((f, index) => (
+                <div class="scroll-animate opacity-0 relative bg-white rounded-[1.5rem] p-8 border border-zinc-100 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg hover:border-[#81b344]/20 overflow-hidden group" style={`animation-delay: ${index * 100}ms`}>
+                  <span class="absolute top-5 right-7 text-[4rem] font-extrabold text-[#81b344]/8 leading-none select-none pointer-events-none">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <div class="w-14 h-14 rounded-2xl bg-zinc-50 border border-zinc-200 flex items-center justify-center text-[#6a9438] mb-8 group-hover:border-[#81b344]/30 group-hover:bg-[#81b344]/5 transition-colors duration-300">
+                    <i data-lucide={f.icon} class="w-6 h-6"></i>
+                  </div>
+                  <h3 class="text-[19px] font-bold text-zinc-950 tracking-tight leading-snug mb-3">{f.title}</h3>
+                  <p class="text-[15px] font-medium text-zinc-600 leading-relaxed">{f.desc}</p>
+                </div>
+              ))}
+            </div>
+
+          </div>
+        </section>
+
+        <!-- CO ZAHRNUJE + PRO KOHO -->
+        <section class="py-20 md:py-28 bg-white">
+          <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20">
+
+              <!-- CO ZAHRNUJE -->
+              <div class="scroll-animate opacity-0">
+                <div class="mb-4">
+                  <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">Rozsah služby</span>
+                </div>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-8">
+                  Co zahrnuje <span class="text-[#6a9438]">každá návštěva.</span>
+                </h2>
+                <ul class="flex flex-col gap-3">
+                  {data.includes.map(item => (
+                    <li class="flex items-start gap-4 text-[16px] text-zinc-700 font-medium">
+                      <div class="flex-shrink-0 mt-0.5 w-5 h-5 rounded-full bg-[#81b344] flex items-center justify-center text-white">
+                        <i data-lucide="check" class="w-3 h-3" style="stroke-width: 3"></i>
+                      </div>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <!-- PRO KOHO -->
+              <div class="scroll-animate opacity-0" style="animation-delay: 150ms;">
+                <div class="mb-4">
+                  <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">Cílová skupina</span>
+                </div>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-8">
+                  Pro koho je tato <span class="text-[#6a9438]">služba určena.</span>
+                </h2>
+                <div class="grid grid-cols-2 gap-4">
+                  {data.forWhom.map(item => (
+                    <div class="flex items-center gap-3 p-4 bg-zinc-50 rounded-2xl border border-zinc-100 hover:border-[#81b344]/20 hover:bg-[#81b344]/5 transition-all duration-200">
+                      <div class="flex-shrink-0 w-9 h-9 rounded-xl bg-white border border-zinc-200 flex items-center justify-center text-[#6a9438]">
+                        <i data-lucide={item.icon} class="w-4 h-4"></i>
+                      </div>
+                      <span class="text-[14px] font-semibold text-zinc-700 leading-snug">{item.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="py-16 md:py-20 bg-zinc-950">
+          <div class="max-w-[900px] mx-auto px-5 md:px-8 lg:px-12 text-center">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tighter leading-[1.1] mb-6">
+              Zajímá vás <span class="text-[#81b344]">spolupráce?</span>
+            </h2>
+            <p class="text-[17px] text-zinc-400 font-medium leading-relaxed mb-10 max-w-xl mx-auto">
+              Připravíme vám nezávaznou nabídku na míru. Stačí nás kontaktovat — zbytek zařídíme my.
+            </p>
+            <a href="/kontakt" class="inline-flex items-center justify-center gap-2 px-10 py-4 text-[16px] font-bold text-zinc-950 transition-all duration-300 ease-out bg-[#81b344] rounded-xl hover:bg-white hover:-translate-y-1 shadow-md">
+              Chci nezávazně nacenit úklid
+              <i data-lucide="arrow-right" class="w-5 h-5"></i>
+            </a>
+          </div>
+        </section>
+
+      </div>
+    ))}
+
+  </main>
+</Layout>
+
+<script src="https://unpkg.com/lucide@latest" is:inline></script>
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    lucide.createIcons();
+
+    // Tab switching
+    const buttons = document.querySelectorAll('.tab-btn');
+    const contents = document.querySelectorAll('.tab-content');
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.getAttribute('data-tab');
+
+        buttons.forEach(b => {
+          b.classList.remove('bg-[#81b344]', 'text-white', 'shadow-md');
+          b.classList.add('text-zinc-500', 'hover:text-zinc-800', 'hover:bg-zinc-50');
+        });
+        btn.classList.add('bg-[#81b344]', 'text-white', 'shadow-md');
+        btn.classList.remove('text-zinc-500', 'hover:text-zinc-800', 'hover:bg-zinc-50');
+
+        contents.forEach(c => c.classList.add('hidden'));
+        const active = document.getElementById('tab-' + target);
+        if (active) {
+          active.classList.remove('hidden');
+          // re-trigger scroll animace pro nový tab
+          active.querySelectorAll('.scroll-animate').forEach(el => {
+            el.classList.remove('animate-fade-in-up');
+            el.classList.add('opacity-0');
+          });
+          setTimeout(() => {
+            active.querySelectorAll('.scroll-animate').forEach((el, i) => {
+              setTimeout(() => {
+                el.classList.add('animate-fade-in-up');
+                el.classList.remove('opacity-0');
+              }, i * 80);
+            });
+          }, 50);
+          lucide.createIcons();
+        }
+      });
+    });
+
+    // Scroll animace pro default tab
+    const isLowEnd = document.documentElement.classList.contains('low-end');
+    const scrollEls = document.querySelectorAll('#tab-kancelare .scroll-animate');
+
+    if (isLowEnd) {
+      scrollEls.forEach(el => el.classList.remove('opacity-0'));
+    } else {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-fade-in-up');
+            entry.target.classList.remove('opacity-0');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: '0px 0px -8% 0px' });
+
+      scrollEls.forEach(el => observer.observe(el));
+    }
+  });
+</script>
+
+<style is:global>
+  @keyframes softFadeUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in-up {
+    animation-name: softFadeUp;
+    animation-duration: 0.9s;
+    animation-timing-function: cubic-bezier(0.25, 1, 0.4, 1);
+    animation-fill-mode: both;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .animate-fade-in-up, .scroll-animate {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+  .low-end .animate-fade-in-up,
+  .low-end .scroll-animate {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+</style>
