@@ -2,6 +2,25 @@
 // src/pages/index.astro
 import Layout from '../layouts/Layout.astro';
 
+const arrowRight = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
+const arrowRightLg = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
+const checkIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+const checkLg = '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+const imageIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>';
+
+const featureIcons: Record<string, string> = {
+  'shield-check': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>',
+  'clipboard-check': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg>',
+  'zap': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',
+};
+
+const statIcons: Record<string, string> = {
+  'calendar-check': '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/><path d="m9 16 2 2 4-4"/></svg>',
+  'users': '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+  'badge-check': '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></svg>',
+  'building-2': '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>',
+};
+
 const features = [
   {
     title: "Systém a kontrola úklidů",
@@ -25,21 +44,21 @@ const services = [
     title: "Kanceláře a firmy",
     description: "Pravidelný úklid přizpůsobený provozu vaší firmy. Stálý tým, jasný rozsah prací a přehled o úklidech bez starostí.",
     image: "/sluzba-kancelare.jpg",
-    link: "#",
+    link: "/sluzby#tab-kancelare",
     tag: "Nejoblíbenější"
   },
   {
     title: "SVJ a bytové domy",
     description: "Pravidelný úklid vchodů, chodeb a společných prostor. Spolehlivé řešení pro bytová družstva a správce nemovitostí.",
     image: "/sluzba-svj.jpg",
-    link: "#",
+    link: "/sluzby#tab-svj",
     tag: "Správa budov"
   },
   {
     title: "Airbnb a apartmány",
     description: "Spolehlivý úklid pro krátkodobé pronájmy mezi pobyty hostů. Rychlá příprava bytu a přehled o každém úklidu online.",
     image: "/sluzba-airbnb.jpg",
-    link: "#",
+    link: "/sluzby#tab-airbnb",
     tag: "Krátkodobé pronájmy"
   }
 ];
@@ -84,7 +103,7 @@ const stats = [
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4 px-4 sm:px-0 opacity-0 animate-fade-in-up" style="animation-delay: 600ms;">
           <a href="/kontakt" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 text-[16px] font-bold text-white transition-all duration-300 ease-out bg-[#81b344] rounded-xl hover:bg-[#729f3c] hover:-translate-y-1 shadow-md shadow-[#81b344]/20">
             Chci nezávaznou nabídku
-            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            <span class="w-4 h-4" set:html={arrowRight} />
           </a>
           <a href="#proc-my" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-[16px] font-bold text-zinc-700 transition-all duration-300 ease-out bg-white border-2 border-zinc-200 rounded-xl hover:border-zinc-300 hover:bg-zinc-50 hover:-translate-y-1">
             Proč PrimeClean?
@@ -93,12 +112,12 @@ const stats = [
 
         <div class="mt-16 md:mt-24 relative max-w-5xl mx-auto group opacity-0 animate-fade-in-up" style="animation-delay: 800ms;">
           <div class="relative aspect-[4/3] sm:aspect-[16/9] rounded-2xl md:rounded-[2rem] overflow-hidden bg-zinc-100 border border-zinc-200/50 z-10">
-            <img src="/hero-image.jpg" alt="PrimeClean úklid" class="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.02]" fetchpriority="high" />
+            <img src="/hero-image.jpg" alt="PrimeClean úklid" width="1200" height="675" class="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.02]" fetchpriority="high" />
           </div>
 
           <div class="absolute -bottom-6 -left-2 sm:-bottom-8 sm:left-8 z-20 bg-white rounded-2xl shadow-xl border border-zinc-100 p-4 flex items-center gap-4 max-w-[calc(100%-16px)] sm:max-w-[320px]">
             <div class="flex-shrink-0 w-11 h-11 bg-[#81b344]/10 rounded-xl flex items-center justify-center text-[#6a9438]">
-              <i data-lucide="image" class="w-5 h-5"></i>
+              <span class="w-5 h-5" set:html={imageIcon} />
             </div>
             <div class="text-left min-w-0">
               <p class="text-[13.5px] font-bold text-zinc-950 leading-tight">Fotografie z úklidu</p>
@@ -136,7 +155,7 @@ const stats = [
                 {String(index + 1).padStart(2, '0')}
               </span>
               <div class="w-14 h-14 rounded-2xl bg-white border border-zinc-200 flex items-center justify-center text-[#6a9438] mb-8 relative z-10 group-hover:border-[#81b344]/30 group-hover:bg-[#81b344]/5 transition-colors duration-300">
-                <i data-lucide={feature.icon} class="w-6 h-6"></i>
+                <span class="w-6 h-6" set:html={featureIcons[feature.icon]} />
               </div>
               <h3 class="text-[20px] lg:text-[22px] font-bold text-zinc-950 tracking-tight leading-snug mb-4 relative z-10">{feature.title}</h3>
               <p class="text-[15px] lg:text-[16px] font-medium text-zinc-600 leading-relaxed relative z-10">{feature.description}</p>
@@ -159,26 +178,26 @@ const stats = [
             <ul class="flex flex-col gap-4 mb-10">
               <li class="flex items-center gap-4 text-[16px] text-zinc-200 font-semibold tracking-tight">
                 <div class="flex-shrink-0 w-6 h-6 rounded-full bg-[#81b344] flex items-center justify-center text-zinc-950">
-                  <i data-lucide="check" class="w-3.5 h-3.5" style="stroke-width: 3"></i>
+                  <span set:html={checkIcon} />
                 </div>
                 Živé fotoreporty po každém úklidu
               </li>
               <li class="flex items-center gap-4 text-[16px] text-zinc-200 font-semibold tracking-tight">
                 <div class="flex-shrink-0 w-6 h-6 rounded-full bg-[#81b344] flex items-center justify-center text-zinc-950">
-                  <i data-lucide="check" class="w-3.5 h-3.5" style="stroke-width: 3"></i>
+                  <span set:html={checkIcon} />
                 </div>
                 Přehled faktur a historie plateb
               </li>
             </ul>
             <a href="/aplikace" class="inline-flex items-center justify-center gap-2 px-8 py-4 text-[15px] font-bold text-zinc-950 transition-all duration-300 ease-out bg-[#81b344] rounded-xl hover:bg-white hover:-translate-y-1">
               Prozkoumat aplikaci
-              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              <span class="w-4 h-4" set:html={arrowRight} />
             </a>
           </div>
 
           <div class="w-full sm:max-w-sm md:max-w-md mx-auto lg:w-[45%] relative mt-8 lg:mt-0 z-10">
             <div class="relative aspect-[4/5] rounded-[1.5rem] overflow-hidden bg-zinc-900 border border-zinc-700">
-              <img src="/aplikace.jpg" alt="Ukázka aplikace PrimeClean" class="w-full h-full object-cover object-top" loading="lazy" />
+              <img src="/aplikace.jpg" alt="Ukázka aplikace PrimeClean" width="600" height="750" class="w-full h-full object-cover object-top" loading="lazy" />
             </div>
           </div>
         </div>
@@ -199,7 +218,7 @@ const stats = [
           {stats.map((stat, index) => (
             <div class={`flex flex-col items-center justify-center px-4 ${index < stats.length - 1 ? 'md:border-r md:border-white/20' : ''}`}>
               <div class="w-9 h-9 rounded-lg bg-white/15 flex items-center justify-center text-white mb-4">
-                <i data-lucide={stat.icon} class="w-4 h-4"></i>
+                <span class="w-4 h-4" set:html={statIcons[stat.icon]} />
               </div>
               <div class="flex items-end justify-center text-white mb-2">
                 <span class="text-[3rem] md:text-[4rem] lg:text-[4.5rem] font-extrabold tracking-tighter leading-none count-up" data-target={stat.value}>0</span>
@@ -236,7 +255,7 @@ const stats = [
               style={`animation-delay: ${index * 150}ms`}
             >
               <div class="relative w-full aspect-[4/3] bg-zinc-100 overflow-hidden">
-                <img src={service.image} alt={service.title} class="w-full h-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-[1.03]" loading="lazy" />
+                <img src={service.image} alt={service.title} width="600" height="450" class="w-full h-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-[1.03]" loading="lazy" />
                 <div class="absolute top-4 left-4 px-2.5 py-1 rounded-full bg-white shadow-sm">
                   <span class="text-[11px] font-bold text-zinc-700 tracking-[0.06em] uppercase">{service.tag}</span>
                 </div>
@@ -247,7 +266,7 @@ const stats = [
                 <div class="pt-5 border-t border-zinc-100">
                   <a href={service.link} class="inline-flex items-center gap-1.5 font-bold text-[15px] text-[#81b344] hover:text-[#6a9438] transition-colors group/link">
                     Zjistit více
-                    <i data-lucide="arrow-right" class="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1"></i>
+                    <span class="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" set:html={arrowRight} />
                   </a>
                 </div>
               </div>
@@ -296,7 +315,7 @@ const stats = [
 
             <div class="flex flex-col items-center text-center scroll-animate opacity-0" style="animation-delay: 450ms;">
               <div class="w-20 h-20 rounded-full bg-[#81b344] shadow-md flex items-center justify-center text-white mb-6 relative z-10">
-                <i data-lucide="check" class="w-8 h-8" style="stroke-width: 3"></i>
+                <span class="w-8 h-8" set:html={checkLg} />
               </div>
               <h3 class="text-[20px] font-bold text-zinc-950 leading-snug tracking-tight mb-3">Pravidelný<br />a čistý chod</h3>
               <p class="text-[15px] text-zinc-500 font-medium leading-relaxed px-2">Přebíráme zodpovědnost. Vy se věnujete své práci.</p>
@@ -315,7 +334,7 @@ const stats = [
 
           <div class="flex-shrink-0 flex flex-col items-center text-center relative z-10">
             <div class="relative w-36 h-36 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-[#81b344]/15 bg-zinc-100 mb-5 shadow-sm">
-              <img src="/tomas-kytka.jpg" alt="Tomáš Kytka, Zakladatel PrimeClean" class="w-full h-full object-cover object-top" loading="lazy" />
+              <img src="/tomas-kytka.jpg" alt="Tomáš Kytka, Zakladatel PrimeClean" width="192" height="192" class="w-full h-full object-cover object-top" loading="lazy" />
             </div>
             <p class="text-[18px] font-extrabold text-zinc-900 leading-none mb-2 tracking-tight">Tomáš Kytka</p>
             <p class="text-[12px] text-zinc-500 font-bold uppercase tracking-[0.1em]">Zakladatel PrimeClean</p>
@@ -339,7 +358,7 @@ const stats = [
             <div class="mt-auto">
               <a href="/kontakt" class="inline-flex items-center justify-center gap-2 px-8 py-4 text-[16px] font-bold text-white transition-all duration-300 ease-out bg-[#81b344] rounded-xl hover:bg-[#6a9438] hover:-translate-y-1 shadow-md shadow-[#81b344]/20">
                 Chci nezávazně nacenit úklid
-                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                <span class="w-5 h-5" set:html={arrowRightLg} />
               </a>
               <p class="text-[13px] text-zinc-500 font-medium mt-4 tracking-wide">Rádi s vámi probereme vaše potřeby osobně na místě.</p>
             </div>
@@ -353,25 +372,19 @@ const stats = [
   </main>
 </Layout>
 
-<script src="https://unpkg.com/lucide@latest" is:inline></script>
 <script is:inline>
-  // Detekce slabého zařízení — běží co nejdřív, před DOMContentLoaded
   (function () {
     const cores = navigator.hardwareConcurrency || 4;
-    const ram = navigator.deviceMemory || 4; // není v Safari, fallback 4
+    const ram = navigator.deviceMemory || 4;
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
     if (cores <= 2 || ram <= 2 || reducedMotion) {
       document.documentElement.classList.add('low-end');
     }
   })();
 
   document.addEventListener('DOMContentLoaded', () => {
-    lucide.createIcons();
-
     const isLowEnd = document.documentElement.classList.contains('low-end');
 
-    // Scroll animace — na slabých zařízeních okamžitě zobrazíme vše bez animace
     const scrollAnimateEls = document.querySelectorAll('.scroll-animate');
 
     if (isLowEnd) {
@@ -379,12 +392,6 @@ const stats = [
         el.classList.remove('opacity-0');
       });
     } else {
-      const observerOptions = {
-        root: null,
-        threshold: 0,
-        rootMargin: "0px 0px -10% 0px"
-      };
-
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -393,12 +400,11 @@ const stats = [
             observer.unobserve(entry.target);
           }
         });
-      }, observerOptions);
+      }, { root: null, threshold: 0, rootMargin: "0px 0px -10% 0px" });
 
       scrollAnimateEls.forEach(el => observer.observe(el));
     }
 
-    // Hero animace — na slabých zařízeních vypnout
     if (isLowEnd) {
       document.querySelectorAll('.animate-fade-in-up').forEach(el => {
         el.style.opacity = '1';
@@ -407,7 +413,6 @@ const stats = [
       });
     }
 
-    // Count-up — na slabých zařízeních rovnou zobrazit výsledné číslo
     const statsSection = document.querySelector('.count-up-container');
     if (!statsSection) return;
 
@@ -461,8 +466,6 @@ const stats = [
     animation-timing-function: cubic-bezier(0.25, 1, 0.4, 1);
     animation-fill-mode: both;
   }
-
-  /* prefers-reduced-motion — systémové nastavení má vždy přednost */
   @media (prefers-reduced-motion: reduce) {
     .animate-fade-in-up,
     .scroll-animate {
@@ -471,12 +474,8 @@ const stats = [
       transform: none !important;
       transition: none !important;
     }
-    .animate-pulse {
-      animation: none !important;
-    }
+    .animate-pulse { animation: none !important; }
   }
-
-  /* Low-end třída přidaná JS detekcí */
   .low-end .animate-fade-in-up,
   .low-end .scroll-animate {
     animation: none !important;
@@ -484,10 +483,6 @@ const stats = [
     transform: none !important;
     transition: none !important;
   }
-  .low-end .animate-pulse {
-    animation: none !important;
-  }
-  .low-end img {
-    transition: none !important;
-  }
+  .low-end .animate-pulse { animation: none !important; }
+  .low-end img { transition: none !important; }
 </style>
