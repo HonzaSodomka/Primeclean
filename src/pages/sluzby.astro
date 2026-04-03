@@ -196,21 +196,13 @@ const tabData = { kancelare, svj, airbnb };
             <div class={`flex flex-col gap-12 lg:gap-20 items-center ${ tabIndex % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse' }`}>
 
               <div class="w-full lg:w-1/2">
-                <div class="scroll-animate opacity-0 flex items-center gap-3 mb-6">
-                  <span class="inline-block px-3 py-1.5 rounded-md bg-[#81b344]/10">
-                    <span class="text-[12px] font-bold text-[#6a9438] tracking-[0.1em] uppercase">{data.tag}</span>
-                  </span>
-                  <span class="inline-block px-3 py-1.5 rounded-md bg-zinc-100">
-                    <span class="text-[12px] font-bold text-zinc-500 tracking-[0.1em] uppercase">{data.tagBadge}</span>
-                  </span>
-                </div>
-                <h2 class="scroll-animate opacity-0 text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-6 whitespace-pre-line" style="animation-delay: 80ms;">
+                <h2 class="scroll-animate opacity-0 text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-6 whitespace-pre-line">
                   {data.headline}
                 </h2>
-                <p class="scroll-animate opacity-0 text-[17px] md:text-[19px] text-zinc-500 font-medium leading-relaxed mb-10" style="animation-delay: 160ms;">
+                <p class="scroll-animate opacity-0 text-[17px] md:text-[19px] text-zinc-500 font-medium leading-relaxed mb-10" style="animation-delay: 80ms;">
                   {data.sub}
                 </p>
-                <div class="scroll-animate opacity-0 flex flex-col sm:flex-row gap-3" style="animation-delay: 240ms;">
+                <div class="scroll-animate opacity-0 flex flex-col sm:flex-row gap-3" style="animation-delay: 160ms;">
                   <a href="/kontakt" class="inline-flex items-center justify-center gap-2 px-8 py-4 text-[15px] font-bold text-white transition-all duration-300 ease-out bg-[#81b344] rounded-xl hover:bg-[#729f3c] hover:-translate-y-1 shadow-md shadow-[#81b344]/20">
                     Chci nezávaznou nabídku
                     <span class="w-4 h-4" set:html={icons['arrow-right']} />
@@ -283,7 +275,6 @@ const tabData = { kancelare, svj, airbnb };
               <div class="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full bg-[#81b344]/8 blur-[100px]"></div>
               <div class="relative z-10 grid lg:grid-cols-2 gap-16 lg:gap-24">
 
-                <!-- CO ZAHRNUJE -->
                 <div class="scroll-animate opacity-0">
                   <div class="mb-4">
                     <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">Rozsah služby</span>
@@ -306,7 +297,6 @@ const tabData = { kancelare, svj, airbnb };
                   </ul>
                 </div>
 
-                <!-- PRO KOHO -->
                 <div class="scroll-animate opacity-0" style="animation-delay: 150ms;">
                   <div class="mb-4">
                     <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">Cílová skupina</span>
