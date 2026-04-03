@@ -153,7 +153,7 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
             ))}
           </div>
 
-          <!-- Mobil: full-width sloupcové tlačítka -->
+          <!-- Mobil: full-width sloupcová tlačítka -->
           <div id="tab-switcher-mobile" class="sm:hidden flex flex-col gap-2 w-full max-w-xs mx-auto">
             {tabs.map((tab, i) => (
               <button
@@ -204,7 +204,6 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
               <div class="scroll-animate opacity-0 w-full lg:w-1/2" style="animation-delay: 200ms;">
                 <div class="relative aspect-[4/3] rounded-[2rem] overflow-hidden bg-zinc-100 border border-zinc-200/50 shadow-lg group">
                   <img src={data.image} alt={data.tag} class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]" loading="lazy" />
-                  <!-- Jemný gradient overlay -->
                   <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/10 to-transparent pointer-events-none"></div>
                   <div class="absolute bottom-4 left-4 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-sm shadow-sm">
                     <span class="text-[12px] font-bold text-zinc-700 tracking-[0.06em] uppercase">{data.tag}</span>
@@ -218,7 +217,6 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
 
         <!-- FEATURES GRID -->
         <section class="py-20 md:py-28 bg-zinc-50 relative overflow-hidden">
-          <!-- Subtlní pozadí dekorace -->
           <div class="pointer-events-none absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-[#81b344]/4 blur-[80px]"></div>
 
           <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
@@ -238,7 +236,6 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
                   class="scroll-animate opacity-0 relative bg-white rounded-[1.5rem] p-8 border border-zinc-100 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-xl hover:border-[#81b344]/25 overflow-hidden group"
                   style={`animation-delay: ${index * 100}ms`}
                 >
-                  <!-- Hover glow -->
                   <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at top left, rgba(129,179,68,0.05) 0%, transparent 70%);"></div>
                   <span class="absolute top-5 right-7 text-[4rem] font-extrabold text-[#81b344]/8 leading-none select-none pointer-events-none">
                     {String(index + 1).padStart(2, '0')}
@@ -300,7 +297,9 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
                       <div class="flex-shrink-0 w-9 h-9 rounded-xl bg-white border border-zinc-200 flex items-center justify-center text-[#6a9438] group-hover:border-[#81b344]/30 group-hover:scale-110 transition-all duration-200">
                         <i data-lucide={item.icon} class="w-4 h-4"></i>
                       </div>
-                      <span class="text-[14px] font-semibold text-zinc-700 leading-snug">{item.label}</span>
+                      <span class="text-[14px] font-semibold text-zinc-700 leading-snug break-words hyphens-auto min-w-0">
+                        {item.label}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -354,7 +353,6 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
 
     const isLowEnd = document.documentElement.classList.contains('low-end');
 
-    // --- SCROLL ANIMACE ---
     function initScrollAnimations(scope) {
       const els = scope.querySelectorAll('.scroll-animate');
       if (isLowEnd) {
@@ -376,11 +374,9 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
       els.forEach(el => observer.observe(el));
     }
 
-    // Init pro default tab
     const defaultTab = document.getElementById('tab-kancelare');
     if (defaultTab) initScrollAnimations(defaultTab);
 
-    // --- TAB SWITCHING ---
     const allButtons = document.querySelectorAll('.tab-btn');
     const contents = document.querySelectorAll('.tab-content');
 
@@ -388,7 +384,6 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
       btn.addEventListener('click', () => {
         const target = btn.getAttribute('data-tab');
 
-        // Aktivní stav tlačítka — sync desktop + mobil
         allButtons.forEach(b => {
           const isMobile = b.closest('#tab-switcher-mobile') !== null;
           b.classList.remove('bg-[#81b344]', 'text-white', 'shadow-md', 'shadow-[#81b344]/25');
@@ -400,7 +395,6 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
           }
         });
 
-        // Aktivuj kliknuté tlačítko
         const isMobileBtn = btn.closest('#tab-switcher-mobile') !== null;
         btn.classList.add('bg-[#81b344]', 'text-white', 'shadow-md', 'shadow-[#81b344]/25');
         if (isMobileBtn) {
@@ -409,7 +403,6 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
           btn.classList.remove('text-zinc-500', 'hover:text-zinc-800', 'hover:bg-zinc-50');
         }
 
-        // Sync druhé skupiny tlačítek
         allButtons.forEach(b => {
           if (b !== btn && b.getAttribute('data-tab') === target) {
             b.classList.add('bg-[#81b344]', 'text-white', 'shadow-md', 'shadow-[#81b344]/25');
@@ -422,7 +415,6 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
           }
         });
 
-        // Zobraz správný tab
         contents.forEach(c => c.classList.add('hidden'));
         const active = document.getElementById('tab-' + target);
         if (!active) return;
@@ -430,7 +422,6 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
         active.classList.remove('hidden');
         lucide.createIcons();
 
-        // Reset + replay animací
         const animEls = active.querySelectorAll('.scroll-animate');
         animEls.forEach(el => {
           el.classList.remove('animate-fade-in-up');
@@ -438,7 +429,6 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
           el.style.opacity = '';
         });
 
-        // Krátká prodleva aby DOM byl viditelnej, pak spustit IntersectionObserver
         requestAnimationFrame(() => {
           requestAnimationFrame(() => {
             initScrollAnimations(active);
