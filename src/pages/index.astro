@@ -319,12 +319,16 @@ const faqItems = [
       </div>
     </section>
 
-    <!-- 4. SEKCE: SLUŽBY -->
-    <section id="sluzby" class="py-20 md:py-32 bg-zinc-50 relative overflow-hidden scroll-mt-24">
+    <!-- 4. SEKCE: SLUŽBY — světle zelené pozadí -->
+    <section id="sluzby" class="py-20 md:py-32 relative overflow-hidden scroll-mt-24" style="background: linear-gradient(160deg, #f4faea 0%, #edf7e0 60%, #f0f9e8 100%);">
+      <!-- dekorativní blob -->
+      <div class="pointer-events-none absolute -top-24 -right-24 w-[480px] h-[480px] rounded-full bg-[#81b344]/8 blur-[100px]"></div>
+      <div class="pointer-events-none absolute -bottom-16 -left-16 w-[320px] h-[320px] rounded-full bg-[#81b344]/6 blur-[80px]"></div>
+
       <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10 text-center">
         <div class="scroll-animate opacity-0 max-w-3xl mx-auto mb-16 lg:mb-24">
           <div class="mb-4">
-            <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">Specializace</span>
+            <span class="text-[13px] font-bold text-[#5a8030] tracking-[0.2em] uppercase">Specializace</span>
           </div>
           <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-6">
             Kde odvádíme tu <span class="text-[#6a9438]">nejlepší práci.</span>
@@ -336,7 +340,7 @@ const faqItems = [
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
           {services.map((service, index) => (
             <div
-              class="scroll-animate opacity-0 flex flex-col bg-white rounded-[2rem] border border-zinc-200 shadow-sm transition-all duration-300 ease-out hover:shadow-lg hover:-translate-y-1 overflow-hidden group"
+              class="scroll-animate opacity-0 flex flex-col bg-white rounded-[2rem] border border-[#c8e8a0]/60 shadow-sm transition-all duration-300 ease-out hover:shadow-lg hover:-translate-y-1 overflow-hidden group"
               style={`animation-delay: ${index * 150}ms`}
             >
               <div class="relative w-full aspect-[4/3] bg-zinc-100 overflow-hidden">
@@ -361,30 +365,34 @@ const faqItems = [
       </div>
     </section>
 
-    <!-- 5. SEKCE: RECENZE -->
-    <section class="py-20 md:py-32 bg-white relative overflow-hidden">
-      <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
+    <!-- 5. SEKCE: RECENZE — tmavé pozadí -->
+    <section class="py-20 md:py-32 relative overflow-hidden" style="background: #1a1f16;">
+      <!-- jemné zelené záblesky -->
+      <div class="pointer-events-none absolute top-0 left-1/4 w-[500px] h-[300px] rounded-full bg-[#81b344]/10 blur-[120px]"></div>
+      <div class="pointer-events-none absolute bottom-0 right-1/4 w-[400px] h-[250px] rounded-full bg-[#81b344]/8 blur-[100px]"></div>
+
+      <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
         <div class="scroll-animate opacity-0 text-center max-w-2xl mx-auto mb-16">
           <div class="mb-4">
             <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">Co říkají klienti</span>
           </div>
-          <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-4">
-            Zkušenosti <span class="text-[#6a9438]">našich klientů.</span>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tighter leading-[1.1] mb-4">
+            Zkušenosti <span class="text-[#81b344]">našich klientů.</span>
           </h2>
           <div class="flex items-center justify-center gap-1.5">
             {[1,2,3,4,5].map(() => (
               <span class="text-amber-400" set:html={starIcon} />
             ))}
-            <span class="ml-2 text-[15px] font-bold text-zinc-700">5,0</span>
-            <span class="text-zinc-400 text-[14px] font-medium ml-1">průměrné hodnocení</span>
+            <span class="ml-2 text-[15px] font-bold text-white">5,0</span>
+            <span class="text-white/40 text-[14px] font-medium ml-1">průměrné hodnocení</span>
           </div>
         </div>
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {testimonials.map((t, i) => (
             <div
-              class="scroll-animate opacity-0 flex flex-col bg-zinc-50 rounded-[1.5rem] p-7 border border-zinc-100 hover:border-[#81b344]/25 hover:shadow-md transition-all duration-300 relative overflow-hidden"
-              style={`animation-delay: ${i * 100}ms`}
+              class="scroll-animate opacity-0 flex flex-col rounded-[1.5rem] p-7 border border-white/8 hover:border-[#81b344]/40 hover:shadow-md transition-all duration-300 relative overflow-hidden"
+              style={`animation-delay: ${i * 100}ms; background: rgba(255,255,255,0.04);`}
             >
               <span class="absolute -top-2 -right-1 text-[#81b344]" set:html={quoteIcon} />
               <div class="flex gap-1 mb-5">
@@ -392,14 +400,14 @@ const faqItems = [
                   <span class="text-amber-400" set:html={starIcon} />
                 ))}
               </div>
-              <p class="text-[14.5px] text-zinc-700 font-medium leading-relaxed mb-6 flex-grow">"{t.text}"</p>
-              <div class="flex items-center gap-3 mt-auto pt-5 border-t border-zinc-200">
-                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-[#81b344]/15 flex items-center justify-center">
-                  <span class="text-[13px] font-extrabold text-[#6a9438]">{t.initials}</span>
+              <p class="text-[14.5px] text-white/75 font-medium leading-relaxed mb-6 flex-grow">"{t.text}"</p>
+              <div class="flex items-center gap-3 mt-auto pt-5 border-t border-white/10">
+                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-[#81b344]/20 flex items-center justify-center">
+                  <span class="text-[13px] font-extrabold text-[#81b344]">{t.initials}</span>
                 </div>
                 <div>
-                  <p class="text-[13.5px] font-bold text-zinc-900 leading-tight">{t.name}</p>
-                  <p class="text-[12px] text-zinc-500 font-medium">{t.role} · {t.location}</p>
+                  <p class="text-[13.5px] font-bold text-white leading-tight">{t.name}</p>
+                  <p class="text-[12px] text-white/45 font-medium">{t.role} · {t.location}</p>
                 </div>
               </div>
             </div>
@@ -408,8 +416,11 @@ const faqItems = [
       </div>
     </section>
 
-    <!-- 6. SEKCE: JAK TO FUNGUJE -->
-    <section id="jak-to-funguje" class="py-20 md:py-32 bg-zinc-50 relative overflow-hidden scroll-mt-24">
+    <!-- 6. SEKCE: JAK TO FUNGUJE — světlé pozadí s modrým nádechem -->
+    <section id="jak-to-funguje" class="py-20 md:py-32 relative overflow-hidden scroll-mt-24" style="background: linear-gradient(135deg, #f8faff 0%, #eef4ff 50%, #f5f8ff 100%);">
+      <div class="pointer-events-none absolute top-0 right-0 w-[600px] h-[400px] rounded-full bg-blue-100/40 blur-[120px]"></div>
+      <div class="pointer-events-none absolute bottom-0 left-0 w-[400px] h-[300px] rounded-full bg-[#81b344]/6 blur-[80px]"></div>
+
       <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10 text-center">
 
         <div class="scroll-animate opacity-0 max-w-3xl mx-auto mb-20 lg:mb-28">
@@ -454,9 +465,12 @@ const faqItems = [
       </div>
     </section>
 
-    <!-- 7. SEKCE: FAQ -->
-    <section class="py-20 md:py-32 bg-white relative overflow-hidden">
-      <div class="max-w-[860px] mx-auto px-5 md:px-8 lg:px-12">
+    <!-- 7. SEKCE: FAQ — teplé krémové pozadí -->
+    <section class="py-20 md:py-32 relative overflow-hidden" style="background: linear-gradient(160deg, #fffdf5 0%, #fdf8ec 60%, #fffcf2 100%);">
+      <div class="pointer-events-none absolute -top-16 right-0 w-[400px] h-[400px] rounded-full bg-amber-100/50 blur-[100px]"></div>
+      <div class="pointer-events-none absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full bg-[#81b344]/5 blur-[80px]"></div>
+
+      <div class="max-w-[860px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
         <div class="scroll-animate opacity-0 text-center mb-16">
           <div class="mb-4">
             <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">Časté otázky</span>
@@ -468,7 +482,7 @@ const faqItems = [
         <div class="flex flex-col gap-4">
           {faqItems.map((item, i) => (
             <details
-              class="scroll-animate opacity-0 group bg-zinc-50 border border-zinc-200 rounded-2xl overflow-hidden transition-all duration-200 hover:border-[#81b344]/30"
+              class="scroll-animate opacity-0 group bg-white border border-amber-100 rounded-2xl overflow-hidden transition-all duration-200 hover:border-[#81b344]/30 shadow-sm"
               style={`animation-delay: ${i * 80}ms`}
             >
               <summary class="flex items-center justify-between gap-4 px-7 py-5 cursor-pointer list-none select-none">
@@ -486,41 +500,44 @@ const faqItems = [
       </div>
     </section>
 
-    <!-- 8. SEKCE: O NÁS & ZÁVĚREČNÉ CTA -->
-    <section id="o-nas" class="pt-16 pb-24 md:pt-24 md:pb-36 bg-zinc-50 relative overflow-hidden">
+    <!-- 8. SEKCE: O NÁS & ZÁVĚREČNÉ CTA — sytě zelené pozadí -->
+    <section id="o-nas" class="pt-16 pb-24 md:pt-24 md:pb-36 relative overflow-hidden" style="background: linear-gradient(135deg, #2d4a1e 0%, #1e3312 50%, #273d18 100%);">
+      <div class="pointer-events-none absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full bg-[#81b344]/15 blur-[120px]"></div>
+      <div class="pointer-events-none absolute -bottom-20 -left-20 w-[400px] h-[400px] rounded-full bg-[#81b344]/10 blur-[80px]"></div>
+
       <div class="max-w-[1000px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
 
-        <div class="scroll-animate opacity-0 bg-white rounded-[2rem] p-8 sm:p-12 md:p-16 border border-zinc-200 shadow-sm flex flex-col md:flex-row items-center md:items-start gap-10 md:gap-16 relative overflow-hidden">
+        <div class="scroll-animate opacity-0 bg-white/8 backdrop-blur-sm rounded-[2rem] p-8 sm:p-12 md:p-16 border border-white/15 shadow-2xl flex flex-col md:flex-row items-center md:items-start gap-10 md:gap-16 relative overflow-hidden">
 
           <div class="flex-shrink-0 flex flex-col items-center text-center relative z-10">
-            <div class="relative w-36 h-36 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-[#81b344]/15 bg-zinc-100 mb-5 shadow-sm">
+            <div class="relative w-36 h-36 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-[#81b344]/40 bg-zinc-100 mb-5 shadow-lg">
               <img src="/tomas-kytka.jpg" alt="Tomáš Kytka, Zakladatel PrimeClean" width="192" height="192" class="w-full h-full object-cover object-top" loading="lazy" />
             </div>
-            <p class="text-[18px] font-extrabold text-zinc-900 leading-none mb-2 tracking-tight">Tomáš Kytka</p>
-            <p class="text-[12px] text-zinc-500 font-bold uppercase tracking-[0.1em]">Zakladatel PrimeClean</p>
+            <p class="text-[18px] font-extrabold text-white leading-none mb-2 tracking-tight">Tomáš Kytka</p>
+            <p class="text-[12px] text-white/50 font-bold uppercase tracking-[0.1em]">Zakladatel PrimeClean</p>
           </div>
 
           <div class="flex-1 text-center md:text-left flex flex-col h-full relative z-10">
-            <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-extrabold text-zinc-900 tracking-tighter mb-6 leading-[1.1]">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-extrabold text-white tracking-tighter mb-6 leading-[1.1]">
               Úklid nemá být vaše starost, <br class="hidden xl:block"/> ale <span class="text-[#81b344]">naše vizitka.</span>
             </h2>
 
             <div class="relative flex-grow mb-10 md:pl-6">
-              <div class="hidden md:block absolute left-0 top-0 bottom-0 w-[3px] bg-[#81b344]/30 rounded-full"></div>
-              <p class="text-[16px] lg:text-[18px] text-zinc-600 font-medium leading-relaxed mb-5">
+              <div class="hidden md:block absolute left-0 top-0 bottom-0 w-[3px] bg-[#81b344]/50 rounded-full"></div>
+              <p class="text-[16px] lg:text-[18px] text-white/65 font-medium leading-relaxed mb-5">
                 Při budování PrimeClean jsem měl jasný cíl: odstranit z oboru nedůvěru. Věděl jsem, že dokud klienti neuvidí výsledky na vlastní oči, nikdy nebudou stoprocentně klidní.
               </p>
-              <p class="text-[16px] lg:text-[18px] text-zinc-800 font-semibold leading-relaxed">
+              <p class="text-[16px] lg:text-[18px] text-white/90 font-semibold leading-relaxed">
                 Proto jsme zavedli absolutní transparentnost díky naší aplikaci. Chci, abyste každé ráno přišli do čisté firmy s jistotou, že je o vše postaráno.
               </p>
             </div>
 
             <div class="mt-auto">
-              <a href="/kontakt" class="inline-flex items-center justify-center gap-2 px-8 py-4 text-[16px] font-bold text-white transition-all duration-300 ease-out bg-[#81b344] rounded-xl hover:bg-[#6a9438] hover:-translate-y-1 shadow-md shadow-[#81b344]/20">
+              <a href="/kontakt" class="inline-flex items-center justify-center gap-2 px-8 py-4 text-[16px] font-bold text-zinc-950 transition-all duration-300 ease-out bg-[#81b344] rounded-xl hover:bg-white hover:-translate-y-1 shadow-lg shadow-black/20">
                 Domluvit osobní schůzku
                 <span class="w-5 h-5" set:html={arrowRightLg} />
               </a>
-              <p class="text-[13px] text-zinc-500 font-medium mt-4 tracking-wide">Rádi s vámi probereme vaše potřeby osobně na místě.</p>
+              <p class="text-[13px] text-white/40 font-medium mt-4 tracking-wide">Rádi s vámi probereme vaše potřeby osobně na místě.</p>
             </div>
           </div>
 
