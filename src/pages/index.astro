@@ -6,17 +6,17 @@ const features = [
   {
     title: "Systém a kontrola úklidů",
     description: "Každý úklid má jasný rozsah a kontrolu provedení. Máte absolutní přehled o zakázkách bez neustálého telefonování.",
-    icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />`
+    icon: "shield-check"
   },
   {
     title: "Spolehlivost a domluva",
     description: "Dodržujeme domluvené termíny i rozsah prací. Vždy přesně víte, kdy, kde a co přesně se u vás bude uklízet.",
-    icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />`
+    icon: "clipboard-check"
   },
   {
     title: "Profesionální tým a technika",
     description: "Pracujeme s vyškoleným týmem a profesionální čistící technikou. Zvládáme i náročné a vysoce specializované zakázky.",
-    icon: `<path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />`
+    icon: "zap"
   }
 ];
 
@@ -24,21 +24,31 @@ const services = [
   {
     title: "Kanceláře a firmy",
     description: "Pravidelný úklid přizpůsobený provozu vaší firmy. Stálý tým, jasný rozsah prací a přehled o úklidech bez starostí.",
-    image: "/sluzba-kancelare.jpg", 
-    link: "#"
+    image: "/sluzba-kancelare.jpg",
+    link: "#",
+    tag: "Nejoblíbenější"
   },
   {
     title: "SVJ a bytové domy",
     description: "Pravidelný úklid vchodů, chodeb a společných prostor. Spolehlivé řešení pro bytová družstva a správce nemovitostí.",
-    image: "/sluzba-svj.jpg", 
-    link: "#"
+    image: "/sluzba-svj.jpg",
+    link: "#",
+    tag: "Správa budov"
   },
   {
     title: "Airbnb a apartmány",
     description: "Spolehlivý úklid pro krátkodobé pronájmy mezi pobyty hostů. Rychlá příprava bytu a přehled o každém úklidu online.",
-    image: "/sluzba-airbnb.jpg", 
-    link: "#"
+    image: "/sluzba-airbnb.jpg",
+    link: "#",
+    tag: "Krátkodobé pronájmy"
   }
+];
+
+const stats = [
+  { value: 295, label: "Aktivních úklidů", icon: "calendar-check" },
+  { value: 400, label: "Spokojených klientů", icon: "users" },
+  { value: 527, label: "Dokončených zakázek", icon: "badge-check" },
+  { value: 21, label: "Pravidelných objektů", icon: "building-2" },
 ];
 ---
 
@@ -48,8 +58,9 @@ const services = [
     <!-- 1. HERO SEKCE -->
     <section class="relative pt-28 pb-20 md:pt-36 md:pb-28 lg:pt-44 lg:pb-36 overflow-hidden bg-zinc-50">
       <div class="relative z-10 max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12 text-center">
-        
+
         <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-white border border-zinc-200 shadow-sm mb-6 md:mb-8 opacity-0 animate-fade-in-up" style="animation-delay: 0ms;">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#81b344] animate-pulse flex-shrink-0"></span>
           <span class="text-[11px] sm:text-xs font-bold text-zinc-600 tracking-[0.15em] uppercase">Profesionální úklid Brno a okolí</span>
         </div>
 
@@ -58,9 +69,11 @@ const services = [
           <span class="text-[#6a9438]">plně pod kontrolou.</span>
         </h1>
 
-        <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-[14px] sm:text-[15px] md:text-[16px] font-bold text-zinc-400 tracking-[0.1em] uppercase mb-8 md:mb-10 opacity-0 animate-fade-in-up" style="animation-delay: 300ms;">
+        <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-[14px] sm:text-[15px] md:text-[16px] font-bold tracking-[0.1em] uppercase mb-8 md:mb-10 opacity-0 animate-fade-in-up" style="animation-delay: 300ms;">
           <span class="text-zinc-800 bg-zinc-200/50 px-3 py-1 rounded-md">SVJ</span>
+          <span class="text-[#81b344]">·</span>
           <span class="text-zinc-800 bg-zinc-200/50 px-3 py-1 rounded-md">Kanceláře</span>
+          <span class="text-[#81b344]">·</span>
           <span class="text-zinc-800 bg-zinc-200/50 px-3 py-1 rounded-md">Airbnb</span>
         </div>
 
@@ -69,8 +82,9 @@ const services = [
         </p>
 
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4 px-4 sm:px-0 opacity-0 animate-fade-in-up" style="animation-delay: 600ms;">
-          <a href="/kontakt" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-[16px] font-bold text-white transition-all duration-300 ease-out bg-[#81b344] rounded-xl hover:bg-[#729f3c] hover:-translate-y-1">
+          <a href="/kontakt" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 text-[16px] font-bold text-white transition-all duration-300 ease-out bg-[#81b344] rounded-xl hover:bg-[#729f3c] hover:-translate-y-1 shadow-md shadow-[#81b344]/20">
             Chci nezávaznou nabídku
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
           </a>
           <a href="#proc-my" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-[16px] font-bold text-zinc-700 transition-all duration-300 ease-out bg-white border-2 border-zinc-200 rounded-xl hover:border-zinc-300 hover:bg-zinc-50 hover:-translate-y-1">
             Proč PrimeClean?
@@ -81,17 +95,16 @@ const services = [
           <div class="relative aspect-[4/3] sm:aspect-[16/9] rounded-2xl md:rounded-[2rem] overflow-hidden bg-zinc-100 border border-zinc-200/50 z-10">
             <img src="/hero-image.jpg" alt="PrimeClean úklid" class="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.02]" fetchpriority="high" />
           </div>
-          
-          <!-- Hero floating toast -->
-          <div class="absolute -bottom-5 left-1/2 -translate-x-1/2 sm:left-8 sm:translate-x-0 sm:-bottom-7 bg-white pl-2 pr-5 py-2 rounded-full shadow-lg border border-zinc-100 flex items-center gap-3 z-20 whitespace-nowrap">
-            <div class="flex-shrink-0 w-9 h-9 bg-[#81b344]/10 rounded-full flex items-center justify-center text-[#6a9438]">
-              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+
+          <!-- Hero floating card -->
+          <div class="absolute -bottom-6 -left-2 sm:-bottom-8 sm:left-8 z-20 bg-white rounded-2xl shadow-xl border border-zinc-100 p-4 flex items-center gap-4 max-w-[calc(100%-16px)] sm:max-w-[320px]">
+            <div class="flex-shrink-0 w-11 h-11 bg-[#81b344]/10 rounded-xl flex items-center justify-center text-[#6a9438]">
+              <i data-lucide="image" class="w-5 h-5"></i>
             </div>
-            <div class="flex items-center gap-2">
-              <span class="text-[13px] font-bold text-zinc-900">Fotoreport dokončen</span>
-              <span class="text-[12px] font-medium text-zinc-400">· právě teď</span>
+            <div class="text-left min-w-0">
+              <p class="text-[13.5px] font-bold text-zinc-950 leading-tight">Fotografie z úklidu</p>
+              <p class="text-[12px] font-medium text-zinc-500 mt-0.5 leading-snug">Prohlížejte si fotoreporty po každém úklidu rovnou v aplikaci.</p>
             </div>
-            <span class="flex-shrink-0 w-2 h-2 rounded-full bg-[#81b344] animate-pulse"></span>
           </div>
         </div>
 
@@ -101,7 +114,7 @@ const services = [
     <!-- 2. SEKCE: PROČ MY & APLIKACE -->
     <section id="proc-my" class="py-20 md:py-32 bg-white scroll-mt-24 relative overflow-hidden">
       <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
-        
+
         <div class="text-center max-w-3xl mx-auto mb-16 lg:mb-24 scroll-animate opacity-0">
           <div class="mb-4">
             <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">Výhody spolupráce</span>
@@ -116,25 +129,33 @@ const services = [
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-24">
           {features.map((feature, index) => (
-            <div class="scroll-animate opacity-0 relative bg-zinc-50 rounded-[1.5rem] p-8 lg:p-10 border border-zinc-100 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg" style={`animation-delay: ${index * 150}ms`}>
-              <div class="w-14 h-14 rounded-2xl bg-white border border-zinc-200 flex items-center justify-center text-[#6a9438] mb-8">
-                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" set:html={feature.icon}></svg>
+            <div
+              class="scroll-animate opacity-0 relative bg-zinc-50 rounded-[1.5rem] p-8 lg:p-10 border border-zinc-100 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg hover:border-[#81b344]/20 overflow-hidden group"
+              style={`animation-delay: ${index * 150}ms`}
+            >
+              <!-- Číslo karty v pozadí -->
+              <span class="absolute top-5 right-7 text-[4rem] font-extrabold text-[#81b344]/8 leading-none select-none pointer-events-none">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+
+              <div class="w-14 h-14 rounded-2xl bg-white border border-zinc-200 flex items-center justify-center text-[#6a9438] mb-8 relative z-10 group-hover:border-[#81b344]/30 group-hover:bg-[#81b344]/5 transition-colors duration-300">
+                <i data-lucide={feature.icon} class="w-6 h-6"></i>
               </div>
-              <h3 class="text-[20px] lg:text-[22px] font-bold text-zinc-950 tracking-tight leading-snug mb-4">{feature.title}</h3>
-              <p class="text-[15px] lg:text-[16px] font-medium text-zinc-600 leading-relaxed">{feature.description}</p>
+              <h3 class="text-[20px] lg:text-[22px] font-bold text-zinc-950 tracking-tight leading-snug mb-4 relative z-10">{feature.title}</h3>
+              <p class="text-[15px] lg:text-[16px] font-medium text-zinc-600 leading-relaxed relative z-10">{feature.description}</p>
             </div>
           ))}
         </div>
 
         <!-- DARK MODE APP PROMO -->
         <div class="scroll-animate opacity-0 flex flex-col lg:flex-row items-center gap-12 lg:gap-20 bg-zinc-950 text-white rounded-[2rem] lg:rounded-[3rem] p-8 sm:p-12 md:p-16 border border-zinc-800 shadow-2xl">
-          
+
           <div class="w-full lg:w-[55%] relative z-10">
             <div class="inline-block px-3 py-1.5 rounded-md bg-white/10 mb-6">
               <span class="text-[12px] font-bold text-zinc-300 tracking-[0.1em] uppercase">Klientská Aplikace</span>
             </div>
             <h3 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-[1.1] mb-6 tracking-tighter">
-              Přehled v aplikaci.<br />Vaše pravidla. <br class="hidden sm:block lg:hidden" /><span class="text-[#81b344]">Ve vaší kapse.</span>
+              Přehled v aplikaci.<br /><span class="text-[#81b344]">Vše o úklidu pohodlně ve Vaší kapse.</span>
             </h3>
             <p class="text-base md:text-[18px] text-zinc-400 font-medium leading-relaxed mb-8 max-w-lg">
               Objednávky, historie úklidů, faktury i platby přehledně na jednom místě. Žádné zbytečné maily a doptávání se, jestli už je hotovo.
@@ -142,20 +163,20 @@ const services = [
             <ul class="flex flex-col gap-4 mb-10">
               <li class="flex items-center gap-4 text-[16px] text-zinc-200 font-semibold tracking-tight">
                 <div class="flex-shrink-0 w-6 h-6 rounded-full bg-[#81b344] flex items-center justify-center text-zinc-950">
-                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                  <i data-lucide="check" class="w-3.5 h-3.5" style="stroke-width: 3"></i>
                 </div>
                 Živé fotoreporty po každém úklidu
               </li>
               <li class="flex items-center gap-4 text-[16px] text-zinc-200 font-semibold tracking-tight">
                 <div class="flex-shrink-0 w-6 h-6 rounded-full bg-[#81b344] flex items-center justify-center text-zinc-950">
-                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
+                  <i data-lucide="check" class="w-3.5 h-3.5" style="stroke-width: 3"></i>
                 </div>
                 Přehled faktur a historie plateb
               </li>
             </ul>
-            <a href="/aplikace" class="inline-flex items-center justify-center px-8 py-4 text-[15px] font-bold text-zinc-950 transition-all duration-300 ease-out bg-[#81b344] rounded-xl hover:bg-white hover:-translate-y-1">
+            <a href="/aplikace" class="inline-flex items-center justify-center gap-2 px-8 py-4 text-[15px] font-bold text-zinc-950 transition-all duration-300 ease-out bg-[#81b344] rounded-xl hover:bg-white hover:-translate-y-1">
               Prozkoumat aplikaci
-              <svg class="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
             </a>
           </div>
 
@@ -170,54 +191,36 @@ const services = [
     </section>
 
     <!-- 3. SEKCE: STATISTIKY -->
-    <section class="py-16 lg:py-24 bg-[#81b344] relative overflow-hidden count-up-container">
-      <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10 scroll-animate opacity-0">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-y-12 md:gap-y-0 text-center">
-          
-          <!-- 1. stat: border vpravo vždy -->
-          <div class="flex flex-col items-center justify-center px-4 border-r border-white/20">
-            <div class="flex items-end justify-center text-white mb-2">
-              <span class="text-[3rem] md:text-[4rem] lg:text-[4.5rem] font-extrabold tracking-tighter leading-none count-up" data-target="295">0</span>
-              <span class="text-[2rem] md:text-[3rem] font-bold text-white/80 leading-none ml-1 mb-1">+</span>
-            </div>
-            <div class="text-[12px] md:text-[13px] font-bold uppercase tracking-[0.1em] text-white/90">Aktivních úklidů</div>
-          </div>
+    <section class="py-20 lg:py-28 bg-[#81b344] relative overflow-hidden count-up-container">
+      <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
 
-          <!-- 2. stat: border vpravo jen na md+ -->
-          <div class="flex flex-col items-center justify-center px-4 md:border-r md:border-white/20">
-            <div class="flex items-end justify-center text-white mb-2">
-              <span class="text-[3rem] md:text-[4rem] lg:text-[4.5rem] font-extrabold tracking-tighter leading-none count-up" data-target="400">0</span>
-              <span class="text-[2rem] md:text-[3rem] font-bold text-white/80 leading-none ml-1 mb-1">+</span>
-            </div>
-            <div class="text-[12px] md:text-[13px] font-bold uppercase tracking-[0.1em] text-white/90">Spokojených klientů</div>
-          </div>
-
-          <!-- 3. stat: border vpravo vždy -->
-          <div class="flex flex-col items-center justify-center px-4 border-r border-white/20">
-            <div class="flex items-end justify-center text-white mb-2">
-              <span class="text-[3rem] md:text-[4rem] lg:text-[4.5rem] font-extrabold tracking-tighter leading-none count-up" data-target="527">0</span>
-              <span class="text-[2rem] md:text-[3rem] font-bold text-white/80 leading-none ml-1 mb-1">+</span>
-            </div>
-            <div class="text-[12px] md:text-[13px] font-bold uppercase tracking-[0.1em] text-white/90">Dokončených zakázek</div>
-          </div>
-
-          <!-- 4. stat: žádný border -->
-          <div class="flex flex-col items-center justify-center px-4">
-            <div class="flex items-end justify-center text-white mb-2">
-              <span class="text-[3rem] md:text-[4rem] lg:text-[4.5rem] font-extrabold tracking-tighter leading-none count-up" data-target="21">0</span>
-              <span class="text-[2rem] md:text-[3rem] font-bold text-white/80 leading-none ml-1 mb-1">+</span>
-            </div>
-            <div class="text-[12px] md:text-[13px] font-bold uppercase tracking-[0.1em] text-white/90">Pravidelných objektů</div>
-          </div>
-
+        <div class="scroll-animate opacity-0 text-center mb-14">
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-1.5">Čísla, která mluví za nás</h2>
+          <p class="text-white/60 font-medium text-[15px]">Výsledky, které budujeme každý den</p>
         </div>
+
+        <div class="scroll-animate opacity-0 grid grid-cols-2 md:grid-cols-4 gap-y-10 md:gap-y-0 text-center">
+          {stats.map((stat, index) => (
+            <div class={`flex flex-col items-center justify-center px-4 ${index < stats.length - 1 ? 'md:border-r md:border-white/20' : ''}`}>
+              <div class="w-9 h-9 rounded-lg bg-white/15 flex items-center justify-center text-white mb-4">
+                <i data-lucide={stat.icon} class="w-4 h-4"></i>
+              </div>
+              <div class="flex items-end justify-center text-white mb-2">
+                <span class="text-[3rem] md:text-[4rem] lg:text-[4.5rem] font-extrabold tracking-tighter leading-none count-up" data-target={stat.value}>0</span>
+                <span class="text-[1.75rem] md:text-[2.25rem] font-bold text-white/70 ml-1 pb-1 md:pb-2">+</span>
+              </div>
+              <div class="text-[12px] md:text-[13px] font-bold uppercase tracking-[0.1em] text-white/80">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+
       </div>
     </section>
 
     <!-- 4. SEKCE: SLUŽBY -->
     <section id="sluzby" class="py-20 md:py-32 bg-zinc-50 relative overflow-hidden scroll-mt-24">
       <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10 text-center">
-        
+
         <div class="scroll-animate opacity-0 max-w-3xl mx-auto mb-16 lg:mb-24">
           <div class="mb-4">
             <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">Specializace</span>
@@ -230,20 +233,27 @@ const services = [
           </p>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
           {services.map((service, index) => (
-            <div class="scroll-animate opacity-0 flex flex-col bg-white rounded-[2rem] border border-zinc-200 shadow-sm transition-all duration-300 ease-out hover:shadow-lg hover:-translate-y-1 overflow-hidden" style={`animation-delay: ${index * 150}ms`}>
-              <div class="relative w-full aspect-[4/3] bg-zinc-100 border-b border-zinc-100">
-                <img src={service.image} alt={service.title} class="w-full h-full object-cover object-center" loading="lazy" />
+            <div
+              class="scroll-animate opacity-0 flex flex-col bg-white rounded-[2rem] border border-zinc-200 shadow-sm transition-all duration-300 ease-out hover:shadow-lg hover:-translate-y-1 overflow-hidden group"
+              style={`animation-delay: ${index * 150}ms`}
+            >
+              <div class="relative w-full aspect-[4/3] bg-zinc-100 overflow-hidden">
+                <img src={service.image} alt={service.title} class="w-full h-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-[1.03]" loading="lazy" />
+                <div class="absolute top-4 left-4 px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-sm shadow-sm">
+                  <span class="text-[11px] font-bold text-zinc-700 tracking-[0.06em] uppercase">{service.tag}</span>
+                </div>
               </div>
               <div class="p-8 flex-grow flex flex-col">
                 <h3 class="text-[22px] font-bold text-zinc-950 tracking-tight leading-snug mb-3">{service.title}</h3>
                 <p class="text-[15px] text-zinc-600 font-medium leading-relaxed mb-6 flex-grow">{service.description}</p>
-                
-                <a href={service.link} class="mt-auto inline-flex items-center justify-center font-bold text-[15px] text-[#81b344] hover:text-[#6a9438] transition-colors group">
-                  Zjistit více
-                  <svg class="w-4 h-4 ml-1.5 transition-transform duration-300 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                </a>
+                <div class="pt-5 border-t border-zinc-100">
+                  <a href={service.link} class="inline-flex items-center gap-1.5 font-bold text-[15px] text-[#81b344] hover:text-[#6a9438] transition-colors group/link">
+                    Zjistit více
+                    <i data-lucide="arrow-right" class="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1"></i>
+                  </a>
+                </div>
               </div>
             </div>
           ))}
@@ -254,53 +264,45 @@ const services = [
     <!-- 5. SEKCE: JAK TO FUNGUJE -->
     <section id="jak-to-funguje" class="py-20 md:py-32 bg-white relative overflow-hidden scroll-mt-24">
       <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10 text-center">
-        
+
         <div class="scroll-animate opacity-0 max-w-3xl mx-auto mb-20 lg:mb-28">
           <div class="mb-4">
             <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">Proces spolupráce</span>
           </div>
           <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-6">
-            Od poptávky k čistotě <br class="hidden md:block" /> během pár dnů.
-          </h2>
+  Od poptávky k čistotě <br class="hidden md:block" /><span class="text-[#6a9438]"> během pár dnů.</span>
+</h2>
           <p class="text-lg md:text-[20px] text-zinc-500 font-medium leading-relaxed max-w-2xl mx-auto">
             Jednoduchý a transparentní proces bez zbytečných průtahů a byrokracie.
           </p>
         </div>
 
         <div class="relative max-w-5xl mx-auto">
-          <div class="hidden lg:block absolute top-[40px] left-[10%] right-[10%] h-[1px] bg-zinc-200 z-0"></div>
-          
+          <!-- Dashed connector -->
+          <div class="hidden lg:block absolute top-[40px] left-[10%] right-[10%] h-[2px] z-0"
+            style="background-image: repeating-linear-gradient(90deg, #d4e8b8 0, #d4e8b8 10px, transparent 10px, transparent 22px);">
+          </div>
+
           <div class="grid lg:grid-cols-4 gap-12 lg:gap-6 relative z-10">
-            
-            <div class="flex flex-col items-center text-center scroll-animate opacity-0" style="animation-delay: 0ms;">
-              <div class="w-20 h-20 rounded-full bg-white border-2 border-zinc-200 shadow-sm flex items-center justify-center text-[24px] font-bold text-zinc-500 mb-6 relative z-10">
-                1
-              </div>
-              <h3 class="text-[20px] font-bold text-zinc-950 leading-snug tracking-tight mb-3">Nezávazná<br />poptávka</h3>
-              <p class="text-[15px] text-zinc-500 font-medium leading-relaxed px-2">Zavolejte nám nebo vyplňte formulář. Probereme vaši představu.</p>
-            </div>
 
-            <div class="flex flex-col items-center text-center scroll-animate opacity-0" style="animation-delay: 150ms;">
-              <div class="w-20 h-20 rounded-full bg-white border-2 border-zinc-200 shadow-sm flex items-center justify-center text-[24px] font-bold text-zinc-500 mb-6 relative z-10">
-                2
+            {[
+              { step: "1", title: "Nezávazná\npoptávka", desc: "Zavolejte nám nebo vyplňte formulář. Probereme vaši představu.", delay: 0 },
+              { step: "2", title: "Prohlídka\na nacenění", desc: "Zhodnotíme stav a navrhneme přesný plán úklidu vč. kalkulace.", delay: 150 },
+              { step: "3", title: "Nastavení\naplikace", desc: "Předáme přístupy do aplikace. Zadáme rozsah prací a termíny.", delay: 300 },
+            ].map(({ step, title, desc, delay }) => (
+              <div class="flex flex-col items-center text-center scroll-animate opacity-0" style={`animation-delay: ${delay}ms`}>
+                <div class="w-20 h-20 rounded-full bg-white border-2 border-zinc-200 shadow-sm flex items-center justify-center text-[24px] font-extrabold text-zinc-400 mb-6 relative z-10">
+                  {step}
+                </div>
+                <h3 class="text-[20px] font-bold text-zinc-950 leading-snug tracking-tight mb-3 whitespace-pre-line">{title}</h3>
+                <p class="text-[15px] text-zinc-500 font-medium leading-relaxed px-2">{desc}</p>
               </div>
-              <h3 class="text-[20px] font-bold text-zinc-950 leading-snug tracking-tight mb-3">Prohlídka<br />a nacenění</h3>
-              <p class="text-[15px] text-zinc-500 font-medium leading-relaxed px-2">Zhodnotíme stav a navrhneme přesný plán úklidu vč. kalkulace.</p>
-            </div>
+            ))}
 
-            <div class="flex flex-col items-center text-center scroll-animate opacity-0" style="animation-delay: 300ms;">
-              <div class="w-20 h-20 rounded-full bg-white border-2 border-zinc-200 shadow-sm flex items-center justify-center text-[24px] font-bold text-zinc-500 mb-6 relative z-10">
-                3
-              </div>
-              <h3 class="text-[20px] font-bold text-zinc-950 leading-snug tracking-tight mb-3">Nastavení<br />aplikace</h3>
-              <p class="text-[15px] text-zinc-500 font-medium leading-relaxed px-2">Předáme přístupy do aplikace. Zadáme rozsah prací a termíny.</p>
-            </div>
-
+            <!-- Poslední krok -->
             <div class="flex flex-col items-center text-center scroll-animate opacity-0" style="animation-delay: 450ms;">
               <div class="w-20 h-20 rounded-full bg-[#81b344] shadow-md flex items-center justify-center text-white mb-6 relative z-10">
-                <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                </svg>
+                <i data-lucide="check" class="w-8 h-8" style="stroke-width: 3"></i>
               </div>
               <h3 class="text-[20px] font-bold text-zinc-950 leading-snug tracking-tight mb-3">Pravidelný<br />a čistý chod</h3>
               <p class="text-[15px] text-zinc-500 font-medium leading-relaxed px-2">Přebíráme zodpovědnost. Vy se věnujete své práci.</p>
@@ -314,11 +316,11 @@ const services = [
     <!-- 6. SEKCE: O NÁS & ZÁVĚREČNÉ CTA -->
     <section id="o-nas" class="pt-16 pb-24 md:pt-24 md:pb-36 bg-zinc-50 relative overflow-hidden">
       <div class="max-w-[1000px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
-        
+
         <div class="scroll-animate opacity-0 bg-white rounded-[2rem] p-8 sm:p-12 md:p-16 border border-zinc-200 shadow-sm flex flex-col md:flex-row items-center md:items-start gap-10 md:gap-16 relative overflow-hidden">
-          
+
           <div class="flex-shrink-0 flex flex-col items-center text-center relative z-10">
-            <div class="relative w-36 h-36 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-zinc-50 bg-zinc-100 mb-5 shadow-sm">
+            <div class="relative w-36 h-36 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-[#81b344]/15 bg-zinc-100 mb-5 shadow-sm">
               <img src="/tomas-kytka.jpg" alt="Tomáš Kytka, Zakladatel PrimeClean" class="w-full h-full object-cover object-top" loading="lazy" />
             </div>
             <p class="text-[18px] font-extrabold text-zinc-900 leading-none mb-2 tracking-tight">Tomáš Kytka</p>
@@ -329,8 +331,11 @@ const services = [
             <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-extrabold text-zinc-900 tracking-tighter mb-6 leading-[1.1]">
               Úklid nemá být vaše starost, <br class="hidden xl:block"/> ale <span class="text-[#81b344]">naše vizitka.</span>
             </h2>
-            
-            <div class="relative flex-grow mb-10">
+
+            <div class="relative flex-grow mb-10 md:pl-6">
+              <!-- Quote bar — zelená -->
+              <div class="hidden md:block absolute left-0 top-0 bottom-0 w-[3px] bg-[#81b344]/30 rounded-full"></div>
+
               <p class="text-[16px] lg:text-[18px] text-zinc-600 font-medium leading-relaxed mb-5">
                 Při budování PrimeClean jsem měl jasný cíl: odstranit z oboru nedůvěru. Věděl jsem, že dokud klienti neuvidí výsledky na vlastní oči, nikdy nebudou stoprocentně klidní.
               </p>
@@ -340,9 +345,9 @@ const services = [
             </div>
 
             <div class="mt-auto">
-              <a href="/kontakt" class="inline-flex items-center justify-center px-8 py-4 text-[16px] font-bold text-white transition-all duration-300 ease-out bg-[#81b344] rounded-xl hover:bg-[#6a9438] hover:-translate-y-1 shadow-md">
+              <a href="/kontakt" class="inline-flex items-center justify-center gap-2 px-8 py-4 text-[16px] font-bold text-white transition-all duration-300 ease-out bg-[#81b344] rounded-xl hover:bg-[#6a9438] hover:-translate-y-1 shadow-md shadow-[#81b344]/20">
                 Chci nezávazně nacenit úklid
-                <svg class="w-5 h-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                <i data-lucide="arrow-right" class="w-5 h-5"></i>
               </a>
               <p class="text-[13px] text-zinc-500 font-medium mt-4 tracking-wide">Rádi s vámi probereme vaše potřeby osobně na místě.</p>
             </div>
@@ -356,8 +361,13 @@ const services = [
   </main>
 </Layout>
 
+<script src="https://unpkg.com/lucide@latest" is:inline></script>
 <script is:inline>
   document.addEventListener('DOMContentLoaded', () => {
+
+    // Init Lucide icons
+    lucide.createIcons();
+
     const animateValue = (obj, start, end, duration) => {
       let startTimestamp = null;
       const step = (timestamp) => {
@@ -393,7 +403,7 @@ const services = [
             const counters = target.querySelectorAll('.count-up');
             counters.forEach(counter => {
               const targetNum = parseInt(counter.getAttribute('data-target') || '0', 10);
-              animateValue(counter, 0, targetNum, 2000); 
+              animateValue(counter, 0, targetNum, 2000);
             });
             observer.unobserve(target);
           }
@@ -401,11 +411,7 @@ const services = [
       });
     }, observerOptions);
 
-    const animatedElements = document.querySelectorAll('.scroll-animate');
-    animatedElements.forEach((el) => {
-      observer.observe(el);
-    });
-
+    document.querySelectorAll('.scroll-animate').forEach(el => observer.observe(el));
     const statsSection = document.querySelector('.count-up-container');
     if (statsSection) observer.observe(statsSection);
   });
@@ -413,16 +419,9 @@ const services = [
 
 <style is:global>
   @keyframes softFadeUp {
-    0% { 
-      opacity: 0; 
-      transform: translateY(20px); 
-    }
-    100% { 
-      opacity: 1; 
-      transform: translateY(0); 
-    }
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
   }
-  
   .animate-fade-in-up {
     animation-name: softFadeUp;
     animation-duration: 0.9s;
