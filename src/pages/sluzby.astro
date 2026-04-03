@@ -139,8 +139,9 @@ const tabData = { kancelare, svj, airbnb };
 
     <!-- HERO -->
     <section class="relative pt-28 pb-20 md:pt-36 md:pb-28 lg:pt-44 lg:pb-36 bg-zinc-50 overflow-hidden">
-      <div class="pointer-events-none absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full bg-[#81b344]/6 blur-[100px]"></div>
-      <div class="pointer-events-none absolute -bottom-20 -left-20 w-[350px] h-[350px] rounded-full bg-[#81b344]/4 blur-[80px]"></div>
+      <!-- Safari fix: orby jen na desktopu, redukovaný blur -->
+      <div class="hidden md:block pointer-events-none absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full bg-[#81b344]/6" style="filter: blur(70px);"></div>
+      <div class="hidden md:block pointer-events-none absolute -bottom-20 -left-20 w-[350px] h-[350px] rounded-full bg-[#81b344]/4" style="filter: blur(60px);"></div>
 
       <div class="relative z-10 max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12 text-center">
         <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-white border border-zinc-200 shadow-sm mb-6 md:mb-8 opacity-0 animate-fade-in-up" style="animation-delay: 0ms;">
@@ -283,7 +284,8 @@ const tabData = { kancelare, svj, airbnb };
         <section class="py-20 md:py-28 bg-white">
           <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
             <div class="scroll-animate opacity-0 relative bg-zinc-950 rounded-[2.5rem] overflow-hidden px-8 py-14 md:px-14 md:py-20">
-              <div class="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full bg-[#81b344]/8 blur-[100px]"></div>
+              <!-- Safari fix: orb jen na desktopu -->
+              <div class="hidden md:block pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full bg-[#81b344]/8" style="filter: blur(80px);"></div>
               <div class="relative z-10 grid lg:grid-cols-2 gap-16 lg:gap-24">
 
                 <div class="scroll-animate opacity-0">
@@ -394,6 +396,7 @@ const tabData = { kancelare, svj, airbnb };
 </Layout>
 
 <script is:inline>
+  // ─── Safari & výkon detekce ───────────────────────────────────────────────
   (function () {
     const cores = navigator.hardwareConcurrency || 4;
     const ram = navigator.deviceMemory || 4;
@@ -438,7 +441,6 @@ const tabData = { kancelare, svj, airbnb };
     active.classList.remove('hidden');
 
     if (scrollToContent) {
-      // scroll to the top of the tab hero section (first section inside the tab)
       const heroSection = active.querySelector('section');
       if (heroSection) {
         const offset = heroSection.getBoundingClientRect().top + window.scrollY - 80;

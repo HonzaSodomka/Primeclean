@@ -150,8 +150,9 @@ const faqItems = [
 
     <!-- 1. HERO SEKCE -->
     <section class="relative pt-28 pb-20 md:pt-36 md:pb-28 lg:pt-44 lg:pb-36 overflow-hidden bg-zinc-50">
-      <div class="pointer-events-none absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full bg-[#81b344]/5 blur-[120px]"></div>
-      <div class="pointer-events-none absolute -bottom-20 -left-20 w-[400px] h-[400px] rounded-full bg-[#81b344]/4 blur-[80px]"></div>
+      <!-- Safari fix: dekorativní orby skryté na mobilu, redukovaný blur -->
+      <div class="hidden md:block pointer-events-none absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full bg-[#81b344]/5" style="filter: blur(80px);"></div>
+      <div class="hidden md:block pointer-events-none absolute -bottom-20 -left-20 w-[400px] h-[400px] rounded-full bg-[#81b344]/4" style="filter: blur(60px);"></div>
 
       <div class="relative z-10 max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12 text-center">
 
@@ -189,7 +190,7 @@ const faqItems = [
 
         <div class="mt-16 md:mt-24 relative max-w-5xl mx-auto group opacity-0 animate-fade-in-up" style="animation-delay: 800ms;">
           <div class="relative aspect-[4/3] sm:aspect-[16/9] rounded-2xl md:rounded-[2rem] overflow-hidden bg-zinc-100 border border-zinc-200/50 z-10">
-            <img src="/hero-image.jpg" alt="PrimeClean úklid" width="1200" height="675" class="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.02]" fetchpriority="high" />
+            <img src="/hero-image.jpg" alt="PrimeClean úklid" width="1200" height="675" class="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.02]" fetchpriority="high" decoding="async" />
           </div>
           <div class="absolute -bottom-6 -left-2 sm:-bottom-8 sm:left-8 z-20 bg-white rounded-2xl shadow-xl border border-zinc-100 p-4 flex items-center gap-4 max-w-[calc(100%-16px)] sm:max-w-[320px]">
             <div class="flex-shrink-0 w-11 h-11 bg-[#81b344]/10 rounded-xl flex items-center justify-center text-[#6a9438]">
@@ -287,7 +288,7 @@ const faqItems = [
           </div>
           <div class="w-full sm:max-w-sm md:max-w-md mx-auto lg:w-[45%] relative mt-8 lg:mt-0 z-10">
             <div class="relative aspect-[4/5] rounded-[1.5rem] overflow-hidden bg-zinc-900 border border-zinc-700">
-              <img src="/aplikace.jpg" alt="Ukázka aplikace PrimeClean" width="600" height="750" class="w-full h-full object-cover object-top" loading="lazy" />
+              <img src="/aplikace.jpg" alt="Ukázka aplikace PrimeClean" width="600" height="750" class="w-full h-full object-cover object-top" loading="lazy" decoding="async" />
             </div>
           </div>
         </div>
@@ -340,7 +341,7 @@ const faqItems = [
               style={`animation-delay: ${index * 150}ms`}
             >
               <div class="relative w-full aspect-[4/3] bg-zinc-100 overflow-hidden">
-                <img src={service.image} alt={service.title} width="600" height="450" class="w-full h-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-[1.03]" loading="lazy" />
+                <img src={service.image} alt={service.title} width="600" height="450" class="w-full h-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-[1.03]" loading="lazy" decoding="async" />
                 <div class="absolute top-4 left-4 px-2.5 py-1 rounded-full bg-white shadow-sm">
                   <span class="text-[11px] font-bold text-zinc-700 tracking-[0.06em] uppercase">{service.tag}</span>
                 </div>
@@ -361,10 +362,12 @@ const faqItems = [
       </div>
     </section>
 
-    <!-- 5. SEKCE: RECENZE (změněno z jedovaté zelené na čistý dark design jako zbytek webu) -->
+    <!-- 5. SEKCE: RECENZE -->
     <section class="py-20 md:py-32 bg-zinc-950 relative overflow-hidden">
-      <div class="pointer-events-none absolute top-0 left-1/4 w-[500px] h-[300px] rounded-full bg-[#81b344]/8 blur-[120px]"></div>
-      <div class="pointer-events-none absolute bottom-0 right-1/4 w-[400px] h-[250px] rounded-full bg-[#81b344]/6 blur-[100px]"></div>
+      <!-- Safari fix: dekorativní orby jen na desktopu -->
+      <div class="hidden md:block pointer-events-none absolute top-0 left-1/4 w-[500px] h-[300px] rounded-full bg-[#81b344]/8" style="filter: blur(80px);"></div>
+      <div class="hidden md:block pointer-events-none absolute bottom-0 right-1/4 w-[400px] h-[250px] rounded-full bg-[#81b344]/6" style="filter: blur(70px);"></div>
+
       <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
         <div class="scroll-animate opacity-0 text-center max-w-2xl mx-auto mb-16">
           <div class="mb-4">
@@ -382,7 +385,53 @@ const faqItems = [
           </div>
         </div>
 
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- ─── MOBILE: swipe slider ─── -->
+        <div class="sm:hidden">
+          <div
+            id="testimonials-track"
+            class="flex gap-4 overflow-x-auto pb-2 -mx-5"
+            style="scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; -ms-overflow-style: none; -webkit-overflow-scrolling: touch; padding-left: 20px; padding-right: 20px;"
+          >
+            {testimonials.map((t, i) => (
+              <div
+                class="flex-shrink-0 flex flex-col bg-zinc-900 rounded-[1.5rem] p-7 border border-zinc-800 relative overflow-hidden"
+                style="scroll-snap-align: center; width: 82vw; max-width: 340px;"
+              >
+                <span class="absolute -top-2 -right-1 text-[#81b344]" set:html={quoteIcon} />
+                <div class="flex gap-1 mb-5">
+                  {Array.from({length: t.rating}).map(() => (
+                    <span class="text-amber-400" set:html={starIcon} />
+                  ))}
+                </div>
+                <p class="text-[14.5px] text-zinc-400 font-medium leading-relaxed mb-6 flex-grow">"{t.text}"</p>
+                <div class="flex items-center gap-3 mt-auto pt-5 border-t border-zinc-800">
+                  <div class="flex-shrink-0 w-10 h-10 rounded-full bg-[#81b344]/15 flex items-center justify-center">
+                    <span class="text-[13px] font-extrabold text-[#81b344]">{t.initials}</span>
+                  </div>
+                  <div>
+                    <p class="text-[13.5px] font-bold text-white leading-tight">{t.name}</p>
+                    <p class="text-[12px] text-zinc-500 font-medium">{t.role} · {t.location}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <!-- Dot indikátory -->
+          <div class="flex justify-center items-center gap-2 mt-6" id="testimonials-dots" aria-hidden="true">
+            {testimonials.map((_, i) => (
+              <button
+                class="testimonial-dot rounded-full transition-all duration-300"
+                style={i === 0 ? 'width:24px;height:8px;background:#81b344;' : 'width:8px;height:8px;background:#3f3f46;'}
+                data-index={i}
+                aria-label={`Recenze ${i + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+
+        <!-- ─── DESKTOP: původní grid ─── -->
+        <div class="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {testimonials.map((t, i) => (
             <div
               class="scroll-animate opacity-0 flex flex-col bg-zinc-900 rounded-[1.5rem] p-7 border border-zinc-800 hover:border-[#81b344]/30 hover:shadow-md transition-all duration-300 relative overflow-hidden"
@@ -456,37 +505,37 @@ const faqItems = [
       </div>
     </section>
 
-    <!-- 7. SEKCE: FAQ (čistý rámeček místo levého proužku) -->
+    <!-- 7. SEKCE: FAQ -->
     <section class="py-20 md:py-32 bg-white relative overflow-hidden">
-  <div class="max-w-[860px] mx-auto px-5 md:px-8 lg:px-12">
-    <div class="scroll-animate opacity-0 text-center mb-16">
-      <div class="mb-4">
-        <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">Časté otázky</span>
-      </div>
-      <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1]">
-        Máte <span class="text-[#6a9438]">otázky?</span>
-      </h2>
-    </div>
-    <div class="flex flex-col gap-4">
-      {faqItems.map((item, i) => (
-        <details
-          class="scroll-animate opacity-0 group bg-zinc-50 border border-zinc-200 open:border-[#81b344]/40 open:bg-white rounded-2xl transition-all duration-200"
-          style={`animation-delay: ${i * 80}ms`}
-        >
-          <summary class="flex items-center justify-between gap-4 px-7 py-5 cursor-pointer list-none select-none">
-            <span class="text-[16px] md:text-[17px] font-bold text-zinc-900">{item.q}</span>
-            <span class="flex-shrink-0 w-8 h-8 rounded-full bg-zinc-200 group-open:bg-zinc-100 transition-colors duration-200 flex items-center justify-center border border-transparent group-open:border-[#81b344]/30">
-              <svg class="w-4 h-4 text-zinc-600 group-open:text-[#81b344] transition-all duration-200 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg>
-            </span>
-          </summary>
-          <div class="px-7 pb-6 pt-1">
-            <p class="text-[15px] text-zinc-600 font-medium leading-relaxed">{item.a}</p>
+      <div class="max-w-[860px] mx-auto px-5 md:px-8 lg:px-12">
+        <div class="scroll-animate opacity-0 text-center mb-16">
+          <div class="mb-4">
+            <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">Časté otázky</span>
           </div>
-        </details>
-      ))}
-    </div>
-  </div>
-</section>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1]">
+            Máte <span class="text-[#6a9438]">otázky?</span>
+          </h2>
+        </div>
+        <div class="flex flex-col gap-4">
+          {faqItems.map((item, i) => (
+            <details
+              class="scroll-animate opacity-0 group bg-zinc-50 border border-zinc-200 open:border-[#81b344]/40 open:bg-white rounded-2xl transition-all duration-200"
+              style={`animation-delay: ${i * 80}ms`}
+            >
+              <summary class="flex items-center justify-between gap-4 px-7 py-5 cursor-pointer list-none select-none">
+                <span class="text-[16px] md:text-[17px] font-bold text-zinc-900">{item.q}</span>
+                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-zinc-200 group-open:bg-zinc-100 transition-colors duration-200 flex items-center justify-center border border-transparent group-open:border-[#81b344]/30">
+                  <svg class="w-4 h-4 text-zinc-600 group-open:text-[#81b344] transition-all duration-200 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg>
+                </span>
+              </summary>
+              <div class="px-7 pb-6 pt-1">
+                <p class="text-[15px] text-zinc-600 font-medium leading-relaxed">{item.a}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
 
     <!-- 8. SEKCE: O NÁS & ZÁVĚREČNÉ CTA -->
     <section id="o-nas" class="pt-16 pb-24 md:pt-24 md:pb-36 bg-zinc-50 relative overflow-hidden">
@@ -496,7 +545,7 @@ const faqItems = [
 
           <div class="flex-shrink-0 flex flex-col items-center text-center relative z-10">
             <div class="relative w-36 h-36 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-[#81b344]/15 bg-zinc-100 mb-5 shadow-sm">
-              <img src="/tomas-kytka.jpg" alt="Tomáš Kytka, Zakladatel PrimeClean" width="192" height="192" class="w-full h-full object-cover object-top" loading="lazy" />
+              <img src="/tomas-kytka.jpg" alt="Tomáš Kytka, Zakladatel PrimeClean" width="192" height="192" class="w-full h-full object-cover object-top" loading="lazy" decoding="async" />
             </div>
             <p class="text-[18px] font-extrabold text-zinc-900 leading-none mb-2 tracking-tight">Tomáš Kytka</p>
             <p class="text-[12px] text-zinc-500 font-bold uppercase tracking-[0.1em]">Zakladatel PrimeClean</p>
@@ -534,6 +583,7 @@ const faqItems = [
 </Layout>
 
 <script is:inline>
+  // ─── Safari & výkon detekce ───────────────────────────────────────────────
   (function () {
     const cores = navigator.hardwareConcurrency || 4;
     const ram = navigator.deviceMemory || 4;
@@ -570,6 +620,7 @@ const faqItems = [
       });
     }
 
+    // ─── Count-up animace ────────────────────────────────────────────────────
     const statsSection = document.querySelector('.count-up-container');
     if (!statsSection) return;
 
@@ -606,10 +657,56 @@ const faqItems = [
     }, { rootMargin: "0px 0px -10% 0px" });
 
     statsObserver.observe(statsSection);
+
+    // ─── Testimonials mobile slider ──────────────────────────────────────────
+    const track = document.getElementById('testimonials-track');
+    const dots  = document.querySelectorAll('.testimonial-dot');
+
+    if (track && dots.length) {
+      // Skryj nativní scrollbar na Webkitu (Safari/Chrome)
+      track.style.webkitOverflowScrolling = 'touch';
+
+      const updateDots = () => {
+        const scrollLeft = track.scrollLeft;
+        const cards = track.children;
+        if (!cards.length) return;
+        const cardWidth = cards[0].offsetWidth;
+        const gap = 16; // gap-4
+        const active = Math.round(scrollLeft / (cardWidth + gap));
+
+        dots.forEach((dot, i) => {
+          if (i === active) {
+            dot.style.width = '24px';
+            dot.style.height = '8px';
+            dot.style.background = '#81b344';
+          } else {
+            dot.style.width = '8px';
+            dot.style.height = '8px';
+            dot.style.background = '#3f3f46';
+          }
+        });
+      };
+
+      track.addEventListener('scroll', updateDots, { passive: true });
+
+      dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+          const cards = track.children;
+          if (!cards.length) return;
+          const cardWidth = cards[0].offsetWidth;
+          track.scrollTo({ left: i * (cardWidth + 16), behavior: 'smooth' });
+        });
+      });
+    }
   });
 </script>
 
 <style is:global>
+  /* Skryj scrollbar u slideru ve všech prohlížečích */
+  #testimonials-track::-webkit-scrollbar {
+    display: none;
+  }
+
   @keyframes softFadeUp {
     0% { opacity: 0; transform: translateY(20px); }
     100% { opacity: 1; transform: translateY(0); }

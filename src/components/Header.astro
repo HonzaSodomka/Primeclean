@@ -11,9 +11,15 @@ const navLinks = [
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="fixed top-0 inset-x-0 z-[100] bg-white/85 backdrop-blur-xl border-b border-zinc-200/50 shadow-[0_4px_30px_rgba(0,0,0,0.03)] transition-all duration-300" id="main-nav">
+<!--
+  Safari fix: backdrop-blur-xl na position:fixed elementu je v Safari brutálně drahý —
+  nutí GPU recomposit celý viewport při každém scrollu.
+  Řešení: nahradit backdrop-blur solidní bílou s vyšší opacitou (bg-white/95).
+  Výsledek je vizuálně téměř totožný a Safari přestane sekat.
+-->
+<header class="fixed top-0 inset-x-0 z-[100] bg-white/95 border-b border-zinc-200/50 shadow-[0_4px_30px_rgba(0,0,0,0.04)] transition-all duration-300" id="main-nav">
   <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 h-20 md:h-24 flex items-center justify-between">
-    
+
     <!-- Logo -->
     <a href="/" aria-label="PrimeClean" class="flex items-center gap-2 group flex-shrink-0 transition-transform duration-300 hover:scale-105 active:scale-95">
       <img src="/logo.png" alt="PrimeClean" class="h-9 w-auto drop-shadow-sm" />
@@ -34,15 +40,15 @@ const currentPath = Astro.url.pathname;
           );
         })}
       </ul>
-      
+
       <div class="w-px h-5 bg-zinc-200 mx-1"></div>
-      
+
       <a href="/kontakt" class="inline-flex items-center justify-center px-6 py-2.5 text-[14px] font-bold text-white transition-all duration-300 bg-[#81b344] rounded-[0.85rem] shadow-[0_4px_10px_rgba(129,179,68,0.15)] hover:bg-[#6a9438] hover:shadow-[0_8px_20px_rgba(129,179,68,0.3)] hover:-translate-y-0.5 active:scale-95">
         Poptat úklid
       </a>
     </nav>
 
-    <!-- Mobile: pouze Hamburger -->
+    <!-- Mobile: Hamburger -->
     <button id="mobile-menu-btn" class="md:hidden relative w-10 h-10 flex flex-col items-center justify-center gap-[5px] text-zinc-600 hover:text-zinc-950 transition-colors z-50" aria-label="Otevřít menu">
       <span class="w-5 h-[2px] bg-current rounded-full transition-all duration-300 origin-center"></span>
       <span class="w-5 h-[2px] bg-current rounded-full transition-all duration-300 origin-center"></span>
