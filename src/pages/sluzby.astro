@@ -11,7 +11,7 @@ const kancelare = {
   tag: 'Pravidelný úklid',
   headline: 'Úklid kanceláří,\nkterý prostě funguje.',
   sub: 'Zajišťujeme pravidelný úklid podle pevně domluveného harmonogramu. Žádné nahodilé návštěvy — jen profesionální servis, díky kterému se můžete plně soustředit na své podnikání.',
-  image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=80',
+  image: '/sluzba-kancelare.jpg',
   features: [
     { icon: 'calendar-check', title: 'Pevný harmonogram', desc: 'Úklid probíhá pravidelně — brzy ráno, večer nebo o víkendech. Vždy stejný rozsah, diskrétně a profesionálně.' },
     { icon: 'clipboard-list', title: 'Jasná pravidla a checklist', desc: 'Předem domluvený rozsah prací a checklist — jasně dané, co se uklízí, jak často a kdo za úklid odpovídá.' },
@@ -39,7 +39,7 @@ const svj = {
   tag: 'Správa budov',
   headline: 'Čisté společné prostory\nbez starostí.',
   sub: 'Zajišťujeme kompletní a pravidelný úklid panelových domů a SVJ. Stálí pracovníci, jasný plán a přehled v aplikaci — správce ani výbor nemusí řešit každodenní kontrolu.',
-  image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=900&q=80',
+  image: '/sluzba-svj.jpg',
   features: [
     { icon: 'calendar-check', title: 'Pravidelný harmonogram', desc: 'Úklid týdně, 2× týdně nebo individuálně podle potřeb domu. Vždy stejný rozsah, žádné výmluvy.' },
     { icon: 'clipboard-list', title: 'Jasná pravidla a checklist', desc: 'Každý dům má vlastní plán úklidu a checklist — jasně dané, co se uklízí, jak často a kdo za to odpovídá.' },
@@ -67,7 +67,7 @@ const airbnb = {
   tag: 'Krátkodobé pronájmy',
   headline: 'Apartmán připravený\npro každého hosta.',
   sub: 'Zajišťujeme rychlý a spolehlivý úklid mezi pobyty hostů. Stálí pracovníci, jasný rozsah prací a přehled v aplikaci — vy se staráte o hosty, my o čistotu.',
-  image: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=900&q=80',
+  image: '/sluzba-airbnb.jpg',
   features: [
     { icon: 'zap', title: 'Rychlá příprava', desc: 'Úklid zvládneme ve vašem časovém okně mezi odjezdem a příjezdem hostů. Bez stresu a zpoždění.' },
     { icon: 'clipboard-list', title: 'Jasný rozsah prací', desc: 'Předem domluvený checklist — jasně dané, co se uklízí při každé návštěvě. Vždy stejný standard.' },
@@ -189,14 +189,8 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
 
               <div class="scroll-animate opacity-0 w-full lg:w-1/2" style="animation-delay: 200ms;">
                 <div class="relative aspect-[4/3] rounded-[2rem] overflow-hidden bg-zinc-100 border border-zinc-200/50 shadow-lg group">
-                  <img
-                    src={data.image}
-                    alt={data.tag}
-                    class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                    loading="lazy"
-                    referrerpolicy="no-referrer"
-                  />
-                  <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/20 to-transparent pointer-events-none"></div>
+                  <img src={data.image} alt={data.tag} class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]" loading="lazy" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/10 to-transparent pointer-events-none"></div>
                   <div class="absolute bottom-4 left-4 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-sm shadow-sm">
                     <span class="text-[12px] font-bold text-zinc-700 tracking-[0.06em] uppercase">{data.tag}</span>
                   </div>
@@ -297,35 +291,6 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
                 </div>
               </div>
 
-            </div>
-          </div>
-        </section>
-
-        <!-- UKAZKY PRACE placeholder -->
-        <section class="py-20 md:py-28 bg-zinc-50">
-          <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
-            <div class="scroll-animate opacity-0 text-center max-w-2xl mx-auto mb-12">
-              <div class="mb-4">
-                <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">Fotogalerie</span>
-              </div>
-              <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1]">
-                Ukázky <span class="text-[#6a9438]">naší práce.</span>
-              </h2>
-              <p class="mt-4 text-[16px] text-zinc-500 font-medium">Fotografie z reálných zakázek budou brzy k dispozici.</p>
-            </div>
-            <!-- Grid placeholderů -->
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-6">
-              {[1,2,3,4,5,6].map((n) => (
-                <div
-                  class="scroll-animate opacity-0 relative aspect-[4/3] rounded-2xl overflow-hidden bg-zinc-200 border border-zinc-200 group"
-                  style={`animation-delay: ${(n-1) * 70}ms`}
-                >
-                  <div class="absolute inset-0 flex flex-col items-center justify-center gap-2 text-zinc-400">
-                    <i data-lucide="image" class="w-8 h-8"></i>
-                    <span class="text-[12px] font-semibold tracking-wide uppercase">Foto brzy</span>
-                  </div>
-                </div>
-              ))}
             </div>
           </div>
         </section>
