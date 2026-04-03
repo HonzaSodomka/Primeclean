@@ -237,32 +237,32 @@ const tabData = { kancelare, svj, airbnb };
         </section>
 
         <!-- FEATURES GRID -->
-        <section class="py-20 md:py-28 bg-zinc-50 relative overflow-hidden">
-          <div class="pointer-events-none absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-[#81b344]/4 blur-[80px]"></div>
+        <section class="py-20 md:py-28 bg-[#81b344] relative overflow-hidden">
+          <div class="pointer-events-none absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-white/5 blur-[100px]"></div>
+          <div class="pointer-events-none absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-black/5 blur-[80px]"></div>
           <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
             <div class="scroll-animate opacity-0 text-center max-w-2xl mx-auto mb-16">
               <div class="mb-4">
-                <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">Proč zvolit PrimeClean</span>
+                <span class="text-[13px] font-bold text-white/70 tracking-[0.2em] uppercase">Proč zvolit PrimeClean</span>
               </div>
-              <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1]">
-                Co od nás <span class="text-[#6a9438]">dostanete.</span>
+              <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tighter leading-[1.1]">
+                Co od nás <span class="text-zinc-950">dostanete.</span>
               </h2>
             </div>
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
               {data.features.map((f, index) => (
                 <div
-                  class="scroll-animate opacity-0 relative bg-white rounded-[1.5rem] p-8 border border-zinc-100 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-xl hover:border-[#81b344]/25 overflow-hidden group"
+                  class="scroll-animate opacity-0 relative bg-white/10 backdrop-blur-sm rounded-[1.5rem] p-8 border border-white/20 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:bg-white/20 hover:shadow-2xl overflow-hidden group"
                   style={`animation-delay: ${index * 100}ms`}
                 >
-                  <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at top left, rgba(129,179,68,0.05) 0%, transparent 70%);"></div>
-                  <span class="absolute top-5 right-7 text-[4rem] font-extrabold text-[#81b344]/8 leading-none select-none pointer-events-none">
+                  <span class="absolute top-5 right-7 text-[4rem] font-extrabold text-white/10 leading-none select-none pointer-events-none">
                     {String(index + 1).padStart(2, '0')}
                   </span>
-                  <div class="w-14 h-14 rounded-2xl bg-zinc-50 border border-zinc-200 flex items-center justify-center text-[#6a9438] mb-8 group-hover:border-[#81b344]/40 group-hover:bg-[#81b344]/8 group-hover:scale-110 transition-all duration-300">
+                  <div class="w-14 h-14 rounded-2xl bg-white/15 border border-white/30 flex items-center justify-center text-white mb-8 group-hover:bg-white/25 group-hover:scale-110 transition-all duration-300">
                     <span class="w-6 h-6" set:html={icons[f.icon]} />
                   </div>
-                  <h3 class="text-[19px] font-bold text-zinc-950 tracking-tight leading-snug mb-3">{f.title}</h3>
-                  <p class="text-[15px] font-medium text-zinc-600 leading-relaxed">{f.desc}</p>
+                  <h3 class="text-[19px] font-bold text-white tracking-tight leading-snug mb-3">{f.title}</h3>
+                  <p class="text-[15px] font-medium text-white/80 leading-relaxed">{f.desc}</p>
                 </div>
               ))}
             </div>
@@ -368,7 +368,6 @@ const tabData = { kancelare, svj, airbnb };
     const contents = document.querySelectorAll('.tab-content');
     const isLowEnd = document.documentElement.classList.contains('low-end');
 
-    // Update button styles
     allButtons.forEach(b => {
       const isMobile = b.closest('#tab-switcher-mobile') !== null;
       const isTarget = b.getAttribute('data-tab') === target;
@@ -390,13 +389,11 @@ const tabData = { kancelare, svj, airbnb };
       }
     });
 
-    // Show target tab
     contents.forEach(c => c.classList.add('hidden'));
     const active = document.getElementById('tab-' + target);
     if (!active) return;
     active.classList.remove('hidden');
 
-    // Reset + init scroll animations
     const animEls = active.querySelectorAll('.scroll-animate');
     animEls.forEach(el => {
       el.classList.remove('animate-fade-in-up');
@@ -430,13 +427,10 @@ const tabData = { kancelare, svj, airbnb };
 
   document.addEventListener('DOMContentLoaded', () => {
     const isLowEnd = document.documentElement.classList.contains('low-end');
-
-    // Read hash on page load and activate the correct tab
     const hash = window.location.hash.replace('#tab-', '');
     const initialTab = VALID_TABS.includes(hash) ? hash : 'kancelare';
     activateTab(initialTab);
 
-    // Click handlers
     document.querySelectorAll('.tab-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const target = btn.getAttribute('data-tab');
