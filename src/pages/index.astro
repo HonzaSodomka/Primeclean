@@ -136,7 +136,7 @@ const faqItems = [
   },
   {
     q: "Pracujete s vlastními zaměstnanci, nebo živnostníky?",
-    a: "Pouze s prověřenými zaměstnanci na HPP. Nejsme agentura — každý pracovník prochází naším zaškolením, zná váš objekt a vy vždy víte, kdo u vás uklízdí."
+    a: "Pouze s prověřenými zaměstnanci na HPP. Nejsme agentura — každý pracovník prochází naším zaškolením, zná váš objekt a vy vždy víte, kdo u vás uklízí."
   },
   {
     q: "Jste pojištěni?",
@@ -361,31 +361,31 @@ const faqItems = [
       </div>
     </section>
 
-    <!-- 5. SEKCE: RECENZE — zelené pozadí -->
-    <section class="py-20 md:py-32 bg-[#81b344] relative overflow-hidden">
-      <div class="pointer-events-none absolute -top-24 -right-24 w-[500px] h-[500px] rounded-full bg-white/5 blur-[100px]"></div>
-      <div class="pointer-events-none absolute -bottom-16 -left-16 w-[400px] h-[400px] rounded-full bg-black/5 blur-[80px]"></div>
+    <!-- 5. SEKCE: RECENZE (změněno z jedovaté zelené na čistý dark design jako zbytek webu) -->
+    <section class="py-20 md:py-32 bg-zinc-950 relative overflow-hidden">
+      <div class="pointer-events-none absolute top-0 left-1/4 w-[500px] h-[300px] rounded-full bg-[#81b344]/8 blur-[120px]"></div>
+      <div class="pointer-events-none absolute bottom-0 right-1/4 w-[400px] h-[250px] rounded-full bg-[#81b344]/6 blur-[100px]"></div>
       <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
         <div class="scroll-animate opacity-0 text-center max-w-2xl mx-auto mb-16">
           <div class="mb-4">
-            <span class="text-[13px] font-bold text-white/70 tracking-[0.2em] uppercase">Co říkají klienti</span>
+            <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">Co říkají klienti</span>
           </div>
           <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tighter leading-[1.1] mb-4">
-            Zkušenosti <span class="text-white underline decoration-white/30 underline-offset-4">našich klientů.</span>
+            Zkušenosti <span class="text-[#81b344]">našich klientů.</span>
           </h2>
           <div class="flex items-center justify-center gap-1.5">
             {[1,2,3,4,5].map(() => (
-              <span class="text-white" set:html={starIcon} />
+              <span class="text-amber-400" set:html={starIcon} />
             ))}
             <span class="ml-2 text-[15px] font-bold text-white">5,0</span>
-            <span class="text-white/60 text-[14px] font-medium ml-1">průměrné hodnocení</span>
+            <span class="text-zinc-500 text-[14px] font-medium ml-1">průměrné hodnocení</span>
           </div>
         </div>
 
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {testimonials.map((t, i) => (
             <div
-              class="scroll-animate opacity-0 flex flex-col bg-white rounded-[1.5rem] p-7 shadow-sm hover:shadow-md transition-all duration-300 relative overflow-hidden"
+              class="scroll-animate opacity-0 flex flex-col bg-zinc-900 rounded-[1.5rem] p-7 border border-zinc-800 hover:border-[#81b344]/30 hover:shadow-md transition-all duration-300 relative overflow-hidden"
               style={`animation-delay: ${i * 100}ms`}
             >
               <span class="absolute -top-2 -right-1 text-[#81b344]" set:html={quoteIcon} />
@@ -394,13 +394,13 @@ const faqItems = [
                   <span class="text-amber-400" set:html={starIcon} />
                 ))}
               </div>
-              <p class="text-[14.5px] text-zinc-600 font-medium leading-relaxed mb-6 flex-grow">"{t.text}"</p>
-              <div class="flex items-center gap-3 mt-auto pt-5 border-t border-zinc-100">
+              <p class="text-[14.5px] text-zinc-400 font-medium leading-relaxed mb-6 flex-grow">"{t.text}"</p>
+              <div class="flex items-center gap-3 mt-auto pt-5 border-t border-zinc-800">
                 <div class="flex-shrink-0 w-10 h-10 rounded-full bg-[#81b344]/15 flex items-center justify-center">
-                  <span class="text-[13px] font-extrabold text-[#6a9438]">{t.initials}</span>
+                  <span class="text-[13px] font-extrabold text-[#81b344]">{t.initials}</span>
                 </div>
                 <div>
-                  <p class="text-[13.5px] font-bold text-zinc-900 leading-tight">{t.name}</p>
+                  <p class="text-[13.5px] font-bold text-white leading-tight">{t.name}</p>
                   <p class="text-[12px] text-zinc-500 font-medium">{t.role} · {t.location}</p>
                 </div>
               </div>
@@ -456,44 +456,37 @@ const faqItems = [
       </div>
     </section>
 
-    <!-- 7. SEKCE: FAQ — levý zelený prouzek + střídavé pozadí -->
+    <!-- 7. SEKCE: FAQ (čistý rámeček místo levého proužku) -->
     <section class="py-20 md:py-32 bg-white relative overflow-hidden">
-      <div class="max-w-[860px] mx-auto px-5 md:px-8 lg:px-12">
-        <div class="scroll-animate opacity-0 text-center mb-16">
-          <div class="mb-4">
-            <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">Časté otázky</span>
-          </div>
-          <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1]">
-            Máte <span class="text-[#6a9438]">otázky?</span>
-          </h2>
-        </div>
-        <div class="flex flex-col gap-3">
-          {faqItems.map((item, i) => (
-            <details
-              class={`scroll-animate opacity-0 group overflow-hidden rounded-2xl border transition-all duration-200 ${
-                i % 2 === 0
-                  ? 'bg-zinc-50 border-zinc-200 hover:border-[#81b344]/40'
-                  : 'bg-white border-zinc-200 hover:border-[#81b344]/40'
-              }`}
-              style={`animation-delay: ${i * 80}ms`}
-            >
-              <summary class="flex items-center gap-4 px-0 py-0 cursor-pointer list-none select-none">
-                <div class="w-1 self-stretch flex-shrink-0 bg-zinc-200 group-open:bg-[#81b344] rounded-l-2xl transition-colors duration-200"></div>
-                <div class="flex items-center justify-between gap-4 flex-1 py-5 pr-6">
-                  <span class="text-[16px] md:text-[17px] font-bold text-zinc-900">{item.q}</span>
-                  <span class="flex-shrink-0 w-6 h-6 rounded-full bg-zinc-200 group-open:bg-[#81b344] transition-colors duration-200 flex items-center justify-center">
-                    <svg class="w-3.5 h-3.5 text-zinc-600 group-open:text-white transition-all duration-200 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg>
-                  </span>
-                </div>
-              </summary>
-              <div class="pl-5 pr-6 pb-6">
-                <p class="text-[15px] text-zinc-600 font-medium leading-relaxed border-l-2 border-[#81b344]/30 pl-4">{item.a}</p>
-              </div>
-            </details>
-          ))}
-        </div>
+  <div class="max-w-[860px] mx-auto px-5 md:px-8 lg:px-12">
+    <div class="scroll-animate opacity-0 text-center mb-16">
+      <div class="mb-4">
+        <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">Časté otázky</span>
       </div>
-    </section>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1]">
+        Máte <span class="text-[#6a9438]">otázky?</span>
+      </h2>
+    </div>
+    <div class="flex flex-col gap-4">
+      {faqItems.map((item, i) => (
+        <details
+          class="scroll-animate opacity-0 group bg-zinc-50 border border-zinc-200 open:border-[#81b344]/40 open:bg-white rounded-2xl transition-all duration-200"
+          style={`animation-delay: ${i * 80}ms`}
+        >
+          <summary class="flex items-center justify-between gap-4 px-7 py-5 cursor-pointer list-none select-none">
+            <span class="text-[16px] md:text-[17px] font-bold text-zinc-900">{item.q}</span>
+            <span class="flex-shrink-0 w-8 h-8 rounded-full bg-zinc-200 group-open:bg-zinc-100 transition-colors duration-200 flex items-center justify-center border border-transparent group-open:border-[#81b344]/30">
+              <svg class="w-4 h-4 text-zinc-600 group-open:text-[#81b344] transition-all duration-200 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg>
+            </span>
+          </summary>
+          <div class="px-7 pb-6 pt-1">
+            <p class="text-[15px] text-zinc-600 font-medium leading-relaxed">{item.a}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
 
     <!-- 8. SEKCE: O NÁS & ZÁVĚREČNÉ CTA -->
     <section id="o-nas" class="pt-16 pb-24 md:pt-24 md:pb-36 bg-zinc-50 relative overflow-hidden">
