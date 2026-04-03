@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+/* Tady si můžeš rovnou definovat svoji zelenou barvu z původního CSS */
+@theme {
+  --color-brand: #81b344;
+  --color-brand-dark: #6a9438;
+}

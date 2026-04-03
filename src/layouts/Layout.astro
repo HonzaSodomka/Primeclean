@@ -1,0 +1,28 @@
+---
+// src/layouts/Layout.astro
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="cs" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Profesionální úklid Brno a okolí" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body class="bg-zinc-50 text-zinc-900 antialiased selection:bg-[#81b344]/20 selection:text-[#5a7a2e]">
+    <Header />
+    <slot /> 
+    <Footer />
+  </body>
+</html>

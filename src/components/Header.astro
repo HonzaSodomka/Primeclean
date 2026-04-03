@@ -1,0 +1,98 @@
+---
+// src/components/Header.astro
+const navLinks = [
+  { name: 'Domů', href: '/' },
+  { name: 'Služby', href: '/sluzby' },
+  { name: 'Aplikace', href: '/aplikace' },
+  { name: 'Kontakt', href: '/kontakt' }
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="fixed top-0 inset-x-0 z-[100] bg-white/85 backdrop-blur-xl border-b border-zinc-200/50 shadow-[0_4px_30px_rgba(0,0,0,0.03)] transition-all duration-300" id="main-nav">
+  <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 h-20 md:h-24 flex items-center justify-between">
+    
+    <!-- Logo -->
+    <a href="/" aria-label="PrimeClean" class="flex items-center gap-2 group flex-shrink-0 transition-transform duration-300 hover:scale-105 active:scale-95">
+      <img src="/logo.png" alt="PrimeClean" class="h-9 w-auto drop-shadow-sm" />
+    </a>
+
+    <!-- Desktop Menu -->
+    <nav class="hidden md:flex items-center gap-8 lg:gap-10">
+      <ul class="flex items-center gap-8 lg:gap-10">
+        {navLinks.map(link => {
+          const isActive = currentPath === link.href || (currentPath.startsWith(link.href) && link.href !== '/');
+          return (
+            <li>
+              <a href={link.href} class={`text-[14.5px] font-bold transition-colors relative group py-2 ${isActive ? 'text-zinc-950' : 'text-zinc-500 hover:text-zinc-950'}`}>
+                {link.name}
+                <span class={`absolute inset-x-0 bottom-0 h-[2px] bg-[#81b344] transition-transform duration-300 origin-left ${isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+      
+      <div class="w-px h-5 bg-zinc-200 mx-1"></div>
+      
+      <a href="/kontakt" class="inline-flex items-center justify-center px-6 py-2.5 text-[14px] font-bold text-white transition-all duration-300 bg-zinc-950 rounded-[0.85rem] shadow-[0_4px_10px_rgba(0,0,0,0.1)] hover:bg-[#81b344] hover:shadow-[0_8px_20px_rgba(129,179,68,0.25)] hover:-translate-y-0.5 active:scale-95 group">
+        Poptat úklid
+      </a>
+    </nav>
+
+    <!-- Mobile Menu Button (Hamburger) -->
+    <button id="mobile-menu-btn" class="md:hidden relative w-10 h-10 flex flex-col items-center justify-center gap-[5px] text-zinc-600 hover:text-zinc-950 transition-colors z-50" aria-label="Otevřít menu">
+      <span class="w-5 h-[2px] bg-current rounded-full transition-all duration-300 origin-center"></span>
+      <span class="w-5 h-[2px] bg-current rounded-full transition-all duration-300 origin-center"></span>
+      <span class="w-5 h-[2px] bg-current rounded-full transition-all duration-300 origin-center"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu Dropdown -->
+  <div id="mobile-menu" class="absolute top-[100%] left-0 w-full bg-white border-b border-zinc-200/50 shadow-2xl transition-all duration-300 ease-in-out opacity-0 invisible -translate-y-4 md:hidden">
+    <div class="px-5 py-6 flex flex-col gap-2">
+      {navLinks.map(link => {
+        const isActive = currentPath === link.href || (currentPath.startsWith(link.href) && link.href !== '/');
+        return (
+          <a href={link.href} class={`text-[17px] font-bold py-3 px-4 rounded-xl transition-colors ${isActive ? 'bg-[#81b344]/10 text-[#6a9438]' : 'text-zinc-800 hover:bg-zinc-50 hover:text-[#81b344]'}`}>
+            {link.name}
+          </a>
+        );
+      })}
+      <div class="h-px bg-zinc-100 my-3 mx-4"></div>
+      <a href="/kontakt" class="mt-2 mx-4 inline-flex items-center justify-center px-6 py-4 text-[16px] font-bold text-white bg-[#81b344] rounded-xl shadow-md active:scale-95 transition-transform">
+        Chci nezávaznou nabídku
+      </a>
+    </div>
+  </div>
+</header>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    const spans = btn?.querySelectorAll('span');
+    let isOpen = false;
+
+    btn?.addEventListener('click', () => {
+      isOpen = !isOpen;
+      
+      if (isOpen) {
+        menu.classList.remove('opacity-0', 'invisible', '-translate-y-4');
+        if (spans && spans.length === 3) {
+          spans[0].style.transform = 'translateY(7px) rotate(45deg)';
+          spans[1].style.opacity = '0';
+          spans[2].style.transform = 'translateY(-7px) rotate(-45deg)';
+        }
+      } else {
+        menu.classList.add('opacity-0', 'invisible', '-translate-y-4');
+        if (spans && spans.length === 3) {
+          spans[0].style.transform = 'none';
+          spans[1].style.opacity = '1';
+          spans[2].style.transform = 'none';
+        }
+      }
+    });
+  });
+</script>
