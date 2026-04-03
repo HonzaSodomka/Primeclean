@@ -190,12 +190,11 @@ const tabData = { kancelare, svj, airbnb };
     {Object.entries(tabData).map(([id, data], tabIndex) => (
       <div id={`tab-${id}`} class={`tab-content ${id !== 'kancelare' ? 'hidden' : ''}`}>
 
-        <!-- 1. HERO PANEL: obrázek + text (střëdání strany) -->
+        <!-- 1. HERO PANEL -->
         <section class="py-20 md:py-28 bg-white">
           <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
             <div class={`flex flex-col gap-12 lg:gap-20 items-center ${ tabIndex % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse' }`}>
 
-              <!-- TEXT -->
               <div class="w-full lg:w-1/2">
                 <div class="scroll-animate opacity-0 flex items-center gap-3 mb-6">
                   <span class="inline-block px-3 py-1.5 rounded-md bg-[#81b344]/10">
@@ -222,7 +221,6 @@ const tabData = { kancelare, svj, airbnb };
                 </div>
               </div>
 
-              <!-- IMAGE -->
               <div class="scroll-animate opacity-0 w-full lg:w-1/2" style="animation-delay: 200ms;">
                 <div class="relative aspect-[4/3] rounded-[2rem] overflow-hidden bg-zinc-100 border border-zinc-200/60 shadow-lg group">
                   <img
@@ -244,7 +242,7 @@ const tabData = { kancelare, svj, airbnb };
           </div>
         </section>
 
-        <!-- 2. FEATURES GRID (styl jako index — zinc-50 pozadí, bílé karty) -->
+        <!-- 2. FEATURES GRID -->
         <section id="features" class="py-20 md:py-28 bg-zinc-50">
           <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
             <div class="scroll-animate opacity-0 text-center max-w-2xl mx-auto mb-14">
@@ -276,13 +274,12 @@ const tabData = { kancelare, svj, airbnb };
           </div>
         </section>
 
-        <!-- 3. CO ZAHRNUJE + PRO KOHO (tmavá sekce — jako app promo na indexu) -->
+        <!-- 3. CO ZAHRNUJE + PRO KOHO -->
         <section class="py-20 md:py-28 bg-zinc-950 relative overflow-hidden">
           <div class="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full bg-[#81b344]/8 blur-[100px]"></div>
           <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
             <div class="grid lg:grid-cols-2 gap-16 lg:gap-24">
 
-              <!-- CO ZAHRNUJE -->
               <div class="scroll-animate opacity-0">
                 <div class="mb-4">
                   <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">Rozsah služby</span>
@@ -305,7 +302,6 @@ const tabData = { kancelare, svj, airbnb };
                 </ul>
               </div>
 
-              <!-- PRO KOHO -->
               <div class="scroll-animate opacity-0" style="animation-delay: 150ms;">
                 <div class="mb-4">
                   <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">Cílová skupina</span>
@@ -341,25 +337,7 @@ const tabData = { kancelare, svj, airbnb };
           </div>
         </section>
 
-        <!-- 4. STATISTIKY — zelený pás (1:1 styl z indexu) -->
-        <section class="py-16 md:py-20 bg-[#81b344] relative overflow-hidden">
-          <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
-            <div class="scroll-animate opacity-0 grid grid-cols-3 gap-8 text-center">
-              {[
-                { num: '100%', label: 'Splněných termínů' },
-                { num: '5 mil.', label: 'Kryčí pojištění' },
-                { num: '24 hod', label: 'Reakce na požadavky' },
-              ].map(stat => (
-                <div class="flex flex-col items-center">
-                  <div class="text-[2.25rem] sm:text-[3rem] md:text-[3.5rem] font-extrabold text-white tracking-tighter leading-none mb-2">{stat.num}</div>
-                  <div class="text-[12px] sm:text-[13px] font-bold uppercase tracking-[0.12em] text-white/75">{stat.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <!-- 5. OSTATNÍ SLUBY PREVIEW (styl z indexu — bílé karty na zinc-50) -->
+        <!-- 4. OSTATNÍ SLUŽBY PREVIEW -->
         <section class="py-20 md:py-28 bg-zinc-50">
           <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
             <div class="scroll-animate opacity-0 text-center max-w-2xl mx-auto mb-14">
@@ -370,7 +348,7 @@ const tabData = { kancelare, svj, airbnb };
                 Poptáváte něco <span class="text-[#6a9438]">jiného?</span>
               </h2>
             </div>
-            <div class="grid sm:grid-cols-2 lg:grid-cols-{ Object.keys(tabData).length - 1 } gap-8">
+            <div class="grid sm:grid-cols-2 gap-8">
               {Object.entries(tabData)
                 .filter(([key]) => key !== id)
                 .map(([key, s], i) => (
