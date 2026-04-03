@@ -81,7 +81,7 @@ const airbnb = {
   features: [
     { icon: 'zap', title: 'Rychlá příprava', desc: 'Zvládneme úklid ve vašem časovém okně mezi odjezdem a příjezdem hostů.' },
     { icon: 'smartphone', title: 'Fotoreport po každém úklidu', desc: 'Fotodokumentace stavu apartmánu po úklidu. Vždy víte, v jakém stavu ho hosté přebírají.' },
-    { icon: 'shirt', title: 'Výměna ložního prádla', desc: 'Zajistíme výměnu a doplnění čistého prádla a ručníků před každým příjezdem.' },
+    { icon: 'shirt', title: 'Výměna ložního prádla', desc: 'Zajístíme výměnu a doplnění čistého prádla a ručníků před každým příjezdem.' },
     { icon: 'package', title: 'Doplnění spotřebního materiálu', desc: 'Toaletní papír, mýdlo, přípravky do kuchyně — vše doplníme dle vašeho seznamu.' },
     { icon: 'calendar-check', title: 'Flexibilní termíny', desc: 'Přizpůsobíme se vašemu kalendáři rezervací. Propojení s Airbnb a Booking.com na vyžádání.' },
     { icon: 'shield-check', title: 'Prověřený personál', desc: 'Do vašeho soukromého prostoru vstupují pouze prověření pracovníci s naší garancí.' },
@@ -113,31 +113,58 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
   <main class="bg-white selection:bg-[#81b344]/30 selection:text-zinc-900">
 
     <!-- HERO -->
-    <section class="relative pt-28 pb-16 md:pt-36 md:pb-20 bg-zinc-50 overflow-hidden">
-      <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12 text-center">
+    <section class="relative pt-28 pb-20 md:pt-36 md:pb-28 lg:pt-44 lg:pb-36 bg-zinc-50 overflow-hidden">
 
-        <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-white border border-zinc-200 shadow-sm mb-6 opacity-0 animate-fade-in-up" style="animation-delay: 0ms;">
+      <!-- Dekorativní blob pozadí -->
+      <div class="pointer-events-none absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full bg-[#81b344]/6 blur-[100px]"></div>
+      <div class="pointer-events-none absolute -bottom-20 -left-20 w-[350px] h-[350px] rounded-full bg-[#81b344]/4 blur-[80px]"></div>
+
+      <div class="relative z-10 max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12 text-center">
+
+        <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-white border border-zinc-200 shadow-sm mb-6 md:mb-8 opacity-0 animate-fade-in-up" style="animation-delay: 0ms;">
           <span class="w-1.5 h-1.5 rounded-full bg-[#81b344] animate-pulse flex-shrink-0"></span>
           <span class="text-[11px] sm:text-xs font-bold text-zinc-600 tracking-[0.15em] uppercase">Profesionální úklid Brno a okolí</span>
         </div>
 
-        <h1 class="text-[2.75rem] sm:text-[3.75rem] md:text-6xl lg:text-[5.5rem] font-extrabold text-zinc-950 tracking-tighter leading-[1.05] mb-6 opacity-0 animate-fade-in-up" style="animation-delay: 150ms;">
+        <h1 class="text-[2.75rem] sm:text-[3.75rem] md:text-6xl lg:text-[6rem] font-extrabold text-zinc-950 tracking-tighter leading-[1.05] md:leading-[0.95] mb-6 opacity-0 animate-fade-in-up" style="animation-delay: 150ms;">
           Naše <span class="text-[#6a9438]">služby.</span>
         </h1>
 
-        <p class="text-base sm:text-lg md:text-[19px] text-zinc-600 max-w-xl mx-auto leading-relaxed font-medium mb-10 opacity-0 animate-fade-in-up" style="animation-delay: 300ms;">
+        <p class="text-base sm:text-lg md:text-[19px] lg:text-[21px] text-zinc-600 max-w-xl mx-auto leading-relaxed font-medium mb-10 md:mb-14 opacity-0 animate-fade-in-up" style="animation-delay: 300ms;">
           Specializujeme se na tři oblasti, kde máme vyladěné procesy a prověřené týmy. Vyberte si tu vaši.
         </p>
 
         <!-- TAB SWITCHER -->
         <div class="opacity-0 animate-fade-in-up" style="animation-delay: 450ms;">
-          <div id="tab-switcher" class="inline-flex flex-wrap justify-center gap-2 p-1.5 bg-white border border-zinc-200 rounded-2xl shadow-sm">
+          <!-- Desktop: inline horizontally -->
+          <div id="tab-switcher" class="hidden sm:inline-flex gap-2 p-1.5 bg-white border border-zinc-200 rounded-2xl shadow-sm">
             {tabs.map((tab, i) => (
               <button
                 data-tab={tab.id}
-                class={`tab-btn flex items-center gap-2 px-5 py-3 rounded-xl text-[14px] font-bold transition-all duration-200 ${i === 0 ? 'bg-[#81b344] text-white shadow-md' : 'text-zinc-500 hover:text-zinc-800 hover:bg-zinc-50'}`}
+                class={`tab-btn flex items-center gap-2.5 px-6 py-3.5 rounded-xl text-[14px] font-bold transition-all duration-200 whitespace-nowrap ${
+                  i === 0
+                    ? 'bg-[#81b344] text-white shadow-md shadow-[#81b344]/25'
+                    : 'text-zinc-500 hover:text-zinc-800 hover:bg-zinc-50'
+                }`}
               >
                 <i data-lucide={tab.icon} class="w-4 h-4 flex-shrink-0"></i>
+                {tab.label}
+              </button>
+            ))}
+          </div>
+
+          <!-- Mobil: full-width sloupcové tlačítka -->
+          <div id="tab-switcher-mobile" class="sm:hidden flex flex-col gap-2 w-full max-w-xs mx-auto">
+            {tabs.map((tab, i) => (
+              <button
+                data-tab={tab.id}
+                class={`tab-btn flex items-center justify-center gap-2.5 w-full px-5 py-4 rounded-2xl text-[15px] font-bold transition-all duration-200 ${
+                  i === 0
+                    ? 'bg-[#81b344] text-white shadow-md shadow-[#81b344]/25'
+                    : 'bg-white border border-zinc-200 text-zinc-600 hover:border-[#81b344]/40 hover:text-zinc-900'
+                }`}
+              >
+                <i data-lucide={tab.icon} class="w-5 h-5 flex-shrink-0"></i>
                 {tab.label}
               </button>
             ))}
@@ -157,24 +184,31 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
             <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
 
               <div class="w-full lg:w-1/2">
-                <div class="inline-block px-3 py-1.5 rounded-md bg-[#81b344]/10 mb-5">
+                <div class="scroll-animate opacity-0 inline-block px-3 py-1.5 rounded-md bg-[#81b344]/10 mb-5">
                   <span class="text-[12px] font-bold text-[#6a9438] tracking-[0.1em] uppercase">{data.tag}</span>
                 </div>
-                <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-6 whitespace-pre-line">
+                <h2 class="scroll-animate opacity-0 text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-6 whitespace-pre-line" style="animation-delay: 80ms;">
                   {data.headline}
                 </h2>
-                <p class="text-[17px] md:text-[19px] text-zinc-600 font-medium leading-relaxed mb-8">
+                <p class="scroll-animate opacity-0 text-[17px] md:text-[19px] text-zinc-600 font-medium leading-relaxed mb-8" style="animation-delay: 160ms;">
                   {data.sub}
                 </p>
-                <a href="/kontakt" class="inline-flex items-center justify-center gap-2 px-8 py-4 text-[16px] font-bold text-white transition-all duration-300 ease-out bg-[#81b344] rounded-xl hover:bg-[#729f3c] hover:-translate-y-1 shadow-md shadow-[#81b344]/20">
-                  Chci nezávaznou nabídku
-                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                </a>
+                <div class="scroll-animate opacity-0" style="animation-delay: 240ms;">
+                  <a href="/kontakt" class="inline-flex items-center justify-center gap-2 px-8 py-4 text-[16px] font-bold text-white transition-all duration-300 ease-out bg-[#81b344] rounded-xl hover:bg-[#729f3c] hover:-translate-y-1 shadow-md shadow-[#81b344]/20">
+                    Chci nezávaznou nabídku
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                  </a>
+                </div>
               </div>
 
-              <div class="w-full lg:w-1/2">
-                <div class="relative aspect-[4/3] rounded-[2rem] overflow-hidden bg-zinc-100 border border-zinc-200/50 shadow-sm group">
-                  <img src={data.image} alt={data.tag} class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]" loading="lazy" />
+              <div class="scroll-animate opacity-0 w-full lg:w-1/2" style="animation-delay: 200ms;">
+                <div class="relative aspect-[4/3] rounded-[2rem] overflow-hidden bg-zinc-100 border border-zinc-200/50 shadow-lg group">
+                  <img src={data.image} alt={data.tag} class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]" loading="lazy" />
+                  <!-- Jemný gradient overlay -->
+                  <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/10 to-transparent pointer-events-none"></div>
+                  <div class="absolute bottom-4 left-4 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-sm shadow-sm">
+                    <span class="text-[12px] font-bold text-zinc-700 tracking-[0.06em] uppercase">{data.tag}</span>
+                  </div>
                 </div>
               </div>
 
@@ -183,10 +217,13 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
         </section>
 
         <!-- FEATURES GRID -->
-        <section class="py-20 md:py-28 bg-zinc-50">
-          <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
+        <section class="py-20 md:py-28 bg-zinc-50 relative overflow-hidden">
+          <!-- Subtlní pozadí dekorace -->
+          <div class="pointer-events-none absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-[#81b344]/4 blur-[80px]"></div>
 
-            <div class="text-center max-w-2xl mx-auto mb-16">
+          <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
+
+            <div class="scroll-animate opacity-0 text-center max-w-2xl mx-auto mb-16">
               <div class="mb-4">
                 <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">Proč zvolit PrimeClean</span>
               </div>
@@ -197,11 +234,16 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
               {data.features.map((f, index) => (
-                <div class="scroll-animate opacity-0 relative bg-white rounded-[1.5rem] p-8 border border-zinc-100 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg hover:border-[#81b344]/20 overflow-hidden group" style={`animation-delay: ${index * 100}ms`}>
+                <div
+                  class="scroll-animate opacity-0 relative bg-white rounded-[1.5rem] p-8 border border-zinc-100 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-xl hover:border-[#81b344]/25 overflow-hidden group"
+                  style={`animation-delay: ${index * 100}ms`}
+                >
+                  <!-- Hover glow -->
+                  <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at top left, rgba(129,179,68,0.05) 0%, transparent 70%);"></div>
                   <span class="absolute top-5 right-7 text-[4rem] font-extrabold text-[#81b344]/8 leading-none select-none pointer-events-none">
                     {String(index + 1).padStart(2, '0')}
                   </span>
-                  <div class="w-14 h-14 rounded-2xl bg-zinc-50 border border-zinc-200 flex items-center justify-center text-[#6a9438] mb-8 group-hover:border-[#81b344]/30 group-hover:bg-[#81b344]/5 transition-colors duration-300">
+                  <div class="w-14 h-14 rounded-2xl bg-zinc-50 border border-zinc-200 flex items-center justify-center text-[#6a9438] mb-8 group-hover:border-[#81b344]/40 group-hover:bg-[#81b344]/8 group-hover:scale-110 transition-all duration-300">
                     <i data-lucide={f.icon} class="w-6 h-6"></i>
                   </div>
                   <h3 class="text-[19px] font-bold text-zinc-950 tracking-tight leading-snug mb-3">{f.title}</h3>
@@ -227,8 +269,11 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
                   Co zahrnuje <span class="text-[#6a9438]">každá návštěva.</span>
                 </h2>
                 <ul class="flex flex-col gap-3">
-                  {data.includes.map(item => (
-                    <li class="flex items-start gap-4 text-[16px] text-zinc-700 font-medium">
+                  {data.includes.map((item, i) => (
+                    <li
+                      class="scroll-animate opacity-0 flex items-start gap-4 text-[16px] text-zinc-700 font-medium"
+                      style={`animation-delay: ${i * 60}ms`}
+                    >
                       <div class="flex-shrink-0 mt-0.5 w-5 h-5 rounded-full bg-[#81b344] flex items-center justify-center text-white">
                         <i data-lucide="check" class="w-3 h-3" style="stroke-width: 3"></i>
                       </div>
@@ -247,9 +292,12 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
                   Pro koho je tato <span class="text-[#6a9438]">služba určena.</span>
                 </h2>
                 <div class="grid grid-cols-2 gap-4">
-                  {data.forWhom.map(item => (
-                    <div class="flex items-center gap-3 p-4 bg-zinc-50 rounded-2xl border border-zinc-100 hover:border-[#81b344]/20 hover:bg-[#81b344]/5 transition-all duration-200">
-                      <div class="flex-shrink-0 w-9 h-9 rounded-xl bg-white border border-zinc-200 flex items-center justify-center text-[#6a9438]">
+                  {data.forWhom.map((item, i) => (
+                    <div
+                      class="scroll-animate opacity-0 flex items-center gap-3 p-4 bg-zinc-50 rounded-2xl border border-zinc-100 hover:border-[#81b344]/30 hover:bg-[#81b344]/5 hover:-translate-y-0.5 transition-all duration-200 group"
+                      style={`animation-delay: ${i * 60}ms`}
+                    >
+                      <div class="flex-shrink-0 w-9 h-9 rounded-xl bg-white border border-zinc-200 flex items-center justify-center text-[#6a9438] group-hover:border-[#81b344]/30 group-hover:scale-110 transition-all duration-200">
                         <i data-lucide={item.icon} class="w-4 h-4"></i>
                       </div>
                       <span class="text-[14px] font-semibold text-zinc-700 leading-snug">{item.label}</span>
@@ -263,18 +311,24 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
         </section>
 
         <!-- CTA -->
-        <section class="py-16 md:py-20 bg-zinc-950">
-          <div class="max-w-[900px] mx-auto px-5 md:px-8 lg:px-12 text-center">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tighter leading-[1.1] mb-6">
+        <section class="py-16 md:py-24 bg-zinc-950 relative overflow-hidden">
+          <div class="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-[#81b344]/10 blur-[80px]"></div>
+          <div class="relative z-10 max-w-[900px] mx-auto px-5 md:px-8 lg:px-12 text-center">
+            <div class="scroll-animate opacity-0 mb-4">
+              <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">Spolupráce</span>
+            </div>
+            <h2 class="scroll-animate opacity-0 text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tighter leading-[1.1] mb-6" style="animation-delay: 80ms;">
               Zajímá vás <span class="text-[#81b344]">spolupráce?</span>
             </h2>
-            <p class="text-[17px] text-zinc-400 font-medium leading-relaxed mb-10 max-w-xl mx-auto">
+            <p class="scroll-animate opacity-0 text-[17px] text-zinc-400 font-medium leading-relaxed mb-10 max-w-xl mx-auto" style="animation-delay: 160ms;">
               Připravíme vám nezávaznou nabídku na míru. Stačí nás kontaktovat — zbytek zařídíme my.
             </p>
-            <a href="/kontakt" class="inline-flex items-center justify-center gap-2 px-10 py-4 text-[16px] font-bold text-zinc-950 transition-all duration-300 ease-out bg-[#81b344] rounded-xl hover:bg-white hover:-translate-y-1 shadow-md">
-              Chci nezávazně nacenit úklid
-              <i data-lucide="arrow-right" class="w-5 h-5"></i>
-            </a>
+            <div class="scroll-animate opacity-0" style="animation-delay: 240ms;">
+              <a href="/kontakt" class="inline-flex items-center justify-center gap-2 px-10 py-4 text-[16px] font-bold text-zinc-950 transition-all duration-300 ease-out bg-[#81b344] rounded-xl hover:bg-white hover:-translate-y-1 shadow-md shadow-[#81b344]/20">
+                Chci nezávazně nacenit úklid
+                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+              </a>
+            </div>
           </div>
         </section>
 
@@ -286,53 +340,30 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
 
 <script src="https://unpkg.com/lucide@latest" is:inline></script>
 <script is:inline>
+  (function () {
+    const cores = navigator.hardwareConcurrency || 4;
+    const ram = navigator.deviceMemory || 4;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (cores <= 2 || ram <= 2 || reducedMotion) {
+      document.documentElement.classList.add('low-end');
+    }
+  })();
+
   document.addEventListener('DOMContentLoaded', () => {
     lucide.createIcons();
 
-    // Tab switching
-    const buttons = document.querySelectorAll('.tab-btn');
-    const contents = document.querySelectorAll('.tab-content');
-
-    buttons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const target = btn.getAttribute('data-tab');
-
-        buttons.forEach(b => {
-          b.classList.remove('bg-[#81b344]', 'text-white', 'shadow-md');
-          b.classList.add('text-zinc-500', 'hover:text-zinc-800', 'hover:bg-zinc-50');
-        });
-        btn.classList.add('bg-[#81b344]', 'text-white', 'shadow-md');
-        btn.classList.remove('text-zinc-500', 'hover:text-zinc-800', 'hover:bg-zinc-50');
-
-        contents.forEach(c => c.classList.add('hidden'));
-        const active = document.getElementById('tab-' + target);
-        if (active) {
-          active.classList.remove('hidden');
-          // re-trigger scroll animace pro nový tab
-          active.querySelectorAll('.scroll-animate').forEach(el => {
-            el.classList.remove('animate-fade-in-up');
-            el.classList.add('opacity-0');
-          });
-          setTimeout(() => {
-            active.querySelectorAll('.scroll-animate').forEach((el, i) => {
-              setTimeout(() => {
-                el.classList.add('animate-fade-in-up');
-                el.classList.remove('opacity-0');
-              }, i * 80);
-            });
-          }, 50);
-          lucide.createIcons();
-        }
-      });
-    });
-
-    // Scroll animace pro default tab
     const isLowEnd = document.documentElement.classList.contains('low-end');
-    const scrollEls = document.querySelectorAll('#tab-kancelare .scroll-animate');
 
-    if (isLowEnd) {
-      scrollEls.forEach(el => el.classList.remove('opacity-0'));
-    } else {
+    // --- SCROLL ANIMACE ---
+    function initScrollAnimations(scope) {
+      const els = scope.querySelectorAll('.scroll-animate');
+      if (isLowEnd) {
+        els.forEach(el => {
+          el.classList.remove('opacity-0');
+          el.style.opacity = '1';
+        });
+        return;
+      }
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -341,22 +372,92 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
             observer.unobserve(entry.target);
           }
         });
-      }, { rootMargin: '0px 0px -8% 0px' });
-
-      scrollEls.forEach(el => observer.observe(el));
+      }, { root: null, threshold: 0, rootMargin: '0px 0px -8% 0px' });
+      els.forEach(el => observer.observe(el));
     }
+
+    // Init pro default tab
+    const defaultTab = document.getElementById('tab-kancelare');
+    if (defaultTab) initScrollAnimations(defaultTab);
+
+    // --- TAB SWITCHING ---
+    const allButtons = document.querySelectorAll('.tab-btn');
+    const contents = document.querySelectorAll('.tab-content');
+
+    allButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.getAttribute('data-tab');
+
+        // Aktivní stav tlačítka — sync desktop + mobil
+        allButtons.forEach(b => {
+          const isMobile = b.closest('#tab-switcher-mobile') !== null;
+          b.classList.remove('bg-[#81b344]', 'text-white', 'shadow-md', 'shadow-[#81b344]/25');
+          if (isMobile) {
+            b.classList.remove('bg-[#81b344]');
+            b.classList.add('bg-white', 'border', 'border-zinc-200', 'text-zinc-600');
+          } else {
+            b.classList.add('text-zinc-500', 'hover:text-zinc-800', 'hover:bg-zinc-50');
+          }
+        });
+
+        // Aktivuj kliknuté tlačítko
+        const isMobileBtn = btn.closest('#tab-switcher-mobile') !== null;
+        btn.classList.add('bg-[#81b344]', 'text-white', 'shadow-md', 'shadow-[#81b344]/25');
+        if (isMobileBtn) {
+          btn.classList.remove('bg-white', 'border', 'border-zinc-200', 'text-zinc-600');
+        } else {
+          btn.classList.remove('text-zinc-500', 'hover:text-zinc-800', 'hover:bg-zinc-50');
+        }
+
+        // Sync druhé skupiny tlačítek
+        allButtons.forEach(b => {
+          if (b !== btn && b.getAttribute('data-tab') === target) {
+            b.classList.add('bg-[#81b344]', 'text-white', 'shadow-md', 'shadow-[#81b344]/25');
+            const isMob = b.closest('#tab-switcher-mobile') !== null;
+            if (isMob) {
+              b.classList.remove('bg-white', 'border', 'border-zinc-200', 'text-zinc-600');
+            } else {
+              b.classList.remove('text-zinc-500', 'hover:text-zinc-800', 'hover:bg-zinc-50');
+            }
+          }
+        });
+
+        // Zobraz správný tab
+        contents.forEach(c => c.classList.add('hidden'));
+        const active = document.getElementById('tab-' + target);
+        if (!active) return;
+
+        active.classList.remove('hidden');
+        lucide.createIcons();
+
+        // Reset + replay animací
+        const animEls = active.querySelectorAll('.scroll-animate');
+        animEls.forEach(el => {
+          el.classList.remove('animate-fade-in-up');
+          el.classList.add('opacity-0');
+          el.style.opacity = '';
+        });
+
+        // Krátká prodleva aby DOM byl viditelnej, pak spustit IntersectionObserver
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            initScrollAnimations(active);
+          });
+        });
+      });
+    });
   });
 </script>
 
 <style is:global>
   @keyframes softFadeUp {
-    0% { opacity: 0; transform: translateY(20px); }
+    0%   { opacity: 0; transform: translateY(22px); }
     100% { opacity: 1; transform: translateY(0); }
   }
   .animate-fade-in-up {
     animation-name: softFadeUp;
-    animation-duration: 0.9s;
-    animation-timing-function: cubic-bezier(0.25, 1, 0.4, 1);
+    animation-duration: 0.85s;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
     animation-fill-mode: both;
   }
   @media (prefers-reduced-motion: reduce) {
@@ -364,7 +465,9 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
       animation: none !important;
       opacity: 1 !important;
       transform: none !important;
+      transition: none !important;
     }
+    .animate-pulse { animation: none !important; }
   }
   .low-end .animate-fade-in-up,
   .low-end .scroll-animate {
@@ -372,4 +475,6 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
     opacity: 1 !important;
     transform: none !important;
   }
+  .low-end .animate-pulse { animation: none !important; }
+  .low-end img { transition: none !important; }
 </style>
