@@ -1,0 +1,259 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const features = [
+  {
+    icon: 'calendar-check',
+    title: 'Víte, kdy přijdeme',
+    desc: 'Každý naplánovaný úklid vidíte předem v přehledu. Žádné překvapení, žádné nejistoty — prostě víte, co a kdy se bude dít.',
+  },
+  {
+    icon: 'clock',
+    title: 'Stav úklidu v reálném čase',
+    desc: 'Jakmile pracovník zahájí nebo dokončí úklid, stav se okamžitě aktualizuje. Vidíte to dřív, než stačíte zavolat.',
+  },
+  {
+    icon: 'clipboard-list',
+    title: 'Co bylo uklizeno',
+    desc: 'Po každé návštěvě máte k dispozici přehled provedených prací. Jasný záznam bez dohadů.',
+  },
+  {
+    icon: 'file-text',
+    title: 'Faktury na jednom místě',
+    desc: 'Všechny faktury přehledně online. Žádné hledání v e-mailech, žádné papíry. Vše dohledatelné kdykoliv.',
+  },
+  {
+    icon: 'message-square-plus',
+    title: 'Požadavek jedním klikem',
+    desc: 'Potřebujete mimořádný úklid nebo chcete něco změnit? Napište požadavek přímo v portálu — bez telefonování.',
+  },
+  {
+    icon: 'shield-check',
+    title: 'Váš přístup, vaše data',
+    desc: 'Každý klient má vlastní zabezpečený přístup. Vidíte pouze své zakázky, faktury a historii.',
+  },
+];
+
+const steps = [
+  { n: '01', title: 'Domluvíme spolupráci', desc: 'Nastavíme rozsah, frekvenci a plán úklidu přímo pro váš objekt.' },
+  { n: '02', title: 'Dostanete přístup', desc: 'Vytvoříme vám účet v klientském portálu. Přihlásíte se a vše je tam.' },
+  { n: '03', title: 'Sledujte a komunikujte', desc: 'Vidíte zakázky, faktury, historii. Požadavky posíláte přímo z portálu.' },
+];
+---
+
+<Layout title="Klientský portál | PrimeClean">
+  <main class="bg-white selection:bg-[#81b344]/30 selection:text-zinc-900">
+
+    <!-- HERO -->
+    <section class="relative pt-28 pb-20 md:pt-36 md:pb-28 lg:pt-44 lg:pb-36 bg-zinc-50 overflow-hidden">
+      <div class="pointer-events-none absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full bg-[#81b344]/6 blur-[100px]"></div>
+      <div class="pointer-events-none absolute -bottom-20 -left-20 w-[350px] h-[350px] rounded-full bg-[#81b344]/4 blur-[80px]"></div>
+
+      <div class="relative z-10 max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12 text-center">
+
+        <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-white border border-zinc-200 shadow-sm mb-6 md:mb-8 opacity-0 animate-fade-in-up" style="animation-delay: 0ms;">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#81b344] animate-pulse flex-shrink-0"></span>
+          <span class="text-[11px] sm:text-xs font-bold text-zinc-600 tracking-[0.15em] uppercase">Klientský portál PrimeClean</span>
+        </div>
+
+        <h1 class="text-[2.75rem] sm:text-[3.75rem] md:text-6xl lg:text-[6rem] font-extrabold text-zinc-950 tracking-tighter leading-[1.05] md:leading-[0.95] mb-6 opacity-0 animate-fade-in-up" style="animation-delay: 150ms;">
+          Váš úklid.<br /><span class="text-[#6a9438]">Pod kontrolou.</span>
+        </h1>
+
+        <p class="text-base sm:text-lg md:text-[19px] lg:text-[21px] text-zinc-600 max-w-2xl mx-auto leading-relaxed font-medium mb-10 md:mb-14 opacity-0 animate-fade-in-up" style="animation-delay: 300ms;">
+          Jako klient PrimeClean máte přístup do vlastního portálu. Vidíte kdy přijdeme, co bylo uklizeno, a faktury na jednom místě. Žádné telefonování, žádné nejistoty.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center opacity-0 animate-fade-in-up" style="animation-delay: 450ms;">
+          <a href="/kontakt" class="inline-flex items-center justify-center gap-2 px-8 py-4 text-[16px] font-bold text-white transition-all duration-300 ease-out bg-[#81b344] rounded-xl hover:bg-[#729f3c] hover:-translate-y-1 shadow-md shadow-[#81b344]/20">
+            Chci přístup do portálu
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+          <a href="/sluzby" class="inline-flex items-center justify-center gap-2 px-8 py-4 text-[16px] font-bold text-zinc-700 transition-all duration-300 ease-out bg-white border border-zinc-200 rounded-xl hover:border-[#81b344]/40 hover:text-zinc-900 hover:-translate-y-1">
+            Naše služby
+            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SOCIAL PROOF BAR -->
+    <section class="py-10 bg-white border-y border-zinc-100">
+      <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12">
+        <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+          {[
+            { n: '100+', l: 'spokojených klientů' },
+            { n: '24/7', l: 'přístup do portálu' },
+            { n: '0×', l: 'zbytečných telefonátů' },
+            { n: '100%', l: 'přehled nad úklidem' },
+          ].map(s => (
+            <div class="text-center">
+              <div class="text-[2rem] font-extrabold text-zinc-950 tracking-tighter">{s.n}</div>
+              <div class="text-[13px] font-semibold text-zinc-500">{s.l}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="py-20 md:py-28 bg-zinc-50 relative overflow-hidden">
+      <div class="pointer-events-none absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-[#81b344]/4 blur-[80px]"></div>
+
+      <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
+
+        <div class="scroll-animate opacity-0 text-center max-w-2xl mx-auto mb-16">
+          <div class="mb-4">
+            <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">Co portál umí</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1]">
+            Všechno na <span class="text-[#6a9438]">jednom místě.</span>
+          </h2>
+          <p class="mt-4 text-[17px] text-zinc-600 font-medium leading-relaxed">
+            Portál je součástí každé spolupráce s PrimeClean. Přístup dostanete zdarma hned po zahájení spolupráce.
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {features.map((f, index) => (
+            <div
+              class="scroll-animate opacity-0 relative bg-white rounded-[1.5rem] p-8 border border-zinc-100 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-xl hover:border-[#81b344]/25 overflow-hidden group"
+              style={`animation-delay: ${index * 80}ms`}
+            >
+              <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style="background: radial-gradient(ellipse at top left, rgba(129,179,68,0.05) 0%, transparent 70%);"></div>
+              <div class="w-14 h-14 rounded-2xl bg-zinc-50 border border-zinc-200 flex items-center justify-center text-[#6a9438] mb-6 group-hover:border-[#81b344]/40 group-hover:bg-[#81b344]/8 group-hover:scale-110 transition-all duration-300">
+                <i data-lucide={f.icon} class="w-6 h-6"></i>
+              </div>
+              <h3 class="text-[18px] font-bold text-zinc-950 tracking-tight leading-snug mb-3">{f.title}</h3>
+              <p class="text-[15px] font-medium text-zinc-600 leading-relaxed">{f.desc}</p>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    <!-- JAK TO FUNGUJE -->
+    <section class="py-20 md:py-28 bg-white">
+      <div class="max-w-[900px] mx-auto px-5 md:px-8 lg:px-12">
+
+        <div class="scroll-animate opacity-0 text-center mb-16">
+          <div class="mb-4">
+            <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">Jak to funguje</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1]">
+            Tři kroky <span class="text-[#6a9438]">a máte přehled.</span>
+          </h2>
+        </div>
+
+        <div class="flex flex-col gap-6">
+          {steps.map((s, i) => (
+            <div
+              class="scroll-animate opacity-0 flex items-start gap-6 p-8 bg-zinc-50 rounded-[1.5rem] border border-zinc-100 hover:border-[#81b344]/25 hover:shadow-lg transition-all duration-300"
+              style={`animation-delay: ${i * 120}ms`}
+            >
+              <div class="flex-shrink-0 w-14 h-14 rounded-2xl bg-[#81b344] flex items-center justify-center font-extrabold text-white text-[15px] tracking-tight shadow-md shadow-[#81b344]/25">
+                {s.n}
+              </div>
+              <div>
+                <h3 class="text-[19px] font-bold text-zinc-950 tracking-tight mb-2">{s.title}</h3>
+                <p class="text-[15px] font-medium text-zinc-600 leading-relaxed">{s.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 md:py-24 bg-zinc-950 relative overflow-hidden">
+      <div class="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-[#81b344]/10 blur-[80px]"></div>
+      <div class="relative z-10 max-w-[900px] mx-auto px-5 md:px-8 lg:px-12 text-center">
+        <div class="scroll-animate opacity-0 mb-4">
+          <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">Začněte dnes</span>
+        </div>
+        <h2 class="scroll-animate opacity-0 text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tighter leading-[1.1] mb-6" style="animation-delay: 80ms;">
+          Chcete mít úklid<br /><span class="text-[#81b344]">konečně pod kontrolou?</span>
+        </h2>
+        <p class="scroll-animate opacity-0 text-[17px] text-zinc-400 font-medium leading-relaxed mb-10 max-w-xl mx-auto" style="animation-delay: 160ms;">
+          Kontaktujte nás, domluvíme spolupráci a přístup do portálu dostanete hned. Bez papírů, bez zbytečné byrokracie.
+        </p>
+        <div class="scroll-animate opacity-0" style="animation-delay: 240ms;">
+          <a href="/kontakt" class="inline-flex items-center justify-center gap-2 px-10 py-4 text-[16px] font-bold text-zinc-950 transition-all duration-300 ease-out bg-[#81b344] rounded-xl hover:bg-white hover:-translate-y-1 shadow-md shadow-[#81b344]/20">
+            Kontaktovat PrimeClean
+            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</Layout>
+
+<script src="https://unpkg.com/lucide@latest" is:inline></script>
+<script is:inline>
+  (function () {
+    const cores = navigator.hardwareConcurrency || 4;
+    const ram = navigator.deviceMemory || 4;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (cores <= 2 || ram <= 2 || reducedMotion) {
+      document.documentElement.classList.add('low-end');
+    }
+  })();
+
+  document.addEventListener('DOMContentLoaded', () => {
+    lucide.createIcons();
+
+    const isLowEnd = document.documentElement.classList.contains('low-end');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fade-in-up');
+          entry.target.classList.remove('opacity-0');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { root: null, threshold: 0, rootMargin: '0px 0px -8% 0px' });
+
+    if (isLowEnd) {
+      document.querySelectorAll('.scroll-animate').forEach(el => {
+        el.classList.remove('opacity-0');
+        el.style.opacity = '1';
+      });
+    } else {
+      document.querySelectorAll('.scroll-animate').forEach(el => observer.observe(el));
+    }
+  });
+</script>
+
+<style is:global>
+  @keyframes softFadeUp {
+    0%   { opacity: 0; transform: translateY(22px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in-up {
+    animation-name: softFadeUp;
+    animation-duration: 0.85s;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    animation-fill-mode: both;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .animate-fade-in-up, .scroll-animate {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+    .animate-pulse { animation: none !important; }
+  }
+  .low-end .animate-fade-in-up,
+  .low-end .scroll-animate {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .low-end .animate-pulse { animation: none !important; }
+</style>
