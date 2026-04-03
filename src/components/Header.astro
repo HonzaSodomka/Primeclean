@@ -3,8 +3,8 @@
 const navLinks = [
   { name: 'Domů', href: '/' },
   { name: 'Služby', href: '/sluzby' },
-  { name: 'Reference', href: '/reference' },
   { name: 'Aplikace', href: '/aplikace' },
+  { name: 'Reference', href: '/reference' },
   { name: 'Kontakt', href: '/kontakt' }
 ];
 
@@ -78,7 +78,6 @@ const currentPath = Astro.url.pathname;
 
     btn?.addEventListener('click', () => {
       isOpen = !isOpen;
-      
       if (isOpen) {
         menu.classList.remove('opacity-0', 'invisible', '-translate-y-4');
         if (spans && spans.length === 3) {

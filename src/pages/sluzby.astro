@@ -7,7 +7,6 @@ const tabs = [
   { id: 'airbnb', label: 'Airbnb a apartmány', icon: 'key-round' },
 ];
 
-// Inline SVG paths for used icons
 const icons: Record<string, string> = {
   'briefcase': '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>',
   'building-2': '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>',
@@ -123,11 +122,6 @@ const airbnb = {
 };
 
 const tabData = { kancelare, svj, airbnb };
-
-// Helper to render tab content as HTML string for lazy injection
-function renderTabContent(id: string, data: typeof kancelare) {
-  return id; // used only for keying, rendering happens in template below
-}
 ---
 
 <Layout title="Naše služby | PrimeClean">
@@ -194,9 +188,9 @@ function renderTabContent(id: string, data: typeof kancelare) {
       </div>
     </section>
 
-    <!-- TAB CONTENT: only first tab rendered, others lazy-loaded -->
+    <!-- TAB CONTENT -->
     {Object.entries(tabData).map(([id, data], tabIndex) => (
-      <div id={`tab-${id}`} class={`tab-content ${id !== 'kancelare' ? 'hidden' : ''}`} data-loaded={id === 'kancelare' ? 'true' : 'false'}>
+      <div id={`tab-${id}`} class={`tab-content ${id !== 'kancelare' ? 'hidden' : ''}`}>
 
         <!-- MAIN PANEL -->
         <section class="py-20 md:py-28 bg-white">
@@ -245,9 +239,7 @@ function renderTabContent(id: string, data: typeof kancelare) {
         <!-- FEATURES GRID -->
         <section class="py-20 md:py-28 bg-zinc-50 relative overflow-hidden">
           <div class="pointer-events-none absolute top-0 right-0 w-[400px] h-[400px] rounded-full bg-[#81b344]/4 blur-[80px]"></div>
-
           <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
-
             <div class="scroll-animate opacity-0 text-center max-w-2xl mx-auto mb-16">
               <div class="mb-4">
                 <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">Proč zvolit PrimeClean</span>
@@ -256,7 +248,6 @@ function renderTabContent(id: string, data: typeof kancelare) {
                 Co od nás <span class="text-[#6a9438]">dostanete.</span>
               </h2>
             </div>
-
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
               {data.features.map((f, index) => (
                 <div
@@ -275,7 +266,6 @@ function renderTabContent(id: string, data: typeof kancelare) {
                 </div>
               ))}
             </div>
-
           </div>
         </section>
 
@@ -283,7 +273,6 @@ function renderTabContent(id: string, data: typeof kancelare) {
         <section class="py-20 md:py-28 bg-white">
           <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
             <div class="grid lg:grid-cols-2 gap-12 lg:gap-20">
-
               <div class="scroll-animate opacity-0">
                 <div class="mb-4">
                   <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">Rozsah služby</span>
@@ -305,7 +294,6 @@ function renderTabContent(id: string, data: typeof kancelare) {
                   ))}
                 </ul>
               </div>
-
               <div class="scroll-animate opacity-0" style="animation-delay: 150ms;">
                 <div class="mb-4">
                   <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">Cílová skupina</span>
@@ -329,7 +317,6 @@ function renderTabContent(id: string, data: typeof kancelare) {
                   ))}
                 </div>
               </div>
-
             </div>
           </div>
         </section>
@@ -372,93 +359,88 @@ function renderTabContent(id: string, data: typeof kancelare) {
     }
   })();
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const isLowEnd = document.documentElement.classList.contains('low-end');
+  const VALID_TABS = ['kancelare', 'svj', 'airbnb'];
 
-    function initScrollAnimations(scope) {
-      const els = scope.querySelectorAll('.scroll-animate');
-      if (isLowEnd) {
-        els.forEach(el => {
-          el.classList.remove('opacity-0');
-          el.style.opacity = '1';
-        });
-        return;
-      }
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-fade-in-up');
-            entry.target.classList.remove('opacity-0');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { root: null, threshold: 0, rootMargin: '0px 0px -8% 0px' });
-      els.forEach(el => observer.observe(el));
-    }
-
-    // Init first tab immediately
-    const defaultTab = document.getElementById('tab-kancelare');
-    if (defaultTab) initScrollAnimations(defaultTab);
+  function activateTab(target) {
+    if (!VALID_TABS.includes(target)) return;
 
     const allButtons = document.querySelectorAll('.tab-btn');
     const contents = document.querySelectorAll('.tab-content');
+    const isLowEnd = document.documentElement.classList.contains('low-end');
 
-    allButtons.forEach(btn => {
+    // Update button styles
+    allButtons.forEach(b => {
+      const isMobile = b.closest('#tab-switcher-mobile') !== null;
+      const isTarget = b.getAttribute('data-tab') === target;
+      b.classList.remove('bg-[#81b344]', 'text-white', 'shadow-md', 'shadow-[#81b344]/25');
+      if (isMobile) {
+        if (isTarget) {
+          b.classList.remove('bg-white', 'border', 'border-zinc-200', 'text-zinc-600');
+          b.classList.add('bg-[#81b344]', 'text-white', 'shadow-md', 'shadow-[#81b344]/25');
+        } else {
+          b.classList.add('bg-white', 'border', 'border-zinc-200', 'text-zinc-600');
+        }
+      } else {
+        if (isTarget) {
+          b.classList.remove('text-zinc-500', 'hover:text-zinc-800', 'hover:bg-zinc-50');
+          b.classList.add('bg-[#81b344]', 'text-white', 'shadow-md', 'shadow-[#81b344]/25');
+        } else {
+          b.classList.add('text-zinc-500', 'hover:text-zinc-800', 'hover:bg-zinc-50');
+        }
+      }
+    });
+
+    // Show target tab
+    contents.forEach(c => c.classList.add('hidden'));
+    const active = document.getElementById('tab-' + target);
+    if (!active) return;
+    active.classList.remove('hidden');
+
+    // Reset + init scroll animations
+    const animEls = active.querySelectorAll('.scroll-animate');
+    animEls.forEach(el => {
+      el.classList.remove('animate-fade-in-up');
+      el.classList.add('opacity-0');
+      el.style.opacity = '';
+    });
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        initScrollAnimations(active, isLowEnd);
+      });
+    });
+  }
+
+  function initScrollAnimations(scope, isLowEnd) {
+    const els = scope.querySelectorAll('.scroll-animate');
+    if (isLowEnd) {
+      els.forEach(el => { el.classList.remove('opacity-0'); el.style.opacity = '1'; });
+      return;
+    }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fade-in-up');
+          entry.target.classList.remove('opacity-0');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { root: null, threshold: 0, rootMargin: '0px 0px -8% 0px' });
+    els.forEach(el => observer.observe(el));
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const isLowEnd = document.documentElement.classList.contains('low-end');
+
+    // Read hash on page load and activate the correct tab
+    const hash = window.location.hash.replace('#tab-', '');
+    const initialTab = VALID_TABS.includes(hash) ? hash : 'kancelare';
+    activateTab(initialTab);
+
+    // Click handlers
+    document.querySelectorAll('.tab-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const target = btn.getAttribute('data-tab');
-
-        // Update button styles
-        allButtons.forEach(b => {
-          const isMobile = b.closest('#tab-switcher-mobile') !== null;
-          b.classList.remove('bg-[#81b344]', 'text-white', 'shadow-md', 'shadow-[#81b344]/25');
-          if (isMobile) {
-            b.classList.remove('bg-[#81b344]');
-            b.classList.add('bg-white', 'border', 'border-zinc-200', 'text-zinc-600');
-          } else {
-            b.classList.add('text-zinc-500', 'hover:text-zinc-800', 'hover:bg-zinc-50');
-          }
-        });
-
-        const isMobileBtn = btn.closest('#tab-switcher-mobile') !== null;
-        btn.classList.add('bg-[#81b344]', 'text-white', 'shadow-md', 'shadow-[#81b344]/25');
-        if (isMobileBtn) {
-          btn.classList.remove('bg-white', 'border', 'border-zinc-200', 'text-zinc-600');
-        } else {
-          btn.classList.remove('text-zinc-500', 'hover:text-zinc-800', 'hover:bg-zinc-50');
-        }
-
-        // Sync both desktop/mobile buttons for same tab
-        allButtons.forEach(b => {
-          if (b !== btn && b.getAttribute('data-tab') === target) {
-            b.classList.add('bg-[#81b344]', 'text-white', 'shadow-md', 'shadow-[#81b344]/25');
-            const isMob = b.closest('#tab-switcher-mobile') !== null;
-            if (isMob) {
-              b.classList.remove('bg-white', 'border', 'border-zinc-200', 'text-zinc-600');
-            } else {
-              b.classList.remove('text-zinc-500', 'hover:text-zinc-800', 'hover:bg-zinc-50');
-            }
-          }
-        });
-
-        // Show target tab
-        contents.forEach(c => c.classList.add('hidden'));
-        const active = document.getElementById('tab-' + target);
-        if (!active) return;
-        active.classList.remove('hidden');
-
-        // Init scroll animations for this tab (only reset if already visited)
-        const animEls = active.querySelectorAll('.scroll-animate');
-        animEls.forEach(el => {
-          el.classList.remove('animate-fade-in-up');
-          el.classList.add('opacity-0');
-          el.style.opacity = '';
-        });
-
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            initScrollAnimations(active);
-          });
-        });
+        activateTab(target);
       });
     });
   });
