@@ -7,11 +7,37 @@ const tabs = [
   { id: 'airbnb', label: 'Airbnb a apartmány', icon: 'key-round' },
 ];
 
+// Inline SVG paths for used icons
+const icons: Record<string, string> = {
+  'briefcase': '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>',
+  'building-2': '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>',
+  'key-round': '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 18v3c0 .6.4 1 1 1h4v-3h3v-3h2l1.4-1.4a6.5 6.5 0 1 0-4-4Z"/><circle cx="16.5" cy="7.5" r=".5" fill="currentColor"/></svg>',
+  'calendar-check': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/><path d="m9 16 2 2 4-4"/></svg>',
+  'clipboard-list': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg>',
+  'users': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+  'smartphone': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>',
+  'shield-check': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>',
+  'zap': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',
+  'sliders-horizontal': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="21" x2="14" y1="4" y2="4"/><line x1="10" x2="3" y1="4" y2="4"/><line x1="21" x2="12" y1="12" y2="12"/><line x1="8" x2="3" y1="12" y2="12"/><line x1="21" x2="16" y1="20" y2="20"/><line x1="12" x2="3" y1="20" y2="20"/><line x1="14" x2="14" y1="2" y2="6"/><line x1="8" x2="8" y1="10" y2="14"/><line x1="16" x2="16" y1="18" y2="22"/></svg>',
+  'shirt': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/></svg>',
+  'building': '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg>',
+  'laptop': '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16"/></svg>',
+  'stethoscope': '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"/><path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4"/><circle cx="20" cy="10" r="2"/></svg>',
+  'utensils': '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>',
+  'home': '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',
+  'globe': '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" x2="22" y1="12" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',
+  'arrow-right': '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>',
+  'arrow-right-lg': '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>',
+  'check': '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>',
+};
+
 const kancelare = {
   tag: 'Pravidelný úklid',
   headline: 'Úklid kanceláří,\nkterý prostě funguje.',
   sub: 'Zajišťujeme pravidelný úklid podle pevně domluveného harmonogramu. Žádné nahodilé návštěvy — jen profesionální servis, díky kterému se můžete plně soustředit na své podnikání.',
   image: '/sluzba-kancelare.jpg',
+  imageWidth: 800,
+  imageHeight: 600,
   features: [
     { icon: 'calendar-check', title: 'Pevný harmonogram', desc: 'Úklid probíhá pravidelně — brzy ráno, večer nebo o víkendech. Vždy stejný rozsah, diskrétně a profesionálně.' },
     { icon: 'clipboard-list', title: 'Jasná pravidla a checklist', desc: 'Předem domluvený rozsah prací a checklist — jasně dané, co se uklízí, jak často a kdo za úklid odpovídá.' },
@@ -40,6 +66,8 @@ const svj = {
   headline: 'Čisté společné prostory\nbez starostí.',
   sub: 'Zajišťujeme kompletní a pravidelný úklid panelových domů a SVJ. Stálí pracovníci, jasný plán a přehled v aplikaci — správce ani výbor nemusí řešit každodenní kontrolu.',
   image: '/sluzba-svj.jpg',
+  imageWidth: 800,
+  imageHeight: 600,
   features: [
     { icon: 'calendar-check', title: 'Pravidelný harmonogram', desc: 'Úklid týdně, 2× týdně nebo individuálně podle potřeb domu. Vždy stejný rozsah, žádné výmluvy.' },
     { icon: 'clipboard-list', title: 'Jasná pravidla a checklist', desc: 'Každý dům má vlastní plán úklidu a checklist — jasně dané, co se uklízí, jak často a kdo za to odpovídá.' },
@@ -68,6 +96,8 @@ const airbnb = {
   headline: 'Apartmán připravený\npro každého hosta.',
   sub: 'Zajišťujeme rychlý a spolehlivý úklid mezi pobyty hostů. Stálí pracovníci, jasný rozsah prací a přehled v aplikaci — vy se staráte o hosty, my o čistotu.',
   image: '/sluzba-airbnb.jpg',
+  imageWidth: 800,
+  imageHeight: 600,
   features: [
     { icon: 'zap', title: 'Rychlá příprava', desc: 'Úklid zvládneme ve vašem časovém okně mezi odjezdem a příjezdem hostů. Bez stresu a zpoždění.' },
     { icon: 'clipboard-list', title: 'Jasný rozsah prací', desc: 'Předem domluvený checklist — jasně dané, co se uklízí při každé návštěvě. Vždy stejný standard.' },
@@ -92,7 +122,12 @@ const airbnb = {
   ],
 };
 
-const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
+const tabData = { kancelare, svj, airbnb };
+
+// Helper to render tab content as HTML string for lazy injection
+function renderTabContent(id: string, data: typeof kancelare) {
+  return id; // used only for keying, rendering happens in template below
+}
 ---
 
 <Layout title="Naše služby | PrimeClean">
@@ -101,7 +136,6 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
     <!-- HERO -->
     <section class="relative pt-28 pb-20 md:pt-36 md:pb-28 lg:pt-44 lg:pb-36 bg-zinc-50 overflow-hidden">
 
-      <!-- Dekorativní blob pozadí -->
       <div class="pointer-events-none absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full bg-[#81b344]/6 blur-[100px]"></div>
       <div class="pointer-events-none absolute -bottom-20 -left-20 w-[350px] h-[350px] rounded-full bg-[#81b344]/4 blur-[80px]"></div>
 
@@ -122,7 +156,7 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
 
         <!-- TAB SWITCHER -->
         <div class="opacity-0 animate-fade-in-up" style="animation-delay: 450ms;">
-          <!-- Desktop: inline horizontally -->
+          <!-- Desktop -->
           <div id="tab-switcher" class="hidden sm:inline-flex gap-2 p-1.5 bg-white border border-zinc-200 rounded-2xl shadow-sm">
             {tabs.map((tab, i) => (
               <button
@@ -133,13 +167,13 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
                     : 'text-zinc-500 hover:text-zinc-800 hover:bg-zinc-50'
                 }`}
               >
-                <i data-lucide={tab.icon} class="w-4 h-4 flex-shrink-0"></i>
+                <span class="w-4 h-4 flex-shrink-0" set:html={icons[tab.icon]} />
                 {tab.label}
               </button>
             ))}
           </div>
 
-          <!-- Mobil: full-width sloupcová tlačítka -->
+          <!-- Mobil -->
           <div id="tab-switcher-mobile" class="sm:hidden flex flex-col gap-2 w-full max-w-xs mx-auto">
             {tabs.map((tab, i) => (
               <button
@@ -150,7 +184,7 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
                     : 'bg-white border border-zinc-200 text-zinc-600 hover:border-[#81b344]/40 hover:text-zinc-900'
                 }`}
               >
-                <i data-lucide={tab.icon} class="w-5 h-5 flex-shrink-0"></i>
+                <span class="w-5 h-5 flex-shrink-0" set:html={icons[tab.icon]} />
                 {tab.label}
               </button>
             ))}
@@ -160,9 +194,9 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
       </div>
     </section>
 
-    <!-- TAB CONTENT -->
-    {Object.entries(tabData).map(([id, data]) => (
-      <div id={`tab-${id}`} class={`tab-content ${id !== 'kancelare' ? 'hidden' : ''}`}>
+    <!-- TAB CONTENT: only first tab rendered, others lazy-loaded -->
+    {Object.entries(tabData).map(([id, data], tabIndex) => (
+      <div id={`tab-${id}`} class={`tab-content ${id !== 'kancelare' ? 'hidden' : ''}`} data-loaded={id === 'kancelare' ? 'true' : 'false'}>
 
         <!-- MAIN PANEL -->
         <section class="py-20 md:py-28 bg-white">
@@ -182,14 +216,21 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
                 <div class="scroll-animate opacity-0" style="animation-delay: 240ms;">
                   <a href="/kontakt" class="inline-flex items-center justify-center gap-2 px-8 py-4 text-[16px] font-bold text-white transition-all duration-300 ease-out bg-[#81b344] rounded-xl hover:bg-[#729f3c] hover:-translate-y-1 shadow-md shadow-[#81b344]/20">
                     Chci nezávaznou nabídku
-                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    <span class="w-4 h-4" set:html={icons['arrow-right']} />
                   </a>
                 </div>
               </div>
 
               <div class="scroll-animate opacity-0 w-full lg:w-1/2" style="animation-delay: 200ms;">
                 <div class="relative aspect-[4/3] rounded-[2rem] overflow-hidden bg-zinc-100 border border-zinc-200/50 shadow-lg group">
-                  <img src={data.image} alt={data.tag} class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]" loading="lazy" />
+                  <img
+                    src={data.image}
+                    alt={data.tag}
+                    width={data.imageWidth}
+                    height={data.imageHeight}
+                    class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                    loading={tabIndex === 0 ? 'eager' : 'lazy'}
+                  />
                   <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/10 to-transparent pointer-events-none"></div>
                   <div class="absolute bottom-4 left-4 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-sm shadow-sm">
                     <span class="text-[12px] font-bold text-zinc-700 tracking-[0.06em] uppercase">{data.tag}</span>
@@ -227,7 +268,7 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
                     {String(index + 1).padStart(2, '0')}
                   </span>
                   <div class="w-14 h-14 rounded-2xl bg-zinc-50 border border-zinc-200 flex items-center justify-center text-[#6a9438] mb-8 group-hover:border-[#81b344]/40 group-hover:bg-[#81b344]/8 group-hover:scale-110 transition-all duration-300">
-                    <i data-lucide={f.icon} class="w-6 h-6"></i>
+                    <span class="w-6 h-6" set:html={icons[f.icon]} />
                   </div>
                   <h3 class="text-[19px] font-bold text-zinc-950 tracking-tight leading-snug mb-3">{f.title}</h3>
                   <p class="text-[15px] font-medium text-zinc-600 leading-relaxed">{f.desc}</p>
@@ -243,7 +284,6 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
           <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
             <div class="grid lg:grid-cols-2 gap-12 lg:gap-20">
 
-              <!-- CO ZAHRNUJE -->
               <div class="scroll-animate opacity-0">
                 <div class="mb-4">
                   <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">Rozsah služby</span>
@@ -258,7 +298,7 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
                       style={`animation-delay: ${i * 60}ms`}
                     >
                       <div class="flex-shrink-0 mt-0.5 w-5 h-5 rounded-full bg-[#81b344] flex items-center justify-center text-white">
-                        <i data-lucide="check" class="w-3 h-3" style="stroke-width: 3"></i>
+                        <span set:html={icons['check']} />
                       </div>
                       {item}
                     </li>
@@ -266,7 +306,6 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
                 </ul>
               </div>
 
-              <!-- PRO KOHO -->
               <div class="scroll-animate opacity-0" style="animation-delay: 150ms;">
                 <div class="mb-4">
                   <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">Cílová skupina</span>
@@ -281,7 +320,7 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
                       style={`animation-delay: ${i * 60}ms`}
                     >
                       <div class="flex-shrink-0 w-9 h-9 rounded-xl bg-white border border-zinc-200 flex items-center justify-center text-[#6a9438] group-hover:border-[#81b344]/30 group-hover:scale-110 transition-all duration-200">
-                        <i data-lucide={item.icon} class="w-4 h-4"></i>
+                        <span class="w-4 h-4" set:html={icons[item.icon]} />
                       </div>
                       <span class="text-[14px] font-semibold text-zinc-700 leading-snug break-words hyphens-auto min-w-0">
                         {item.label}
@@ -311,7 +350,7 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
             <div class="scroll-animate opacity-0" style="animation-delay: 240ms;">
               <a href="/kontakt" class="inline-flex items-center justify-center gap-2 px-10 py-4 text-[16px] font-bold text-zinc-950 transition-all duration-300 ease-out bg-[#81b344] rounded-xl hover:bg-white hover:-translate-y-1 shadow-md shadow-[#81b344]/20">
                 Chci nezávazně nacenit úklid
-                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                <span class="w-5 h-5" set:html={icons['arrow-right-lg']} />
               </a>
             </div>
           </div>
@@ -323,7 +362,6 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
   </main>
 </Layout>
 
-<script src="https://unpkg.com/lucide@latest" is:inline></script>
 <script is:inline>
   (function () {
     const cores = navigator.hardwareConcurrency || 4;
@@ -335,8 +373,6 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
   })();
 
   document.addEventListener('DOMContentLoaded', () => {
-    lucide.createIcons();
-
     const isLowEnd = document.documentElement.classList.contains('low-end');
 
     function initScrollAnimations(scope) {
@@ -360,6 +396,7 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
       els.forEach(el => observer.observe(el));
     }
 
+    // Init first tab immediately
     const defaultTab = document.getElementById('tab-kancelare');
     if (defaultTab) initScrollAnimations(defaultTab);
 
@@ -370,6 +407,7 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
       btn.addEventListener('click', () => {
         const target = btn.getAttribute('data-tab');
 
+        // Update button styles
         allButtons.forEach(b => {
           const isMobile = b.closest('#tab-switcher-mobile') !== null;
           b.classList.remove('bg-[#81b344]', 'text-white', 'shadow-md', 'shadow-[#81b344]/25');
@@ -389,6 +427,7 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
           btn.classList.remove('text-zinc-500', 'hover:text-zinc-800', 'hover:bg-zinc-50');
         }
 
+        // Sync both desktop/mobile buttons for same tab
         allButtons.forEach(b => {
           if (b !== btn && b.getAttribute('data-tab') === target) {
             b.classList.add('bg-[#81b344]', 'text-white', 'shadow-md', 'shadow-[#81b344]/25');
@@ -401,13 +440,13 @@ const tabData: Record<string, typeof kancelare> = { kancelare, svj, airbnb };
           }
         });
 
+        // Show target tab
         contents.forEach(c => c.classList.add('hidden'));
         const active = document.getElementById('tab-' + target);
         if (!active) return;
-
         active.classList.remove('hidden');
-        lucide.createIcons();
 
+        // Init scroll animations for this tab (only reset if already visited)
         const animEls = active.querySelectorAll('.scroll-animate');
         animEls.forEach(el => {
           el.classList.remove('animate-fade-in-up');
