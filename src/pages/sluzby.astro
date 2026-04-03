@@ -212,7 +212,7 @@ const tabData = { kancelare, svj, airbnb };
                     Chci nezávaznou nabídku
                     <span class="w-4 h-4" set:html={icons['arrow-right']} />
                   </a>
-                  <a href="#features" class="inline-flex items-center justify-center gap-2 px-8 py-4 text-[15px] font-bold text-zinc-700 transition-all duration-300 ease-out bg-white border-2 border-zinc-200 rounded-xl hover:border-zinc-300 hover:bg-zinc-50 hover:-translate-y-1">
+                  <a href={`#features-${id}`} class="inline-flex items-center justify-center gap-2 px-8 py-4 text-[15px] font-bold text-zinc-700 transition-all duration-300 ease-out bg-white border-2 border-zinc-200 rounded-xl hover:border-zinc-300 hover:bg-zinc-50 hover:-translate-y-1">
                     Co zahrnuje služba
                   </a>
                 </div>
@@ -242,7 +242,7 @@ const tabData = { kancelare, svj, airbnb };
         </section>
 
         <!-- 2. FEATURES GRID -->
-        <section id="features" class="py-20 md:py-28 bg-zinc-50">
+        <section id={`features-${id}`} class="py-20 md:py-28 bg-zinc-50">
           <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
             <div class="scroll-animate opacity-0 text-center max-w-2xl mx-auto mb-14">
               <div class="mb-4">
@@ -365,7 +365,7 @@ const tabData = { kancelare, svj, airbnb };
                       </div>
                     </div>
                     <div class="p-7 flex-grow flex flex-col">
-                      <h3 class="text-[20px] font-bold text-zinc-950 tracking-tight leading-snug mb-3">{s.headline.replace('\\n', ' ')}</h3>
+                      <h3 class="text-[20px] font-bold text-zinc-950 tracking-tight leading-snug mb-3">{s.headline.replace(/\n/g, ' ')}</h3>
                       <p class="text-[15px] text-zinc-500 font-medium leading-relaxed mb-5 flex-grow">{s.sub.slice(0, 100)}…</p>
                       <div class="pt-4 border-t border-zinc-100">
                         <span class="inline-flex items-center gap-1.5 font-bold text-[15px] text-[#81b344] group-hover:text-[#6a9438] transition-colors">
@@ -472,7 +472,6 @@ const tabData = { kancelare, svj, airbnb };
     const initialTab = VALID_TABS.includes(hash) ? hash : 'kancelare';
     activateTab(initialTab, false);
 
-    // top tab switcher
     document.querySelectorAll('.tab-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const target = btn.getAttribute('data-tab');
@@ -480,7 +479,6 @@ const tabData = { kancelare, svj, airbnb };
       });
     });
 
-    // bottom service cards
     document.addEventListener('click', (e) => {
       const card = e.target.closest('[data-tab-link]');
       if (!card) return;
