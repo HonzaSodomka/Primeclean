@@ -249,68 +249,81 @@ const trustBadges = [
          5. JAK ZAČÍT
     ═══════════════════════════════════════════ -->
     <section class="py-20 md:py-32 bg-[#81b344] relative overflow-hidden">
-      <div class="hidden md:block pointer-events-none absolute top-0 left-1/3 w-[600px] h-[400px] rounded-full bg-white/10" style="filter: blur(100px);"></div>
-      <div class="hidden md:block pointer-events-none absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-[#4a7a28]/40" style="filter: blur(80px);"></div>
+      <!-- Jemné dekorativní rozmazné kruhy -->
+      <div class="hidden md:block pointer-events-none absolute -top-20 -left-20 w-[500px] h-[500px] rounded-full bg-white/8" style="filter: blur(120px);"></div>
+      <div class="hidden md:block pointer-events-none absolute -bottom-20 -right-20 w-[500px] h-[500px] rounded-full bg-[#4a7a28]/50" style="filter: blur(100px);"></div>
 
       <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
 
         <!-- Header -->
         <div class="scroll-animate opacity-0 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14 md:mb-16">
           <div>
-            <div class="mb-4">
-              <span class="text-[13px] font-bold text-white/70 tracking-[0.2em] uppercase">Jak začít</span>
+            <div class="mb-3">
+              <span class="inline-flex items-center gap-1.5 text-[12px] font-black text-white/60 tracking-[0.25em] uppercase">
+                <span class="w-4 h-px bg-white/40"></span>
+                Jak začít
+              </span>
             </div>
             <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-extrabold text-white tracking-tighter leading-[1.05]">
               Přístup do aplikace<br />za pár minut.
             </h2>
           </div>
-          <p class="lg:max-w-[340px] text-[16px] text-white/80 font-medium leading-relaxed lg:text-right lg:pb-1">
-            Žádné stahování, žádná instalace. Přihlásíte se z prohlížeče a máte okamžitý přehled.
+          <p class="lg:max-w-[320px] text-[15px] text-white/70 font-medium leading-relaxed lg:text-right lg:pb-1">
+            Žádné stahování, žádná instalace.<br class="hidden lg:block" /> Přihlásíte se z prohlížeče a máte okamžitý přehled.
           </p>
         </div>
 
-        <!-- 4 karty kroků -->
+        <!-- 4 karty kroků — všechny bílé, karta 04 má zelený accent -->
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 mb-12 md:mb-14">
           {[
-            { step: "01", title: "Poptáváte nás",       desc: "Zavolejte nebo vyplňte formulář. Probereme vaše potřeby a navrhneme plán.", delay: 0 },
-            { step: "02", title: "Podpis smlouvy",       desc: "Domluvíme rozsah, frekvenci a podmínky. Vše jasné a přehledné.", delay: 80 },
-            { step: "03", title: "Dostanete přístupy",   desc: "Zašleme vám přihlašovací údaje do klientské aplikace ihned po startu.", delay: 160 },
+            { step: "01", title: "Poptáváte nás",       desc: "Zavolejte nebo vyplňte formulář. Probereme vaše potřeby a navrhneme plán.",                         delay: 0 },
+            { step: "02", title: "Podpis smlouvy",       desc: "Domluvíme rozsah, frekvenci a podmínky. Vše jasné a přehledné.",                              delay: 80 },
+            { step: "03", title: "Dostanete přístupy",   desc: "Zašleme vám přihlašovací údaje do klientské aplikace ihned po startu.",                     delay: 160 },
             { step: "04", title: "Plný přehled",         desc: "Od prvního úklidu vidíte vše online — fotky, stav, faktury, historii.", highlight: true, delay: 240 },
           ].map(({ step, title, desc, highlight, delay }) => (
             <div
-              class={`scroll-animate opacity-0 relative flex flex-col p-7 md:p-8 rounded-2xl border overflow-hidden ${
-                highlight
-                  ? 'bg-white border-white shadow-lg'
-                  : 'bg-zinc-900 border-zinc-800'
-              }`}
+              class="scroll-animate opacity-0 relative flex flex-col p-7 md:p-8 rounded-2xl bg-white overflow-hidden shadow-md"
               style={`animation-delay: ${delay}ms`}
             >
-              <!-- Dekorativní číslo v pozadí -->
-              <span class={`absolute -bottom-3 -right-1 text-[5.5rem] font-black leading-none select-none pointer-events-none tabular-nums ${
-                highlight ? 'text-[#81b344]/15' : 'text-white/5'
+              <!-- Dekorativní velké číslo v pozadí -->
+              <span class={`absolute -bottom-4 -right-1 text-[6rem] font-black leading-none select-none pointer-events-none tabular-nums ${
+                highlight ? 'text-[#81b344]/12' : 'text-zinc-900/5'
               }`}>
                 {step}
               </span>
-              <span class={`text-[12px] font-black tracking-[0.2em] uppercase mb-5 ${
-                highlight ? 'text-[#81b344]/70' : 'text-zinc-500'
-              }`}>{step}</span>
-              <h3 class={`text-[18px] font-extrabold tracking-tight leading-snug mb-3 ${
-                highlight ? 'text-zinc-900' : 'text-white'
+
+              <!-- Krok label -->
+              <div class="flex items-center gap-2 mb-5">
+                <span class={`w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-black ${
+                  highlight
+                    ? 'bg-[#81b344] text-white'
+                    : 'bg-zinc-100 text-zinc-500'
+                }`}>{step}</span>
+                {highlight && (
+                  <span class="text-[11px] font-bold text-[#6a9438] tracking-[0.12em] uppercase">Hotovo ✔</span>
+                )}
+              </div>
+
+              <h3 class={`text-[17px] font-extrabold tracking-tight leading-snug mb-2.5 ${
+                highlight ? 'text-[#3d6b1a]' : 'text-zinc-900'
               }`}>{title}</h3>
-              <p class={`text-[14px] font-medium leading-relaxed ${
-                highlight ? 'text-zinc-500' : 'text-zinc-400'
-              }`}>{desc}</p>
+              <p class="text-[13.5px] font-medium leading-relaxed text-zinc-500">{desc}</p>
+
+              <!-- Zelená spodní čára u highlighted -->
+              {highlight && (
+                <div class="absolute bottom-0 left-0 right-0 h-1 bg-[#81b344] rounded-b-2xl"></div>
+              )}
             </div>
           ))}
         </div>
 
         <!-- CTA -->
         <div class="scroll-animate opacity-0 flex flex-col sm:flex-row items-center gap-4 sm:gap-6" style="animation-delay: 320ms;">
-          <a href="/kontakt" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 text-[16px] font-bold text-[#4a7a28] transition-all duration-300 ease-out bg-white rounded-xl hover:bg-zinc-50 hover:-translate-y-1 shadow-md shadow-black/10">
+          <a href="/kontakt" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 text-[15px] font-bold text-[#3d6b1a] transition-all duration-300 ease-out bg-white rounded-xl hover:bg-zinc-50 hover:-translate-y-1 shadow-lg shadow-black/10">
             Chci nezávaznou nabídku
             <span class="w-5 h-5" set:html={arrowRightLg} />
           </a>
-          <p class="text-[13px] text-white/70 font-medium">Aplikace je součástí každé spolupráce. Přístupy dostanete automaticky.</p>
+          <p class="text-[13px] text-white/65 font-medium">Aplikace je součástí každé spolupráce. Přístupy dostanete automaticky.</p>
         </div>
 
       </div>
