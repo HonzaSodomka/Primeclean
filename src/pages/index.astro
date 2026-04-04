@@ -207,14 +207,14 @@ const faqItems = [
     </section>
 
     <!-- 1b. TRUST BADGE BAR -->
-    <!-- FIX #4: grid-cols-2 na mobilu místo chaotického flex-wrap -->
+    <!-- FIX #3: odstraněno whitespace-nowrap, přidáno text-[13px] na mobilu -->
     <section class="bg-white border-y border-zinc-100 py-5">
       <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
         <div class="grid grid-cols-2 md:flex md:flex-wrap items-center justify-center gap-x-8 gap-y-4 md:gap-x-12">
           {trustBadges.map(badge => (
             <div class="flex items-center gap-2.5 text-zinc-600 justify-center md:justify-start">
               <span class="text-[#81b344] flex-shrink-0" set:html={trustIcons[badge.icon]} />
-              <span class="text-[14px] font-semibold whitespace-nowrap">{badge.label}</span>
+              <span class="text-[13px] md:text-[14px] font-semibold leading-snug">{badge.label}</span>
             </div>
           ))}
         </div>
@@ -490,12 +490,8 @@ const faqItems = [
               { step: "2", title: "Prohlídka\na nacenění",  desc: "Přijedeme na místo, zhodnotíme stav a navrhneme přesný plán úklidu i kalkulaci.", delay: 150 },
               { step: "3", title: "Nastavení\naplikace",   desc: "Předáme přístupy do aplikace, zadáme rozsah prací, termíny a kontaktní osoby.",  delay: 300 },
             ].map(({ step, title, desc, delay }) => (
-              /* FIX #6: relativní wrapper pro mobilní vertikální linku */
-              <div class="flex flex-col items-center text-center scroll-animate opacity-0 relative" style={`animation-delay: ${delay}ms`}>
-                {/* Vertikální linka pod krokem — jen na mobilu/tabletu (skrytá na lg) */}
-                <div class="lg:hidden absolute top-[80px] left-1/2 -translate-x-1/2 w-[2px] h-[calc(100%-80px)] z-0"
-                  style="background-image: repeating-linear-gradient(180deg, #d4e8b8 0, #d4e8b8 10px, transparent 10px, transparent 22px);">
-                </div>
+              /* FIX procesní linka: odstraněna lg:hidden vertikální linka */
+              <div class="flex flex-col items-center text-center scroll-animate opacity-0" style={`animation-delay: ${delay}ms`}>
                 <div class="w-20 h-20 rounded-full bg-white border-2 border-zinc-200 shadow-sm flex items-center justify-center text-[24px] font-extrabold text-zinc-400 mb-6 relative z-10">
                   {step}
                 </div>
@@ -516,7 +512,7 @@ const faqItems = [
     </section>
 
     <!-- 7. SEKCE: FAQ -->
-    <!-- FIX #2: smooth animace přes CSS na details>div -->
+    <!-- FIX FAQ: JS toggle s max-height transition místo native <details> -->
     <section class="py-20 md:py-32 bg-white relative overflow-hidden">
       <div class="max-w-[860px] mx-auto px-5 md:px-8 lg:px-12">
         <div class="scroll-animate opacity-0 text-center mb-16">
@@ -527,22 +523,25 @@ const faqItems = [
             Máte <span class="text-[#6a9438]">otázky?</span>
           </h2>
         </div>
-        <div class="flex flex-col gap-4">
+        <div class="flex flex-col gap-4" id="faq-list">
           {faqItems.map((item, i) => (
-            <details
-              class="scroll-animate opacity-0 group bg-zinc-50 border border-zinc-200 open:border-[#81b344]/40 open:bg-white rounded-2xl transition-colors duration-200"
+            <div
+              class="faq-item scroll-animate opacity-0 bg-zinc-50 border border-zinc-200 rounded-2xl transition-colors duration-200 overflow-hidden"
               style={`animation-delay: ${i * 80}ms`}
             >
-              <summary class="flex items-center justify-between gap-4 px-7 py-5 cursor-pointer list-none select-none">
+              <button
+                class="faq-trigger w-full flex items-center justify-between gap-4 px-7 py-5 text-left cursor-pointer select-none"
+                aria-expanded="false"
+              >
                 <span class="text-[16px] md:text-[17px] font-bold text-zinc-900">{item.q}</span>
-                <span class="flex-shrink-0 w-8 h-8 rounded-full bg-zinc-200 group-open:bg-zinc-100 transition-colors duration-200 flex items-center justify-center border border-transparent group-open:border-[#81b344]/30">
-                  <svg class="w-4 h-4 text-zinc-600 group-open:text-[#81b344] transition-all duration-200 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg>
+                <span class="faq-icon flex-shrink-0 w-8 h-8 rounded-full bg-zinc-200 transition-colors duration-200 flex items-center justify-center border border-transparent">
+                  <svg class="faq-chevron w-4 h-4 text-zinc-600 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg>
                 </span>
-              </summary>
-              <div class="faq-body px-7 pb-6 pt-1 overflow-hidden">
-                <p class="text-[15px] text-zinc-600 font-medium leading-relaxed">{item.a}</p>
+              </button>
+              <div class="faq-body max-h-0 overflow-hidden transition-[max-height] duration-300 ease-in-out">
+                <p class="text-[15px] text-zinc-600 font-medium leading-relaxed px-7 pb-6 pt-1">{item.a}</p>
               </div>
-            </details>
+            </div>
           ))}
         </div>
       </div>
@@ -629,6 +628,60 @@ const faqItems = [
       }, { root: null, threshold: 0, rootMargin: '0px 0px -10% 0px' });
       scrollAnimateEls.forEach(el => observer.observe(el));
     }
+
+    // ─── FAQ JS toggle s max-height transition ───────────────────────────────
+    document.querySelectorAll('.faq-item').forEach(item => {
+      const trigger = item.querySelector('.faq-trigger');
+      const body = item.querySelector('.faq-body');
+      const icon = item.querySelector('.faq-icon');
+      const chevron = item.querySelector('.faq-chevron');
+
+      if (!trigger || !body) return;
+
+      trigger.addEventListener('click', () => {
+        const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+
+        if (isOpen) {
+          // Zavřít
+          body.style.maxHeight = body.scrollHeight + 'px';
+          requestAnimationFrame(() => {
+            body.style.maxHeight = '0px';
+          });
+          trigger.setAttribute('aria-expanded', 'false');
+          item.classList.remove('border-[#81b344]/40', 'bg-white');
+          item.classList.add('bg-zinc-50', 'border-zinc-200');
+          if (icon) {
+            icon.classList.remove('bg-zinc-100', 'border-[#81b344]/30');
+            icon.classList.add('bg-zinc-200');
+          }
+          if (chevron) {
+            chevron.classList.remove('text-[#81b344]', 'rotate-45');
+            chevron.classList.add('text-zinc-600');
+          }
+        } else {
+          // Otevřít
+          body.style.maxHeight = body.scrollHeight + 'px';
+          trigger.setAttribute('aria-expanded', 'true');
+          item.classList.add('border-[#81b344]/40', 'bg-white');
+          item.classList.remove('bg-zinc-50', 'border-zinc-200');
+          if (icon) {
+            icon.classList.add('bg-zinc-100', 'border-[#81b344]/30');
+            icon.classList.remove('bg-zinc-200');
+          }
+          if (chevron) {
+            chevron.classList.add('text-[#81b344]', 'rotate-45');
+            chevron.classList.remove('text-zinc-600');
+          }
+        }
+      });
+
+      // Po skončení transition při zavírání nastav maxHeight na '' aby bylo přirozeně auto
+      body.addEventListener('transitionend', () => {
+        if (trigger.getAttribute('aria-expanded') === 'true') {
+          body.style.maxHeight = 'none';
+        }
+      });
+    });
 
     // ─── Count-up animace ────────────────────────────────────────────────────
     const statsSection = document.querySelector('.count-up-container');
@@ -740,13 +793,9 @@ const faqItems = [
     animation-fill-mode: both;
   }
 
-  /* FIX #3 (FAQ): smooth slide-down animace pro obsah details */
-  details .faq-body {
-    animation: faqSlideDown 0.25s cubic-bezier(0.25, 1, 0.4, 1) both;
-  }
-  @keyframes faqSlideDown {
-    from { opacity: 0; transform: translateY(-6px); }
-    to   { opacity: 1; transform: translateY(0); }
+  /* FAQ max-height transition */
+  .faq-body {
+    transition: max-height 0.3s cubic-bezier(0.25, 1, 0.4, 1);
   }
 
   details summary::-webkit-details-marker { display: none; }
@@ -757,7 +806,7 @@ const faqItems = [
       transform: none !important; transition: none !important;
     }
     .animate-pulse { animation: none !important; }
-    details .faq-body { animation: none !important; }
+    .faq-body { transition: none !important; }
   }
 
   .low-end .animate-fade-in-up,
@@ -767,5 +816,5 @@ const faqItems = [
   }
   .low-end .animate-pulse { animation: none !important; }
   .low-end img { transition: none !important; }
-  .low-end details .faq-body { animation: none !important; }
+  .low-end .faq-body { transition: none !important; }
 </style>
