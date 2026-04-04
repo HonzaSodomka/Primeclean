@@ -1,0 +1,501 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const trustPoints = [
+  'Odpovíme do 1 pracovního dne',
+  'Nezávazná prohlídka objektu zdarma',
+  'Nabídka na míru bez skrytých poplatků',
+];
+
+const contactItems = [
+  { label: 'Telefon',          value: '+420 773 102 770', href: 'tel:+420773102770',        icon: 'phone'    },
+  { label: 'E-mail',           value: 'info@primeclean.cz', href: 'mailto:info@primeclean.cz', icon: 'mail'  },
+  { label: 'Pracovní doba',    value: 'Po–Pá, 8:00–17:00',  href: null,                      icon: 'clock'   },
+  { label: 'Oblast působení',  value: 'Brno a okolí',        href: null,                      icon: 'map-pin' },
+];
+
+const services = [
+  { value: 'kancelare', label: 'Kanceláře a firmy'    },
+  { value: 'svj',       label: 'SVJ a bytové domy'    },
+  { value: 'airbnb',    label: 'Airbnb a apartmány'   },
+  { value: 'jine',      label: 'Jiné / Nevím ještě'   },
+];
+
+const sidebarPerks = [
+  { title: 'Odpověď do 24 hodin',         desc: 'Ozveme se s konkrétním návrhem, ne obecnou nabídkou.' },
+  { title: 'Prohlídka objektu zdarma',    desc: 'Přijedeme na místo a připravíme nacenění na míru.'    },
+  { title: 'Jasná smlouva bez překvapení', desc: 'Rozsah, cena i podmínky — vše domluvené předem.'     },
+];
+
+const trustBadges = [
+  { label: 'Pojištění 5 mil. Kč',    icon: 'shield-check' },
+  { label: 'Prověřený personál',     icon: 'user-check'   },
+  { label: 'Fotoreport po úklidu',   icon: 'camera'       },
+  { label: 'Pravidelný harmonogram', icon: 'clock'        },
+];
+---
+
+<Layout title="Kontakt | PrimeClean">
+  <main class="bg-white selection:bg-[#81b344]/30 selection:text-zinc-900">
+
+    <!-- ─── HERO ───────────────────────────────────────────────────────── -->
+    <section class="relative pt-28 pb-20 md:pt-36 md:pb-28 lg:pt-44 lg:pb-36 overflow-hidden bg-zinc-50">
+      <!-- ambient blobs -->
+      <div class="hidden md:block pointer-events-none absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full bg-[#81b344]/5 blur-[80px]"></div>
+      <div class="hidden md:block pointer-events-none absolute -bottom-20 -left-20 w-[400px] h-[400px] rounded-full bg-[#81b344]/4 blur-[60px]"></div>
+
+      <div class="relative z-10 max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12 text-center">
+
+        <!-- pill badge -->
+        <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-white border border-zinc-200 shadow-sm mb-6 md:mb-8 opacity-0 animate-fade-in-up" style="animation-delay:0ms">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#81b344] animate-pulse flex-shrink-0"></span>
+          <span class="text-[11px] sm:text-xs font-bold text-zinc-600 tracking-[0.15em] uppercase">Nezávazná poptávka</span>
+        </div>
+
+        <h1 class="text-[2.75rem] sm:text-[3.75rem] md:text-6xl lg:text-[6rem] font-extrabold text-zinc-950 tracking-tighter leading-[1.05] md:leading-[0.95] mb-6 opacity-0 animate-fade-in-up" style="animation-delay:150ms">
+          Pojďme to <br class="hidden sm:block" />
+          <span class="text-[#6a9438]">probrat osobně.</span>
+        </h1>
+
+        <p class="text-base sm:text-lg md:text-[19px] lg:text-[21px] text-zinc-600 max-w-[95%] md:max-w-xl lg:max-w-2xl mx-auto leading-relaxed font-medium mb-10 opacity-0 animate-fade-in-up" style="animation-delay:300ms">
+          Popište nám váš objekt a my se ozveme do jednoho pracovního dne s konkrétní nabídkou.
+        </p>
+
+        <!-- trust row -->
+        <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 opacity-0 animate-fade-in-up" style="animation-delay:450ms">
+          {trustPoints.map(point => (
+            <div class="flex items-center gap-2 text-zinc-500 text-[13.5px] font-semibold">
+              <span class="flex-shrink-0 w-4 h-4 rounded-full bg-[#81b344] flex items-center justify-center text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </span>
+              {point}
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── CONTACT INFO BAR ─────────────────────────────────────────────── -->
+    <section class="bg-white border-y border-zinc-100 py-4 sm:py-5">
+      <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:flex md:flex-wrap items-center justify-center gap-y-3 sm:gap-y-4 gap-x-8 md:gap-x-12">
+          {contactItems.map(item => (
+            <div class="flex items-center gap-2.5 text-zinc-600 justify-center md:justify-start">
+
+              <!-- icon resolved in template -->
+              <span class="text-[#81b344] flex-shrink-0" aria-hidden="true">
+                {item.icon === 'phone' && (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.56 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                  </svg>
+                )}
+                {item.icon === 'mail' && (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="20" height="16" x="2" y="4" rx="2"/>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                  </svg>
+                )}
+                {item.icon === 'clock' && (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
+                  </svg>
+                )}
+                {item.icon === 'map-pin' && (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
+                )}
+              </span>
+
+              <div>
+                <span class="text-[12px] font-bold text-zinc-400 uppercase tracking-[0.08em] block leading-none mb-0.5">{item.label}</span>
+                {item.href ? (
+                  <a href={item.href} class="text-[14px] font-semibold text-zinc-700 hover:text-[#81b344] transition-colors whitespace-nowrap">
+                    {item.value}
+                  </a>
+                ) : (
+                  <span class="text-[14px] font-semibold whitespace-nowrap">{item.value}</span>
+                )}
+              </div>
+
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── FORM + SIDEBAR ──────────────────────────────────────────────── -->
+    <section class="py-20 md:py-32 bg-white">
+      <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
+        <div class="grid lg:grid-cols-[1fr_400px] gap-10 xl:gap-16 items-start">
+
+          <!-- ══ FORM ══════════════════════════════════════════════════════ -->
+          <div class="scroll-animate opacity-0">
+
+            <div class="mb-10">
+              <p class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-4">Kontaktní formulář</p>
+              <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-4">
+                Napište nám.<br /><span class="text-[#6a9438]">Ozveme se brzy.</span>
+              </h2>
+              <p class="text-lg text-zinc-600 font-medium leading-relaxed max-w-xl">
+                Vyplňte formulář a dostanete konkrétní nabídku na míru. Bez závazků, bez skrytých poplatků.
+              </p>
+            </div>
+
+            <form id="contact-form" novalidate class="flex flex-col gap-6">
+
+              <!-- Jméno + Firma -->
+              <div class="grid sm:grid-cols-2 gap-6">
+                <div class="flex flex-col gap-2">
+                  <label for="name" class="field-label">
+                    Jméno a příjmení <span class="text-[#81b344]" aria-hidden="true">*</span>
+                  </label>
+                  <input type="text" id="name" name="name" placeholder="Tomáš Novák" required class="field-input" autocomplete="name" />
+                </div>
+                <div class="flex flex-col gap-2">
+                  <label for="company" class="field-label">Firma / Organizace</label>
+                  <input type="text" id="company" name="company" placeholder="Např. SVJ Mánesova 12" class="field-input" autocomplete="organization" />
+                </div>
+              </div>
+
+              <!-- E-mail + Telefon -->
+              <div class="grid sm:grid-cols-2 gap-6">
+                <div class="flex flex-col gap-2">
+                  <label for="email" class="field-label">
+                    E-mail <span class="text-[#81b344]" aria-hidden="true">*</span>
+                  </label>
+                  <input type="email" id="email" name="email" placeholder="vas@email.cz" required class="field-input" autocomplete="email" />
+                </div>
+                <div class="flex flex-col gap-2">
+                  <label for="phone" class="field-label">
+                    Telefon <span class="text-[#81b344]" aria-hidden="true">*</span>
+                  </label>
+                  <input type="tel" id="phone" name="phone" placeholder="+420 777 123 456" required class="field-input" autocomplete="tel" />
+                </div>
+              </div>
+
+              <!-- Typ služby -->
+              <div class="flex flex-col gap-2">
+                <label for="service" class="field-label">
+                  Typ služby <span class="text-[#81b344]" aria-hidden="true">*</span>
+                </label>
+                <div class="relative">
+                  <select id="service" name="service" required class="field-input w-full appearance-none cursor-pointer">
+                    <option value="" disabled selected>Vyberte typ služby</option>
+                    {services.map(s => (
+                      <option value={s.value}>{s.label}</option>
+                    ))}
+                  </select>
+                  <!-- chevron -->
+                  <span class="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 text-zinc-400" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="m6 9 6 6 6-6"/>
+                    </svg>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Zpráva -->
+              <div class="flex flex-col gap-2">
+                <label for="message" class="field-label">Popis objektu / Zpráva</label>
+                <textarea
+                  id="message" name="message" rows="4"
+                  placeholder="Popište nám váš objekt — např. bytový dům, 24 bytů, úklid 2× týdně, Brno-Královo Pole…"
+                  class="field-input resize-none"
+                ></textarea>
+              </div>
+
+              <!-- Submit -->
+              <div class="flex flex-col sm:flex-row sm:items-center gap-4 pt-2">
+                <button
+                  type="submit"
+                  id="submit-btn"
+                  class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-10 py-4 text-[16px] font-bold text-white bg-[#81b344] rounded-xl hover:bg-[#729f3c] hover:-translate-y-1 shadow-md shadow-[#81b344]/20 transition-all duration-300 ease-out disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0"
+                >
+                  <span id="btn-text">Odeslat poptávku</span>
+                  <svg id="btn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+                  </svg>
+                  <svg id="btn-spinner" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="hidden animate-spin" aria-hidden="true">
+                    <path d="M21 12a9 9 0 1 1-6.219-8.56"/>
+                  </svg>
+                </button>
+                <p class="text-[12.5px] text-zinc-400 font-medium leading-relaxed">
+                  Odesláním souhlasíte se zpracováním<br class="hidden sm:block" /> osobních údajů za účelem odpovědi.
+                </p>
+              </div>
+
+            </form>
+
+            <!-- ── ÚSPĚŠNÝ STAV ── -->
+            <div id="form-success" class="hidden">
+              <div class="flex flex-col items-center text-center py-16 gap-6">
+                <div class="w-20 h-20 rounded-full bg-[#81b344]/10 border border-[#81b344]/20 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#81b344" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-[24px] font-extrabold text-zinc-950 tracking-tight mb-2">Odesláno, díky!</p>
+                  <p class="text-[16px] text-zinc-500 font-medium">Ozveme se vám do jednoho pracovního dne.</p>
+                </div>
+                <a href="/" class="inline-flex items-center gap-2 px-8 py-3.5 text-[15px] font-bold text-zinc-700 bg-white border-2 border-zinc-200 rounded-xl hover:border-zinc-300 hover:bg-zinc-50 hover:-translate-y-1 transition-all duration-300 ease-out">
+                  Zpět na hlavní stránku
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- ══ SIDEBAR ══════════════════════════════════════════════════ -->
+          <aside class="flex flex-col gap-6 lg:sticky lg:top-28">
+
+            <!-- Zakladatel karta -->
+            <div class="scroll-animate opacity-0 bg-zinc-950 text-white rounded-[2rem] p-8 border border-zinc-800" style="animation-delay:150ms">
+              <div class="flex items-center gap-4 mb-6">
+                <div class="relative flex-shrink-0 w-14 h-14 rounded-full overflow-hidden border-2 border-[#81b344]/30 bg-zinc-800">
+                  <img
+                    src="/tomas-kytka.jpg"
+                    alt="Tomáš Kytka, zakladatel PrimeClean"
+                    width="56" height="56"
+                    class="w-full h-full object-cover object-top"
+                    loading="lazy" decoding="async"
+                  />
+                </div>
+                <div>
+                  <p class="text-[16px] font-extrabold text-white leading-tight">Tomáš Kytka</p>
+                  <p class="text-[12px] font-bold text-zinc-400 uppercase tracking-[0.08em] mt-0.5">Zakladatel PrimeClean</p>
+                </div>
+              </div>
+              <p class="text-[15px] text-zinc-400 font-medium leading-relaxed mb-6">
+                „Rád se s vámi sejdu osobně a probereme potřeby přímo na místě. Bez závazků, bez zbytečného papírování."
+              </p>
+              <div class="flex items-center gap-2.5 pt-6 border-t border-zinc-800">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#81b344] animate-pulse flex-shrink-0"></span>
+                <span class="text-[13px] font-semibold text-zinc-400">
+                  Průměrná odpověď do <span class="text-[#81b344] font-bold">4 hodin</span>
+                </span>
+              </div>
+            </div>
+
+            <!-- Co vás čeká -->
+            <div class="scroll-animate opacity-0" style="animation-delay:250ms">
+              <div class="bg-zinc-50 rounded-[2rem] p-8 border border-zinc-100">
+                <p class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-6">Co vás čeká</p>
+                <ul class="flex flex-col gap-5" role="list">
+                  {sidebarPerks.map(item => (
+                    <li class="flex gap-4">
+                      <span class="flex-shrink-0 mt-0.5 w-6 h-6 rounded-full bg-[#81b344] flex items-center justify-center text-zinc-950" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                          <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                      </span>
+                      <div>
+                        <p class="text-[15px] font-bold text-zinc-950 tracking-tight leading-snug mb-1">{item.title}</p>
+                        <p class="text-[13.5px] font-medium text-zinc-500 leading-relaxed">{item.desc}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <!-- Trust badges -->
+            <div class="scroll-animate opacity-0 grid grid-cols-2 gap-3" style="animation-delay:350ms">
+              {trustBadges.map(badge => (
+                <div class="flex flex-col items-start gap-3 p-5 bg-zinc-50 rounded-2xl border border-zinc-100 hover:border-[#81b344]/20 hover:bg-white hover:shadow-sm transition-all duration-200">
+                  <span class="text-[#81b344]" aria-hidden="true">
+                    {badge.icon === 'shield-check' && (
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        <path d="m9 12 2 2 4-4"/>
+                      </svg>
+                    )}
+                    {badge.icon === 'user-check' && (
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <polyline points="16 11 18 13 22 9"/>
+                      </svg>
+                    )}
+                    {badge.icon === 'camera' && (
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/>
+                        <circle cx="12" cy="13" r="3"/>
+                      </svg>
+                    )}
+                    {badge.icon === 'clock' && (
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                      </svg>
+                    )}
+                  </span>
+                  <span class="text-[13.5px] font-bold text-zinc-800 leading-snug">{badge.label}</span>
+                </div>
+              ))}
+            </div>
+
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+</Layout>
+
+<script>
+  // ── Low-end device detection ───────────────────────────────────────────
+  (function () {
+    const lowEnd =
+      (navigator.hardwareConcurrency ?? 4) <= 2 ||
+      (navigator.deviceMemory ?? 4) <= 2 ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (lowEnd) document.documentElement.classList.add('low-end');
+  })();
+
+  // ── Scroll-reveal ──────────────────────────────────────────────────────
+  document.addEventListener('DOMContentLoaded', () => {
+    const isLowEnd = document.documentElement.classList.contains('low-end');
+
+    if (isLowEnd) {
+      document.querySelectorAll<HTMLElement>('.opacity-0').forEach(el => {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+        el.style.animation = 'none';
+        el.classList.remove('opacity-0');
+      });
+    } else {
+      const observer = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('animate-fade-in-up');
+            entry.target.classList.remove('opacity-0');
+            observer.unobserve(entry.target);
+          });
+        },
+        { threshold: 0, rootMargin: '0px 0px -10% 0px' },
+      );
+      document.querySelectorAll('.scroll-animate').forEach(el => observer.observe(el));
+    }
+
+    // ── Contact form ───────────────────────────────────────────────────
+    const form      = document.getElementById('contact-form')      as HTMLFormElement | null;
+    const success   = document.getElementById('form-success')      as HTMLElement | null;
+    const submitBtn = document.getElementById('submit-btn')        as HTMLButtonElement | null;
+    const btnText   = document.getElementById('btn-text')          as HTMLElement | null;
+    const btnIcon   = document.getElementById('btn-icon')          as HTMLElement | null;
+    const btnSpinner = document.getElementById('btn-spinner')      as HTMLElement | null;
+
+    if (!form || !success || !submitBtn || !btnText) return;
+
+    // Reset error state on input
+    form.querySelectorAll<HTMLElement>('input, select, textarea').forEach(field => {
+      field.addEventListener('input', () => field.classList.remove('field-error'));
+    });
+
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+
+      // Validation
+      let valid = true;
+      form.querySelectorAll<HTMLElement>('[required]').forEach(field => {
+        field.classList.remove('field-error');
+        const el = field as HTMLInputElement | HTMLSelectElement;
+        const empty = !el.value.trim() || (el.tagName === 'SELECT' && el.value === '');
+        if (empty) {
+          field.classList.add('field-error');
+          valid = false;
+        }
+      });
+      if (!valid) return;
+
+      // Loading state
+      submitBtn.disabled = true;
+      btnText.textContent = 'Odesílám…';
+      btnIcon?.classList.add('hidden');
+      btnSpinner?.classList.remove('hidden');
+
+      // TODO: replace with your actual fetch() to backend / Formspree / Netlify
+      await new Promise(resolve => setTimeout(resolve, 900));
+
+      // Success state
+      form.classList.add('hidden');
+      success.classList.remove('hidden');
+    });
+  });
+</script>
+
+<style>
+  /* ── Animations ─────────────────────────────────────────────────── */
+  @keyframes softFadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-fade-in-up {
+    animation: softFadeUp 0.9s cubic-bezier(0.25, 1, 0.4, 1) both;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  .animate-spin { animation: spin 0.8s linear infinite; }
+
+  /* ── Field shared styles ─────────────────────────────────────────── */
+  .field-label {
+    @apply text-[13px] font-bold text-zinc-700 tracking-[0.08em] uppercase;
+  }
+
+  .field-input {
+    @apply w-full px-5 py-4 rounded-2xl border border-zinc-200 bg-zinc-50
+           text-[15px] font-medium text-zinc-900 placeholder:text-zinc-400
+           outline-none transition-all duration-200
+           focus:bg-white focus:border-[#81b344] focus:ring-4 focus:ring-[#81b344]/10;
+  }
+
+  .field-error {
+    @apply border-red-400 ring-4 ring-red-400/10 bg-red-50;
+  }
+
+  /* ── Reduced motion ─────────────────────────────────────────────── */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-fade-in-up,
+    .scroll-animate {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+    .animate-pulse,
+    .animate-spin {
+      animation: none !important;
+    }
+  }
+
+  /* ── Low-end overrides ──────────────────────────────────────────── */
+  .low-end .animate-fade-in-up,
+  .low-end .scroll-animate {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .low-end .animate-pulse,
+  .low-end .animate-spin {
+    animation: none !important;
+  }
+  .low-end img {
+    transition: none !important;
+  }
+</style>
