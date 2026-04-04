@@ -1,0 +1,420 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const arrowRight = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
+const arrowRightLg = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
+const checkIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+const checkLg = '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+
+const icons: Record<string, string> = {
+  'calendar-clock': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 7.5V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h3.5"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h5"/><path d="M17.5 17.5 16 16.3V14"/><circle cx="16" cy="16" r="6"/></svg>',
+  'list-checks': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/></svg>',
+  'receipt': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M14 8H8"/><path d="M16 12H8"/><path d="M13 16H8"/></svg>',
+  'camera': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>',
+  'layout-dashboard': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>',
+  'key-round': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 18v3c0 .6.4 1 1 1h4v-3h3v-3h2l1.4-1.4a6.5 6.5 0 1 0-4-4Z"/><circle cx="16.5" cy="7.5" r=".5" fill="currentColor"/></svg>',
+  'file-text': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>',
+  'alert-circle': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>',
+  'bell': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>',
+  'smartphone': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>',
+  'building-2': '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>',
+  'users': '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+  'shield': '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>',
+  'clock': '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
+};
+
+// Hlavní 5 funkčních bloků
+const featureBlocks = [
+  {
+    id: 'rezervace',
+    tag: 'Správa a rezervace',
+    headline: 'Objednat úklid?\nPár kliknutí.',
+    sub: 'Vytvořte požadavek na úklid pro konkrétní objekt s preferovaným datem, časem a vlastním popisem. Všechny nadcházející i proběhlé úklidy máte přehledně na jednom místě.',
+    icon: 'calendar-clock',
+    darkBg: false,
+    items: [
+      { icon: 'calendar-clock', title: 'Jednoduché objednání', desc: 'Nový požadavek na úklid pro konkrétní objekt — vyberete datum, čas a přidáte vlastní popis. Žádné telefonáty.' },
+      { icon: 'list-checks', title: 'Přehled termínů', desc: 'Vidíte seznam nadcházejících úklidů a jejich aktuální stav — např. „Probíhá" nebo „Dokončeno".' },
+      { icon: 'file-text', title: 'Historie služeb', desc: 'Kompletní archiv všech proběhlých úklidů filtrovatelný podle měsíců. Vždy přehled zpětně i dopředu.' },
+    ],
+  },
+  {
+    id: 'zakazy',
+    tag: 'Detailní zakázky',
+    headline: 'Pracovníci vědí přesně,\nco a jak.',
+    sub: 'Vložte instrukce pro personál, bezpečně sdílejte přístupové kódy a sledujte, jaké konkrétní práce byly při každém úklidu provedeny. Žádné dohady, jen jasná fakta.',
+    icon: 'list-checks',
+    darkBg: true,
+    items: [
+      { icon: 'key-round', title: 'Instrukce a přístup', desc: 'Přesné instrukce pro personál (patro, poloha bytu) a bezpečné sdílení přístupových údajů — kódy k zámkům, umístění klíčů.' },
+      { icon: 'list-checks', title: 'Checklist úkolů', desc: 'Transparentní přehled provedených prací: vysávání, utírání prachu, výměna prádla, doplnění hygienických potřeb a další.' },
+      { icon: 'alert-circle', title: 'Speciální požadavky', desc: 'Přidejte poznámku s extra úkoly pro konkrétní návštěvu — kontrola žárovek, zalití květin, cokoliv navíc.' },
+    ],
+  },
+  {
+    id: 'finance',
+    tag: 'Finance a administrativa',
+    headline: 'Faktury, vyúčtování\na vše v pořádku.',
+    sub: 'Detailní rozpis ceny za každou zakázku, přístup ke všem fakturám a daňovým dokladům. Přepínání mezi soukromým a firemním profilem jedním kliknutím.',
+    icon: 'receipt',
+    darkBg: false,
+    items: [
+      { icon: 'receipt', title: 'Detailní vyúčtování', desc: 'Rozpis ceny za úklid, použitý materiál i případné vícepráce. Víte za co přesně platíte.' },
+      { icon: 'file-text', title: 'Správa faktur', desc: 'Samostatná sekce pro přístup ke všem fakturám a daňovým dokladům. Kdykoliv, z mobilu i počítače.' },
+      { icon: 'list-checks', title: 'Odpis materiálu', desc: 'Přehled o spotřebovaném zboží (toaletní papír, prostředky) s množstvím a cenou.' },
+      { icon: 'building-2', title: 'Fakturační údaje', desc: 'Snadno přepínáte mezi soukromým profilem a fakturací na firmu nebo OSVČ. Bez zbytečné papíroviny.' },
+    ],
+  },
+  {
+    id: 'kvalita',
+    tag: 'Kontrola kvality',
+    headline: 'Fotky, dokumenty\na reklamace na dosah.',
+    sub: 'Fotodokumentace stavu před a po úklidu, úložiště pro důležité dokumenty a integrovaný reklamační systém. Plná kontrola bez osobní přítomnosti na místě.',
+    icon: 'camera',
+    darkBg: true,
+    items: [
+      { icon: 'camera', title: 'Fotodokumentace', desc: 'Fotografie objektu — stav před a po úklidu — pro maximální kontrolu kvality. Vždy víte, jak to u vás vypadá.' },
+      { icon: 'file-text', title: 'Správa dokumentů', desc: 'Úložiště pro důležité soubory a dokumenty spojené s objektem. Smlouvy, plány, cokoliv důležitého.' },
+      { icon: 'alert-circle', title: 'Reklamace', desc: 'Integrovaný systém pro hlášení a správu reklamací přímo v detailu úklidu. Bez mailů a telefonátů.' },
+    ],
+  },
+  {
+    id: 'dashboard',
+    tag: 'Dashboard',
+    headline: 'Vše důležité\nna jedné obrazovce.',
+    sub: 'Rychlý přehled: počet objektů, nadcházející úklidy a celková suma za aktuální měsíc. Rozlišení jednorázových akcí a měsíčních paušálů. Přehled který skutečně šetří čas.',
+    icon: 'layout-dashboard',
+    darkBg: false,
+    items: [
+      { icon: 'building-2', title: 'Přehled objektů', desc: 'Okamžitý přehled o počtu vašich objektů a jejich aktuálním stavu. Správa více nemovitostí bez chaosu.' },
+      { icon: 'calendar-clock', title: 'Nadcházející úklidy', desc: 'Přehled nejbližších plánovaných úklidů přes všechny objekty. Nic vám neunikne.' },
+      { icon: 'receipt', title: 'Měsíční souhrn', desc: 'Celková částka za úklidy v aktuálním měsíci — s rozlišením jednorázových akcí a měsíčních paušálů.' },
+    ],
+  },
+];
+
+const trustPoints = [
+  { icon: 'shield',    label: 'Žádná instalace', desc: 'Funguje v prohlížeči i jako webová aplikace. Bez stahování.' },
+  { icon: 'clock',     label: 'Přístup 24/7',    desc: 'Z mobilu, tabletu i počítače kdykoliv a odkudkoliv.' },
+  { icon: 'bell',      label: 'Notifikace',       desc: 'Okamžitá zpráva po dokončení úklidu. Vždy v obraze.' },
+  { icon: 'users',     label: 'Více objektů',     desc: 'Spravujte libovolný počet nemovitostí z jednoho účtu.' },
+];
+---
+
+<Layout title="Klientská aplikace | PrimeClean">
+  <main class="bg-white selection:bg-[#81b344]/30 selection:text-zinc-900">
+
+    <!-- ═══ HERO ═══ -->
+    <section class="relative pt-28 pb-0 md:pt-36 lg:pt-44 bg-zinc-950 overflow-hidden">
+      <!-- Dekorativní orby — jen desktop -->
+      <div class="hidden md:block pointer-events-none absolute -top-40 left-1/3 w-[700px] h-[400px] rounded-full bg-[#81b344]/10" style="filter: blur(90px);"></div>
+      <div class="hidden md:block pointer-events-none absolute top-20 right-0 w-[400px] h-[400px] rounded-full bg-[#81b344]/6" style="filter: blur(80px);"></div>
+
+      <div class="relative z-10 max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12 text-center">
+
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-white/10 border border-white/15 mb-6 md:mb-8 opacity-0 animate-fade-in-up" style="animation-delay: 0ms;">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#81b344] animate-pulse flex-shrink-0"></span>
+          <span class="text-[11px] sm:text-xs font-bold text-zinc-300 tracking-[0.15em] uppercase">Klientská aplikace PrimeClean</span>
+        </div>
+
+        <h1 class="text-[2.75rem] sm:text-[3.75rem] md:text-6xl lg:text-[6rem] font-extrabold text-white tracking-tighter leading-[1.05] md:leading-[0.95] mb-6 opacity-0 animate-fade-in-up" style="animation-delay: 150ms;">
+          Váš úklid.<br class="hidden sm:block" />
+          <span class="text-[#81b344]">Plně pod kontrolou.</span>
+        </h1>
+
+        <p class="text-base sm:text-lg md:text-[19px] lg:text-[21px] text-zinc-400 max-w-xl lg:max-w-2xl mx-auto leading-relaxed font-medium mb-10 md:mb-12 opacity-0 animate-fade-in-up" style="animation-delay: 300ms;">
+          Objednejte úklid, sledujte fotoreporty, spravujte faktury a komunikujte s týmem — vše na jednom místě, z mobilu i počítače.
+        </p>
+
+        <!-- Trust pills -->
+        <div class="flex flex-wrap items-center justify-center gap-3 mb-12 md:mb-16 opacity-0 animate-fade-in-up" style="animation-delay: 420ms;">
+          {trustPoints.map(tp => (
+            <div class="flex items-center gap-2 px-4 py-2 rounded-full bg-white/8 border border-white/12">
+              <span class="text-[#81b344] flex-shrink-0 w-4 h-4" set:html={icons[tp.icon]} />
+              <span class="text-[13px] font-semibold text-zinc-300 whitespace-nowrap">{tp.label}</span>
+            </div>
+          ))}
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 md:mb-20 opacity-0 animate-fade-in-up" style="animation-delay: 540ms;">
+          <a href="/kontakt" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 text-[16px] font-bold text-zinc-950 transition-all duration-300 ease-out bg-[#81b344] rounded-xl hover:bg-[#96cc4e] hover:-translate-y-1 shadow-lg shadow-[#81b344]/25">
+            Chci přístup k aplikaci
+            <span class="w-4 h-4" set:html={arrowRight} />
+          </a>
+          <a href="#funkce" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-[16px] font-bold text-zinc-300 transition-all duration-300 ease-out bg-white/8 border border-white/15 rounded-xl hover:bg-white/15 hover:-translate-y-1">
+            Prohlédnout funkce
+          </a>
+        </div>
+
+        <!-- App mockup placeholder — připraveno na obrázek -->
+        <div class="relative max-w-4xl mx-auto opacity-0 animate-fade-in-up" style="animation-delay: 700ms;">
+          <div class="relative rounded-t-[2rem] overflow-hidden border border-white/10 border-b-0 bg-zinc-900">
+            <!-- Placeholder pro screenshot aplikace -->
+            <div class="w-full aspect-[16/9] flex flex-col items-center justify-center gap-4 bg-zinc-900/80 border-b-0 relative overflow-hidden">
+              <!-- Dekorativní mřížka -->
+              <div class="absolute inset-0 opacity-[0.04]" style="background-image: linear-gradient(#81b344 1px, transparent 1px), linear-gradient(90deg, #81b344 1px, transparent 1px); background-size: 40px 40px;"></div>
+              <!-- Placeholder ikona + text -->
+              <div class="relative z-10 flex flex-col items-center gap-3">
+                <div class="w-16 h-16 rounded-2xl bg-[#81b344]/20 border border-[#81b344]/30 flex items-center justify-center text-[#81b344]">
+                  <span class="w-8 h-8" set:html={icons['layout-dashboard']} />
+                </div>
+                <p class="text-zinc-500 text-[14px] font-semibold tracking-wide">Screenshot aplikace bude doplněn</p>
+              </div>
+            </div>
+          </div>
+          <!-- Gradient fade do bílé sekce pod -->
+          <div class="h-16 bg-gradient-to-b from-zinc-950 to-white pointer-events-none"></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══ ANCHOR ═══ -->
+    <div id="funkce" class="scroll-mt-24"></div>
+
+    <!-- ═══ 5 FEATURE BLOKŮ ═══ -->
+    {featureBlocks.map((block, blockIndex) => (
+      <section class={`py-20 md:py-32 relative overflow-hidden ${block.darkBg ? 'bg-zinc-950' : blockIndex === 0 ? 'bg-white' : 'bg-zinc-50'}`}>
+
+        {/* Dekorativní orby pro tmavé sekce — jen desktop */}
+        {block.darkBg && (
+          <>
+            <div class="hidden md:block pointer-events-none absolute top-0 left-1/4 w-[500px] h-[300px] rounded-full bg-[#81b344]/8" style="filter: blur(80px);"></div>
+            <div class="hidden md:block pointer-events-none absolute bottom-0 right-1/4 w-[400px] h-[250px] rounded-full bg-[#81b344]/6" style="filter: blur(70px);"></div>
+          </>
+        )}
+
+        <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
+
+          {/* Sekce header */}
+          <div class={`scroll-animate opacity-0 flex flex-col ${blockIndex % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-12 lg:gap-20 mb-16 md:mb-24`}>
+
+            {/* Text */}
+            <div class="w-full lg:w-1/2">
+              <div class="mb-5">
+                <span class={`inline-block px-3 py-1.5 rounded-md ${block.darkBg ? 'bg-white/10' : 'bg-[#81b344]/10'}`}>
+                  <span class={`text-[12px] font-bold tracking-[0.1em] uppercase ${block.darkBg ? 'text-[#81b344]' : 'text-[#6a9438]'}`}>{block.tag}</span>
+                </span>
+              </div>
+              <h2 class={`text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tighter leading-[1.1] mb-6 whitespace-pre-line ${block.darkBg ? 'text-white' : 'text-zinc-950'}`}>
+                {block.headline}
+              </h2>
+              <p class={`text-[17px] md:text-[19px] font-medium leading-relaxed ${block.darkBg ? 'text-zinc-400' : 'text-zinc-600'}`}>
+                {block.sub}
+              </p>
+            </div>
+
+            {/* Mockup / vizuál placeholder */}
+            <div class="scroll-animate opacity-0 w-full lg:w-1/2" style="animation-delay: 150ms;">
+              <div class={`relative aspect-[4/3] rounded-[2rem] overflow-hidden border flex flex-col items-center justify-center gap-4 ${block.darkBg ? 'bg-zinc-900 border-white/10' : 'bg-zinc-100 border-zinc-200'}`}>
+                <!-- Dekorativní mřížka -->
+                <div class={`absolute inset-0 ${block.darkBg ? 'opacity-[0.04]' : 'opacity-[0.035]'}`} style="background-image: linear-gradient(#81b344 1px, transparent 1px), linear-gradient(90deg, #81b344 1px, transparent 1px); background-size: 32px 32px;"></div>
+                <div class="relative z-10 flex flex-col items-center gap-3">
+                  <div class="w-16 h-16 rounded-2xl bg-[#81b344]/20 border border-[#81b344]/30 flex items-center justify-center text-[#81b344]">
+                    <span class="w-8 h-8" set:html={icons[block.icon]} />
+                  </div>
+                  <p class={`text-[13px] font-semibold tracking-wide ${block.darkBg ? 'text-zinc-500' : 'text-zinc-400'}`}>Screenshot bude doplněn</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Feature karty */}
+          <div class={`grid sm:grid-cols-2 ${block.items.length === 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3'} gap-5 lg:gap-6`}>
+            {block.items.map((item, i) => (
+              <div
+                class={`scroll-animate opacity-0 relative rounded-[1.5rem] p-7 lg:p-8 border transition-all duration-300 ease-out hover:-translate-y-1 overflow-hidden group
+                  ${block.darkBg
+                    ? 'bg-white/5 border-white/10 hover:bg-white/8 hover:border-[#81b344]/30 hover:shadow-md'
+                    : 'bg-white border-zinc-100 hover:shadow-lg hover:border-[#81b344]/20'
+                  }`}
+                style={`animation-delay: ${i * 100}ms`}
+              >
+                <span class="absolute top-5 right-6 text-[3.5rem] font-extrabold text-[#81b344]/8 leading-none select-none pointer-events-none">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <div class={`w-12 h-12 rounded-xl flex items-center justify-center mb-6 border transition-colors duration-300
+                  ${block.darkBg
+                    ? 'bg-[#81b344]/15 border-[#81b344]/25 text-[#81b344] group-hover:bg-[#81b344]/25'
+                    : 'bg-white border-zinc-200 text-[#6a9438] group-hover:border-[#81b344]/30 group-hover:bg-[#81b344]/5'
+                  }`}
+                >
+                  <span class="w-5 h-5" set:html={icons[item.icon]} />
+                </div>
+                <h3 class={`text-[17px] lg:text-[18px] font-bold tracking-tight leading-snug mb-3 ${block.darkBg ? 'text-white' : 'text-zinc-950'}`}>
+                  {item.title}
+                </h3>
+                <p class={`text-[14px] lg:text-[15px] font-medium leading-relaxed ${block.darkBg ? 'text-zinc-400' : 'text-zinc-600'}`}>
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+    ))}
+
+    <!-- ═══ VELKÁ TMAVÁ CTA SEKCE ═══ -->
+    <section class="py-20 md:py-32 bg-zinc-950 relative overflow-hidden">
+      <div class="hidden md:block pointer-events-none absolute -top-40 -left-40 w-[700px] h-[500px] rounded-full bg-[#81b344]/10" style="filter: blur(100px);"></div>
+      <div class="hidden md:block pointer-events-none absolute -bottom-40 -right-40 w-[600px] h-[400px] rounded-full bg-[#81b344]/8" style="filter: blur(90px);"></div>
+
+      <div class="max-w-[1000px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
+
+        <div class="scroll-animate opacity-0 bg-white/5 rounded-[2.5rem] border border-white/10 p-10 sm:p-14 md:p-20 text-center relative overflow-hidden">
+          <!-- Dekorativní linie -->
+          <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(#81b344 1px, transparent 1px), linear-gradient(90deg, #81b344 1px, transparent 1px); background-size: 48px 48px;"></div>
+
+          <div class="relative z-10">
+            <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-[#81b344]/15 border border-[#81b344]/25 mb-8">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#81b344] animate-pulse flex-shrink-0"></span>
+              <span class="text-[11px] font-bold text-[#81b344] tracking-[0.15em] uppercase">Součást každé spolupráce</span>
+            </div>
+
+            <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tighter leading-[1.05] mb-6">
+              Aplikace je v ceně.<br />
+              <span class="text-[#81b344]">Bez příplatku.</span>
+            </h2>
+
+            <p class="text-[17px] md:text-[19px] text-zinc-400 font-medium leading-relaxed max-w-xl mx-auto mb-10">
+              Klientská aplikace je standardní součástí každé naší zakázky. Přístupy nastavíme při onboardingu — za pár minut máte přehled o všem.
+            </p>
+
+            <!-- Seznam benefitů ve 2 sloupcích -->
+            <div class="grid sm:grid-cols-2 gap-3 max-w-xl mx-auto mb-12 text-left">
+              {[
+                'Fotoreporty po každém úklidu',
+                'Přehled faktur a plateb',
+                'Historie a plán úklidů',
+                'Checklist provedených prací',
+                'Bezpečné sdílení přístupu k objektu',
+                'Reklamace přímo v aplikaci',
+                'Správa více objektů najednou',
+                'Přístup 24/7 bez instalace',
+              ].map(item => (
+                <div class="flex items-center gap-3">
+                  <div class="flex-shrink-0 w-5 h-5 rounded-full bg-[#81b344] flex items-center justify-center text-zinc-950">
+                    <span set:html={checkIcon} />
+                  </div>
+                  <span class="text-[15px] font-semibold text-zinc-300">{item}</span>
+                </div>
+              ))}
+            </div>
+
+            <a href="/kontakt" class="inline-flex items-center justify-center gap-2 px-10 py-5 text-[17px] font-bold text-zinc-950 transition-all duration-300 ease-out bg-[#81b344] rounded-2xl hover:bg-[#96cc4e] hover:-translate-y-1 shadow-xl shadow-[#81b344]/25">
+              Chci nezávaznou nabídku
+              <span class="w-5 h-5" set:html={arrowRightLg} />
+            </a>
+            <p class="text-[13px] text-zinc-600 font-medium mt-5 tracking-wide">Přístupy k aplikaci nastavíme při zahájení spolupráce.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══ DETAIL KARET — 4 hodnoty aplikace ═══ -->
+    <section class="py-20 md:py-28 bg-white relative overflow-hidden">
+      <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
+
+        <div class="scroll-animate opacity-0 text-center max-w-2xl mx-auto mb-16">
+          <div class="mb-4">
+            <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">Proč to funguje</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1]">
+            Méně telefonátů.<br /><span class="text-[#6a9438]">Víc klidu.</span>
+          </h2>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {trustPoints.map((tp, i) => (
+            <div
+              class="scroll-animate opacity-0 flex flex-col items-start bg-zinc-50 rounded-[1.5rem] p-8 border border-zinc-100 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg hover:border-[#81b344]/20 group"
+              style={`animation-delay: ${i * 100}ms`}
+            >
+              <div class="w-12 h-12 rounded-xl bg-white border border-zinc-200 flex items-center justify-center text-[#6a9438] mb-6 group-hover:border-[#81b344]/30 group-hover:bg-[#81b344]/5 transition-colors duration-300">
+                <span class="w-5 h-5" set:html={icons[tp.icon]} />
+              </div>
+              <h3 class="text-[18px] font-bold text-zinc-950 tracking-tight mb-2">{tp.label}</h3>
+              <p class="text-[14px] font-medium text-zinc-600 leading-relaxed">{tp.desc}</p>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+</Layout>
+
+<script is:inline>
+  // ─── Safari & výkon detekce ───────────────────────────────────────────────
+  (function () {
+    const cores = navigator.hardwareConcurrency || 4;
+    const ram = navigator.deviceMemory || 4;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (cores <= 2 || ram <= 2 || reducedMotion) {
+      document.documentElement.classList.add('low-end');
+    }
+  })();
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const isLowEnd = document.documentElement.classList.contains('low-end');
+    const scrollAnimateEls = document.querySelectorAll('.scroll-animate');
+
+    if (isLowEnd) {
+      scrollAnimateEls.forEach(el => { el.classList.remove('opacity-0'); });
+    } else {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-fade-in-up');
+            entry.target.classList.remove('opacity-0');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { root: null, threshold: 0, rootMargin: '0px 0px -10% 0px' });
+      scrollAnimateEls.forEach(el => observer.observe(el));
+    }
+
+    if (isLowEnd) {
+      document.querySelectorAll('.animate-fade-in-up').forEach(el => {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+        el.style.animation = 'none';
+      });
+    }
+  });
+</script>
+
+<style is:global>
+  @keyframes softFadeUp {
+    0%   { opacity: 0; transform: translateY(22px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in-up {
+    animation-name: softFadeUp;
+    animation-duration: 0.9s;
+    animation-timing-function: cubic-bezier(0.25, 1, 0.4, 1);
+    animation-fill-mode: both;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .animate-fade-in-up, .scroll-animate {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+    .animate-pulse { animation: none !important; }
+  }
+  .low-end .animate-fade-in-up,
+  .low-end .scroll-animate {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .low-end .animate-pulse { animation: none !important; }
+  .low-end img { transition: none !important; }
+</style>
