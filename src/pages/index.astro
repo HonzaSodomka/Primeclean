@@ -156,17 +156,17 @@ const faqItems = [
 
       <div class="relative z-10 max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12 text-center">
 
-        <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-white border border-zinc-200 shadow-sm mb-6 md:mb-8 opacity-0 animate-fade-in-up" style="animation-delay: 0ms;">
+        <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-white border border-zinc-200 shadow-sm mb-6 md:mb-8 opacity-0 animate-fade-in-up hero-el" style="animation-delay: 0ms;">
           <span class="w-1.5 h-1.5 rounded-full bg-[#81b344] animate-pulse flex-shrink-0"></span>
           <span class="text-[11px] sm:text-xs font-bold text-zinc-600 tracking-[0.15em] uppercase">Profesionální úklid Brno a okolí</span>
         </div>
 
-        <h1 class="text-[2.75rem] sm:text-[3.75rem] md:text-6xl lg:text-[6rem] font-extrabold text-zinc-950 tracking-tighter leading-[1.05] md:leading-[0.95] mb-6 opacity-0 animate-fade-in-up" style="animation-delay: 150ms;">
+        <h1 class="text-[2.75rem] sm:text-[3.75rem] md:text-6xl lg:text-[6rem] font-extrabold text-zinc-950 tracking-tighter leading-[1.05] md:leading-[0.95] mb-6 opacity-0 animate-fade-in-up hero-el" style="animation-delay: 150ms;">
           Čistota, kterou máte <br class="hidden sm:block" />
           <span class="text-[#6a9438]">plně pod kontrolou.</span>
         </h1>
 
-        <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-[14px] sm:text-[15px] md:text-[16px] font-bold tracking-[0.1em] uppercase mb-8 md:mb-10 opacity-0 animate-fade-in-up" style="animation-delay: 300ms;">
+        <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-[14px] sm:text-[15px] md:text-[16px] font-bold tracking-[0.1em] uppercase mb-8 md:mb-10 opacity-0 animate-fade-in-up hero-el" style="animation-delay: 300ms;">
           <span class="text-zinc-800 bg-zinc-200/50 px-3 py-1 rounded-md">SVJ</span>
           <span class="text-[#81b344]">·</span>
           <span class="text-zinc-800 bg-zinc-200/50 px-3 py-1 rounded-md">Kanceláře</span>
@@ -174,11 +174,11 @@ const faqItems = [
           <span class="text-zinc-800 bg-zinc-200/50 px-3 py-1 rounded-md">Airbnb</span>
         </div>
 
-        <p class="text-base sm:text-lg md:text-[19px] lg:text-[21px] text-zinc-600 max-w-[95%] md:max-w-xl lg:max-w-2xl mx-auto leading-relaxed font-medium mb-12 opacity-0 animate-fade-in-up" style="animation-delay: 450ms;">
+        <p class="text-base sm:text-lg md:text-[19px] lg:text-[21px] text-zinc-600 max-w-[95%] md:max-w-xl lg:max-w-2xl mx-auto leading-relaxed font-medium mb-12 opacity-0 animate-fade-in-up hero-el" style="animation-delay: 450ms;">
           Mějte úklid konečně vyřešený. S naší klientskou aplikací vidíte fotoreporty ihned po dokončení práce. Pojištění 5 mil. Kč a prověřený personál.
         </p>
 
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 px-4 sm:px-0 opacity-0 animate-fade-in-up" style="animation-delay: 600ms;">
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 px-4 sm:px-0 opacity-0 animate-fade-in-up hero-el" style="animation-delay: 600ms;">
           <a href="/kontakt" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 text-[16px] font-bold text-white transition-all duration-300 ease-out bg-[#81b344] rounded-xl hover:bg-[#729f3c] hover:-translate-y-1 shadow-md shadow-[#81b344]/20">
             Chci nezávaznou nabídku
             <span class="w-4 h-4" set:html={arrowRight} />
@@ -188,7 +188,7 @@ const faqItems = [
           </a>
         </div>
 
-        <div class="mt-16 md:mt-24 relative max-w-5xl mx-auto group opacity-0 animate-fade-in-up" style="animation-delay: 800ms;">
+        <div class="mt-16 md:mt-24 relative max-w-5xl mx-auto group opacity-0 animate-fade-in-up hero-el" style="animation-delay: 800ms;">
           <div class="relative aspect-[4/3] sm:aspect-[16/9] rounded-2xl md:rounded-[2rem] overflow-hidden bg-zinc-100 border border-zinc-200/50 z-10">
             <img src="/hero-image.jpg" alt="PrimeClean úklid" width="1200" height="675" class="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.02]" fetchpriority="high" decoding="async" />
           </div>
@@ -207,11 +207,12 @@ const faqItems = [
     </section>
 
     <!-- 1b. TRUST BADGE BAR -->
+    <!-- FIX #4: grid-cols-2 na mobilu místo chaotického flex-wrap -->
     <section class="bg-white border-y border-zinc-100 py-5">
       <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
-        <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 md:gap-x-12">
+        <div class="grid grid-cols-2 md:flex md:flex-wrap items-center justify-center gap-x-8 gap-y-4 md:gap-x-12">
           {trustBadges.map(badge => (
-            <div class="flex items-center gap-2.5 text-zinc-600">
+            <div class="flex items-center gap-2.5 text-zinc-600 justify-center md:justify-start">
               <span class="text-[#81b344] flex-shrink-0" set:html={trustIcons[badge.icon]} />
               <span class="text-[14px] font-semibold whitespace-nowrap">{badge.label}</span>
             </div>
@@ -221,7 +222,8 @@ const faqItems = [
     </section>
 
     <!-- 2. SEKCE: PROČ MY & APLIKACE -->
-    <section id="proc-my" class="py-20 md:py-32 bg-white scroll-mt-24 relative overflow-hidden">
+    <!-- FIX #3: scroll-mt-20 na mobilu, scroll-mt-24 od md -->
+    <section id="proc-my" class="py-20 md:py-32 bg-white scroll-mt-20 md:scroll-mt-24 relative overflow-hidden">
       <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
 
         <div class="text-center max-w-3xl mx-auto mb-16 lg:mb-24 scroll-animate opacity-0">
@@ -321,7 +323,7 @@ const faqItems = [
     </section>
 
     <!-- 4. SEKCE: SLUŽBY -->
-    <section id="sluzby" class="py-20 md:py-32 bg-zinc-50 relative overflow-hidden scroll-mt-24">
+    <section id="sluzby" class="py-20 md:py-32 bg-zinc-50 relative overflow-hidden scroll-mt-20 md:scroll-mt-24">
       <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10 text-center">
         <div class="scroll-animate opacity-0 max-w-3xl mx-auto mb-16 lg:mb-24">
           <div class="mb-4">
@@ -460,7 +462,8 @@ const faqItems = [
     </section>
 
     <!-- 6. SEKCE: JAK TO FUNGUJE -->
-    <section id="jak-to-funguje" class="py-20 md:py-32 bg-zinc-50 relative overflow-hidden scroll-mt-24">
+    <!-- FIX #3: scroll-mt konzistentní -->
+    <section id="jak-to-funguje" class="py-20 md:py-32 bg-zinc-50 relative overflow-hidden scroll-mt-20 md:scroll-mt-24">
       <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10 text-center">
 
         <div class="scroll-animate opacity-0 max-w-3xl mx-auto mb-20 lg:mb-28">
@@ -476,16 +479,23 @@ const faqItems = [
         </div>
 
         <div class="relative max-w-5xl mx-auto">
+          <!-- Desktop connecting line -->
           <div class="hidden lg:block absolute top-[40px] left-[10%] right-[10%] h-[2px] z-0"
             style="background-image: repeating-linear-gradient(90deg, #d4e8b8 0, #d4e8b8 10px, transparent 10px, transparent 22px);">
           </div>
+
           <div class="grid lg:grid-cols-4 gap-12 lg:gap-6 relative z-10">
             {[
               { step: "1", title: "Nezávazná\npoptávka",   desc: "Zavolejte nám nebo vyplňte formulář. Probereme vaši představu a typ objektu.",     delay: 0 },
               { step: "2", title: "Prohlídka\na nacenění",  desc: "Přijedeme na místo, zhodnotíme stav a navrhneme přesný plán úklidu i kalkulaci.", delay: 150 },
               { step: "3", title: "Nastavení\naplikace",   desc: "Předáme přístupy do aplikace, zadáme rozsah prací, termíny a kontaktní osoby.",  delay: 300 },
             ].map(({ step, title, desc, delay }) => (
-              <div class="flex flex-col items-center text-center scroll-animate opacity-0" style={`animation-delay: ${delay}ms`}>
+              /* FIX #6: relativní wrapper pro mobilní vertikální linku */
+              <div class="flex flex-col items-center text-center scroll-animate opacity-0 relative" style={`animation-delay: ${delay}ms`}>
+                {/* Vertikální linka pod krokem — jen na mobilu/tabletu (skrytá na lg) */}
+                <div class="lg:hidden absolute top-[80px] left-1/2 -translate-x-1/2 w-[2px] h-[calc(100%-80px)] z-0"
+                  style="background-image: repeating-linear-gradient(180deg, #d4e8b8 0, #d4e8b8 10px, transparent 10px, transparent 22px);">
+                </div>
                 <div class="w-20 h-20 rounded-full bg-white border-2 border-zinc-200 shadow-sm flex items-center justify-center text-[24px] font-extrabold text-zinc-400 mb-6 relative z-10">
                   {step}
                 </div>
@@ -506,6 +516,7 @@ const faqItems = [
     </section>
 
     <!-- 7. SEKCE: FAQ -->
+    <!-- FIX #2: smooth animace přes CSS na details>div -->
     <section class="py-20 md:py-32 bg-white relative overflow-hidden">
       <div class="max-w-[860px] mx-auto px-5 md:px-8 lg:px-12">
         <div class="scroll-animate opacity-0 text-center mb-16">
@@ -519,7 +530,7 @@ const faqItems = [
         <div class="flex flex-col gap-4">
           {faqItems.map((item, i) => (
             <details
-              class="scroll-animate opacity-0 group bg-zinc-50 border border-zinc-200 open:border-[#81b344]/40 open:bg-white rounded-2xl transition-all duration-200"
+              class="scroll-animate opacity-0 group bg-zinc-50 border border-zinc-200 open:border-[#81b344]/40 open:bg-white rounded-2xl transition-colors duration-200"
               style={`animation-delay: ${i * 80}ms`}
             >
               <summary class="flex items-center justify-between gap-4 px-7 py-5 cursor-pointer list-none select-none">
@@ -528,7 +539,7 @@ const faqItems = [
                   <svg class="w-4 h-4 text-zinc-600 group-open:text-[#81b344] transition-all duration-200 group-open:rotate-45" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg>
                 </span>
               </summary>
-              <div class="px-7 pb-6 pt-1">
+              <div class="faq-body px-7 pb-6 pt-1 overflow-hidden">
                 <p class="text-[15px] text-zinc-600 font-medium leading-relaxed">{item.a}</p>
               </div>
             </details>
@@ -595,11 +606,18 @@ const faqItems = [
 
   document.addEventListener('DOMContentLoaded', () => {
     const isLowEnd = document.documentElement.classList.contains('low-end');
-    const scrollAnimateEls = document.querySelectorAll('.scroll-animate');
 
+    // FIX #1: pokrýt VŠECHNY opacity-0 elementy (hero-el + scroll-animate)
     if (isLowEnd) {
-      scrollAnimateEls.forEach(el => { el.classList.remove('opacity-0'); });
+      document.querySelectorAll('.opacity-0').forEach(el => {
+        el.classList.remove('opacity-0');
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+        el.style.animation = 'none';
+      });
     } else {
+      // Scroll-animate observer pro sekční elementy
+      const scrollAnimateEls = document.querySelectorAll('.scroll-animate');
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -608,16 +626,8 @@ const faqItems = [
             observer.unobserve(entry.target);
           }
         });
-      }, { root: null, threshold: 0, rootMargin: "0px 0px -10% 0px" });
+      }, { root: null, threshold: 0, rootMargin: '0px 0px -10% 0px' });
       scrollAnimateEls.forEach(el => observer.observe(el));
-    }
-
-    if (isLowEnd) {
-      document.querySelectorAll('.animate-fade-in-up').forEach(el => {
-        el.style.opacity = '1';
-        el.style.transform = 'none';
-        el.style.animation = 'none';
-      });
     }
 
     // ─── Count-up animace ────────────────────────────────────────────────────
@@ -630,6 +640,8 @@ const faqItems = [
       });
       return;
     }
+
+    let countUpDone = false;
 
     const animateValue = (obj, start, end, duration) => {
       let startTimestamp = null;
@@ -644,26 +656,36 @@ const faqItems = [
       window.requestAnimationFrame(step);
     };
 
-    const statsObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.querySelectorAll('.count-up').forEach(counter => {
-            const targetNum = parseInt(counter.getAttribute('data-target') || '0', 10);
-            animateValue(counter, 0, targetNum, 2000);
-          });
-          statsObserver.unobserve(entry.target);
-        }
+    const runCountUp = () => {
+      if (countUpDone) return;
+      countUpDone = true;
+      statsSection.querySelectorAll('.count-up').forEach(counter => {
+        const targetNum = parseInt(counter.getAttribute('data-target') || '0', 10);
+        animateValue(counter, 0, targetNum, 2000);
       });
-    }, { rootMargin: "0px 0px -10% 0px" });
+    };
 
-    statsObserver.observe(statsSection);
+    // FIX #2: spustit count-up okamžitě pokud je sekce viditelná při page loadu
+    const rect = statsSection.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      runCountUp();
+    } else {
+      const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            runCountUp();
+            statsObserver.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: '0px 0px -10% 0px' });
+      statsObserver.observe(statsSection);
+    }
 
     // ─── Testimonials mobile slider ──────────────────────────────────────────
     const track = document.getElementById('testimonials-track');
     const dots  = document.querySelectorAll('.testimonial-dot');
 
     if (track && dots.length) {
-      // Skryj nativní scrollbar na Webkitu (Safari/Chrome)
       track.style.webkitOverflowScrolling = 'touch';
 
       const updateDots = () => {
@@ -671,7 +693,7 @@ const faqItems = [
         const cards = track.children;
         if (!cards.length) return;
         const cardWidth = cards[0].offsetWidth;
-        const gap = 16; // gap-4
+        const gap = 16;
         const active = Math.round(scrollLeft / (cardWidth + gap));
 
         dots.forEach((dot, i) => {
@@ -717,14 +739,27 @@ const faqItems = [
     animation-timing-function: cubic-bezier(0.25, 1, 0.4, 1);
     animation-fill-mode: both;
   }
+
+  /* FIX #3 (FAQ): smooth slide-down animace pro obsah details */
+  details .faq-body {
+    animation: faqSlideDown 0.25s cubic-bezier(0.25, 1, 0.4, 1) both;
+  }
+  @keyframes faqSlideDown {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
   details summary::-webkit-details-marker { display: none; }
+
   @media (prefers-reduced-motion: reduce) {
     .animate-fade-in-up, .scroll-animate {
       animation: none !important; opacity: 1 !important;
       transform: none !important; transition: none !important;
     }
     .animate-pulse { animation: none !important; }
+    details .faq-body { animation: none !important; }
   }
+
   .low-end .animate-fade-in-up,
   .low-end .scroll-animate {
     animation: none !important; opacity: 1 !important;
@@ -732,4 +767,5 @@ const faqItems = [
   }
   .low-end .animate-pulse { animation: none !important; }
   .low-end img { transition: none !important; }
+  .low-end details .faq-body { animation: none !important; }
 </style>
