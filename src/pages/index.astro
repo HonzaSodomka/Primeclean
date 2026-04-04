@@ -207,14 +207,14 @@ const faqItems = [
     </section>
 
     <!-- 1b. TRUST BADGE BAR -->
-    <!-- FIX #3: odstraněno whitespace-nowrap, přidáno text-[13px] na mobilu -->
-    <section class="bg-white border-y border-zinc-100 py-5">
+    <!-- každý badge = vlastní řádek na mobilu (grid-cols-1), 2 sloupce od sm, flex od md -->
+    <section class="bg-white border-y border-zinc-100 py-4 sm:py-5">
       <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
-        <div class="grid grid-cols-2 md:flex md:flex-wrap items-center justify-center gap-x-8 gap-y-4 md:gap-x-12">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:flex md:flex-wrap items-center justify-center gap-y-3 sm:gap-y-4 gap-x-8 md:gap-x-12">
           {trustBadges.map(badge => (
             <div class="flex items-center gap-2.5 text-zinc-600 justify-center md:justify-start">
               <span class="text-[#81b344] flex-shrink-0" set:html={trustIcons[badge.icon]} />
-              <span class="text-[13px] md:text-[14px] font-semibold leading-snug">{badge.label}</span>
+              <span class="text-[14px] font-semibold whitespace-nowrap">{badge.label}</span>
             </div>
           ))}
         </div>
@@ -222,7 +222,6 @@ const faqItems = [
     </section>
 
     <!-- 2. SEKCE: PROČ MY & APLIKACE -->
-    <!-- FIX #3: scroll-mt-20 na mobilu, scroll-mt-24 od md -->
     <section id="proc-my" class="py-20 md:py-32 bg-white scroll-mt-20 md:scroll-mt-24 relative overflow-hidden">
       <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
 
@@ -462,7 +461,6 @@ const faqItems = [
     </section>
 
     <!-- 6. SEKCE: JAK TO FUNGUJE -->
-    <!-- FIX #3: scroll-mt konzistentní -->
     <section id="jak-to-funguje" class="py-20 md:py-32 bg-zinc-50 relative overflow-hidden scroll-mt-20 md:scroll-mt-24">
       <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10 text-center">
 
@@ -490,7 +488,6 @@ const faqItems = [
               { step: "2", title: "Prohlídka\na nacenění",  desc: "Přijedeme na místo, zhodnotíme stav a navrhneme přesný plán úklidu i kalkulaci.", delay: 150 },
               { step: "3", title: "Nastavení\naplikace",   desc: "Předáme přístupy do aplikace, zadáme rozsah prací, termíny a kontaktní osoby.",  delay: 300 },
             ].map(({ step, title, desc, delay }) => (
-              /* FIX procesní linka: odstraněna lg:hidden vertikální linka */
               <div class="flex flex-col items-center text-center scroll-animate opacity-0" style={`animation-delay: ${delay}ms`}>
                 <div class="w-20 h-20 rounded-full bg-white border-2 border-zinc-200 shadow-sm flex items-center justify-center text-[24px] font-extrabold text-zinc-400 mb-6 relative z-10">
                   {step}
@@ -512,7 +509,6 @@ const faqItems = [
     </section>
 
     <!-- 7. SEKCE: FAQ -->
-    <!-- FIX FAQ: JS toggle s max-height transition místo native <details> -->
     <section class="py-20 md:py-32 bg-white relative overflow-hidden">
       <div class="max-w-[860px] mx-auto px-5 md:px-8 lg:px-12">
         <div class="scroll-animate opacity-0 text-center mb-16">
@@ -606,7 +602,6 @@ const faqItems = [
   document.addEventListener('DOMContentLoaded', () => {
     const isLowEnd = document.documentElement.classList.contains('low-end');
 
-    // FIX #1: pokrýt VŠECHNY opacity-0 elementy (hero-el + scroll-animate)
     if (isLowEnd) {
       document.querySelectorAll('.opacity-0').forEach(el => {
         el.classList.remove('opacity-0');
@@ -615,7 +610,6 @@ const faqItems = [
         el.style.animation = 'none';
       });
     } else {
-      // Scroll-animate observer pro sekční elementy
       const scrollAnimateEls = document.querySelectorAll('.scroll-animate');
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -642,7 +636,6 @@ const faqItems = [
         const isOpen = trigger.getAttribute('aria-expanded') === 'true';
 
         if (isOpen) {
-          // Zavřít
           body.style.maxHeight = body.scrollHeight + 'px';
           requestAnimationFrame(() => {
             body.style.maxHeight = '0px';
@@ -659,7 +652,6 @@ const faqItems = [
             chevron.classList.add('text-zinc-600');
           }
         } else {
-          // Otevřít
           body.style.maxHeight = body.scrollHeight + 'px';
           trigger.setAttribute('aria-expanded', 'true');
           item.classList.add('border-[#81b344]/40', 'bg-white');
@@ -675,7 +667,6 @@ const faqItems = [
         }
       });
 
-      // Po skončení transition při zavírání nastav maxHeight na '' aby bylo přirozeně auto
       body.addEventListener('transitionend', () => {
         if (trigger.getAttribute('aria-expanded') === 'true') {
           body.style.maxHeight = 'none';
@@ -718,7 +709,6 @@ const faqItems = [
       });
     };
 
-    // FIX #2: spustit count-up okamžitě pokud je sekce viditelná při page loadu
     const rect = statsSection.getBoundingClientRect();
     if (rect.top < window.innerHeight && rect.bottom > 0) {
       runCountUp();
@@ -777,7 +767,6 @@ const faqItems = [
 </script>
 
 <style is:global>
-  /* Skryj scrollbar u slideru ve všech prohlížečích */
   #testimonials-track::-webkit-scrollbar {
     display: none;
   }
