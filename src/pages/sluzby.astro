@@ -29,28 +29,34 @@ const icons: Record<string, string> = {
   'arrow-right-lg': '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>',
   'check': '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>',
   'check-sm': '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>',
+  'camera': '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>',
 };
 
 const kancelare = {
   tag: 'Pravidelný úklid',
   tagBadge: 'Nejpopulárnější',
   headline: 'Úklid kanceláří,\nkterý prostě funguje.',
-  sub: 'Zajišťujeme pravidelný úklid podle pevně domluveného harmonogramu. Žádné nahodilé návštěvy — jen profesionální servis, díky kterému se můžete plně soustředit na své podnikání.',
+  sub: 'Většina klientů k nám přichází proto, že předchozí firma nedodržovala terminy nebo měnila pracovníky každý měsíc. My nastavujeme pravidelný harmonogram, stálý tým a vše sledujete v aplikaci — bez telefonování a doptávání.',
   cta: 'Chci nacenit úklid kanceláře',
   ctaBottom: 'Domluvit pravidelný úklid',
   image: '/sluzba-kancelare.jpg',
   imageWidth: 800,
   imageHeight: 600,
+  heroFeature: {
+    icon: 'camera',
+    title: 'Fotoreport ihned po každém úklidu',
+    desc: 'Po každé návštěvě naších pracovníků dostanete do aplikace fotodokumentaci. Víme přesně, co bylo provedeno a v jakém stavu kanclář odevždáme — žádné dohady, žádné „probably done“. Toto ostatní firmy nenabízejí.',
+    badge: 'Náš unikátní standard',
+  },
   features: [
-    { icon: 'calendar-check', title: 'Pevný harmonogram', desc: 'Úklid probíhá pravidelně — brzy ráno, večer nebo o víkendech. Vždy stejný rozsah, diskrétně a profesionálně.' },
-    { icon: 'clipboard-list', title: 'Jasná pravidla a checklist', desc: 'Předem domluvený rozsah prací a checklist — jasně dané, co se uklízí, jak často a kdo za úklid odpovídá.' },
+    { icon: 'calendar-check', title: 'Pevný harmonogram', desc: 'Úklid probíhá pravidelně — bržy ráno, večer nebo o víkendech. Vždy stejný rozsah, diskrétně a profesionálně.' },
+    { icon: 'clipboard-list', title: 'Jasná pravidla a checklist', desc: 'Předem domluvený rozsah prací a checklist — jasně dané, co se uklízet, jak často a kdo za úklid odpovídá.' },
     { icon: 'users', title: 'Stálí pracovníci', desc: 'Úklid provádějí vždy stejní pracovníci, kteří prostory znají. Žádní cizí lidé, o nichž nic nevíte.' },
-    { icon: 'smartphone', title: 'Přehled v aplikaci', desc: 'V aplikaci vidíte historii úklidů, provedené práce i poznámky. Přehled kdykoliv — bez telefonování a obíhání.' },
-    { icon: 'shield-check', title: 'Spolehlivost bez starostí', desc: 'Máte jednoho partnera, který řeší úklid dlouhodobě. Komunikace rychlá, pravidla jasná, kvalita pod kontrolou.' },
-    { icon: 'zap', title: 'Flexibilita na vyžádání', desc: 'Potřebujete mimořádný úklid před důležitou návštěvou nebo po firemním večírku? Řešíme to jednoduše a přímo.' },
+    { icon: 'shield-check', title: 'Spolehlivo bez starostí', desc: 'Máte jednoho partnera, který řeší úklid dlouhodobě. Komunikace rychlá, pravidla jasná, kvalita pod kontrolou.' },
+    { icon: 'zap', title: 'Flexibilita na vyzádání', desc: 'Potřebujete mimořádný úklid před důležitou návštěvou nebo po firemním večírku? Řešíme to jednoducha a přímo.' },
   ],
   includes: [
-    'Vysávání a vytírání podlah ve všech prostorách',
+    'Vysávání a vytírání podlah ve všech prostorchách',
     'Vynášení odpadků a doplňování hygienických potřeb',
     'Stírání prachu z volných ploch stolů a nábytku',
     'Kompletní úklid a dezinfekce sociálního zázemí a kuchyněk',
@@ -68,29 +74,34 @@ const svj = {
   tag: 'Správa budov',
   tagBadge: 'Pro SVJ a správce',
   headline: 'Čisté společné prostory\nbez starostí.',
-  sub: 'Zajišťujeme kompletní a pravidelný úklid panelových domů a SVJ. Stálí pracovníci, jasný plán a přehled v aplikaci — správce ani výbor nemusí řešit každodenní kontrolu.',
+  sub: 'Správci a výbory SVJ často řeší reklamace od obyvatel nebo zoufale sháníí náhradu za brigadníky co nepřišli. My dodáváme stálý tým, který domy zná, dodržuje harmonogram a vše eviduje v aplikaci — bez vaší každodenní kontroly.',
   cta: 'Chci nabídku pro SVJ',
   ctaBottom: 'Domluvit úklid domu',
   image: '/sluzba-svj.jpg',
   imageWidth: 800,
   imageHeight: 600,
+  heroFeature: {
+    icon: 'camera',
+    title: 'Fotoreport ihned po každém úklidu',
+    desc: 'Výbor SVJ má v aplikaci fotodokumentaci každé návštěvy — vidíšte přesně, co bylo provedeno a v jakém stavu společné prostory jsou. Žádné stížnùosti od obyvatel na to, že „se neuklizelo“ — důkaz máte vždy po ruce.',
+    badge: 'Náš unikátní standard',
+  },
   features: [
     { icon: 'calendar-check', title: 'Pravidelný harmonogram', desc: 'Úklid týdně, 2× týdně nebo individuálně podle potřeb domu. Vždy stejný rozsah, žádné výmluvy.' },
-    { icon: 'clipboard-list', title: 'Jasná pravidla a checklist', desc: 'Každý dům má vlastní plán úklidu a checklist — jasně dané, co se uklízí, jak často a kdo za to odpovídá.' },
+    { icon: 'clipboard-list', title: 'Jasná pravidla a checklist', desc: 'Každý dům má vlastní plán úklidu a checklist — jasně dané, co se uklízet, jak často a kdo za to odpovídá.' },
     { icon: 'users', title: 'Stálí pracovníci', desc: 'Úklid provádějí vždy stejní pracovníci, kteří dům znají. Obyvatelé vidí pořád stejné obličeje.' },
-    { icon: 'smartphone', title: 'Přehled v aplikaci', desc: 'V aplikaci vidíte historii úklidů, provedené práce i poznámky. Přehled kdykoliv — bez telefonování a obíhání.' },
-    { icon: 'shield-check', title: 'Spolehlivost pro SVJ i správce', desc: 'Máte jednoho partnera, který řeší úklid dlouhodobě. Komunikace rychlá, pravidla jasná, kvalita pod kontrolou.' },
-    { icon: 'sliders-horizontal', title: 'Plán pro každý dům zvlášť', desc: 'Jinak se uklízí malý dům, jinak velký panelák. Plán nastavíme přesně podle reálných potřeb objektu.' },
+    { icon: 'shield-check', title: 'Spolehlivo pro SVJ i správce', desc: 'Máte jednoho partnera, který řeší úklid dlouhodobě. Komunikace rychlá, pravidla jasná, kvalita pod kontrolou.' },
+    { icon: 'sliders-horizontal', title: 'Plán pro každý dům zvlášť', desc: 'Jinak se uklízet malý dům, jinak velký panelák. Plán nastavíme přesně podle reálných potřeb objektu.' },
   ],
   includes: [
-    'Zametení a vytření podlah ve společných prostorách',
-    'Otření zábradlí, madel a schodiště',
-    'Úklid vstupních dveří a prosklených ploch',
+    'Zameteni a vytření podlah ve společných prostorchách',
+    'Otření zábradłí, madel a schodtšě',
+    'Úklid vstupních dveří a prosklenchý ploch',
     'Otření poštovních schránek a vypínačů',
     'Úklid výtahu (pokud je součástí domu)',
   ],
   forWhom: [
-    { icon: 'building-2', label: 'Společenství vlastníků (SVJ)' },
+    { icon: 'building-2', label: 'Společenstí vlastníků (SVJ)' },
     { icon: 'key-round', label: 'Bytová družstva' },
     { icon: 'briefcase', label: 'Správci nemovitostí' },
     { icon: 'home', label: 'Majitelé bytových domů' },
@@ -101,33 +112,38 @@ const airbnb = {
   tag: 'Krátkodobé pronájmy',
   tagBadge: 'Airbnb & Booking',
   headline: 'Apartmán připravený\npro každého hosta.',
-  sub: 'Zajišťujeme rychlý a spolehlivý úklid mezi pobyty hostů. Stálí pracovníci, jasný rozsah prací a přehled v aplikaci — vy se staráte o hosty, my o čistotu.',
+  sub: 'Hostitelé nejvíce stresí z toho, že apartmán nebude včas připravený nebo že nemají přehled o jeho stavu, když jsou mimo město. My řešíme obě věci — příchozí host dostane čistý apartmán a vy vidíte fotky přímo v aplikaci ihned po dokončení.',
   cta: 'Chci nabídku pro Airbnb',
   ctaBottom: 'Nastavit úklid apartmánu',
   image: '/sluzba-airbnb.jpg',
   imageWidth: 800,
   imageHeight: 600,
+  heroFeature: {
+    icon: 'camera',
+    title: 'Fotoreport ihned po každém úklidu',
+    desc: 'Po každém úklidu dostanete v aplikaci fotky apartmánu — vídeš, že je vše připraveno dřív, než host příde. Klidně kontrolujete stav z druhého konce republiky. Navíc máte důkaz pro případ reklamace škody ze strany hosta.',
+    badge: 'Náš unikátní standard',
+  },
   features: [
-    { icon: 'zap', title: 'Rychlá příprava', desc: 'Úklid zvládneme ve vašem časovém okně mezi odjezdem a příjezdem hostů. Bez stresu a zpoždění.' },
-    { icon: 'clipboard-list', title: 'Jasný rozsah prací', desc: 'Předem domluvený checklist — jasně dané, co se uklízí při každé návštěvě. Vždy stejný standard.' },
+    { icon: 'zap', title: 'Rychlá příprava', desc: 'Úklid zvládneme ve vašem časovém okně mezi odjezdem a příjezdem hostů. Bez stresu a zpozdění.' },
+    { icon: 'clipboard-list', title: 'Jasný rozsah prací', desc: 'Předem domluvený checklist — jasně dané, co se uklízet při každé návštěvě. Vždy stejný standard.' },
     { icon: 'users', title: 'Stálí pracovníci', desc: 'Úklid provádějí vždy stejní pracovníci, kteří apartmán znají. Žádní náhodní lidé v soukromém prostoru.' },
-    { icon: 'smartphone', title: 'Přehled v aplikaci', desc: 'Po každém úklidu vidíte v aplikaci, co bylo provedeno a v jakém stavu apartmán hosté přebírají.' },
-    { icon: 'shirt', title: 'Výměna ložního prádla', desc: 'Zajistíme výměnu a doplnění čistého prádla a ručníků před každým příjezdem hostů.' },
-    { icon: 'shield-check', title: 'Spolehlivost pro pronajímatele', desc: 'Máte jednoho partnera, který řeší úklid dlouhodobě. Komunikace rychlá, pravidla jasná, kvalita pod kontrolou.' },
+    { icon: 'shirt', title: 'Výměna ložního prádla', desc: 'Zajístíme výměnu a dolnění čistého prádla a ručníků před každým příjezdem hostů.' },
+    { icon: 'shield-check', title: 'Spolehlivo pro pronajimatele', desc: 'Máte jednoho partnera, který řeší úklid dlouhodobě. Komunikace rychlá, pravidla jasná, kvalita pod kontrolou.' },
   ],
   includes: [
     'Kompletní úklid koupelny a WC',
     'Úklid kuchyně včetně spotřebičů',
     'Vysávání a vytírání podlah',
     'Výměna ložního prádla a ručníků',
-    'Doplnění spotřebního materiálu',
+    'Dolnění spotřebního materiálu',
     'Kontrola a hlášení případného poškození',
   ],
   forWhom: [
     { icon: 'home', label: 'Majitelé Airbnb apartmánů' },
     { icon: 'building', label: 'Správci více nemovitostí' },
     { icon: 'key-round', label: 'Provozovatelé apartmán. domů' },
-    { icon: 'globe', label: 'Booking.com pronajímatelé' },
+    { icon: 'globe', label: 'Booking.com pronajimatele' },
   ],
 };
 
@@ -139,7 +155,6 @@ const tabData = { kancelare, svj, airbnb };
 
     <!-- HERO -->
     <section class="relative pt-28 pb-20 md:pt-36 md:pb-28 lg:pt-44 lg:pb-36 bg-zinc-50 overflow-hidden">
-      <!-- Safari fix: orby jen na desktopu, redukovaný blur -->
       <div class="hidden md:block pointer-events-none absolute -top-32 -right-32 w-[500px] h-[500px] rounded-full bg-[#81b344]/6" style="filter: blur(70px);"></div>
       <div class="hidden md:block pointer-events-none absolute -bottom-20 -left-20 w-[350px] h-[350px] rounded-full bg-[#81b344]/4" style="filter: blur(60px);"></div>
 
@@ -150,7 +165,7 @@ const tabData = { kancelare, svj, airbnb };
         </div>
 
         <h1 class="text-[2.75rem] sm:text-[3.75rem] md:text-6xl lg:text-[6rem] font-extrabold text-zinc-950 tracking-tighter leading-[1.05] md:leading-[0.95] mb-6 opacity-0 animate-fade-in-up" style="animation-delay: 150ms;">
-          Naše <span class="text-[#6a9438]">služby.</span>
+          Tři služby.<br class="hidden sm:block" /><span class="text-[#6a9438]">Jeden standard.</span>
         </h1>
 
         <p class="text-base sm:text-lg md:text-[19px] lg:text-[21px] text-zinc-600 max-w-xl mx-auto leading-relaxed font-medium mb-10 md:mb-14 opacity-0 animate-fade-in-up" style="animation-delay: 300ms;">
@@ -253,17 +268,39 @@ const tabData = { kancelare, svj, airbnb };
           <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
             <div class="scroll-animate opacity-0 text-center max-w-2xl mx-auto mb-14">
               <div class="mb-4">
-                <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">Proč zvolit PrimeClean</span>
+                <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">Jak spolupráce funguje</span>
               </div>
               <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1]">
-                Co od nás <span class="text-[#6a9438]">dostanete.</span>
+                Co konkrétně <span class="text-[#6a9438]">zíkáte.</span>
               </h2>
             </div>
 
+            <!-- HERO FEATURE KARTA (aplikace / fotoreport) -->
+            <div class="scroll-animate opacity-0 mb-8">
+              <div class="relative bg-zinc-950 rounded-[2rem] overflow-hidden p-8 md:p-12 flex flex-col md:flex-row items-start md:items-center gap-8 border border-zinc-800">
+                <div class="hidden md:block pointer-events-none absolute -top-20 right-0 w-[400px] h-[300px] rounded-full bg-[#81b344]/10" style="filter: blur(70px);"></div>
+                <div class="relative z-10 flex-shrink-0 w-16 h-16 rounded-2xl bg-[#81b344]/15 border border-[#81b344]/30 flex items-center justify-center text-[#81b344]">
+                  <span set:html={icons[data.heroFeature.icon]} />
+                </div>
+                <div class="relative z-10 flex-1">
+                  <div class="flex flex-wrap items-center gap-3 mb-3">
+                    <h3 class="text-[20px] md:text-[22px] font-extrabold text-white tracking-tight">{data.heroFeature.title}</h3>
+                    <span class="px-2.5 py-1 rounded-full bg-[#81b344]/20 border border-[#81b344]/30">
+                      <span class="text-[11px] font-bold text-[#81b344] tracking-[0.1em] uppercase">{data.heroFeature.badge}</span>
+                    </span>
+                  </div>
+                  <p class="text-[15px] md:text-[16px] text-zinc-400 font-medium leading-relaxed max-w-2xl">{data.heroFeature.desc}</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 5 FEATURE KARET -->
             <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
               {data.features.map((f, index) => (
                 <div
-                  class="scroll-animate opacity-0 relative bg-white rounded-[1.5rem] p-8 lg:p-10 border border-zinc-100 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg hover:border-[#81b344]/20 overflow-hidden group"
+                  class={`scroll-animate opacity-0 relative bg-white rounded-[1.5rem] p-8 lg:p-10 border border-zinc-100 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg hover:border-[#81b344]/20 overflow-hidden group ${
+                    data.features.length === 5 && index === 4 ? 'sm:col-span-2 lg:col-span-1' : ''
+                  }`}
                   style={`animation-delay: ${index * 100}ms`}
                 >
                   <span class="absolute top-5 right-7 text-[4rem] font-extrabold text-[#81b344]/8 leading-none select-none pointer-events-none">
@@ -284,7 +321,6 @@ const tabData = { kancelare, svj, airbnb };
         <section class="py-20 md:py-28 bg-white">
           <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
             <div class="scroll-animate opacity-0 relative bg-zinc-950 rounded-[2.5rem] overflow-hidden px-8 py-14 md:px-14 md:py-20">
-              <!-- Safari fix: orb jen na desktopu -->
               <div class="hidden md:block pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full bg-[#81b344]/8" style="filter: blur(80px);"></div>
               <div class="relative z-10 grid lg:grid-cols-2 gap-16 lg:gap-24">
 
@@ -396,7 +432,6 @@ const tabData = { kancelare, svj, airbnb };
 </Layout>
 
 <script is:inline>
-  // ─── Safari & výkon detekce ───────────────────────────────────────────────
   (function () {
     const cores = navigator.hardwareConcurrency || 4;
     const ram = navigator.deviceMemory || 4;
