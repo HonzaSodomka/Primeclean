@@ -1,0 +1,456 @@
+---
+// src/pages/aplikace.astro
+import Layout from '../layouts/Layout.astro';
+
+const arrowRight = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
+const arrowRightLg = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
+const checkIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+
+const featureModules = [
+  {
+    id: "rezervace",
+    tag: "Správa úklidů",
+    headline: "Objednávky a termíny\npod palcem.",
+    sub: "Jednoduché objednání úklidu, přehled nadcházejících termínů a kompletní archiv histórie — vše dostupné na jedné obrazovce bez jediného telefonátu.",
+    points: [
+      { title: "Jednoduché objednání", desc: "Nový požadavek na úklid vytvoříte za 30 sekund — vyberete objekt, datum, čas a přidáte vlastní popis." },
+      { title: "Přehled nadcházejících termínů", desc: 'Vidíte přesně, kdy a kde úklid proběhne a jaký je aktuální stav (např. "Probíhá", "Dokončeno").' },
+      { title: "Historie služeb", desc: "Kompletní archiv všech proběhlých úklidů filtrovatelný podle měsíců. Nikdy nic nezapadne." },
+    ],
+    mockupId: "mockup-rezervace",
+    flip: false,
+  },
+  {
+    id: "detail",
+    tag: "Detail zakázky",
+    headline: "Vše o úklidu\nna jednom místě.",
+    sub: "Pracovní instrukce, přístupové kódy, checklist provedených prací i speciální požadavky — kompletní informace pro personál i klienta v jednom přehledném detailu.",
+    points: [
+      { title: "Instrukce a přístup", desc: "Vložte přesné instrukce pro personál a bezpečně sdílejte přístupové kódy k zámkům nebo umístění klíčů." },
+      { title: "Checklist úkolů", desc: "Transparentní přehled provedených prací: vysávání, utírání prachu, výměna prádla, doplnění hygienických potřeb a další." },
+      { title: "Speciální požadavky", desc: "Přidejte poznámku s extra úkoly — kontrola žárovek, zalití květin, nebo cokoliv specifického pro váš objekt." },
+    ],
+    mockupId: "mockup-detail",
+    flip: true,
+  },
+  {
+    id: "finance",
+    tag: "Finanční přehled",
+    headline: "Finance bez\nzbytečných otázek.",
+    sub: "Detailní vyúčtování každého úklidu, správa faktur a daňových dokladů i přehled spotřebovaného materiálu — vše přehledně a bez e-mailové komunikace.",
+    points: [
+      { title: "Detailní vyúčtování", desc: "Rozpis ceny za úklid, materiál a případné vícepráce. Víte přesně, za co platíte." },
+      { title: "Správa faktur", desc: "Všechny faktury a daňové doklady na jednom místě, dostupné kdykoliv z mobilu i počítače." },
+      { title: "Fakturační profily", desc: "Snadno přepínáte mezi soukromým profilem a fakturací na firmu nebo OSVČ." },
+    ],
+    mockupId: "mockup-finance",
+    flip: false,
+  },
+  {
+    id: "kvalita",
+    tag: "Kontrola kvality",
+    headline: "Fotky, dokumenty\na reklamace.",
+    sub: "Fotodokumentace stavu před a po úklidu, úložiště důležitých dokumentů a integrovaný systém reklamací. Máte důkazy, ne jen přísliby.",
+    points: [
+      { title: "Fotodokumentace", desc: "Po každém úklidu vidíte fotografie objektu — stav před a po. Maximální kontrola kvality bez osobní přítomnosti." },
+      { title: "Správa dokumentů", desc: "Úložiště pro smlouvy, protokoly a veškeré soubory spojené s objektem. Vše pohromadě a dohledatelné." },
+      { title: "Reklamace", desc: "Integrovaný systém pro hlášení a správu reklamací přímo v detailu úklidu. Žádné e-maily, žádné výmluvy." },
+    ],
+    mockupId: "mockup-kvalita",
+    flip: true,
+  },
+];
+
+const appHighlights = [
+  { icon: "mobile", label: "Web i mobil", desc: "Přístup 24/7 z telefonu, tabletu i počítače bez stahování." },
+  { icon: "bell", label: "Notifikace", desc: "Okamžitá notifikace po dokončení každého úklidu." },
+  { icon: "lock", label: "Zabezpečeno", desc: "Přístupové údaje a data jsou šifrované a v bezpečí." },
+  { icon: "refresh", label: "Živý stav", desc: "Aktuální stav úklidu vidíte v reálném čase." },
+];
+---
+
+<Layout title="Klientská aplikace | PrimeClean">
+  <main class="bg-white selection:bg-[#81b344]/30 selection:text-zinc-900">
+
+    <!-- ═══════════════════════════════════════════
+         1. HERO
+    ═══════════════════════════════════════════ -->
+    <section class="relative pt-28 pb-0 md:pt-36 lg:pt-44 overflow-hidden bg-zinc-50">
+      <div class="hidden md:block pointer-events-none absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full bg-[#81b344]/5" style="filter: blur(80px);"></div>
+      <div class="hidden md:block pointer-events-none absolute top-40 -left-20 w-[400px] h-[400px] rounded-full bg-[#81b344]/4" style="filter: blur(60px);"></div>
+
+      <div class="relative z-10 max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12 text-center">
+
+        <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-white border border-zinc-200 shadow-sm mb-6 md:mb-8 opacity-0 animate-fade-in-up" style="animation-delay: 0ms;">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#81b344] animate-pulse flex-shrink-0"></span>
+          <span class="text-[11px] sm:text-xs font-bold text-zinc-600 tracking-[0.15em] uppercase">Klientský portál PrimeClean</span>
+        </div>
+
+        <h1 class="text-[2.6rem] sm:text-[3.5rem] md:text-6xl lg:text-[5.5rem] font-extrabold text-zinc-950 tracking-tighter leading-[1.05] md:leading-[0.95] mb-6 opacity-0 animate-fade-in-up" style="animation-delay: 150ms;">
+          Aplikace, která vám dá<br class="hidden sm:block" />
+          <span class="text-[#6a9438]">klid v duši.</span>
+        </h1>
+
+        <p class="text-base sm:text-lg md:text-[19px] lg:text-[21px] text-zinc-600 max-w-xl lg:max-w-2xl mx-auto leading-relaxed font-medium mb-10 md:mb-12 opacity-0 animate-fade-in-up" style="animation-delay: 300ms;">
+          Objednávky, fotoreporty, faktury i reklamace — vše na jednom místě. Víte, co se děje ve vašem objektu, i když tam zrovna nejste.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 md:mb-20 opacity-0 animate-fade-in-up" style="animation-delay: 450ms;">
+          <a href="/kontakt" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 text-[16px] font-bold text-white transition-all duration-300 ease-out bg-[#81b344] rounded-xl hover:bg-[#729f3c] hover:-translate-y-1 shadow-md shadow-[#81b344]/20">
+            Chci přístup do aplikace
+            <span class="w-4 h-4" set:html={arrowRight} />
+          </a>
+          <a href="#funkce" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-[16px] font-bold text-zinc-700 transition-all duration-300 ease-out bg-white border-2 border-zinc-200 rounded-xl hover:border-zinc-300 hover:bg-zinc-50 hover:-translate-y-1">
+            Prozkoumat funkce
+          </a>
+        </div>
+
+        <!-- ── HERO APP SCREENSHOT ── -->
+        <!-- Obrázek: /aplikace-hero.jpg — screenshot celého dashboardu, doporučené rozměry 2400×1500 px (poměr 16:10) -->
+        <div class="opacity-0 animate-fade-in-up relative max-w-5xl mx-auto" style="animation-delay: 650ms;">
+          <div class="relative rounded-t-[1.5rem] md:rounded-t-[2rem] overflow-hidden border border-zinc-200 border-b-0 shadow-[0_-8px_60px_rgba(0,0,0,0.08)]">
+            <img
+              src="/aplikace-hero.jpg"
+              alt="Dashboard klientské aplikace PrimeClean"
+              width="2400"
+              height="1500"
+              class="w-full h-auto block"
+              fetchpriority="high"
+              decoding="async"
+            />
+          </div>
+          <div class="h-16 bg-gradient-to-b from-white to-white relative z-10"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         2. APP HIGHLIGHTS STRIP
+    ═══════════════════════════════════════════ -->
+    <section class="bg-white border-y border-zinc-100 py-5">
+      <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
+        <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 md:gap-x-16">
+          {appHighlights.map(item => (
+            <div class="flex items-center gap-2.5 text-zinc-600">
+              {item.icon === 'mobile' && <svg class="w-5 h-5 text-[#81b344] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></svg>}
+              {item.icon === 'bell' && <svg class="w-5 h-5 text-[#81b344] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>}
+              {item.icon === 'lock' && <svg class="w-5 h-5 text-[#81b344] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>}
+              {item.icon === 'refresh' && <svg class="w-5 h-5 text-[#81b344] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>}
+              <div>
+                <span class="text-[14px] font-bold text-zinc-800">{item.label}</span>
+                <span class="hidden md:inline text-zinc-400 mx-2">—</span>
+                <span class="hidden md:inline text-[13px] font-medium text-zinc-500">{item.desc}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         3. FEATURE MODULES
+    ═══════════════════════════════════════════ -->
+    <section id="funkce" class="scroll-mt-24">
+      {featureModules.map((mod, modIndex) => (
+        <div class={`py-20 md:py-32 ${modIndex % 2 === 0 ? 'bg-white' : 'bg-zinc-50'}`}>
+          <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
+            <div class={`flex flex-col gap-12 lg:gap-20 items-center ${mod.flip ? 'lg:flex-row-reverse' : 'lg:flex-row'}`}>
+
+              <!-- Text side -->
+              <div class="w-full lg:w-[45%]">
+                <div class="scroll-animate opacity-0 mb-5">
+                  <span class="inline-block px-3 py-1.5 rounded-md bg-[#81b344]/10">
+                    <span class="text-[12px] font-bold text-[#6a9438] tracking-[0.1em] uppercase">{mod.tag}</span>
+                  </span>
+                </div>
+                <h2 class="scroll-animate opacity-0 text-3xl sm:text-4xl md:text-[2.75rem] font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-5 whitespace-pre-line" style="animation-delay: 80ms;">
+                  {mod.headline}
+                </h2>
+                <p class="scroll-animate opacity-0 text-[17px] md:text-[18px] text-zinc-600 font-medium leading-relaxed mb-10" style="animation-delay: 160ms;">
+                  {mod.sub}
+                </p>
+                <ul class="flex flex-col gap-6">
+                  {mod.points.map((point, pi) => (
+                    <li class="scroll-animate opacity-0 flex gap-4" style={`animation-delay: ${240 + pi * 80}ms`}>
+                      <div class="flex-shrink-0 mt-0.5 w-6 h-6 rounded-full bg-[#81b344] flex items-center justify-center text-zinc-950">
+                        <span set:html={checkIcon} />
+                      </div>
+                      <div>
+                        <p class="text-[16px] font-bold text-zinc-900 mb-1">{point.title}</p>
+                        <p class="text-[14.5px] font-medium text-zinc-500 leading-relaxed">{point.desc}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <!-- Mockup side -->
+              <div class="scroll-animate opacity-0 w-full lg:w-[55%]" style="animation-delay: 200ms;">
+                {mod.id === 'rezervace' && (
+                  /* Obrázek: /aplikace-rezervace.jpg — stránka "Moje úklidy" se seznamem termínů a stavů, doporučené rozměry 1600×1100 px */
+                  <div class="relative rounded-[2rem] overflow-hidden border border-zinc-200 shadow-xl">
+                    <img
+                      src="/aplikace-rezervace.jpg"
+                      alt="Přehled úklidů v aplikaci PrimeClean"
+                      width="1600"
+                      height="1100"
+                      class="w-full h-auto block"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                )}
+
+                {mod.id === 'detail' && (
+                  /* Obrázek: /aplikace-detail.jpg — detail konkrétního úklidu s instrukcemi, checklistem a speciálními požadavky, doporučené rozměry 1600×1100 px */
+                  <div class="relative rounded-[2rem] overflow-hidden border border-zinc-200 shadow-xl">
+                    <img
+                      src="/aplikace-detail.jpg"
+                      alt="Detail zakázky v aplikaci PrimeClean"
+                      width="1600"
+                      height="1100"
+                      class="w-full h-auto block"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                )}
+
+                {mod.id === 'finance' && (
+                  /* Obrázek: /aplikace-finance.jpg — finanční přehled s kartami (celkem/paušál/jednorázové) a tabulkou faktur, doporučené rozměry 1600×1100 px */
+                  <div class="relative rounded-[2rem] overflow-hidden border border-zinc-200 shadow-xl">
+                    <img
+                      src="/aplikace-finance.jpg"
+                      alt="Finanční přehled v aplikaci PrimeClean"
+                      width="1600"
+                      height="1100"
+                      class="w-full h-auto block"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                )}
+
+                {mod.id === 'kvalita' && (
+                  /* Obrázek: /aplikace-kvalita.jpg — sekce kontroly kvality s mřížkou fotografií před/po a tlačítkem pro reklamaci, doporučené rozměry 1600×1100 px */
+                  <div class="relative rounded-[2rem] overflow-hidden border border-zinc-200 shadow-xl">
+                    <img
+                      src="/aplikace-kvalita.jpg"
+                      alt="Kontrola kvality a fotoreport v aplikaci PrimeClean"
+                      width="1600"
+                      height="1100"
+                      class="w-full h-auto block"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         4. DASHBOARD DARK SECTION
+    ═══════════════════════════════════════════ -->
+    <section class="py-20 md:py-32 bg-zinc-950 relative overflow-hidden">
+      <div class="hidden md:block pointer-events-none absolute top-0 left-1/4 w-[500px] h-[300px] rounded-full bg-[#81b344]/8" style="filter: blur(80px);"></div>
+      <div class="hidden md:block pointer-events-none absolute bottom-0 right-1/4 w-[400px] h-[250px] rounded-full bg-[#81b344]/6" style="filter: blur(70px);"></div>
+
+      <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
+        <div class="scroll-animate opacity-0 text-center max-w-3xl mx-auto mb-16">
+          <div class="mb-4">
+            <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">Dashboard</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tighter leading-[1.1] mb-5">
+            Vše přehledně<br /><span class="text-[#81b344]">na jedné obrazovce.</span>
+          </h2>
+          <p class="text-[17px] md:text-[19px] text-zinc-400 font-medium leading-relaxed">
+            Při otevření aplikace vidíte okamžitě počet svých objektů, nadcházející úklidy a celkovou částku za aktuální měsíc — bez proklikávání, bez hledání.
+          </p>
+        </div>
+
+        <!-- Dashboard feature cards -->
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {[
+            {
+              icon: '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>',
+              title: "Počet objektů",
+              desc: "Přehled všech vašich nemovitostí registrovaných v aplikaci na jednom místě.",
+              delay: 0,
+            },
+            {
+              icon: '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/><path d="m9 16 2 2 4-4"/></svg>',
+              title: "Nadcházející úklidy",
+              desc: "Termíny nejbližších úklidů s aktuálním stavem — bez potřeby telefonovat.",
+              delay: 100,
+            },
+            {
+              icon: '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>',
+              title: "Měsíční útrata",
+              desc: "Celková částka za aktuální měsíc s rozlišením paušálních a jednorázových akcí.",
+              delay: 200,
+            },
+            {
+              icon: '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>',
+              title: "Notifikace",
+              desc: "Okamžité oznámení po dokončení každého úklidu — přes web i mobilní zařízení.",
+              delay: 300,
+            },
+          ].map((card, i) => (
+            <div
+              class="scroll-animate opacity-0 flex flex-col bg-zinc-900 rounded-[1.5rem] p-7 border border-zinc-800 hover:border-[#81b344]/30 transition-all duration-300"
+              style={`animation-delay: ${card.delay}ms`}
+            >
+              <div class="w-12 h-12 rounded-2xl bg-[#81b344]/15 border border-[#81b344]/20 flex items-center justify-center text-[#81b344] mb-6">
+                <span set:html={card.icon} />
+              </div>
+              <h3 class="text-[17px] font-bold text-white mb-3 tracking-tight">{card.title}</h3>
+              <p class="text-[14.5px] text-zinc-400 font-medium leading-relaxed">{card.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         5. HOW IT WORKS / ONBOARDING
+    ═══════════════════════════════════════════ -->
+    <section class="py-20 md:py-32 bg-zinc-50 relative overflow-hidden">
+      <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 text-center">
+        <div class="scroll-animate opacity-0 max-w-3xl mx-auto mb-16 lg:mb-24">
+          <div class="mb-4">
+            <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">Jak začít</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-6">
+            Přístup do aplikace<br class="hidden md:block" /> za <span class="text-[#6a9438]">pár minut.</span>
+          </h2>
+          <p class="text-lg md:text-[20px] text-zinc-600 font-medium leading-relaxed max-w-2xl mx-auto">
+            Žádné stahování, žádná instalace. Přihlásíte se z prohlížeče a máte okamžitý přehled.
+          </p>
+        </div>
+
+        <div class="relative max-w-4xl mx-auto">
+          <div class="hidden md:block absolute top-[40px] left-[12%] right-[12%] h-[2px] z-0"
+            style="background-image: repeating-linear-gradient(90deg, #d4e8b8 0, #d4e8b8 10px, transparent 10px, transparent 22px);">
+          </div>
+          <div class="grid md:grid-cols-4 gap-8 md:gap-6 relative z-10">
+            {[
+              { step: "1", title: "Poptáváte\nnás", desc: "Zavolejte nebo vyplňte formulář. Probereme vaše potřeby a navrhneme plán." },
+              { step: "2", title: "Podpis\nsmlouvy", desc: "Domluvíme rozsah, frekvenci a podmínky. Vše jasné a přehledné." },
+              { step: "3", title: "Dostanete\npřístupy", desc: "Zašleme vám přihlašovací údaje do klientské aplikace ihned po startu." },
+              { step: "4", title: "Plný\npřehled", desc: "Od prvního úklidu vidíte vše online — fotky, stav, faktury, historii.", green: true },
+            ].map(({ step, title, desc, green }, i) => (
+              <div class="flex flex-col items-center text-center scroll-animate opacity-0" style={`animation-delay: ${i * 120}ms`}>
+                <div class={`w-20 h-20 rounded-full flex items-center justify-center text-[22px] font-extrabold mb-6 relative z-10 ${green ? 'bg-[#81b344] text-white shadow-lg shadow-[#81b344]/25' : 'bg-white border-2 border-zinc-200 shadow-sm text-zinc-400'}`}>
+                  {green
+                    ? <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    : step
+                  }
+                </div>
+                <h3 class="text-[19px] font-bold text-zinc-950 leading-snug tracking-tight mb-3 whitespace-pre-line">{title}</h3>
+                <p class="text-[14.5px] text-zinc-600 font-medium leading-relaxed">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         6. FINAL CTA
+    ═══════════════════════════════════════════ -->
+    <section class="py-20 md:py-32 bg-white relative overflow-hidden">
+      <div class="max-w-[900px] mx-auto px-5 md:px-8 lg:px-12">
+        <div class="scroll-animate opacity-0 bg-zinc-950 rounded-[2rem] md:rounded-[3rem] p-10 sm:p-14 md:p-20 text-center relative overflow-hidden">
+          <div class="hidden md:block pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-[#81b344]/10" style="filter: blur(80px);"></div>
+          <div class="relative z-10">
+            <div class="w-16 h-16 rounded-[1.25rem] bg-[#81b344]/15 border border-[#81b344]/25 flex items-center justify-center text-[#81b344] mx-auto mb-8">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></svg>
+            </div>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tighter leading-[1.1] mb-5">
+              Připraveni mít úklid<br /><span class="text-[#81b344]">pod kontrolou?</span>
+            </h2>
+            <p class="text-[17px] md:text-[19px] text-zinc-400 font-medium leading-relaxed max-w-xl mx-auto mb-10">
+              Aplikace je součástí každé spolupráce s PrimeClean. Začněte s nezávaznou poptávkou a přístupy dostanete automaticky.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a href="/kontakt" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 text-[16px] font-bold text-zinc-950 transition-all duration-300 ease-out bg-[#81b344] rounded-xl hover:bg-white hover:-translate-y-1 shadow-md shadow-[#81b344]/20">
+                Chci nezávaznou nabídku
+                <span class="w-5 h-5" set:html={arrowRightLg} />
+              </a>
+              <a href="/sluzby" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 text-[16px] font-bold text-zinc-300 transition-all duration-300 ease-out bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 hover:-translate-y-1">
+                Prozkoumat služby
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</Layout>
+
+<script is:inline>
+  // ─── Safari & výkon detekce ───────────────────────────────────────────────
+  (function () {
+    const cores = navigator.hardwareConcurrency || 4;
+    const ram = navigator.deviceMemory || 4;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (cores <= 2 || ram <= 2 || reducedMotion) {
+      document.documentElement.classList.add('low-end');
+    }
+  })();
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const isLowEnd = document.documentElement.classList.contains('low-end');
+    const scrollAnimateEls = document.querySelectorAll('.scroll-animate');
+
+    if (isLowEnd) {
+      scrollAnimateEls.forEach(el => {
+        el.classList.remove('opacity-0');
+        el.style.opacity = '1';
+      });
+    } else {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-fade-in-up');
+            entry.target.classList.remove('opacity-0');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { root: null, threshold: 0, rootMargin: '0px 0px -8% 0px' });
+      scrollAnimateEls.forEach(el => observer.observe(el));
+    }
+  });
+</script>
+
+<style is:global>
+  @keyframes softFadeUp {
+    0%   { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in-up {
+    animation-name: softFadeUp;
+    animation-duration: 0.9s;
+    animation-timing-function: cubic-bezier(0.25, 1, 0.4, 1);
+    animation-fill-mode: both;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .animate-fade-in-up, .scroll-animate {
+      animation: none !important; opacity: 1 !important;
+      transform: none !important; transition: none !important;
+    }
+    .animate-pulse { animation: none !important; }
+  }
+  .low-end .animate-fade-in-up,
+  .low-end .scroll-animate {
+    animation: none !important; opacity: 1 !important;
+    transform: none !important;
+  }
+  .low-end .animate-pulse { animation: none !important; }
+  .low-end img { transition: none !important; }
+</style>
