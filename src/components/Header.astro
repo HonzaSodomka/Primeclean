@@ -3,6 +3,7 @@
 const navLinks = [
   { name: 'Domů', href: '/' },
   { name: 'Služby', href: '/sluzby' },
+  { name: 'Ceník', href: '/cenik' },
   { name: 'Aplikace', href: '/aplikace' },
   { name: 'Reference', href: '/reference' },
   { name: 'Kontakt', href: '/kontakt' }
@@ -11,12 +12,6 @@ const navLinks = [
 const currentPath = Astro.url.pathname;
 ---
 
-<!--
-  Safari fix: backdrop-blur-xl na position:fixed elementu je v Safari brutálně drahý —
-  nutí GPU recomposit celý viewport při každém scrollu.
-  Řešení: nahradit backdrop-blur solidní bílou s vyšší opacitou (bg-white/95).
-  Výsledek je vizuálně téměř totožný a Safari přestane sekat.
--->
 <header class="fixed top-0 inset-x-0 z-[100] bg-white/95 border-b border-zinc-200/50 shadow-[0_4px_30px_rgba(0,0,0,0.04)] transition-all duration-300" id="main-nav">
   <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 h-20 md:h-24 flex items-center justify-between">
 
@@ -26,8 +21,8 @@ const currentPath = Astro.url.pathname;
     </a>
 
     <!-- Desktop Menu -->
-    <nav class="hidden md:flex items-center gap-8 lg:gap-10">
-      <ul class="flex items-center gap-8 lg:gap-10">
+    <nav class="hidden md:flex items-center gap-6 lg:gap-8">
+      <ul class="flex items-center gap-6 lg:gap-8">
         {navLinks.map(link => {
           const isActive = currentPath === link.href || (currentPath.startsWith(link.href) && link.href !== '/');
           return (

@@ -74,7 +74,8 @@ const svj = {
   tag: 'Správa budov',
   tagBadge: 'Pro SVJ a správce',
   headline: 'Čisté společné prostory\nbez starostí.',
-  sub: 'Správci a výbory SVJ často řeší reklamace od obyvatel nebo zoufale shánějí náhradu za brigádníky, co nepřišli. My dodáváme stálý tým, který domy zná, dodržuje harmonogram a vše eviduje v aplikaci — bez vaší každodenní kontroly.',
+  // ↓ UPRAVENÝ TEXT — zohledňuje větší objekty s omezenou fotodokumentací
+  sub: 'Správci a výbory SVJ často řeší reklamace od obyvatel nebo zoufale shánějí náhradu za brigádníky, co nepřišli. My dodáváme stálý tým, který domy zná a dodržuje harmonogram. U menších objektů dokumentujeme každou návštěvu fotoreportem. U rozsáhlých budov s více vchody a desítkami pater rozsah fotodokumentace domluvíme individuálně — vždy tak, aby vám to dávalo praktický smysl.',
   cta: 'Chci nabídku pro SVJ',
   ctaBottom: 'Domluvit úklid domu',
   image: '/sluzba-svj.jpg',
@@ -82,16 +83,17 @@ const svj = {
   imageHeight: 600,
   heroFeature: {
     icon: 'camera',
-    title: 'Fotoreport ihned po každém úklidu',
-    desc: 'Výbor SVJ má v aplikaci fotodokumentaci každé návštěvy — vidíte přesně, co bylo provedeno a v jakém stavu společné prostory jsou. Žádné stížnosti od obyvatel na to, že „se neuklizelo" — důkaz máte vždy po ruce.',
-    badge: 'Náš unikátní standard',
+    // ↓ UPRAVENÝ TEXT — přiznává realitu u velkých objektů
+    title: 'Fotodokumentace přizpůsobená objektu',
+    desc: 'U menších domů dokumentujeme celý průběh úklidu fotoreportem v aplikaci. U větších objektů — například budov s více vchody, desítkami pater a výtahy — se rozsah a způsob fotodokumentace domlouváme individuálně, aby byl pro vás opravdu přínosný, ne jen formální.',
+    badge: 'Přizpůsobujeme se realitě',
   },
   features: [
     { icon: 'calendar-check', title: 'Pravidelný harmonogram', desc: 'Úklid týdně, 2× týdně nebo individuálně podle potřeb domu. Vždy stejný rozsah, žádné výmluvy.' },
     { icon: 'clipboard-list', title: 'Jasná pravidla a checklist', desc: 'Každý dům má vlastní plán úklidu a checklist — jasně dané, co se uklízí, jak často a kdo za to odpovídá.' },
     { icon: 'users', title: 'Stálí pracovníci', desc: 'Úklid provádějí vždy stejní pracovníci, kteří dům znají. Obyvatelé vidí pořád stejné obličeje.' },
     { icon: 'shield-check', title: 'Spolehlivost pro SVJ i správce', desc: 'Máte jednoho partnera, který řeší úklid dlouhodobě. Komunikace rychlá, pravidla jasná, kvalita pod kontrolou.' },
-    { icon: 'sliders-horizontal', title: 'Plán pro každý dům zvlášť', desc: 'Jinak se uklízí malý dům, jinak velký panelák. Plán nastavíme přesně podle reálných potřeb objektu.' },
+    { icon: 'sliders-horizontal', title: 'Plán pro každý dům zvlášť', desc: 'Jinak se uklízí malý dům, jinak velký panelák s více vchody. Plán nastavíme přesně podle reálných potřeb objektu.' },
   ],
   includes: [
     'Zametení a vytření podlah ve společných prostorách',
@@ -275,7 +277,7 @@ const tabData = { kancelare, svj, airbnb };
               </h2>
             </div>
 
-            <!-- HERO FEATURE KARTA — zelená -->
+            <!-- HERO FEATURE KARTA -->
             <div class="scroll-animate opacity-0 mb-8">
               <div class="relative bg-[#81b344] rounded-[2rem] overflow-hidden p-8 md:p-12 flex flex-col md:flex-row items-start md:items-center gap-8 border border-[#6a9438]">
                 <div class="hidden md:block pointer-events-none absolute -top-20 right-0 w-[400px] h-[300px] rounded-full bg-white/10" style="filter: blur(70px);"></div>
@@ -362,9 +364,7 @@ const tabData = { kancelare, svj, airbnb };
                         <div class="flex-shrink-0 w-10 h-10 rounded-xl bg-[#81b344]/15 border border-[#81b344]/25 flex items-center justify-center text-[#81b344] group-hover:bg-[#81b344]/25 transition-colors duration-200">
                           <span class="w-5 h-5" set:html={icons[item.icon]} />
                         </div>
-                        <span class="text-[15px] font-semibold text-zinc-200 leading-snug">
-                          {item.label}
-                        </span>
+                        <span class="text-[15px] font-semibold text-zinc-200 leading-snug">{item.label}</span>
                       </div>
                     ))}
                   </div>
@@ -432,7 +432,6 @@ const tabData = { kancelare, svj, airbnb };
 </Layout>
 
 <script is:inline>
-  // ─── Safari & výkon detekce ───────────────────────────────────────────────
   (function () {
     const cores = navigator.hardwareConcurrency || 4;
     const ram = navigator.deviceMemory || 4;
@@ -520,7 +519,6 @@ const tabData = { kancelare, svj, airbnb };
   document.addEventListener('DOMContentLoaded', () => {
     const isLowEnd = document.documentElement.classList.contains('low-end');
 
-    // ─── Hero fallback pro slabá zařízení ────────────────────────────────────
     if (isLowEnd) {
       document.querySelectorAll('.opacity-0').forEach(el => {
         el.classList.remove('opacity-0');
@@ -563,19 +561,13 @@ const tabData = { kancelare, svj, airbnb };
   }
   @media (prefers-reduced-motion: reduce) {
     .animate-fade-in-up, .scroll-animate {
-      animation: none !important;
-      opacity: 1 !important;
-      transform: none !important;
-      transition: none !important;
+      animation: none !important; opacity: 1 !important;
+      transform: none !important; transition: none !important;
     }
     .animate-pulse { animation: none !important; }
   }
   .low-end .animate-fade-in-up,
-  .low-end .scroll-animate {
-    animation: none !important;
-    opacity: 1 !important;
-    transform: none !important;
-  }
+  .low-end .scroll-animate { animation: none !important; opacity: 1 !important; transform: none !important; }
   .low-end .animate-pulse { animation: none !important; }
   .low-end img { transition: none !important; }
 </style>

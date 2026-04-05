@@ -1,0 +1,638 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const arrowRight = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
+const checkIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+
+const tabs = [
+  { id: 'kancelare', label: 'Kanceláře a firmy' },
+  { id: 'svj',       label: 'SVJ a bytové domy' },
+  { id: 'airbnb',    label: 'Airbnb a apartmány' },
+];
+
+// ─── KANCELÁŘE ────────────────────────────────────────────────────────────────
+const kancelarePlans = [
+  {
+    name: 'Základní',
+    freq: '1× týdně',
+    price: 'Dle kalkulace',
+    unit: '',
+    desc: 'Ideální pro menší kanceláře do 100 m² s nízkým provozem.',
+    highlight: false,
+    items: [
+      'Vysávání a vytírání podlah',
+      'Úklid kuchyňky a sociálního zázemí',
+      'Vynášení odpadků',
+      'Utírání prachu z volných ploch',
+    ],
+  },
+  {
+    name: 'Standardní',
+    freq: '2× týdně',
+    price: 'Dle kalkulace',
+    unit: '',
+    desc: 'Nejoblíbenější volba pro kanceláře 100–300 m² se středním provozem.',
+    highlight: true,
+    badge: 'Nejpopulárnější',
+    items: [
+      'Vše ze Základního',
+      'Dezinfekce kontaktních ploch',
+      'Čištění skleněných příček a dveří',
+      'Doplňování hygienických potřeb',
+      'Fotoreport po každém úklidu',
+    ],
+  },
+  {
+    name: 'Prémiový',
+    freq: 'Dle dohody',
+    price: 'Dle kalkulace',
+    unit: '',
+    desc: 'Pro větší prostory, náročný provoz nebo specifické požadavky.',
+    highlight: false,
+    items: [
+      'Vše ze Standardního',
+      'Individuální plán úklidu',
+      'Stálý přidělený tým',
+      'Mimořádné úklidy v ceně',
+      'Prioritní podpora',
+    ],
+  },
+];
+
+// ─── SVJ ─────────────────────────────────────────────────────────────────────
+const svjPlans = [
+  {
+    name: 'Malý dům',
+    freq: '1× týdně',
+    price: 'Dle kalkulace',
+    unit: '',
+    desc: 'Bytový dům do 12 bytových jednotek, 1 vchod.',
+    highlight: false,
+    items: [
+      'Zametení a vytření chodeb a schodiště',
+      'Otření zábradlí a madel',
+      'Úklid vstupních prostor',
+      'Vynášení odpadků ze společných prostor',
+    ],
+  },
+  {
+    name: 'Střední dům',
+    freq: '1–2× týdně',
+    price: 'Dle kalkulace',
+    unit: '',
+    desc: 'Bytový dům 12–30 bytových jednotek, 1–2 vchody.',
+    highlight: true,
+    badge: 'Nejžádanější',
+    items: [
+      'Vše z Malého domu',
+      'Úklid výtahu',
+      'Otření poštovních schránek a vypínačů',
+      'Čištění prosklených ploch',
+      'Fotoreport po každém úklidu',
+    ],
+  },
+  {
+    name: 'Velký objekt',
+    freq: 'Dle dohody',
+    price: 'Dle kalkulace',
+    unit: '',
+    desc: 'Velké bytové domy, více vchodů, výtahy — kalkulace individuálně.',
+    highlight: false,
+    note: 'U rozsáhlých objektů (více vchodů, desítky pater) je rozsah fotodokumentace dohodnut individuálně.',
+    items: [
+      'Individuální plán pro každý objekt',
+      'Více vchodů a schodišť',
+      'Výtahy a technické prostory',
+      'Stálý přidělený tým',
+      'Flexibilní frekvence',
+    ],
+  },
+];
+
+// ─── AIRBNB ───────────────────────────────────────────────────────────────────
+const airbnbPlans = [
+  {
+    name: 'Garsoniéra / 1+kk',
+    freq: 'Na obrat',
+    price: 'Dle kalkulace',
+    unit: '',
+    desc: 'Rychlá příprava malého apartmánu mezi pobyty hostů.',
+    highlight: false,
+    items: [
+      'Kompletní úklid koupelny a WC',
+      'Úklid kuchyně a spotřebičů',
+      'Vysávání a vytírání podlah',
+      'Výměna ložního prádla',
+      'Fotoreport po dokončení',
+    ],
+  },
+  {
+    name: '2+kk / 2+1',
+    freq: 'Na obrat',
+    price: 'Dle kalkulace',
+    unit: '',
+    desc: 'Standard pro nejčastěji pronajímané byty na platformách.',
+    highlight: true,
+    badge: 'Nejčastější',
+    items: [
+      'Vše z Garsoniéry',
+      'Výměna a doplnění ručníků',
+      'Doplnění spotřebního materiálu',
+      'Kontrola a hlášení poškození',
+      'Prioritní dostupnost termínů',
+    ],
+  },
+  {
+    name: 'Větší apartmán / více pokojů',
+    freq: 'Na obrat',
+    price: 'Dle kalkulace',
+    unit: '',
+    desc: 'Rodinné apartmány, větší byty a apartmánové domy.',
+    highlight: false,
+    items: [
+      'Vše z 2+kk',
+      'Individuální časový harmonogram',
+      'Správa více apartmánů najednou',
+      'Přístup k aplikaci s přehledem',
+    ],
+  },
+];
+---
+
+<Layout title="Ceník | PrimeClean">
+  <main class="bg-white selection:bg-[#81b344]/30 selection:text-zinc-900">
+
+    <!-- ═══════════════════════════════════════════
+         HERO
+    ═══════════════════════════════════════════ -->
+    <section class="relative pt-28 pb-20 md:pt-36 md:pb-28 lg:pt-44 lg:pb-36 overflow-hidden bg-zinc-50">
+      <div class="hidden md:block pointer-events-none absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full bg-[#81b344]/5" style="filter: blur(80px);"></div>
+      <div class="hidden md:block pointer-events-none absolute -bottom-20 -left-20 w-[400px] h-[400px] rounded-full bg-[#81b344]/4" style="filter: blur(60px);"></div>
+
+      <div class="relative z-10 max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12 text-center">
+
+        <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-white border border-zinc-200 shadow-sm mb-6 md:mb-8 opacity-0 animate-fade-in-up" style="animation-delay: 0ms;">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#81b344] animate-pulse flex-shrink-0"></span>
+          <span class="text-[11px] sm:text-xs font-bold text-zinc-600 tracking-[0.15em] uppercase">Transparentní ceník</span>
+        </div>
+
+        <h1 class="text-[2.75rem] sm:text-[3.75rem] md:text-6xl lg:text-[6rem] font-extrabold text-zinc-950 tracking-tighter leading-[1.05] md:leading-[0.95] mb-6 opacity-0 animate-fade-in-up" style="animation-delay: 150ms;">
+          Jasné ceny,<br class="hidden sm:block" />
+          <span class="text-[#6a9438]">žádná překvapení.</span>
+        </h1>
+
+        <p class="text-base sm:text-lg md:text-[19px] lg:text-[21px] text-zinc-600 max-w-xl lg:max-w-2xl mx-auto leading-relaxed font-medium mb-10 md:mb-12 opacity-0 animate-fade-in-up" style="animation-delay: 300ms;">
+          Cena úklidu závisí na velikosti objektu, frekvenci a rozsahu prací. Vyberte kategorii a orientačně se podívejte, co vás čeká. Přesnou kalkulaci připravíme na míru po prohlídce zdarma.
+        </p>
+
+        <!-- Tab switcher -->
+        <div class="opacity-0 animate-fade-in-up" style="animation-delay: 450ms;">
+          <div id="cenik-tab-switcher" class="hidden sm:inline-flex gap-2 p-1.5 bg-white border border-zinc-200 rounded-2xl shadow-sm">
+            {tabs.map((tab, i) => (
+              <button
+                data-cenik-tab={tab.id}
+                class={`cenik-tab-btn px-6 py-3.5 rounded-xl text-[14px] font-bold transition-all duration-200 whitespace-nowrap ${
+                  i === 0
+                    ? 'bg-[#81b344] text-white shadow-md shadow-[#81b344]/25'
+                    : 'text-zinc-500 hover:text-zinc-800 hover:bg-zinc-50'
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+          <div id="cenik-tab-switcher-mobile" class="sm:hidden flex flex-col gap-2 w-full max-w-xs mx-auto">
+            {tabs.map((tab, i) => (
+              <button
+                data-cenik-tab={tab.id}
+                class={`cenik-tab-btn w-full px-5 py-4 rounded-2xl text-[15px] font-bold transition-all duration-200 ${
+                  i === 0
+                    ? 'bg-[#81b344] text-white shadow-md shadow-[#81b344]/25'
+                    : 'bg-white border border-zinc-200 text-zinc-600'
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         KANCELÁŘE TAB
+    ═══════════════════════════════════════════ -->
+    <div id="cenik-tab-kancelare" class="cenik-tab-content">
+      <section class="py-20 md:py-32 bg-white">
+        <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
+
+          <div class="scroll-animate opacity-0 text-center max-w-2xl mx-auto mb-14">
+            <div class="mb-4">
+              <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">Kanceláře a firmy</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-4">
+              Ceník úklidu <span class="text-[#6a9438]">kanceláří.</span>
+            </h2>
+            <p class="text-[16px] text-zinc-500 font-medium leading-relaxed">
+              Cena se odvíjí od velikosti prostor, frekvence a rozsahu prací. Níže najdete orientační přehled — přesnou kalkulaci připravíme po prohlídce zdarma.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+            {kancelarePlans.map((plan, i) => (
+              <div
+                class={`scroll-animate opacity-0 relative flex flex-col rounded-[2rem] border overflow-hidden transition-all duration-300 hover:-translate-y-1 ${
+                  plan.highlight
+                    ? 'bg-[#81b344] border-[#6a9438] shadow-xl shadow-[#81b344]/20'
+                    : 'bg-white border-zinc-200 hover:shadow-lg hover:border-[#81b344]/20'
+                }`}
+                style={`animation-delay: ${i * 120}ms`}
+              >
+                {plan.badge && (
+                  <div class="absolute top-5 right-5">
+                    <span class="px-3 py-1 rounded-full bg-white/25 border border-white/40 text-[11px] font-bold text-white tracking-[0.08em] uppercase">
+                      {plan.badge}
+                    </span>
+                  </div>
+                )}
+
+                <div class="p-8 lg:p-10 flex flex-col flex-1">
+                  <div class="mb-6">
+                    <p class={`text-[12px] font-bold uppercase tracking-[0.15em] mb-2 ${plan.highlight ? 'text-white/70' : 'text-zinc-500'}`}>
+                      {plan.freq}
+                    </p>
+                    <h3 class={`text-[26px] font-extrabold tracking-tight mb-4 ${plan.highlight ? 'text-white' : 'text-zinc-950'}`}>
+                      {plan.name}
+                    </h3>
+                    <p class={`text-[14px] font-medium leading-relaxed ${plan.highlight ? 'text-white/80' : 'text-zinc-500'}`}>
+                      {plan.desc}
+                    </p>
+                  </div>
+
+                  <div class={`text-[28px] font-extrabold tracking-tight mb-8 ${plan.highlight ? 'text-white' : 'text-zinc-950'}`}>
+                    {plan.price}
+                    {plan.unit && <span class={`text-[16px] font-medium ml-1 ${plan.highlight ? 'text-white/70' : 'text-zinc-500'}`}>{plan.unit}</span>}
+                  </div>
+
+                  <ul class="flex flex-col gap-3 mb-10 flex-1">
+                    {plan.items.map(item => (
+                      <li class={`flex items-start gap-3 text-[14px] font-medium ${plan.highlight ? 'text-white/90' : 'text-zinc-700'}`}>
+                        <div class={`flex-shrink-0 mt-0.5 w-5 h-5 rounded-full flex items-center justify-center ${plan.highlight ? 'bg-white/20 text-white' : 'bg-[#81b344] text-zinc-950'}`}>
+                          <span set:html={checkIcon} />
+                        </div>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <a
+                    href="/kontakt"
+                    class={`mt-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-[14px] font-bold transition-all duration-300 hover:-translate-y-0.5 ${
+                      plan.highlight
+                        ? 'bg-white text-[#3d6b1a] hover:bg-zinc-50 shadow-md'
+                        : 'bg-[#81b344] text-white hover:bg-[#6a9438] shadow-md shadow-[#81b344]/20'
+                    }`}
+                  >
+                    Poptat tento plán
+                    <span class="w-4 h-4" set:html={arrowRight} />
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         SVJ TAB
+    ═══════════════════════════════════════════ -->
+    <div id="cenik-tab-svj" class="cenik-tab-content hidden">
+      <section class="py-20 md:py-32 bg-white">
+        <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
+
+          <div class="scroll-animate opacity-0 text-center max-w-2xl mx-auto mb-14">
+            <div class="mb-4">
+              <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">SVJ a bytové domy</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-4">
+              Ceník úklidu <span class="text-[#6a9438]">bytových domů.</span>
+            </h2>
+            <p class="text-[16px] text-zinc-500 font-medium leading-relaxed">
+              Každý dům je jiný — počet vchodů, výtahy, schodiště. Níže je orientační přehled. Přesná cena vždy záleží na konkrétním objektu.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+            {svjPlans.map((plan, i) => (
+              <div
+                class={`scroll-animate opacity-0 relative flex flex-col rounded-[2rem] border overflow-hidden transition-all duration-300 hover:-translate-y-1 ${
+                  plan.highlight
+                    ? 'bg-[#81b344] border-[#6a9438] shadow-xl shadow-[#81b344]/20'
+                    : 'bg-white border-zinc-200 hover:shadow-lg hover:border-[#81b344]/20'
+                }`}
+                style={`animation-delay: ${i * 120}ms`}
+              >
+                {plan.badge && (
+                  <div class="absolute top-5 right-5">
+                    <span class="px-3 py-1 rounded-full bg-white/25 border border-white/40 text-[11px] font-bold text-white tracking-[0.08em] uppercase">
+                      {plan.badge}
+                    </span>
+                  </div>
+                )}
+
+                <div class="p-8 lg:p-10 flex flex-col flex-1">
+                  <div class="mb-6">
+                    <p class={`text-[12px] font-bold uppercase tracking-[0.15em] mb-2 ${plan.highlight ? 'text-white/70' : 'text-zinc-500'}`}>
+                      {plan.freq}
+                    </p>
+                    <h3 class={`text-[26px] font-extrabold tracking-tight mb-4 ${plan.highlight ? 'text-white' : 'text-zinc-950'}`}>
+                      {plan.name}
+                    </h3>
+                    <p class={`text-[14px] font-medium leading-relaxed ${plan.highlight ? 'text-white/80' : 'text-zinc-500'}`}>
+                      {plan.desc}
+                    </p>
+                  </div>
+
+                  <div class={`text-[28px] font-extrabold tracking-tight mb-6 ${plan.highlight ? 'text-white' : 'text-zinc-950'}`}>
+                    {plan.price}
+                  </div>
+
+                  {plan.note && (
+                    <div class={`mb-6 p-4 rounded-xl text-[13px] font-medium leading-relaxed ${plan.highlight ? 'bg-white/15 text-white/90' : 'bg-amber-50 border border-amber-200 text-amber-800'}`}>
+                      ℹ️ {plan.note}
+                    </div>
+                  )}
+
+                  <ul class="flex flex-col gap-3 mb-10 flex-1">
+                    {plan.items.map(item => (
+                      <li class={`flex items-start gap-3 text-[14px] font-medium ${plan.highlight ? 'text-white/90' : 'text-zinc-700'}`}>
+                        <div class={`flex-shrink-0 mt-0.5 w-5 h-5 rounded-full flex items-center justify-center ${plan.highlight ? 'bg-white/20 text-white' : 'bg-[#81b344] text-zinc-950'}`}>
+                          <span set:html={checkIcon} />
+                        </div>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <a
+                    href="/kontakt"
+                    class={`mt-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-[14px] font-bold transition-all duration-300 hover:-translate-y-0.5 ${
+                      plan.highlight
+                        ? 'bg-white text-[#3d6b1a] hover:bg-zinc-50 shadow-md'
+                        : 'bg-[#81b344] text-white hover:bg-[#6a9438] shadow-md shadow-[#81b344]/20'
+                    }`}
+                  >
+                    Poptat tento plán
+                    <span class="w-4 h-4" set:html={arrowRight} />
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         AIRBNB TAB
+    ═══════════════════════════════════════════ -->
+    <div id="cenik-tab-airbnb" class="cenik-tab-content hidden">
+      <section class="py-20 md:py-32 bg-white">
+        <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
+
+          <div class="scroll-animate opacity-0 text-center max-w-2xl mx-auto mb-14">
+            <div class="mb-4">
+              <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">Airbnb a apartmány</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-4">
+              Ceník úklidu <span class="text-[#6a9438]">apartmánů.</span>
+            </h2>
+            <p class="text-[16px] text-zinc-500 font-medium leading-relaxed">
+              Cena se odvíjí od velikosti apartmánu a rozsahu prací při každém obratu. Přesnou cenu domluvíme po první prohlídce.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+            {airbnbPlans.map((plan, i) => (
+              <div
+                class={`scroll-animate opacity-0 relative flex flex-col rounded-[2rem] border overflow-hidden transition-all duration-300 hover:-translate-y-1 ${
+                  plan.highlight
+                    ? 'bg-[#81b344] border-[#6a9438] shadow-xl shadow-[#81b344]/20'
+                    : 'bg-white border-zinc-200 hover:shadow-lg hover:border-[#81b344]/20'
+                }`}
+                style={`animation-delay: ${i * 120}ms`}
+              >
+                {plan.badge && (
+                  <div class="absolute top-5 right-5">
+                    <span class="px-3 py-1 rounded-full bg-white/25 border border-white/40 text-[11px] font-bold text-white tracking-[0.08em] uppercase">
+                      {plan.badge}
+                    </span>
+                  </div>
+                )}
+
+                <div class="p-8 lg:p-10 flex flex-col flex-1">
+                  <div class="mb-6">
+                    <p class={`text-[12px] font-bold uppercase tracking-[0.15em] mb-2 ${plan.highlight ? 'text-white/70' : 'text-zinc-500'}`}>
+                      {plan.freq}
+                    </p>
+                    <h3 class={`text-[26px] font-extrabold tracking-tight mb-4 ${plan.highlight ? 'text-white' : 'text-zinc-950'}`}>
+                      {plan.name}
+                    </h3>
+                    <p class={`text-[14px] font-medium leading-relaxed ${plan.highlight ? 'text-white/80' : 'text-zinc-500'}`}>
+                      {plan.desc}
+                    </p>
+                  </div>
+
+                  <div class={`text-[28px] font-extrabold tracking-tight mb-8 ${plan.highlight ? 'text-white' : 'text-zinc-950'}`}>
+                    {plan.price}
+                  </div>
+
+                  <ul class="flex flex-col gap-3 mb-10 flex-1">
+                    {plan.items.map(item => (
+                      <li class={`flex items-start gap-3 text-[14px] font-medium ${plan.highlight ? 'text-white/90' : 'text-zinc-700'}`}>
+                        <div class={`flex-shrink-0 mt-0.5 w-5 h-5 rounded-full flex items-center justify-center ${plan.highlight ? 'bg-white/20 text-white' : 'bg-[#81b344] text-zinc-950'}`}>
+                          <span set:html={checkIcon} />
+                        </div>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <a
+                    href="/kontakt"
+                    class={`mt-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-[14px] font-bold transition-all duration-300 hover:-translate-y-0.5 ${
+                      plan.highlight
+                        ? 'bg-white text-[#3d6b1a] hover:bg-zinc-50 shadow-md'
+                        : 'bg-[#81b344] text-white hover:bg-[#6a9438] shadow-md shadow-[#81b344]/20'
+                    }`}
+                  >
+                    Poptat tento plán
+                    <span class="w-4 h-4" set:html={arrowRight} />
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         SPODNÍ CTA (společné pro všechny taby)
+    ═══════════════════════════════════════════ -->
+    <section class="py-20 md:py-28 bg-zinc-50">
+      <div class="max-w-[860px] mx-auto px-5 md:px-8 lg:px-12 text-center">
+        <div class="scroll-animate opacity-0 bg-zinc-950 rounded-[2.5rem] p-10 md:p-16 relative overflow-hidden">
+          <div class="hidden md:block pointer-events-none absolute -top-20 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-[#81b344]/10" style="filter: blur(80px);"></div>
+          <div class="relative z-10">
+            <p class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-5">Nezávazná kalkulace</p>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tighter leading-[1.1] mb-5">
+              Přijdeme se podívat<br /><span class="text-[#81b344]">a nacenění je zdarma.</span>
+            </h2>
+            <p class="text-[16px] md:text-[18px] text-zinc-400 font-medium leading-relaxed mb-10 max-w-xl mx-auto">
+              Každý objekt je jiný. Přijedeme na místo, zhodnotíme rozsah prací a připravíme přesnou nabídku na míru. Bez závazků.
+            </p>
+            <a href="/kontakt" class="inline-flex items-center justify-center gap-2 px-10 py-4 text-[16px] font-bold text-zinc-950 bg-[#81b344] rounded-xl hover:bg-white transition-all duration-300 hover:-translate-y-1 shadow-lg shadow-[#81b344]/20">
+              Domluvit prohlídku zdarma
+              <span class="w-5 h-5" set:html={arrowRight} />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</Layout>
+
+<script is:inline>
+  (function () {
+    const lowEnd =
+      (navigator.hardwareConcurrency ?? 4) <= 2 ||
+      (navigator.deviceMemory ?? 4) <= 2 ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (lowEnd) document.documentElement.classList.add('low-end');
+  })();
+
+  const CENIK_TABS = ['kancelare', 'svj', 'airbnb'];
+
+  function activateCenikTab(target) {
+    if (!CENIK_TABS.includes(target)) return;
+    const isLowEnd = document.documentElement.classList.contains('low-end');
+
+    // Buttons
+    document.querySelectorAll('.cenik-tab-btn').forEach(btn => {
+      const isMobile = btn.closest('#cenik-tab-switcher-mobile') !== null;
+      const isTarget = btn.getAttribute('data-cenik-tab') === target;
+      btn.classList.remove('bg-[#81b344]', 'text-white', 'shadow-md', 'shadow-[#81b344]/25');
+      if (isMobile) {
+        if (isTarget) {
+          btn.classList.remove('bg-white', 'border', 'border-zinc-200', 'text-zinc-600');
+          btn.classList.add('bg-[#81b344]', 'text-white', 'shadow-md', 'shadow-[#81b344]/25');
+        } else {
+          btn.classList.add('bg-white', 'border', 'border-zinc-200', 'text-zinc-600');
+        }
+      } else {
+        if (isTarget) {
+          btn.classList.remove('text-zinc-500', 'hover:text-zinc-800', 'hover:bg-zinc-50');
+          btn.classList.add('bg-[#81b344]', 'text-white', 'shadow-md', 'shadow-[#81b344]/25');
+        } else {
+          btn.classList.add('text-zinc-500', 'hover:text-zinc-800', 'hover:bg-zinc-50');
+        }
+      }
+    });
+
+    // Content
+    document.querySelectorAll('.cenik-tab-content').forEach(c => c.classList.add('hidden'));
+    const active = document.getElementById('cenik-tab-' + target);
+    if (!active) return;
+    active.classList.remove('hidden');
+
+    // Re-init animations
+    const animEls = active.querySelectorAll('.scroll-animate');
+    animEls.forEach(el => {
+      el.classList.remove('animate-fade-in-up');
+      el.classList.add('opacity-0');
+    });
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      if (isLowEnd) {
+        animEls.forEach(el => { el.classList.remove('opacity-0'); el.style.opacity = '1'; });
+      } else {
+        const obs = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('animate-fade-in-up');
+              entry.target.classList.remove('opacity-0');
+              obs.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
+        animEls.forEach(el => obs.observe(el));
+      }
+    }));
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const isLowEnd = document.documentElement.classList.contains('low-end');
+
+    if (isLowEnd) {
+      document.querySelectorAll('.opacity-0').forEach(el => {
+        el.classList.remove('opacity-0');
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+        el.style.animation = 'none';
+      });
+    } else {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-fade-in-up');
+            entry.target.classList.remove('opacity-0');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0, rootMargin: '0px 0px -10% 0px' });
+      document.querySelectorAll('.scroll-animate').forEach(el => observer.observe(el));
+    }
+
+    activateCenikTab('kancelare');
+
+    document.querySelectorAll('.cenik-tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.getAttribute('data-cenik-tab');
+        if (target) activateCenikTab(target);
+      });
+    });
+  });
+</script>
+
+<style is:global>
+  @keyframes softFadeUp {
+    0%   { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in-up {
+    animation-name: softFadeUp;
+    animation-duration: 0.9s;
+    animation-timing-function: cubic-bezier(0.25, 1, 0.4, 1);
+    animation-fill-mode: both;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .animate-fade-in-up, .scroll-animate {
+      animation: none !important; opacity: 1 !important;
+      transform: none !important; transition: none !important;
+    }
+    .animate-pulse { animation: none !important; }
+  }
+  .low-end .animate-fade-in-up,
+  .low-end .scroll-animate {
+    animation: none !important; opacity: 1 !important;
+    transform: none !important;
+  }
+  .low-end .animate-pulse { animation: none !important; }
+  .low-end img { transition: none !important; }
+</style>
