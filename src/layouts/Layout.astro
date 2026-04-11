@@ -1,5 +1,4 @@
 ---
-// src/layouts/Layout.astro
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CookieBanner from '../components/CookieBanner.astro';
@@ -27,11 +26,29 @@ const { title } = Astro.props;
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" /></noscript>
 
     <title>{title}</title>
+
+    <!-- Low-end device detection — synchronně před renderem těla -->
+    <script is:inline>
+      (function () {
+        const cores = navigator.hardwareConcurrency || 4;
+        const ram = navigator.deviceMemory || 4;
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (cores <= 2 || ram <= 2 || reducedMotion) {
+          document.documentElement.classList.add('low-end');
+        }
+      })();
+    </script>
   </head>
   <body class="bg-zinc-50 text-zinc-900 antialiased selection:bg-[#81b344]/20 selection:text-[#5a7a2e]">
     <Header />
     <slot />
     <Footer />
     <CookieBanner />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', function () {
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+      });
+    </script>
   </body>
 </html>

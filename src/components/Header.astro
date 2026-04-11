@@ -1,12 +1,11 @@
 ---
-// src/components/Header.astro
 const navLinks = [
-  { name: 'Domů', href: '/' },
-  { name: 'Služby', href: '/sluzby' },
-  { name: 'Ceník', href: '/cenik' },
-  { name: 'Aplikace', href: '/aplikace' },
+  { name: 'Domů',      href: '/' },
+  { name: 'Služby',    href: '/sluzby' },
+  { name: 'Ceník',     href: '/cenik' },
+  { name: 'Aplikace',  href: '/aplikace' },
   { name: 'Reference', href: '/reference' },
-  { name: 'Kontakt', href: '/kontakt' }
+  { name: 'Kontakt',   href: '/kontakt' },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -15,12 +14,10 @@ const currentPath = Astro.url.pathname;
 <header class="fixed top-0 inset-x-0 z-[100] bg-white/95 border-b border-zinc-200/50 shadow-[0_4px_30px_rgba(0,0,0,0.04)] transition-all duration-300" id="main-nav">
   <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 h-20 md:h-24 flex items-center justify-between">
 
-    <!-- Logo -->
     <a href="/" aria-label="PrimeClean" class="flex items-center gap-2 group flex-shrink-0 transition-transform duration-300 hover:scale-105 active:scale-95">
       <img src="/logo.png" alt="PrimeClean" class="h-9 w-auto drop-shadow-sm" />
     </a>
 
-    <!-- Desktop Menu -->
     <nav class="hidden md:flex items-center gap-6 lg:gap-8">
       <ul class="flex items-center gap-6 lg:gap-8">
         {navLinks.map(link => {
@@ -43,7 +40,6 @@ const currentPath = Astro.url.pathname;
       </a>
     </nav>
 
-    <!-- Mobile: Hamburger -->
     <button id="mobile-menu-btn" class="md:hidden relative w-10 h-10 flex flex-col items-center justify-center gap-[5px] text-zinc-600 hover:text-zinc-950 transition-colors z-50" aria-label="Otevřít menu">
       <span class="w-5 h-[2px] bg-current rounded-full transition-all duration-300 origin-center"></span>
       <span class="w-5 h-[2px] bg-current rounded-full transition-all duration-300 origin-center"></span>
@@ -51,7 +47,6 @@ const currentPath = Astro.url.pathname;
     </button>
   </div>
 
-  <!-- Mobile Menu Dropdown -->
   <div id="mobile-menu" class="absolute top-[100%] left-0 w-full bg-white border-b border-zinc-200/50 shadow-2xl transition-all duration-300 ease-in-out opacity-0 invisible -translate-y-4 md:hidden">
     <div class="px-5 py-6 flex flex-col gap-2">
       {navLinks.map(link => {
@@ -70,7 +65,7 @@ const currentPath = Astro.url.pathname;
   </div>
 </header>
 
-<script is:inline>
+<script>
   document.addEventListener('DOMContentLoaded', () => {
     const btn = document.getElementById('mobile-menu-btn');
     const menu = document.getElementById('mobile-menu');
@@ -80,18 +75,18 @@ const currentPath = Astro.url.pathname;
     btn?.addEventListener('click', () => {
       isOpen = !isOpen;
       if (isOpen) {
-        menu.classList.remove('opacity-0', 'invisible', '-translate-y-4');
-        if (spans && spans.length === 3) {
-          spans[0].style.transform = 'translateY(7px) rotate(45deg)';
-          spans[1].style.opacity = '0';
-          spans[2].style.transform = 'translateY(-7px) rotate(-45deg)';
+        menu?.classList.remove('opacity-0', 'invisible', '-translate-y-4');
+        if (spans?.length === 3) {
+          (spans[0] as HTMLElement).style.transform = 'translateY(7px) rotate(45deg)';
+          (spans[1] as HTMLElement).style.opacity = '0';
+          (spans[2] as HTMLElement).style.transform = 'translateY(-7px) rotate(-45deg)';
         }
       } else {
-        menu.classList.add('opacity-0', 'invisible', '-translate-y-4');
-        if (spans && spans.length === 3) {
-          spans[0].style.transform = 'none';
-          spans[1].style.opacity = '1';
-          spans[2].style.transform = 'none';
+        menu?.classList.add('opacity-0', 'invisible', '-translate-y-4');
+        if (spans?.length === 3) {
+          (spans[0] as HTMLElement).style.transform = 'none';
+          (spans[1] as HTMLElement).style.opacity = '1';
+          (spans[2] as HTMLElement).style.transform = 'none';
         }
       }
     });
