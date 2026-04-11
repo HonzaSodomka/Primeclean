@@ -1,39 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const arrowRight = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
-const checkIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
-
-// Ikony pro sekce zahrnutych sluzeb
-const iconFloor     = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>';
-const iconDesk      = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>';
-const iconMonitor   = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>';
-const iconDroplets  = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.09 3 12.25c0 2.22 1.8 4.05 4 4.05z"/><path d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97"/></svg>';
-const iconCoffee    = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>';
-const iconTrash     = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>';
-const iconDoor      = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M19 21V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v16"/><path d="M9 21V9h6v12"/></svg>';
-const iconRoll      = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="4.93" y1="4.93" x2="9.17" y2="9.17"/><line x1="14.83" y1="14.83" x2="19.07" y2="19.07"/><line x1="14.83" y1="9.17" x2="19.07" y2="4.93"/><line x1="4.93" y1="19.07" x2="9.17" y2="14.83"/></svg>';
-const iconSoap      = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>';
-const iconBag       = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>';
-const iconDish      = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6a6 6 0 0 0 6 6"/></svg>';
-
-// SVJ ikony
-const iconBroom     = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 11 11"/><path d="m12 15 6-6"/><path d="M3 21s4-1 6-3l-3-3c-2 2-3 6-3 6z"/></svg>';
-const iconShield    = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>';
-const iconLayers    = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>';
-const iconCamera    = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>';
-const iconElevator  = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="2" width="18" height="20" rx="2"/><path d="M9 2v20"/><path d="M6 8l-2 2 2 2"/><path d="M18 8l2 2-2 2"/></svg>';
-const iconSnow      = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="2" y1="12" x2="22" y2="12"/><line x1="12" y1="2" x2="12" y2="22"/><path d="m20 16-4-4 4-4"/><path d="m4 8 4 4-4 4"/><path d="m16 4-4 4-4-4"/><path d="m8 20 4-4 4 4"/></svg>';
-
-// Airbnb ikony
-const iconBed       = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>';
-const iconStar      = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>';
-const iconAlertCircle = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>';
-const iconWash      = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2"/><circle cx="12" cy="13" r="5"/><path d="M8 6h.01"/><path d="M10 6h2"/></svg>';
-const iconGift      = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>';
-const iconPhone     = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>';
-const iconWrench    = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>';
-
 const tabs = [
   { id: 'kancelare', label: 'Kanceláře a firmy' },
   { id: 'svj',       label: 'SVJ a bytové domy' },
@@ -50,20 +17,20 @@ const kancPricing = [
 ];
 
 const kancServices = [
-  { icon: iconFloor,    text: 'Kompletní péče o podlahy: vysávání koberců a vytírání tvrdých podlah profesionální neutralizační chemií.' },
-  { icon: iconDesk,     text: 'Prach a povrchy: otření pracovních stolů, parapetů, polic a skříní do výšky 1,7 m.' },
-  { icon: iconMonitor,  text: 'IT technika: šetrné očištění monitorů, klávesnic a tiskáren speciální antistatickou utěrkou.' },
-  { icon: iconDroplets, text: 'Hygienické zázemí: hloubková dezinfekce toalet, umyvadel, zrcadel a obkladů. Leštění vodovodních baterií.' },
-  { icon: iconCoffee,   text: 'Kuchyňka a denní místnost: otření linky, dřezu a vnějších ploch spotřebičů (lednice, mikrovlnka, kávovar).' },
-  { icon: iconTrash,    text: 'Odpadové hospodářství: vynesení všech košů, výměna sáčků a odvoz tříděného odpadu do domovních kontejnerů.' },
-  { icon: iconDoor,     text: 'Reprezentativní vstup: čištění skleněných výplní dveří, leštění klik a otření vypínačů — nejčastějších zdrojů bakterií.' },
+  { icon: 'footprints', text: 'Kompletní péče o podlahy: Vysávání koberců a vytírání tvrdých podlah (laminát, dlažba, vinyl) profesionální neutralizační chemií.' },
+  { icon: 'monitor',    text: 'Prach a povrchy: Otření prachu z pracovních stolů (volné plochy), parapetů, polic a skříní do výšky 1,7 m.' },
+  { icon: 'keyboard',   text: 'IT technika: Šetrné očištění monitorů, klávesnic a tiskáren speciální antistatickou utěrkou.' },
+  { icon: 'droplets',   text: 'Hygienické zázemí: Hloubková dezinfekce toalet, umyvadel, zrcadel a obkladů. Leštění vodovodních baterií.' },
+  { icon: 'coffee',     text: 'Kuchyňka a denní místnost: Otření kuchyňské linky, dřezu a vnějších ploch spotřebičů (lednice, mikrovlnka, kávovar).' },
+  { icon: 'trash-2',    text: 'Odpadové hospodářství: Vynesení všech košů, výměna sáčků a odvoz tříděného odpadu do domovních kontejnerů.' },
+  { icon: 'door-open',  text: 'Reprezentativní vstup: Čištění skleněných výplní vnitřních dveří, leštění klik a otření vypínačů (nejčastější zdroje bakterií).' },
 ];
 
 const kancMaterial = [
-  { icon: iconRoll,  label: 'Hygienický papír',       desc: 'Toaletní papíry, papírové ručníky, kapesníčky.' },
-  { icon: iconSoap,  label: 'Drogerie a dezinfekce',  desc: 'Tekutá mýdla, dezinfekce, krémy na ruce.' },
-  { icon: iconBag,   label: 'Odpadkové pytle',        desc: 'Všechny velikosti sáčků do všech typů košů.' },
-  { icon: iconDish,  label: 'Vybavení kuchyňky',      desc: 'Tablety a sůl do myčky, saponáty na nádobí.' },
+  { icon: 'scroll',       label: 'Hygienický papír',       desc: 'Toaletní papíry, papírové ručníky, kapesníčky.' },
+  { icon: 'spray-can',    label: 'Drogerie a dezinfekce',  desc: 'Tekutá mýdla, dezinfekce, krémy na ruce.' },
+  { icon: 'shopping-bag', label: 'Odpadkové pytle',      desc: 'Všechny velikosti sáčků do všech typů košů.' },
+  { icon: 'utensils',     label: 'Vybavení kuchyňky',      desc: 'Tablety a sůl do myčky, saponáty na nádobí.' },
 ];
 
 // ─── SVJ DATA ─────────────────────────────────────────────────────────────────
@@ -75,16 +42,16 @@ const svjPricing = [
 ];
 
 const svjServices = [
-  { icon: iconBroom,    text: 'Pravidelný servis: zametání a vytírání chodeb, sklepů, čištění zábradlí, madel, parapetů, schránek a vypínačů.' },
-  { icon: iconDoor,     text: 'Péče o vstupy: leštění prosklených dveří a čištění vstupních prostor.' },
-  { icon: iconElevator, text: 'Výtahy: kompletní úklid kabiny, leštění nerezů a zrcadel.' },
-  { icon: iconCamera,   text: 'Digitální standard: každý úklid je doložen fotodokumentací v aplikaci PrimeClean.' },
+  { icon: 'wind',       text: 'Pravidelný servis: Zametání/vytírání chodeb, sklepů, čištění zábradlí, madel, parapetů, schránek a vypínačů.' },
+  { icon: 'door-open',  text: 'Péče o vstupy: Leštění prosklených dveří a čištění vstupních prostor.' },
+  { icon: 'arrow-up-down',text: 'Výtahy: Kompletní úklid kabiny, leštění nerezů a zrcadel.' },
+  { icon: 'camera',     text: 'Digitální standard: Každý úklid je doložen fotodokumentací v aplikaci PrimeClean.' },
 ];
 
 const svjWinter = [
-  { icon: iconDroplets, text: 'Neutralizace soli: speciální chemie, která odstraňuje bílé mapy z dlažby.' },
-  { icon: iconShield,   text: 'Ochrana povrchů: intenzivnější odstraňování štěrku, aby nedošlo k poškrábání podlah.' },
-  { icon: iconLayers,   text: 'Čištění rohoží: aby se nečistoty netahaly dále do pater.' },
+  { icon: 'droplets',     text: 'Neutralizace soli: Použití speciální chemie, která odstraňuje bílé mapy z dlažby.' },
+  { icon: 'shield-check', text: 'Ochrana povrchů: Intenzivnější odstraňování štěrku, aby nedošlo k poškrábání podlah.' },
+  { icon: 'layers',       text: 'Čištění rohoží: Aby se nečistoty netahaly dále do pater.' },
 ];
 
 // ─── AIRBNB DATA ──────────────────────────────────────────────────────────────
@@ -93,42 +60,42 @@ const airbnbPlans = [
     name: 'Studio / 1+kk',
     price: '750 Kč',
     highlight: false,
-    desc: 'Kompletní servis + stlaní 1 lůžka.',
+    desc: 'Kompletní servis + stlaní 1 lůžka',
   },
   {
     name: 'Apartmán 2+kk',
     price: '1 100 Kč',
     highlight: true,
     badge: 'Nejčastější',
-    desc: 'Kompletní servis + stlaní 2 lůžek.',
+    desc: 'Kompletní servis + stlaní 2 lůžek',
   },
   {
     name: 'Rodinný 3+kk+',
     price: '1 550 Kč',
     highlight: false,
-    desc: 'Kompletní servis + stlaní 3 lůžek.',
+    desc: 'Kompletní servis + stlaní 3 lůžek',
   },
 ];
 
 const airbnbStandard = [
-  { icon: iconBed,      text: 'Hotelový styling: profesionální stlaní postelí, načechrání polštářů a příprava ručníků pro hosty.' },
-  { icon: iconDroplets, text: 'Hloubková dezinfekce: koupelny a toalety čistíme s důrazem na hygienu a leštění všech povrchů.' },
-  { icon: iconCoffee,   text: 'Kuchyňský servis: kontrola lednice, umytí nádobí, vyčištění kávovaru a vynesení odpadu.' },
-  { icon: iconCamera,   text: 'Detailní fotoreport: po každém úklidu nahrajeme do aplikace fotky připraveného bytu jako důkaz kvality.' },
-  { icon: iconAlertCircle, text: 'Hlášení škod (Damage Report): pokud hosté něco poškodí, okamžitě to vyfotíme — máte důkaz pro Airbnb.' },
+  { icon: 'bed-double', text: 'Hotelový styling: Profesionální stlaní postelí, načechrání polštářů a příprava ručníků pro hosty.' },
+  { icon: 'sparkles',   text: 'Hloubková dezinfekce: Koupelny a toalety čistíme s důrazem na hygienu a leštění všech povrchů.' },
+  { icon: 'coffee',     text: 'Kuchyňský servis: Kontrola lednice, umytí nádobí, vyčištění kávovaru a vynesení odpadu.' },
+  { icon: 'camera',     text: 'Detailní fotoreport: Po každém úklidu nahrajeme do aplikace fotky připraveného bytu jako důkaz kvality.' },
+  { icon: 'alert-circle',text: 'Hlášení škod (Damage Report): Pokud hosté něco poškodí, okamžitě to vyfotíme do aplikace. Máte tak v ruce důkaz pro Airbnb k vymáhání škody.' },
 ];
 
 const airbnbExtras = [
-  { icon: iconWash,   label: 'Kompletní servis prádla',    price: '250 Kč / set', desc: 'Odvezeme špinavé, přivezeme profesionálně vyprané a vyžehlené. Žádná starost o sušení v bytě.' },
-  { icon: iconSoap,   label: 'Materiálový balíček',        price: 'Dle spotřeby',  desc: 'Toaletní papír, mýdlo, kapsle do kávovaru a tablety do myčky. Nemusíte hlídat nákupy.' },
-  { icon: iconGift,   label: 'Welcome balíčky',            price: 'Dle dohody',    desc: 'Víno, čokoláda nebo lokální dárky přesně podle vašich instrukcí pro nezapomenutelný zážitek hostů.' },
-  { icon: iconBroom,  label: 'Generální úklid',            price: 'Individuálně',  desc: 'Hloubkové čištění po sezóně nebo malování.' },
+  { icon: 'shirt',    label: 'Kompletní servis prádla',    price: '250 Kč / set', desc: 'Odvezeme špinavé, přivezeme profesionálně vyprané a vyžehlené. Žádná starost o sušení v bytě.' },
+  { icon: 'box',      label: 'Materiálový balíček',        price: 'Dle spotřeby',  desc: 'Dodáme vlastní toaletní papír, mýdlo, kapsle do kávovaru a tablety do myčky. Nemusíte hlídat nákupy.' },
+  { icon: 'gift',     label: 'Welcome balíčky',            price: 'Dle dohody',    desc: 'Připravíme víno, čokoládu nebo lokální dárky přesně podle vašich instrukcí pro nezapomenutelný zážitek hostů.' },
+  { icon: 'brush',    label: 'Generální úklid',            price: 'Individuálně',  desc: 'Hloubkové čištění (např. po sezóně nebo malování) naceníme individuálně.' },
 ];
 
 const airbnbApp = [
-  { icon: iconPhone,    label: 'Notifikace o dokončení',   desc: 'Ihned víte, že můžete hostům potvrdit dřívější příjezd.' },
-  { icon: iconBag,      label: 'Skladové zásoby',          desc: 'V aplikaci vidíte, kolik a čeho bylo použito.' },
-  { icon: iconWrench,   label: 'Hlášení závad',            desc: 'Dozvíte se o protékajícím záchodu nebo prasklé žárovce dřív, než si začne stěžovat host.' },
+  { icon: 'bell-ring',  label: 'Notifikace o dokončení',   desc: 'Ihned víte, že můžete hostům potvrdit dřívější příjezd.' },
+  { icon: 'package-check',label: 'Skladové zásoby',          desc: 'V aplikaci vidíte, kolik a čeho bylo použito.' },
+  { icon: 'wrench',     label: 'Hlášení závad',            desc: 'Dozvíte se o protékajícím záchodu nebo prasklé žárovce dřív, než si začne stěžovat host.' },
 ];
 ---
 
@@ -144,12 +111,12 @@ const airbnbApp = [
 
       <div class="relative z-10 max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12 text-center">
 
-        <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-white border border-zinc-200 shadow-sm mb-6 md:mb-8 opacity-0 animate-fade-in-up" style="animation-delay: 0ms;">
+        <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-white border border-zinc-200 shadow-sm mb-6 md:mb-8 opacity-0 animate-fade-in-up" style="animation-delay: 100ms;">
           <span class="w-1.5 h-1.5 rounded-full bg-[#81b344] animate-pulse flex-shrink-0"></span>
           <span class="text-[11px] sm:text-xs font-bold text-zinc-600 tracking-[0.15em] uppercase">Transparentní ceník</span>
         </div>
 
-        <h1 class="text-[2.75rem] sm:text-[3.75rem] md:text-6xl lg:text-[6rem] font-extrabold text-zinc-950 tracking-tighter leading-[1.05] md:leading-[0.95] mb-6 opacity-0 animate-fade-in-up" style="animation-delay: 150ms;">
+        <h1 class="text-[2.75rem] sm:text-[3.75rem] md:text-6xl lg:text-[6rem] font-extrabold text-zinc-950 tracking-tighter leading-[1.05] md:leading-[0.95] mb-6 opacity-0 animate-fade-in-up" style="animation-delay: 200ms;">
           Jasné ceny,<br class="hidden sm:block" />
           <span class="text-[#6a9438]">žádná překvapení.</span>
         </h1>
@@ -159,7 +126,7 @@ const airbnbApp = [
         </p>
 
         <!-- Tab switcher -->
-        <div class="opacity-0 animate-fade-in-up" style="animation-delay: 450ms;">
+        <div class="opacity-0 animate-fade-in-up" style="animation-delay: 400ms;">
           <div id="cenik-tab-switcher" class="hidden sm:inline-flex gap-2 p-1.5 bg-white border border-zinc-200 rounded-2xl shadow-sm">
             {tabs.map((tab, i) => (
               <button
@@ -198,71 +165,47 @@ const airbnbApp = [
     ═══════════════════════════════════════════ -->
     <div id="cenik-tab-kancelare" class="cenik-tab-content">
 
-      <!-- Cenová tabulka -->
+      <!-- Cenové karty místo tabulky -->
       <section class="py-20 md:py-28 bg-white">
         <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12">
 
-          <div class="scroll-animate opacity-0 text-center max-w-2xl mx-auto mb-12">
-            <div class="mb-4">
-              <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">Kanceláře a firmy</span>
-            </div>
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-4">
-              Příklady <span class="text-[#6a9438]">nacenění.</span>
+          <div class="scroll-animate opacity-0 text-center max-w-3xl mx-auto mb-12">
+            <!-- Větší EYEBROW nadpis -->
+            <h2 class="text-[20px] sm:text-[24px] md:text-[28px] font-extrabold text-[#81b344] uppercase tracking-wider mb-6">
+              Kanceláře a firmy
             </h2>
+            
+            <p class="text-[16px] md:text-[18px] text-zinc-600 font-medium leading-relaxed mb-10">
+              Jsme lokální brněnská firma a nejsme plátci DPH. Cena, kterou vidíte, je pro vás konečná. Žádné navýšení o 21 % na faktuře. K tomu vám jako jediní v Brně dáváme přístup do naší unikátní aplikace, se kterou máte čistotu svého objektu pod kontrolou přímo v kapse.
+            </p>
+
+            <h3 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-4">
+              Příklady nacenění <span class="text-[#6a9438]">úklidu kanceláří.</span>
+            </h3>
             <p class="text-[16px] text-zinc-500 font-medium leading-relaxed">
-              Měsíční paušály jsou orientační — finální kalkulaci připravíme na míru vaší firmě po prohlídce zdarma.
+              Měsíční paušály jsou orientační, finální kalkulaci připravíme na míru vaší firmě.
             </p>
           </div>
 
-          <!-- Desktop tabulka -->
-          <div class="scroll-animate opacity-0 hidden md:block overflow-hidden rounded-[1.5rem] border border-zinc-200 shadow-sm">
-            <table class="w-full">
-              <thead>
-                <tr class="bg-zinc-950 text-white">
-                  <th class="text-left px-6 py-4 text-[13px] font-bold tracking-[0.1em] uppercase">Velikost plochy</th>
-                  <th class="text-left px-6 py-4 text-[13px] font-bold tracking-[0.1em] uppercase">Frekvence</th>
-                  <th class="text-left px-6 py-4 text-[13px] font-bold tracking-[0.1em] uppercase">Cena za 1 úklid</th>
-                  <th class="text-left px-6 py-4 text-[13px] font-bold tracking-[0.1em] uppercase">Měsíční paušál</th>
-                  <th class="text-left px-6 py-4 text-[13px] font-bold tracking-[0.1em] uppercase">Hlavní tech-výhoda</th>
-                </tr>
-              </thead>
-              <tbody>
-                {kancPricing.map((row, i) => (
-                  <tr class={`border-t border-zinc-100 transition-colors hover:bg-[#81b344]/5 ${i % 2 === 0 ? 'bg-white' : 'bg-zinc-50/50'}`}>
-                    <td class="px-6 py-4 text-[15px] font-extrabold text-zinc-950">{row.plocha}</td>
-                    <td class="px-6 py-4 text-[14px] font-medium text-zinc-600">{row.freq}</td>
-                    <td class="px-6 py-4 text-[15px] font-bold text-zinc-800">{row.cena1}</td>
-                    <td class="px-6 py-4">
-                      <span class="text-[17px] font-extrabold text-[#6a9438]">{row.pausal}</span>
-                    </td>
-                    <td class="px-6 py-4">
-                      <span class="inline-flex items-center gap-1.5 text-[13px] font-semibold text-zinc-600">
-                        <span class="w-1.5 h-1.5 rounded-full bg-[#81b344] flex-shrink-0"></span>
-                        {row.tech}
-                      </span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <!-- Mobile karty -->
-          <div class="md:hidden flex flex-col gap-4">
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {kancPricing.map((row, i) => (
-              <div class="scroll-animate opacity-0 bg-white border border-zinc-200 rounded-[1.5rem] p-6 shadow-sm" style={`animation-delay: ${i * 80}ms`}>
-                <div class="flex items-start justify-between mb-3">
-                  <span class="text-[18px] font-extrabold text-zinc-950">{row.plocha}</span>
-                  <span class="text-[20px] font-extrabold text-[#6a9438]">{row.pausal}<span class="text-[12px] font-semibold text-zinc-500 ml-1">/měs.</span></span>
+              <div class="scroll-animate opacity-0 flex flex-col bg-white border border-zinc-200 rounded-[2rem] p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300" style={`animation-delay: ${(i + 1) * 100}ms`}>
+                <div class="flex items-center justify-between mb-4 pb-4 border-b border-zinc-100 flex-nowrap">
+                  <span class="text-[20px] font-extrabold text-zinc-950 whitespace-nowrap">{row.plocha}</span>
+                  <span class="text-[13px] font-semibold text-zinc-500 uppercase tracking-widest whitespace-nowrap">{row.freq}</span>
                 </div>
-                <div class="flex items-center gap-3 text-[13px] text-zinc-500 font-medium mb-3">
-                  <span>{row.freq}</span>
-                  <span class="w-px h-3 bg-zinc-200"></span>
-                  <span>1 úklid: <strong class="text-zinc-800">{row.cena1}</strong></span>
+                <div class="mb-6 flex-1">
+                  <div class="flex items-baseline gap-1.5 flex-nowrap mb-2">
+                    <div class="text-[32px] font-extrabold text-[#6a9438] leading-none whitespace-nowrap">{row.pausal}</div>
+                    <span class="text-[14px] font-medium text-zinc-500 whitespace-nowrap">/ měsíc</span>
+                  </div>
+                  <div class="text-[14px] font-medium text-zinc-600">Cena za 1 úklid: <strong class="text-zinc-900">{row.cena1}</strong></div>
                 </div>
-                <div class="flex items-center gap-1.5 text-[13px] font-semibold text-[#6a9438]">
-                  <span class="w-1.5 h-1.5 rounded-full bg-[#81b344] flex-shrink-0"></span>
-                  {row.tech}
+                <div class="mt-auto pt-6 border-t border-zinc-100">
+                  <div class="flex items-start gap-3 text-[14px] font-semibold text-zinc-800">
+                    <i data-lucide="check-circle-2" class="w-5 h-5 text-[#81b344] flex-shrink-0 mt-0.5"></i>
+                    {row.tech}
+                  </div>
                 </div>
               </div>
             ))}
@@ -272,58 +215,60 @@ const airbnbApp = [
       </section>
 
       <!-- Co zahrnuje úklid -->
-      <section class="py-20 md:py-28 bg-zinc-50">
+      <section class="py-10 md:py-16 bg-zinc-50">
         <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12">
 
           <div class="scroll-animate opacity-0 text-center max-w-2xl mx-auto mb-12">
             <h2 class="text-3xl sm:text-4xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-4">
-              Co zahrnuje úklid kanceláří
-              <span class="text-[#6a9438]"> — vždy v aplikaci.</span>
+              Co zahrnuje úklid kanceláří<br class="hidden sm:block" />
+              <span class="text-[#6a9438]">(vždy pod kontrolou v aplikaci)</span>
             </h2>
             <p class="text-[16px] text-zinc-500 font-medium leading-relaxed">
               Všechny tyto služby jsou standardní součástí měsíčního paušálu. Úklid probíhá podle přesně definovaných checklistů, které vidíte ve svém rozhraní.
             </p>
           </div>
 
-          <div class="grid sm:grid-cols-2 lg:grid-cols-2 gap-4">
-            {kancServices.map((item, i) => (
-              <div
-                class="scroll-animate opacity-0 flex items-start gap-4 bg-white border border-zinc-200 rounded-2xl p-5 hover:border-[#81b344]/30 hover:shadow-sm transition-all duration-200"
-                style={`animation-delay: ${i * 80}ms`}
-              >
-                <div class="flex-shrink-0 w-9 h-9 rounded-xl bg-[#81b344]/10 flex items-center justify-center text-[#6a9438]">
-                  <span set:html={item.icon} />
+          <div class="grid sm:grid-cols-2 gap-4 md:gap-5">
+            {kancServices.map((item, i) => {
+              const parts = item.text.split(':');
+              const title = parts[0];
+              const desc = parts.length > 1 ? parts.slice(1).join(':').trim() : '';
+              return (
+                <div class="scroll-animate opacity-0 flex items-start gap-4 bg-white border border-zinc-200 rounded-[1.5rem] p-5 md:p-6 hover:border-[#81b344]/30 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200" style={`animation-delay: ${(i % 2) * 100 + 100}ms`}>
+                  <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-[#81b344]/10 flex items-center justify-center text-[#6a9438]">
+                    <i data-lucide={item.icon} class="w-6 h-6"></i>
+                  </div>
+                  <div>
+                    <h4 class="text-[15px] font-bold text-zinc-900 mb-1">{title}</h4>
+                    {desc && <p class="text-[14px] font-medium text-zinc-600 leading-relaxed">{desc}</p>}
+                  </div>
                 </div>
-                <p class="text-[14px] font-medium text-zinc-700 leading-relaxed pt-1">{item.text}</p>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
         </div>
       </section>
 
       <!-- Doplňování hygieny -->
-      <section class="py-20 md:py-28 bg-white">
+      <section class="py-20 md:py-28 bg-white border-b border-zinc-100">
         <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12">
 
           <div class="scroll-animate opacity-0 max-w-2xl mx-auto text-center mb-12">
             <h2 class="text-3xl sm:text-4xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-4">
-              Doplňování hygieny —
-              <span class="text-[#6a9438]"> s námi vám nedojde.</span>
+              Doplňování hygieny –
+              <span class="text-[#6a9438]"> S námi vám nedojde.</span>
             </h2>
             <p class="text-[16px] text-zinc-500 font-medium leading-relaxed">
-              Abychom udrželi bezkonkurenční cenu úklidu, spotřební materiál fakturujeme zvlášť — za tržní ceny. Zaplatíte jen to, co skutečně spotřebujete. Vše sledujeme online v aplikaci.
+              Abychom udrželi bezkonkurenční cenu úklidu, spotřební materiál fakturujeme zvlášť. Vy ušetříte čas, my zajistíme, aby v kuchyňce ani na WC nikdy nic nechybělo. Vše sledujeme online v aplikaci.
             </p>
           </div>
 
-          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
             {kancMaterial.map((item, i) => (
-              <div
-                class="scroll-animate opacity-0 flex flex-col items-start gap-4 bg-zinc-50 border border-zinc-200 rounded-2xl p-6 hover:border-[#81b344]/30 transition-colors duration-200"
-                style={`animation-delay: ${i * 80}ms`}
-              >
-                <div class="w-10 h-10 rounded-xl bg-[#81b344]/10 flex items-center justify-center text-[#6a9438]">
-                  <span set:html={item.icon} />
+              <div class="scroll-animate opacity-0 flex flex-col items-start gap-4 bg-zinc-50 border border-zinc-200 rounded-[1.5rem] p-6 hover:border-[#81b344]/30 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200" style={`animation-delay: ${(i + 1) * 100}ms`}>
+                <div class="w-12 h-12 rounded-xl bg-[#81b344]/10 flex items-center justify-center text-[#6a9438]">
+                  <i data-lucide={item.icon} class="w-6 h-6"></i>
                 </div>
                 <div>
                   <p class="text-[15px] font-bold text-zinc-900 mb-1">{item.label}</p>
@@ -332,22 +277,59 @@ const airbnbApp = [
               </div>
             ))}
           </div>
+          
+          <div class="scroll-animate opacity-0 text-center" style="animation-delay: 500ms;">
+             <p class="text-[15px] font-semibold text-zinc-600">Materiál dodáváme za tržní ceny. Zaplatíte jen to, co skutečně spotřebujete.</p>
+          </div>
 
         </div>
       </section>
 
-      <!-- CTA kancelare -->
-      <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12 pb-24">
-        <div class="scroll-animate opacity-0 flex flex-col sm:flex-row items-center justify-between gap-6 bg-[#81b344]/8 border border-[#81b344]/20 rounded-2xl px-8 py-6">
-          <p class="text-[15px] font-semibold text-zinc-700 text-center sm:text-left">
-            Přijedeme se podívat, nacenění připravíme <strong class="text-zinc-950">zdarma a bez závazků.</strong>
-          </p>
-          <a href="/kontakt" class="flex-shrink-0 inline-flex items-center gap-2 px-7 py-3.5 text-[14px] font-bold text-white bg-[#81b344] rounded-xl shadow-md shadow-[#81b344]/20 hover:bg-[#6a9438] hover:-translate-y-0.5 transition-all duration-200">
-            Poptat nezávaznou prohlídku
-            <span class="w-4 h-4" set:html={arrowRight} />
-          </a>
+      <!-- KANCELÁŘE: Proč Brno volí PrimeClean (Bg: zinc-50) -->
+      <section class="py-16 md:py-24 bg-zinc-50 border-b border-zinc-100">
+        <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12">
+          <div class="scroll-animate opacity-0 relative bg-white border border-zinc-200 rounded-[2.5rem] p-8 md:p-12 shadow-sm max-w-4xl mx-auto text-center overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-[#81b344]/5 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute bottom-0 left-0 w-64 h-64 bg-[#81b344]/5 rounded-full blur-3xl pointer-events-none"></div>
+
+            <h3 class="relative z-10 text-3xl md:text-4xl font-extrabold text-zinc-950 mb-6 tracking-tight">
+              Proč Brno volí <span class="text-[#6a9438]">PrimeClean?</span>
+            </h3>
+            <p class="relative z-10 text-[16px] md:text-[18px] text-zinc-600 font-medium leading-relaxed mb-8 max-w-2xl mx-auto">
+              Jsme místní, jsme rychlí a chápeme, že v úklidovém servisu rozhodují detaily. S námi neřešíte uklízečky, prádlo ani drogerii. Vy jen sbíráte výdělky a pozitivní recenze.
+            </p>
+            <div class="relative z-10 inline-flex items-start md:items-center gap-3 px-6 py-4 bg-zinc-50 border border-zinc-100 rounded-2xl text-left md:text-center">
+              <i data-lucide="info" class="w-5 h-5 text-[#81b344] flex-shrink-0 mt-0.5 md:mt-0"></i>
+              <p class="text-[13px] sm:text-[14px] font-semibold text-zinc-600">
+                Ceny jsou konečné, nejsme plátci DPH. Uvedené částky jsou orientační, finální nabídku připravíme po prohlídce.
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
+
+      <!-- KANCELÁŘE: Spodní CTA (Bg: white) -->
+      <section class="relative py-20 md:py-28 bg-white overflow-hidden">
+        <div class="hidden md:block pointer-events-none absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full bg-[#81b344]/5" style="filter: blur(80px);"></div>
+        <div class="hidden md:block pointer-events-none absolute -bottom-20 -left-20 w-[400px] h-[400px] rounded-full bg-[#81b344]/5" style="filter: blur(60px);"></div>
+
+        <div class="relative z-10 max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12 text-center">
+          <p class="scroll-animate opacity-0 text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-4">Nezávazná kalkulace</p>
+          <h2 class="scroll-animate opacity-0 text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.08] mb-5" style="animation-delay: 100ms;">
+            Přijedeme se podívat<br />
+            <span class="text-[#6a9438]">a nacenění je zdarma.</span>
+          </h2>
+          <p class="scroll-animate opacity-0 text-[16px] md:text-[18px] text-zinc-500 font-medium leading-relaxed mb-10 max-w-2xl mx-auto" style="animation-delay: 200ms;">
+            Každý objekt je jiný. Přijedeme na místo, zhodnotíme rozsah prací a připravíme přesnou nabídku na míru. Bez závazků, bez překvapení a bez navýšení o DPH.
+          </p>
+          <div class="scroll-animate opacity-0" style="animation-delay: 300ms;">
+            <a href="/kontakt" class="inline-flex items-center justify-center gap-2 px-10 py-4 text-[16px] font-bold text-white bg-[#81b344] rounded-xl hover:bg-[#6a9438] transition-all duration-300 hover:-translate-y-1 shadow-lg shadow-[#81b344]/20">
+              Poptat nezávaznou prohlídku
+              <i data-lucide="arrow-right" class="w-5 h-5"></i>
+            </a>
+          </div>
+        </div>
+      </section>
 
     </div>
 
@@ -356,66 +338,58 @@ const airbnbApp = [
     ═══════════════════════════════════════════ -->
     <div id="cenik-tab-svj" class="cenik-tab-content hidden">
 
-      <!-- Cenová tabulka SVJ -->
+      <!-- Cenové karty (Inspirace Kancelářemi) -->
       <section class="py-20 md:py-28 bg-white">
         <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12">
 
-          <div class="scroll-animate opacity-0 text-center max-w-2xl mx-auto mb-12">
-            <div class="mb-4">
-              <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">SVJ a bytové domy</span>
-            </div>
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-4">
-              Příklady nacenění
-              <span class="text-[#6a9438]"> SVJ (1× týdně).</span>
+          <div class="scroll-animate opacity-0 text-center max-w-3xl mx-auto mb-12">
+            <!-- Větší EYEBROW nadpis -->
+            <h2 class="text-[20px] sm:text-[24px] md:text-[28px] font-extrabold text-[#81b344] uppercase tracking-wider mb-6">
+              Vchody SVJ a panelové domy
             </h2>
-            <p class="text-[16px] text-zinc-500 font-medium leading-relaxed">
+            
+            <p class="text-[16px] md:text-[18px] text-zinc-600 font-medium leading-relaxed mb-10">
               Úklid společných prostor bez starostí a dohadů s nájemníky. Díky digitální kontrole přesně víte, kdy byl dům uklizen.
+            </p>
+
+            <h3 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-4">
+              Příklady nacenění <span class="text-[#6a9438]">úklidu SVJ (1× týdně).</span>
+            </h3>
+            <p class="text-[16px] text-zinc-500 font-medium leading-relaxed">
+              Měsíční paušály jsou orientační, finální kalkulaci připravíme na míru vašemu domu.
             </p>
           </div>
 
-          <!-- Desktop tabulka -->
-          <div class="scroll-animate opacity-0 hidden md:block overflow-hidden rounded-[1.5rem] border border-zinc-200 shadow-sm">
-            <table class="w-full">
-              <thead>
-                <tr class="bg-zinc-950 text-white">
-                  <th class="text-left px-6 py-4 text-[13px] font-bold tracking-[0.1em] uppercase">Typ objektu</th>
-                  <th class="text-left px-6 py-4 text-[13px] font-bold tracking-[0.1em] uppercase">Vchody</th>
-                  <th class="text-left px-6 py-4 text-[13px] font-bold tracking-[0.1em] uppercase">Patra</th>
-                  <th class="text-left px-6 py-4 text-[13px] font-bold tracking-[0.1em] uppercase">Bytů</th>
-                  <th class="text-left px-6 py-4 text-[13px] font-bold tracking-[0.1em] uppercase">Cena / měsíc</th>
-                </tr>
-              </thead>
-              <tbody>
-                {svjPricing.map((row, i) => (
-                  <tr class={`border-t border-zinc-100 transition-colors hover:bg-[#81b344]/5 ${i % 2 === 0 ? 'bg-white' : 'bg-zinc-50/50'}`}>
-                    <td class="px-6 py-4 text-[15px] font-extrabold text-zinc-950">{row.typ}</td>
-                    <td class="px-6 py-4 text-[14px] font-medium text-zinc-600 text-center">{row.vchody}</td>
-                    <td class="px-6 py-4 text-[14px] font-medium text-zinc-600 text-center">{row.patra}</td>
-                    <td class="px-6 py-4 text-[14px] font-medium text-zinc-600 text-center">{row.byty}</td>
-                    <td class="px-6 py-4">
-                      <span class={`text-[17px] font-extrabold ${row.cena === 'Individuálně' ? 'text-zinc-500' : 'text-[#6a9438]'}`}>{row.cena}</span>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <!-- Mobile karty -->
-          <div class="md:hidden flex flex-col gap-4">
+          <!-- Kompaktní grid po vzoru kanceláří -->
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
             {svjPricing.map((row, i) => (
-              <div class="scroll-animate opacity-0 bg-white border border-zinc-200 rounded-[1.5rem] p-6 shadow-sm" style={`animation-delay: ${i * 80}ms`}>
-                <div class="flex items-start justify-between mb-3">
-                  <span class="text-[17px] font-extrabold text-zinc-950">{row.typ}</span>
-                  <span class={`text-[18px] font-extrabold ${row.cena === 'Individuálně' ? 'text-zinc-500' : 'text-[#6a9438]'}`}>{row.cena}</span>
+              <div class="scroll-animate opacity-0 flex flex-col bg-white border border-zinc-200 rounded-[2rem] p-7 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300" style={`animation-delay: ${(i + 1) * 100}ms`}>
+                
+                <div class="flex items-center justify-between mb-4 pb-4 border-b border-zinc-100 flex-nowrap min-h-[56px]">
+                  <span class="text-[18px] font-extrabold text-zinc-950 leading-tight">{row.typ}</span>
                 </div>
-                <div class="flex flex-wrap gap-3 text-[13px] text-zinc-500 font-medium">
-                  <span>{row.vchody} vchod{row.vchody !== '1' ? 'y' : ''}</span>
-                  <span class="w-px h-3 bg-zinc-200 self-center"></span>
-                  <span>{row.patra} pater</span>
-                  <span class="w-px h-3 bg-zinc-200 self-center"></span>
-                  <span>{row.byty} bytů</span>
+                
+                <div class="mb-6 flex-1">
+                  <div class="flex items-baseline gap-1.5 flex-nowrap mb-2">
+                    <div class={`text-[28px] lg:text-[30px] font-extrabold leading-none whitespace-nowrap ${row.cena === 'Individuálně' ? 'text-zinc-500 text-[24px]' : 'text-[#6a9438]'}`}>
+                      {row.cena}
+                    </div>
+                    {row.cena !== 'Individuálně' && <span class="text-[13px] font-medium text-zinc-500 whitespace-nowrap">/ měsíc</span>}
+                  </div>
+                  <div class="text-[13px] font-medium text-zinc-600">Počet bytů: <strong class="text-zinc-900">{row.byty}</strong></div>
                 </div>
+                
+                <div class="mt-auto pt-5 border-t border-zinc-100 space-y-2">
+                  <div class="flex justify-between text-[13px] text-zinc-600">
+                    <span>Počet vchodů:</span>
+                    <strong class="text-zinc-900">{row.vchody}</strong>
+                  </div>
+                  <div class="flex justify-between text-[13px] text-zinc-600">
+                    <span>Počet pater:</span>
+                    <strong class="text-zinc-900">{row.patra}</strong>
+                  </div>
+                </div>
+
               </div>
             ))}
           </div>
@@ -423,69 +397,140 @@ const airbnbApp = [
         </div>
       </section>
 
-      <!-- Zimní servis -->
-      <section class="py-20 md:py-28 bg-zinc-50">
+      <!-- Standardy v ceně -->
+      <section class="py-10 md:py-24 bg-zinc-50">
         <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12">
-          <div class="grid lg:grid-cols-2 gap-10 items-start">
 
-            <div class="scroll-animate opacity-0">
-              <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-200 mb-6">
-                <span set:html={iconSnow} class="text-blue-500 w-4 h-4" />
-                <span class="text-[12px] font-bold text-blue-600 tracking-[0.1em] uppercase">Zimní servisní režim</span>
-              </div>
-              <h2 class="text-3xl sm:text-4xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-4">
-                +20 % k paušálu
-                <span class="text-[#6a9438]"> v zimě.</span>
-              </h2>
-              <p class="text-[16px] text-zinc-500 font-medium leading-relaxed mb-8">
-                V zimních měsících (listopad–březen) automaticky přepínáme na intenzivnější režim. V zimě dům trpí náporem soli, břečky a písku.
-              </p>
-              <div class="flex flex-col gap-4">
-                {svjWinter.map(item => (
-                  <div class="flex items-start gap-4">
-                    <div class="flex-shrink-0 w-9 h-9 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-500">
-                      <span set:html={item.icon} />
-                    </div>
-                    <p class="text-[14px] font-medium text-zinc-700 leading-relaxed pt-1.5">{item.text}</p>
+          <div class="scroll-animate opacity-0 text-center max-w-2xl mx-auto mb-12">
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-4">
+              Standardy zahrnuté v ceně<br class="hidden sm:block" />
+              <span class="text-[#6a9438]">(vždy v aplikaci)</span>
+            </h2>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4 md:gap-5">
+            {svjServices.map((item, i) => {
+              const parts = item.text.split(':');
+              const title = parts[0];
+              const desc = parts.length > 1 ? parts.slice(1).join(':').trim() : '';
+              return (
+                <div class="scroll-animate opacity-0 flex items-start gap-4 bg-white border border-zinc-200 rounded-[1.5rem] p-5 md:p-6 hover:border-[#81b344]/30 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200" style={`animation-delay: ${(i % 2) * 100 + 100}ms`}>
+                  <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-[#81b344]/10 flex items-center justify-center text-[#6a9438]">
+                    <i data-lucide={item.icon} class="w-6 h-6"></i>
                   </div>
-                ))}
-              </div>
-            </div>
-
-            <div class="scroll-animate opacity-0">
-              <h3 class="text-[20px] font-extrabold text-zinc-950 mb-6">Standardy zahrnuté v ceně</h3>
-              <div class="flex flex-col gap-4">
-                {svjServices.map(item => (
-                  <div class="flex items-start gap-4 bg-white border border-zinc-200 rounded-2xl p-5 hover:border-[#81b344]/30 hover:shadow-sm transition-all duration-200">
-                    <div class="flex-shrink-0 w-9 h-9 rounded-xl bg-[#81b344]/10 flex items-center justify-center text-[#6a9438]">
-                      <span set:html={item.icon} />
-                    </div>
-                    <p class="text-[14px] font-medium text-zinc-700 leading-relaxed pt-1">{item.text}</p>
+                  <div>
+                    <h4 class="text-[15px] font-bold text-zinc-900 mb-1">{title}</h4>
+                    {desc && <p class="text-[14px] font-medium text-zinc-600 leading-relaxed">{desc}</p>}
                   </div>
-                ))}
+                </div>
+              );
+            })}
+          </div>
+
+          <div class="mt-10 scroll-animate opacity-0 text-center flex items-center justify-center gap-2" style="animation-delay: 300ms;">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#81b344] flex-shrink-0"></span>
+            <p class="text-[15px] font-semibold text-zinc-600">V ceně: Veškerá profesionální chemie a pomůcky.</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Zimní režim -->
+      <section class="py-10 md:py-16 bg-white border-b border-zinc-100">
+        <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12">
+          
+          <div class="scroll-animate opacity-0 relative bg-blue-50 border border-blue-100 rounded-[2.5rem] p-8 md:p-12 lg:p-16 overflow-hidden shadow-sm">
+            <div class="absolute -right-20 -top-20 w-80 h-80 bg-white rounded-full blur-3xl opacity-60 pointer-events-none"></div>
+            
+            <div class="relative z-10 grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+              
+              <div class="lg:col-span-5">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-blue-200 mb-6 shadow-sm">
+                  <i data-lucide="snowflake" class="w-4 h-4 text-blue-500"></i>
+                  <span class="text-[12px] font-bold text-blue-600 tracking-[0.1em] uppercase">Zimní servisní režim</span>
+                </div>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-6">
+                  Zimní servisní režim<br />
+                  <span class="text-blue-500">(+20 % k paušálu)</span>
+                </h2>
+                <p class="text-[16px] text-zinc-600 font-medium leading-relaxed mb-4">
+                  V zimních měsících (listopad–březen) automaticky přepínáme na intenzivnější režim.
+                </p>
+                <p class="text-[16px] text-zinc-600 font-medium leading-relaxed">
+                  V zimě dům trpí náporem soli, břečky a písku. Náš zimní režim zahrnuje:
+                </p>
               </div>
-              <p class="mt-5 text-[13px] font-semibold text-zinc-500 flex items-center gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-[#81b344] flex-shrink-0"></span>
-                V ceně: veškerá profesionální chemie a pomůcky.
+              
+              <div class="lg:col-span-7 flex flex-col gap-4">
+                {svjWinter.map((item, i) => {
+                  const parts = item.text.split(':');
+                  const title = parts[0];
+                  const desc = parts.length > 1 ? parts.slice(1).join(':').trim() : '';
+                  return (
+                    <div class="flex items-start gap-4 bg-white border border-blue-100/50 rounded-[1.5rem] p-5 shadow-sm">
+                      <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-blue-500">
+                        <i data-lucide={item.icon} class="w-6 h-6"></i>
+                      </div>
+                      <div>
+                        <h4 class="text-[15px] font-bold text-zinc-900 mb-0.5">{title}</h4>
+                        {desc && <p class="text-[14px] font-medium text-zinc-600 leading-relaxed">{desc}</p>}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- SVJ: Proč Brno volí PrimeClean (Bg: zinc-50) -->
+      <section class="py-16 md:py-24 bg-zinc-50 border-b border-zinc-100">
+        <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12">
+          <div class="scroll-animate opacity-0 relative bg-white border border-zinc-200 rounded-[2.5rem] p-8 md:p-12 shadow-sm max-w-4xl mx-auto text-center overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-[#81b344]/5 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute bottom-0 left-0 w-64 h-64 bg-[#81b344]/5 rounded-full blur-3xl pointer-events-none"></div>
+
+            <h3 class="relative z-10 text-3xl md:text-4xl font-extrabold text-zinc-950 mb-6 tracking-tight">
+              Proč Brno volí <span class="text-[#6a9438]">PrimeClean?</span>
+            </h3>
+            <p class="relative z-10 text-[16px] md:text-[18px] text-zinc-600 font-medium leading-relaxed mb-8 max-w-2xl mx-auto">
+              Jsme místní, jsme rychlí a chápeme, že v úklidovém servisu rozhodují detaily. S námi neřešíte uklízečky, prádlo ani drogerii. Vy jen sbíráte výdělky a pozitivní recenze.
+            </p>
+            <div class="relative z-10 inline-flex items-start md:items-center gap-3 px-6 py-4 bg-zinc-50 border border-zinc-100 rounded-2xl text-left md:text-center">
+              <i data-lucide="info" class="w-5 h-5 text-[#81b344] flex-shrink-0 mt-0.5 md:mt-0"></i>
+              <p class="text-[13px] sm:text-[14px] font-semibold text-zinc-600">
+                Ceny jsou konečné, nejsme plátci DPH. Uvedené částky jsou orientační, finální nabídku připravíme po prohlídce.
               </p>
             </div>
-
           </div>
         </div>
       </section>
 
-      <!-- CTA SVJ -->
-      <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12 pb-24">
-        <div class="scroll-animate opacity-0 flex flex-col sm:flex-row items-center justify-between gap-6 bg-[#81b344]/8 border border-[#81b344]/20 rounded-2xl px-8 py-6">
-          <p class="text-[15px] font-semibold text-zinc-700 text-center sm:text-left">
-            Přijedeme se podívat, nacenění připravíme <strong class="text-zinc-950">zdarma a bez závazků.</strong>
+      <!-- SVJ: Spodní CTA (Bg: white) -->
+      <section class="relative py-20 md:py-28 bg-white overflow-hidden">
+        <div class="hidden md:block pointer-events-none absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full bg-[#81b344]/5" style="filter: blur(80px);"></div>
+        <div class="hidden md:block pointer-events-none absolute -bottom-20 -left-20 w-[400px] h-[400px] rounded-full bg-[#81b344]/5" style="filter: blur(60px);"></div>
+
+        <div class="relative z-10 max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12 text-center">
+          <p class="scroll-animate opacity-0 text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-4">Nezávazná kalkulace</p>
+          <h2 class="scroll-animate opacity-0 text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.08] mb-5" style="animation-delay: 100ms;">
+            Přijedeme se podívat<br />
+            <span class="text-[#6a9438]">a nacenění je zdarma.</span>
+          </h2>
+          <p class="scroll-animate opacity-0 text-[16px] md:text-[18px] text-zinc-500 font-medium leading-relaxed mb-10 max-w-2xl mx-auto" style="animation-delay: 200ms;">
+            Každý objekt je jiný. Přijedeme na místo, zhodnotíme rozsah prací a připravíme přesnou nabídku na míru. Bez závazků, bez překvapení a bez navýšení o DPH.
           </p>
-          <a href="/kontakt" class="flex-shrink-0 inline-flex items-center gap-2 px-7 py-3.5 text-[14px] font-bold text-white bg-[#81b344] rounded-xl shadow-md shadow-[#81b344]/20 hover:bg-[#6a9438] hover:-translate-y-0.5 transition-all duration-200">
-            Poptat nezávaznou prohlídku
-            <span class="w-4 h-4" set:html={arrowRight} />
-          </a>
+          <div class="scroll-animate opacity-0" style="animation-delay: 300ms;">
+            <a href="/kontakt" class="inline-flex items-center justify-center gap-2 px-10 py-4 text-[16px] font-bold text-white bg-[#81b344] rounded-xl hover:bg-[#6a9438] transition-all duration-300 hover:-translate-y-1 shadow-lg shadow-[#81b344]/20">
+              Poptat nezávaznou prohlídku
+              <i data-lucide="arrow-right" class="w-5 h-5"></i>
+            </a>
+          </div>
         </div>
-      </div>
+      </section>
 
     </div>
 
@@ -498,38 +543,47 @@ const airbnbApp = [
       <section class="py-20 md:py-28 bg-white">
         <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12">
 
-          <div class="scroll-animate opacity-0 text-center max-w-2xl mx-auto mb-12">
-            <div class="mb-4">
-              <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">Airbnb a krátkodobé pronájmy</span>
-            </div>
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-4">
-              Získejte 5 hvězd,
-              <span class="text-[#6a9438]"> neřešte úklid.</span>
+          <div class="scroll-animate opacity-0 text-center max-w-3xl mx-auto mb-12">
+            <!-- Větší EYEBROW nadpis -->
+            <h2 class="text-[20px] sm:text-[24px] md:text-[28px] font-extrabold text-[#81b344] uppercase tracking-wider mb-6">
+              Úklid a správa Airbnb v Brně
             </h2>
-            <p class="text-[16px] text-zinc-500 font-medium leading-relaxed">
-              Jsme specialisté na krátkodobé pronájmy v Brně. Nejsme plátci DPH — vaše marže zůstává vám. Ceny odpovídají standardnímu Cleaning Fee, které hosté na Airbnb běžně hradí — za čistotu tak neplatíte nic.
+            
+            <h3 class="text-2xl sm:text-3xl font-extrabold text-zinc-950 tracking-tighter mb-4">
+              Získejte 5* hodnocení a neřešte úklid. <span class="text-[#6a9438]">My se postaráme o vše.</span>
+            </h3>
+            
+            <p class="text-[16px] md:text-[18px] text-zinc-600 font-medium leading-relaxed mb-10">
+              Jsme specialisté na krátkodobé pronájmy v Brně. S naší aplikací PrimeClean máte absolutní kontrolu nad stavem svého bytu, i když jste zrovna na druhém konci světa. Nejsme plátci DPH – vaše marže zůstává vám.
+            </p>
+
+            <h3 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-4">
+              Příklady nacenění <span class="text-[#6a9438]">úklidu Airbnb.</span>
+            </h3>
+            <p class="text-[15px] text-zinc-500 font-medium leading-relaxed">
+              Ceny jsou orientační a odpovídají standardnímu „Cleaning Fee“, které hosté na Airbnb běžně hradí. Vy tak za čistotu svého bytu neplatíte nic – náklady pokryje host.
             </p>
           </div>
 
-          <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+          <div class="grid md:grid-cols-3 gap-6 lg:gap-8 mb-10">
             {airbnbPlans.map((plan, i) => (
               <div
                 class={`scroll-animate opacity-0 relative flex flex-col rounded-[2rem] border overflow-hidden transition-all duration-300 hover:-translate-y-1 ${
                   plan.highlight
                     ? 'bg-[#81b344] border-[#6a9438] shadow-xl shadow-[#81b344]/20'
-                    : 'bg-white border-zinc-200 hover:shadow-lg hover:border-[#81b344]/20'
+                    : 'bg-white border-zinc-200 hover:shadow-lg hover:border-[#81b344]/30'
                 }`}
-                style={`animation-delay: ${i * 120}ms`}
+                style={`animation-delay: ${(i + 1) * 100}ms`}
               >
                 {plan.badge && (
                   <div class="absolute top-5 right-5">
-                    <span class="px-3 py-1 rounded-full bg-white/25 border border-white/40 text-[11px] font-bold text-white tracking-[0.08em] uppercase">
+                    <span class="px-3 py-1.5 rounded-full bg-white/25 border border-white/40 text-[11px] font-bold text-white tracking-[0.08em] uppercase shadow-sm">
                       {plan.badge}
                     </span>
                   </div>
                 )}
                 <div class="p-8 lg:p-10 flex flex-col flex-1">
-                  <div class="mb-6">
+                  <div class={`mb-6 pb-6 border-b flex-1 ${plan.highlight ? 'border-white/20' : 'border-zinc-100'}`}>
                     <h3 class={`text-[24px] font-extrabold tracking-tight mb-2 ${plan.highlight ? 'text-white' : 'text-zinc-950'}`}>
                       {plan.name}
                     </h3>
@@ -537,80 +591,89 @@ const airbnbApp = [
                       {plan.desc}
                     </p>
                   </div>
-                  <div class={`text-[36px] font-extrabold tracking-tight mb-8 ${plan.highlight ? 'text-white' : 'text-zinc-950'}`}>
-                    {plan.price}
-                    <span class={`text-[16px] font-semibold ml-1 ${plan.highlight ? 'text-white/70' : 'text-zinc-400'}`}>/ úklid</span>
+                  <div class={`flex items-baseline flex-nowrap mt-auto pt-2 ${plan.highlight ? 'text-white' : 'text-zinc-950'}`}>
+                    <span class="text-[36px] font-extrabold tracking-tight whitespace-nowrap">{plan.price}</span>
+                    <span class={`text-[16px] font-semibold ml-1.5 whitespace-nowrap ${plan.highlight ? 'text-white/70' : 'text-zinc-400'}`}>/ úklid</span>
                   </div>
-                  <a
-                    href="/kontakt"
-                    class={`mt-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-[14px] font-bold transition-all duration-300 hover:-translate-y-0.5 ${
-                      plan.highlight
-                        ? 'bg-white text-[#3d6b1a] hover:bg-zinc-50 shadow-md'
-                        : 'bg-[#81b344] text-white hover:bg-[#6a9438] shadow-md shadow-[#81b344]/20'
-                    }`}
-                  >
-                    Poptat nezávaznou prohlídku
-                    <span class="w-4 h-4" set:html={arrowRight} />
-                  </a>
                 </div>
               </div>
             ))}
           </div>
-
+          
         </div>
       </section>
 
-      <!-- Standard 5 hvězd -->
-      <section class="py-20 md:py-28 bg-zinc-50">
+      <!-- Standard 5 hvězd & Prádlo -->
+      <section class="py-10 md:py-16 bg-zinc-50">
         <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12">
 
-          <div class="grid lg:grid-cols-2 gap-10 items-start">
+          <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
 
+            <!-- Levý sloupec: Standard 5 hvězd -->
             <div class="scroll-animate opacity-0">
-              <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-50 border border-amber-200 mb-6">
-                <span class="text-amber-500" set:html={iconStar} />
-                <span class="text-[12px] font-bold text-amber-600 tracking-[0.1em] uppercase">Standard 5 hvězd</span>
-              </div>
-              <h2 class="text-3xl sm:text-4xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-6">
-                Co dostanete
-                <span class="text-[#6a9438]"> v ceně.</span>
+              <h2 class="text-3xl sm:text-4xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-8">
+                Náš <span class="text-[#F59E0B]">„Standard 5 hvězd“</span> zahrnuje:
               </h2>
               <div class="flex flex-col gap-4">
-                {airbnbStandard.map(item => (
-                  <div class="flex items-start gap-4">
-                    <div class="flex-shrink-0 w-9 h-9 rounded-xl bg-[#81b344]/10 flex items-center justify-center text-[#6a9438]">
-                      <span set:html={item.icon} />
+                {airbnbStandard.map((item, i) => {
+                  const parts = item.text.split(':');
+                  const title = parts[0];
+                  const desc = parts.length > 1 ? parts.slice(1).join(':').trim() : '';
+                  return (
+                    <div class="flex items-start gap-4 bg-white border border-zinc-200 rounded-[1.5rem] p-5 md:p-6 hover:border-[#81b344]/30 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200" style={`animation-delay: ${(i + 1) * 100}ms`}>
+                      <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-[#81b344]/10 flex items-center justify-center text-[#6a9438]">
+                        <i data-lucide={item.icon} class="w-6 h-6"></i>
+                      </div>
+                      <div>
+                        <h4 class="text-[15px] font-bold text-zinc-900 mb-1">{title}</h4>
+                        {desc && <p class="text-[14px] font-medium text-zinc-600 leading-relaxed">{desc}</p>}
+                      </div>
                     </div>
-                    <p class="text-[14px] font-medium text-zinc-700 leading-relaxed pt-1.5">{item.text}</p>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
 
+            <!-- Pravý sloupec: Logistika prádla -->
             <div class="scroll-animate opacity-0">
-              <h3 class="text-[20px] font-extrabold text-zinc-950 mb-6">Logistika prádla — model 3 sad</h3>
-              <div class="flex flex-col gap-3 mb-8">
+              <h3 class="text-[20px] font-extrabold text-zinc-950 mb-4 mt-2">
+                Jak funguje naše logistika prádla?
+              </h3>
+              <p class="text-[15px] text-zinc-600 mb-6 font-medium">Pro maximální efektivitu a jistotu, že váš byt bude vždy připraven včas, využíváme <strong class="text-[#6a9438]">Model 3 sad:</strong></p>
+
+              <div class="flex flex-col gap-4 mb-6">
                 {[
                   { set: 'Set 1', desc: 'Aktuálně na posteli pro hosta.' },
                   { set: 'Set 2', desc: 'Čistý a připravený v bytě pro okamžitý check-in další rezervace.' },
-                  { set: 'Set 3', desc: 'Špinavý set v procesu praní / čištění.' },
+                  { set: 'Set 3', desc: 'Špinavý set v procesu praní/čištění.' },
                 ].map((s, i) => (
-                  <div class="flex items-start gap-4 bg-white border border-zinc-200 rounded-2xl p-5">
-                    <div class="flex-shrink-0 w-9 h-9 rounded-xl bg-zinc-950 flex items-center justify-center">
-                      <span class="text-[13px] font-extrabold text-white">{i + 1}</span>
-                    </div>
-                    <div>
-                      <p class="text-[15px] font-bold text-zinc-900">{s.set}</p>
-                      <p class="text-[13px] font-medium text-zinc-500 leading-relaxed">{s.desc}</p>
+                  <div class="bg-white border border-zinc-200 rounded-[1.5rem] p-5 hover:border-[#81b344]/30 hover:shadow-sm transition-all duration-200">
+                    <div class="flex items-start gap-4">
+                      <div class="flex-shrink-0 w-10 h-10 rounded-full bg-[#81b344]/10 text-[#6a9438] flex items-center justify-center">
+                        <span class="text-[14px] font-extrabold">{i + 1}</span>
+                      </div>
+                      <div>
+                        <p class="text-[15px] font-bold text-zinc-900 mb-1">{s.set}</p>
+                        <p class="text-[13px] font-medium text-zinc-500 leading-relaxed">{s.desc}</p>
+                      </div>
                     </div>
                   </div>
                 ))}
               </div>
-              <div class="bg-amber-50 border border-amber-200 rounded-2xl p-5 flex items-start gap-3">
-                <div class="flex-shrink-0 mt-0.5 text-amber-500" set:html={iconAlertCircle} />
-                <p class="text-[13px] font-semibold text-amber-800 leading-relaxed">
-                  <strong>Podmínka spolupráce:</strong> Pro 100% připravenost i u navazujících rezervací vyžadujeme vybavení bytu 3 kompletními sadami ložního prádla a ručníků.
-                </p>
+
+              <!-- Podmínka spolupráce -->
+              <div class="bg-white border border-amber-200/60 rounded-[1.5rem] p-6 shadow-sm">
+                <div class="flex items-start gap-4">
+                  <div class="flex-shrink-0 mt-0.5 w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center text-amber-600">
+                    <i data-lucide="alert-triangle" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <p class="text-[15px] font-bold text-zinc-900 mb-1">Podmínka spolupráce</p>
+                    <p class="text-[13px] font-medium text-zinc-600 leading-relaxed">
+                      Abychom zaručili 100% připravenost i u navazujících rezervací (tzv. back-to-back), vyžadujeme vybavení bytu 3 kompletními sadami ložního prádla a ručníků.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -619,34 +682,30 @@ const airbnbApp = [
       </section>
 
       <!-- Doplňkové služby -->
-      <section class="py-20 md:py-28 bg-white">
+      <section class="py-20 md:py-28 bg-white border-t border-zinc-100">
         <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12">
 
           <div class="scroll-animate opacity-0 text-center max-w-xl mx-auto mb-12">
-            <h2 class="text-3xl sm:text-4xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-4">
-              Doplňkové
-              <span class="text-[#6a9438]"> služby.</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-6">
+              Doplňkové služby pro hostitele:
             </h2>
-            <p class="text-[16px] text-zinc-500 font-medium leading-relaxed">
-              Volitelné nadstavby, díky kterým neřešíte naprosto nic.
-            </p>
           </div>
 
           <div class="grid sm:grid-cols-2 gap-5">
             {airbnbExtras.map((item, i) => (
               <div
-                class="scroll-animate opacity-0 flex items-start gap-4 bg-zinc-50 border border-zinc-200 rounded-2xl p-6 hover:border-[#81b344]/30 hover:shadow-sm transition-all duration-200"
-                style={`animation-delay: ${i * 80}ms`}
+                class="scroll-animate opacity-0 flex items-start gap-4 bg-zinc-50 border border-zinc-200 rounded-[1.5rem] p-6 hover:border-[#81b344]/30 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200"
+                style={`animation-delay: ${(i + 1) * 100}ms`}
               >
-                <div class="flex-shrink-0 w-10 h-10 rounded-xl bg-[#81b344]/10 flex items-center justify-center text-[#6a9438]">
-                  <span set:html={item.icon} />
+                <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-[#81b344]/10 flex items-center justify-center text-[#6a9438]">
+                  <i data-lucide={item.icon} class="w-6 h-6"></i>
                 </div>
                 <div class="flex-1">
-                  <div class="flex items-center justify-between gap-3 mb-1">
+                  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-3 mb-1 mt-0.5">
                     <p class="text-[15px] font-bold text-zinc-900">{item.label}</p>
                     <span class="text-[13px] font-bold text-[#6a9438] whitespace-nowrap">{item.price}</span>
                   </div>
-                  <p class="text-[13px] font-medium text-zinc-500 leading-relaxed">{item.desc}</p>
+                  <p class="text-[13px] font-medium text-zinc-500 leading-relaxed mt-2">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -656,28 +715,27 @@ const airbnbApp = [
       </section>
 
       <!-- Byt v kapse -->
-      <section class="py-20 md:py-28 bg-zinc-50">
+      <section class="py-10 md:py-16 bg-zinc-50 border-b border-zinc-100">
         <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12">
 
           <div class="scroll-animate opacity-0 text-center max-w-xl mx-auto mb-12">
             <h2 class="text-3xl sm:text-4xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-4">
-              Díky aplikaci PrimeClean
-              <span class="text-[#6a9438]"> máte byt v kapse.</span>
+              Díky aplikaci PrimeClean máte byt v kapse:
             </h2>
           </div>
 
           <div class="grid sm:grid-cols-3 gap-5">
             {airbnbApp.map((item, i) => (
               <div
-                class="scroll-animate opacity-0 flex flex-col items-start gap-4 bg-white border border-zinc-200 rounded-2xl p-6 hover:border-[#81b344]/30 hover:shadow-sm transition-all duration-200"
-                style={`animation-delay: ${i * 80}ms`}
+                class="scroll-animate opacity-0 flex flex-col items-start gap-4 bg-white border border-zinc-200 rounded-[1.5rem] p-6 hover:border-[#81b344]/30 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
+                style={`animation-delay: ${(i + 1) * 100}ms`}
               >
-                <div class="w-10 h-10 rounded-xl bg-[#81b344]/10 flex items-center justify-center text-[#6a9438]">
-                  <span set:html={item.icon} />
+                <div class="w-12 h-12 rounded-xl bg-[#81b344]/10 flex items-center justify-center text-[#6a9438]">
+                  <i data-lucide={item.icon} class="w-6 h-6"></i>
                 </div>
                 <div>
-                  <p class="text-[15px] font-bold text-zinc-900 mb-1">{item.label}</p>
-                  <p class="text-[13px] font-medium text-zinc-500 leading-relaxed">{item.desc}</p>
+                  <h4 class="text-[15px] font-bold text-zinc-900 mb-1">{item.label}</h4>
+                  {item.desc && <p class="text-[13px] font-medium text-zinc-500 leading-relaxed">{item.desc}</p>}
                 </div>
               </div>
             ))}
@@ -686,47 +744,62 @@ const airbnbApp = [
         </div>
       </section>
 
-      <!-- Proč Brno -->
-      <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12 pb-24">
-        <div class="scroll-animate opacity-0 flex flex-col sm:flex-row items-center justify-between gap-6 bg-[#81b344]/8 border border-[#81b344]/20 rounded-2xl px-8 py-6">
-          <p class="text-[15px] font-semibold text-zinc-700 text-center sm:text-left">
-            Jsme místní, jsme rychlí a chápeme, že v Airbnb byznysu rozhodují detaily. Ceny jsou konečné, nejsme plátci DPH.
-          </p>
-          <a href="/kontakt" class="flex-shrink-0 inline-flex items-center gap-2 px-7 py-3.5 text-[14px] font-bold text-white bg-[#81b344] rounded-xl shadow-md shadow-[#81b344]/20 hover:bg-[#6a9438] hover:-translate-y-0.5 transition-all duration-200">
-            Poptat nezávaznou prohlídku
-            <span class="w-4 h-4" set:html={arrowRight} />
-          </a>
-        </div>
-      </div>
+      <!-- AIRBNB: Proč Brno volí PrimeClean (Bg: white) -->
+      <section class="py-16 md:py-24 bg-white border-b border-zinc-100">
+        <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12">
+          <div class="scroll-animate opacity-0 relative bg-zinc-50 border border-zinc-200 rounded-[2.5rem] p-8 md:p-12 shadow-sm max-w-4xl mx-auto text-center overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-[#81b344]/5 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute bottom-0 left-0 w-64 h-64 bg-[#81b344]/5 rounded-full blur-3xl pointer-events-none"></div>
 
-    </div>
-
-    <!-- ═══════════════════════════════════════════
-         SPODNÍ CTA
-    ═══════════════════════════════════════════ -->
-    <section class="py-20 md:py-28 bg-zinc-50">
-      <div class="max-w-[860px] mx-auto px-5 md:px-8 lg:px-12 text-center">
-        <div class="scroll-animate opacity-0 bg-zinc-950 rounded-[2.5rem] p-10 md:p-16 relative overflow-hidden">
-          <div class="hidden md:block pointer-events-none absolute -top-20 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-[#81b344]/10" style="filter: blur(80px);"></div>
-          <div class="relative z-10">
-            <p class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-5">Nezávazná kalkulace</p>
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tighter leading-[1.1] mb-5">
-              Přijdeme se podívat<br /><span class="text-[#81b344]">a nacenění je zdarma.</span>
-            </h2>
-            <p class="text-[16px] md:text-[18px] text-zinc-400 font-medium leading-relaxed mb-10 max-w-xl mx-auto">
-              Každý objekt je jiný. Přijedeme na místo, zhodnotíme rozsah prací a připravíme přesnou nabídku na míru — bez závazků.
+            <h3 class="relative z-10 text-3xl md:text-4xl font-extrabold text-zinc-950 mb-6 tracking-tight">
+              Proč Brno volí <span class="text-[#6a9438]">PrimeClean?</span>
+            </h3>
+            <p class="relative z-10 text-[16px] md:text-[18px] text-zinc-600 font-medium leading-relaxed mb-8 max-w-2xl mx-auto">
+              Jsme místní, jsme rychlí a chápeme, že v úklidovém servisu rozhodují detaily. S námi neřešíte uklízečky, prádlo ani drogerii. Vy jen sbíráte výdělky a pozitivní recenze.
             </p>
-            <a href="/kontakt" class="inline-flex items-center justify-center gap-2 px-10 py-4 text-[16px] font-bold text-zinc-950 bg-[#81b344] rounded-xl hover:bg-white transition-all duration-300 hover:-translate-y-1 shadow-lg shadow-[#81b344]/20">
-              Domluvit prohlídku zdarma
-              <span class="w-5 h-5" set:html={arrowRight} />
+            <div class="relative z-10 inline-flex items-start md:items-center gap-3 px-6 py-4 bg-white border border-zinc-200 rounded-2xl text-left md:text-center shadow-sm">
+              <i data-lucide="info" class="w-5 h-5 text-[#81b344] flex-shrink-0 mt-0.5 md:mt-0"></i>
+              <p class="text-[13px] sm:text-[14px] font-semibold text-zinc-600">
+                Ceny jsou konečné, nejsme plátci DPH. Uvedené částky jsou orientační, finální nabídku připravíme po prohlídce.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- AIRBNB: Spodní CTA (Bg: zinc-50) -->
+      <section class="relative py-20 md:py-28 bg-zinc-50 overflow-hidden">
+        <div class="hidden md:block pointer-events-none absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full bg-[#81b344]/5" style="filter: blur(80px);"></div>
+        <div class="hidden md:block pointer-events-none absolute -bottom-20 -left-20 w-[400px] h-[400px] rounded-full bg-[#81b344]/5" style="filter: blur(60px);"></div>
+
+        <div class="relative z-10 max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12 text-center">
+          <p class="scroll-animate opacity-0 text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-4">Nezávazná kalkulace</p>
+          <h2 class="scroll-animate opacity-0 text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.08] mb-5" style="animation-delay: 100ms;">
+            Přijedeme se podívat<br />
+            <span class="text-[#6a9438]">a nacenění je zdarma.</span>
+          </h2>
+          <p class="scroll-animate opacity-0 text-[16px] md:text-[18px] text-zinc-500 font-medium leading-relaxed mb-10 max-w-2xl mx-auto" style="animation-delay: 200ms;">
+            Každý objekt je jiný. Přijedeme na místo, zhodnotíme rozsah prací a připravíme přesnou nabídku na míru. Bez závazků, bez překvapení a bez navýšení o DPH.
+          </p>
+          <div class="scroll-animate opacity-0" style="animation-delay: 300ms;">
+            <a href="/kontakt" class="inline-flex items-center justify-center gap-2 px-10 py-4 text-[16px] font-bold text-white bg-[#81b344] rounded-xl hover:bg-[#6a9438] transition-all duration-300 hover:-translate-y-1 shadow-lg shadow-[#81b344]/20">
+              Poptat nezávaznou prohlídku
+              <i data-lucide="arrow-right" class="w-5 h-5"></i>
             </a>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+    </div>
 
   </main>
 </Layout>
+
+<!-- Načtení ikon z CDN -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+  lucide.createIcons();
+</script>
 
 <script is:inline>
   (function () {
@@ -774,7 +847,8 @@ const airbnbApp = [
       el.classList.remove('animate-fade-in-up');
       el.classList.add('opacity-0');
     });
-    requestAnimationFrame(() => requestAnimationFrame(() => {
+    
+    requestAnimationFrame(() => {
       if (isLowEnd) {
         animEls.forEach(el => { el.classList.remove('opacity-0'); el.style.opacity = '1'; });
       } else {
@@ -789,7 +863,7 @@ const airbnbApp = [
         }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
         animEls.forEach(el => obs.observe(el));
       }
-    }));
+    });
   }
 
   document.addEventListener('DOMContentLoaded', () => {
