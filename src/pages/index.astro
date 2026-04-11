@@ -1,59 +1,31 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const arrowRight = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
-const arrowRightLg = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
-const checkIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
-const checkLg = '<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
-const imageIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>';
-const starIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>';
-const quoteIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" opacity="0.25"><path d="M11.192 15.757c0-.88-.23-1.618-.69-2.217-.326-.412-.768-.683-1.327-.812-.55-.128-1.07-.137-1.54-.028-.16-.95.1-1.956.76-3.022.66-1.065 1.515-1.867 2.558-2.403L9.373 5c-.8.396-1.56.898-2.26 1.505-.71.607-1.34 1.305-1.9 2.094s-.98 1.68-1.25 2.69-.346 2.04-.217 3.1c.168 1.4.62 2.52 1.356 3.35.735.84 1.652 1.26 2.748 1.26.965 0 1.766-.29 2.4-.878.628-.576.94-1.365.94-2.368l.002-.004zm9.124 0c0-.88-.23-1.618-.69-2.217-.326-.42-.77-.692-1.327-.817-.56-.124-1.074-.13-1.54-.022-.16-.94.09-1.95.75-3.02.66-1.06 1.514-1.86 2.557-2.4L18.498 5c-.8.396-1.555.898-2.26 1.505-.708.607-1.34 1.305-1.894 2.094-.556.79-.97 1.68-1.24 2.69-.273 1-.345 2.04-.217 3.1.168 1.4.62 2.52 1.356 3.35.735.84 1.652 1.26 2.748 1.26.965 0 1.766-.29 2.4-.878.628-.576.94-1.365.94-2.368l.002-.004z"/></svg>';
-
-const featureIcons: Record<string, string> = {
-  'shield-check': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>',
-  'clipboard-check': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg>',
-  'zap': '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',
-};
-
-const statIcons: Record<string, string> = {
-  'calendar-check': '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/><path d="m9 16 2 2 4-4"/></svg>',
-  'users': '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
-  'badge-check': '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></svg>',
-  'building-2': '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>',
-};
-
-const trustIcons: Record<string, string> = {
-  'shield': '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>',
-  'users-check': '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg>',
-  'camera': '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>',
-  'clock': '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
-};
-
 const features = [
   {
     title: "Systém a kontrola úklidů",
-    description: "Každý úklid má jasný rozsah a kontrolu provedení. Máte absolutní přehled o zakázkách bez neustálého telefonování.",
+    description: "Každý úklid má jasnY rozsah a kontrolu provedení. Máte absolutní přehled o zakázkách bez ustálého telefonování.",
     icon: "shield-check"
   },
   {
     title: "Spolehlivost a domluva",
-    description: "Dodržujeme domluvené termíny i rozsah prací. Vždy přesně víte, kdy, kde a co přesně se u vás bude uklízet.",
+    description: "Dodržujeme domluvené termíny i rozsah prací. Vždy přesně víte, kdy, kde a co přesně se u vás bude uklizet.",
     icon: "clipboard-check"
   },
   {
     title: "Profesionální tým a technika",
-    description: "Pracujeme s vyškoleným týmem a profesionální čistící technikou. Zvládáme i náročné a vysoce specializované zakázky.",
+    description: "Pracujeme s vyškoleným týmem a profesionální čistici technikou. Zvádáme i náročné a vysoče specializované zakázky.",
     icon: "zap"
   }
 ];
 
 const services = [
   {
-    title: "Kanceláře a firmy",
+    title: "Kaneláře a firmy",
     description: "Pravidelný úklid přizpůsobený provozu vaší firmy. Stálý tým, jasný rozsah prací a přehled o úklidech bez starostí.",
     image: "/sluzba-kancelare.jpg",
     link: "/sluzby#tab-kancelare",
-    tag: "Nejoblíbenější"
+    tag: "Nejoblibenejší"
   },
   {
     title: "SVJ a bytové domy",
@@ -72,17 +44,17 @@ const services = [
 ];
 
 const stats = [
-  { value: 295, label: "Aktivních úklidů", icon: "calendar-check" },
-  { value: 400, label: "Spokojených klientů", icon: "users" },
-  { value: 527, label: "Dokončených zakázek", icon: "badge-check" },
-  { value: 21, label: "Pravidelných objektů", icon: "building-2" },
+  { value: 295, label: "Aktivních úklidů",     icon: "calendar-check" },
+  { value: 400, label: "Spokojench klientů",  icon: "users"          },
+  { value: 527, label: "Dokončených zakázek", icon: "badge-check"    },
+  { value: 21,  label: "Pravidelných objektů", icon: "building-2"     },
 ];
 
 const trustBadges = [
-  { icon: "shield",      label: "Pojištění 5 mil. Kč" },
-  { icon: "users-check", label: "Prověřený personál" },
-  { icon: "camera",      label: "Fotoreport po každém úklidu" },
-  { icon: "clock",       label: "Pravidelný harmonogram" },
+  { icon: "shield-check", label: "Pojištění 5 mil. Kč"        },
+  { icon: "user-check",   label: "Prověřený personál"         },
+  { icon: "camera",       label: "Fotoreport po každém úklidu" },
+  { icon: "clock",        label: "Pravidelný harmonogram"       },
 ];
 
 const testimonials = [
@@ -90,7 +62,7 @@ const testimonials = [
     name: "Ing. Petra Horáčková",
     role: "Předsedkyně výboru SVJ",
     location: "Brno-Královo Pole",
-    text: "S PrimeClean spolupracujeme druhý rok. Oceňuji hlavně aplikaci — víme přesně, kdy byl úklid proveden a co bylo uděláno. Žádné dohady, žádné telefonáty. Výbor i obyvatelé jsou spokojení.",
+    text: "S PrimeClean spolupracujeme druhý rok. Oceněuji hlavne aplikaci — víme přesně, kdy byl úklid proveden a co bylo uděláno. Žádné dohady, žádné teleforáty. Výbor i obyvatelé jsou spokojeni.",
     rating: 5,
     initials: "PH"
   },
@@ -98,7 +70,7 @@ const testimonials = [
     name: "Martin Blažek",
     role: "Office Manager",
     location: "IT firma, Brno-střed",
-    text: "Přešli jsme od předchozí firmy, která nás opakovaně zklamala pozdními příchody. PrimeClean přišli v domluvený čas od první návštěvy a drží to konzistentně. To je přesně to, co jsme hledali.",
+    text: "Přešli jsme od předchozí firmy, která nás opakovaně zklamala pozdími příchody. PrimeClean přišli v domluvený čas od první návštěvy a drží to konzistentne. To je přesně to, co jsme hledali.",
     rating: 5,
     initials: "MB"
   },
@@ -106,7 +78,7 @@ const testimonials = [
     name: "Lucie Marková",
     role: "Majitelka Airbnb",
     location: "3 apartmány, Brno",
-    text: "Jako hostitelka na Airbnb potřebuji mít jistotu, že apartmán je vždy perfektně připravený. PrimeClean to zvládá spolehlivě i na poslední chvíli. Fotky v aplikaci mi dávají klid, i když jsem mimo Brno.",
+    text: "Jako hostitelka na Airbnb potřebuji mít jistotu, že apartmán je vždy perfektně připravený. PrimeClean to zvládá spolehlivee i na poslední chvíli. Fotky v aplikaci mi dávají klid, i když jsem mimo Brno.",
     rating: 5,
     initials: "LM"
   },
@@ -114,7 +86,7 @@ const testimonials = [
     name: "Radek Pospíšil",
     role: "Správce nemovitostí",
     location: "Brno a okolí",
-    text: "Spravuji více objektů a potřebuji partnera, který funguje bez dozoru. PrimeClean má nastavené procesy, stálé pracovníky a vše hlídají přes aplikaci. Ušetřil jsem si spoustu starostí.",
+    text: "Spravuji více objektů a potřebuji partnera, který funguje bez dozoru. PrimeClean má nastavené procesy, stálé pracovníky a vše hlídá přes aplikaci. Ušetřil jsem si spoustu starostí.",
     rating: 5,
     initials: "RP"
   },
@@ -134,12 +106,12 @@ const faqItems = [
     a: "Změny řešíme vždy po dohodě. Předem vás informujeme o úpravách kvůli svátkům, mimořádnému úklidu nebo změně frekvence. Máte jasno, co se bude dít a kdy – bez chaosu a nejasností."
   },
   {
-    q: "Pracujete s vlastními zaměstnanci, nebo živnostníky?",
-    a: "Pouze s prověřenými zaměstnanci na HPP. Nejsme agentura — každý pracovník prochází naším zaškolením, zná váš objekt a vy vždy víte, kdo u vás uklízí."
+    q: "Pracujete s vlastními zaměstnanci, nebo živostníky?",
+    a: "Pouze s prověřenými zaměstnanci na HPP. Nejsme agentura — každý pracovník prochází naším zaškolením, zná váš objekt a vy vždy víte, kdo u vás uklizí."
   },
   {
     q: "Jste pojištěni?",
-    a: "Ano, máme pojištění odpovědnosti za škodu do výše 5 000 000 Kč. V případě náhodného poškození při úklidu jste plně kryti."
+    a: "Ano, máme pojištění odpovědnosti za škodu do výše 5\u202f000\u202f000 Kč. V případě náhodného poškození při úklidu jste plně krytí."
   },
 ];
 ---
@@ -147,56 +119,63 @@ const faqItems = [
 <Layout title="Profesionální úklid Brno a okolí | PrimeClean">
   <main class="bg-white selection:bg-[#81b344]/30 selection:text-zinc-900">
 
-    <!-- 1. HERO SEKCE -->
+    <!-- 1. HERO -->
     <section class="relative pt-28 pb-20 md:pt-36 md:pb-28 lg:pt-44 lg:pb-36 overflow-hidden bg-zinc-50">
-      <div class="hidden md:block pointer-events-none absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full bg-[#81b344]/5" style="filter: blur(80px);"></div>
-      <div class="hidden md:block pointer-events-none absolute -bottom-20 -left-20 w-[400px] h-[400px] rounded-full bg-[#81b344]/4" style="filter: blur(60px);"></div>
+      <div class="hero-blob hero-blob--tr" aria-hidden="true"></div>
+      <div class="hero-blob hero-blob--bl" aria-hidden="true"></div>
 
       <div class="relative z-10 max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12 text-center">
 
-        <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-white border border-zinc-200 shadow-sm mb-6 md:mb-8 opacity-0 animate-fade-in-up hero-el" style="animation-delay: 0ms;">
+        <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-white border border-zinc-200 shadow-sm mb-6 md:mb-8 opacity-0 animate-fade-in-up" style="animation-delay:0ms">
           <span class="w-1.5 h-1.5 rounded-full bg-[#81b344] animate-pulse flex-shrink-0"></span>
           <span class="text-[11px] sm:text-xs font-bold text-zinc-600 tracking-[0.15em] uppercase">Profesionální úklid Brno a okolí</span>
         </div>
 
-        <h1 class="text-[2.75rem] sm:text-[3.75rem] md:text-6xl lg:text-[6rem] font-extrabold text-zinc-950 tracking-tighter leading-[1.05] md:leading-[0.95] mb-6 opacity-0 animate-fade-in-up hero-el" style="animation-delay: 150ms;">
+        <h1 class="text-[2.75rem] sm:text-[3.75rem] md:text-6xl lg:text-[6rem] font-extrabold text-zinc-950 tracking-tighter leading-[1.05] md:leading-[0.95] mb-6 opacity-0 animate-fade-in-up" style="animation-delay:150ms">
           Čistota, kterou máte <br class="hidden sm:block" />
           <span class="text-[#6a9438]">plně pod kontrolou.</span>
         </h1>
 
-        <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-[14px] sm:text-[15px] md:text-[16px] font-bold tracking-[0.1em] uppercase mb-8 md:mb-10 opacity-0 animate-fade-in-up hero-el" style="animation-delay: 300ms;">
+        <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-[14px] sm:text-[15px] md:text-[16px] font-bold tracking-[0.1em] uppercase mb-8 md:mb-10 opacity-0 animate-fade-in-up" style="animation-delay:300ms">
           <span class="text-zinc-800 bg-zinc-200/50 px-3 py-1 rounded-md">SVJ</span>
           <span class="text-[#81b344]">·</span>
-          <span class="text-zinc-800 bg-zinc-200/50 px-3 py-1 rounded-md">Kanceláře</span>
+          <span class="text-zinc-800 bg-zinc-200/50 px-3 py-1 rounded-md">Kaneláře</span>
           <span class="text-[#81b344]">·</span>
           <span class="text-zinc-800 bg-zinc-200/50 px-3 py-1 rounded-md">Airbnb</span>
         </div>
 
-        <p class="text-base sm:text-lg md:text-[19px] lg:text-[21px] text-zinc-600 max-w-[95%] md:max-w-xl lg:max-w-2xl mx-auto leading-relaxed font-medium mb-12 opacity-0 animate-fade-in-up hero-el" style="animation-delay: 450ms;">
+        <p class="text-base sm:text-lg md:text-[19px] lg:text-[21px] text-zinc-600 max-w-[95%] md:max-w-xl lg:max-w-2xl mx-auto leading-relaxed font-medium mb-12 opacity-0 animate-fade-in-up" style="animation-delay:450ms">
           Mějte úklid konečně vyřešený. S naší klientskou aplikací vidíte fotoreporty ihned po dokončení práce. Pojištění 5 mil. Kč a prověřený personál.
         </p>
 
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 px-4 sm:px-0 opacity-0 animate-fade-in-up hero-el" style="animation-delay: 600ms;">
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 px-4 sm:px-0 opacity-0 animate-fade-in-up" style="animation-delay:600ms">
           <a href="/kontakt" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 text-[16px] font-bold text-white transition-all duration-300 ease-out bg-[#81b344] rounded-xl hover:bg-[#729f3c] hover:-translate-y-1 shadow-md shadow-[#81b344]/20">
             Chci nezávaznou nabídku
-            <span class="w-4 h-4" set:html={arrowRight} />
+            <i data-lucide="arrow-right" class="w-4 h-4" aria-hidden="true"></i>
           </a>
           <a href="#proc-my" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-[16px] font-bold text-zinc-700 transition-all duration-300 ease-out bg-white border-2 border-zinc-200 rounded-xl hover:border-zinc-300 hover:bg-zinc-50 hover:-translate-y-1">
             Proč PrimeClean?
           </a>
         </div>
 
-        <div class="mt-16 md:mt-24 relative max-w-5xl mx-auto group opacity-0 animate-fade-in-up hero-el" style="animation-delay: 800ms;">
+        <div class="mt-16 md:mt-24 relative max-w-5xl mx-auto group opacity-0 animate-fade-in-up" style="animation-delay:800ms">
           <div class="relative aspect-[4/3] sm:aspect-[16/9] rounded-2xl md:rounded-[2rem] overflow-hidden bg-zinc-100 border border-zinc-200/50 z-10">
-            <img src="/hero-image.jpg" alt="PrimeClean úklid" width="1200" height="675" class="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.02]" fetchpriority="high" decoding="async" />
+            <img
+              src="/hero-image.jpg"
+              alt="PrimeClean úklid"
+              width="1200" height="675"
+              class="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+              fetchpriority="high"
+              decoding="async"
+            />
           </div>
           <div class="absolute -bottom-6 -left-2 sm:-bottom-8 sm:left-8 z-20 bg-white rounded-2xl shadow-xl border border-zinc-100 p-4 flex items-center gap-4 max-w-[calc(100%-16px)] sm:max-w-[320px]">
             <div class="flex-shrink-0 w-11 h-11 bg-[#81b344]/10 rounded-xl flex items-center justify-center text-[#6a9438]">
-              <span class="w-5 h-5" set:html={imageIcon} />
+              <i data-lucide="image" class="w-5 h-5" aria-hidden="true"></i>
             </div>
             <div class="text-left min-w-0">
               <p class="text-[13.5px] font-bold text-zinc-950 leading-tight">Fotografie z úklidu</p>
-              <p class="text-[12px] font-medium text-zinc-600 mt-0.5 leading-snug">Prohlížejte si fotoreporty po každém úklidu rovnou v aplikaci.</p>
+              <p class="text-[12px] font-medium text-zinc-600 mt-0.5 leading-snug">Prohlížjte si fotoreporty po každém úklidu rovnou v aplikaci.</p>
             </div>
           </div>
         </div>
@@ -210,7 +189,9 @@ const faqItems = [
         <div class="grid grid-cols-1 sm:grid-cols-2 md:flex md:flex-wrap items-center justify-center gap-y-3 sm:gap-y-4 gap-x-8 md:gap-x-12">
           {trustBadges.map(badge => (
             <div class="flex items-center gap-2.5 text-zinc-600 justify-center md:justify-start">
-              <span class="text-[#81b344] flex-shrink-0" set:html={trustIcons[badge.icon]} />
+              <span class="text-[#81b344] flex-shrink-0">
+                <i data-lucide={badge.icon} class="w-[22px] h-[22px]" aria-hidden="true"></i>
+              </span>
               <span class="text-[14px] font-semibold whitespace-nowrap">{badge.label}</span>
             </div>
           ))}
@@ -218,28 +199,33 @@ const faqItems = [
       </div>
     </section>
 
-    <!-- 2. SEKCE: SLUŽBY (přesunuto výše) -->
+    <!-- 2. SLUŽBY -->
     <section id="sluzby" class="py-20 md:py-32 bg-zinc-50 relative overflow-hidden scroll-mt-20 md:scroll-mt-24">
       <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10 text-center">
         <div class="scroll-animate opacity-0 max-w-3xl mx-auto mb-16 lg:mb-24">
-          <div class="mb-4">
-            <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">NAŠE SLUŽBY</span>
-          </div>
+          <p class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-4">NAŠE SLUŽBY</p>
           <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-6">
             Kde odvádíme tu <span class="text-[#6a9438]">nejlepší práci.</span>
           </h2>
           <p class="text-lg md:text-[20px] text-zinc-600 font-medium leading-relaxed max-w-2xl mx-auto">
-            Specializujeme se na oblasti, kde máme vyladěné procesy. Díky našim zkušenostem a klientské aplikaci vám zajistíme spolehlivé plánování a absolutní kontrolu.
+            Specializujeme se na oblasti, kde máme vyladněé procesy. Díky našim zkušenostem a klientské aplikaci vám zajístíme spolehlivé plánování a absolutní kontrolu.
           </p>
         </div>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
           {services.map((service, index) => (
             <div
               class="scroll-animate opacity-0 flex flex-col bg-white rounded-[2rem] border border-zinc-200 shadow-sm transition-all duration-300 ease-out hover:shadow-lg hover:-translate-y-1 overflow-hidden group"
-              style={`animation-delay: ${index * 150}ms`}
+              style={`animation-delay:${index * 120}ms`}
             >
               <div class="relative w-full aspect-[4/3] bg-zinc-100 overflow-hidden">
-                <img src={service.image} alt={service.title} width="600" height="450" class="w-full h-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-[1.03]" loading="lazy" decoding="async" />
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  width="600" height="450"
+                  class="w-full h-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+                  loading="lazy"
+                  decoding="async"
+                />
                 <div class="absolute top-4 left-4 px-2.5 py-1 rounded-full bg-white shadow-sm">
                   <span class="text-[11px] font-bold text-zinc-700 tracking-[0.06em] uppercase">{service.tag}</span>
                 </div>
@@ -250,7 +236,7 @@ const faqItems = [
                 <div class="pt-5 border-t border-zinc-100">
                   <a href={service.link} class="inline-flex items-center gap-1.5 font-bold text-[15px] text-[#81b344] hover:text-[#6a9438] transition-colors group/link">
                     Zjistit více
-                    <span class="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" set:html={arrowRight} />
+                    <i data-lucide="arrow-right" class="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" aria-hidden="true"></i>
                   </a>
                 </div>
               </div>
@@ -260,14 +246,12 @@ const faqItems = [
       </div>
     </section>
 
-    <!-- 3. SEKCE: PROČ MY & APLIKACE -->
+    <!-- 3. PROČ MY & APLIKACE -->
     <section id="proc-my" class="py-20 md:py-32 bg-white scroll-mt-20 md:scroll-mt-24 relative overflow-hidden">
       <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
 
         <div class="text-center max-w-3xl mx-auto mb-16 lg:mb-24 scroll-animate opacity-0">
-          <div class="mb-4">
-            <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">Výhody spolupráce</span>
-          </div>
+          <p class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-4">Výhody spoluprace</p>
           <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-zinc-950 tracking-tighter mb-6 leading-[1.1]">
             Nenechte nic <span class="text-[#6a9438]">náhodě.</span>
           </h2>
@@ -280,13 +264,13 @@ const faqItems = [
           {features.map((feature, index) => (
             <div
               class="scroll-animate opacity-0 relative bg-zinc-50 rounded-[1.5rem] p-8 lg:p-10 border border-zinc-100 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg hover:border-[#81b344]/20 overflow-hidden group"
-              style={`animation-delay: ${index * 150}ms`}
+              style={`animation-delay:${index * 120}ms`}
             >
-              <span class="absolute top-5 right-7 text-[4rem] font-extrabold text-[#81b344]/8 leading-none select-none pointer-events-none">
+              <span class="absolute top-5 right-7 text-[4rem] font-extrabold text-[#81b344]/8 leading-none select-none pointer-events-none" aria-hidden="true">
                 {String(index + 1).padStart(2, '0')}
               </span>
               <div class="w-14 h-14 rounded-2xl bg-white border border-zinc-200 flex items-center justify-center text-[#6a9438] mb-8 relative z-10 group-hover:border-[#81b344]/30 group-hover:bg-[#81b344]/5 transition-colors duration-300">
-                <span class="w-6 h-6" set:html={featureIcons[feature.icon]} />
+                <i data-lucide={feature.icon} class="w-6 h-6" aria-hidden="true"></i>
               </div>
               <h3 class="text-[20px] lg:text-[22px] font-bold text-zinc-950 tracking-tight leading-snug mb-4 relative z-10">{feature.title}</h3>
               <p class="text-[15px] lg:text-[16px] font-medium text-zinc-600 leading-relaxed relative z-10">{feature.description}</p>
@@ -304,18 +288,18 @@ const faqItems = [
               Přehled v aplikaci.<br /><span class="text-[#81b344]">Vše o úklidu pohodlně ve Vaší kapse.</span>
             </h3>
             <p class="text-base md:text-[18px] text-zinc-400 font-medium leading-relaxed mb-8 max-w-lg">
-              Objednávky, historie úklidů, faktury i platby přehledně na jednom místě. Žádné zbytečné maily a doptávání se, jestli už je hotovo.
+              Objednávky, historie úklidů, faktury i platby přehledně na jednom místě. Žádné zbytečné maily a doptyvání se, jestli už je hotovo.
             </p>
-            <ul class="flex flex-col gap-4 mb-10">
+            <ul class="flex flex-col gap-4 mb-10" role="list">
               {[
                 'Živé fotoreporty po každém úklidu',
                 'Přehled faktur a historie plateb',
                 'Notifikace o dokončení úklidu',
-                'Přístup 24/7 z mobilu i počítače',
+                'Přístup 24/7 z mobilu i počítăe',
               ].map(item => (
                 <li class="flex items-center gap-4 text-[16px] text-zinc-200 font-semibold tracking-tight">
                   <div class="flex-shrink-0 w-6 h-6 rounded-full bg-[#81b344] flex items-center justify-center text-zinc-950">
-                    <span set:html={checkIcon} />
+                    <i data-lucide="check" class="w-3 h-3" style="stroke-width:3" aria-hidden="true"></i>
                   </div>
                   {item}
                 </li>
@@ -323,12 +307,19 @@ const faqItems = [
             </ul>
             <a href="/aplikace" class="inline-flex items-center justify-center gap-2 px-8 py-4 text-[15px] font-bold text-zinc-950 transition-all duration-300 ease-out bg-[#81b344] rounded-xl hover:bg-white hover:-translate-y-1">
               Prozkoumat aplikaci
-              <span class="w-4 h-4" set:html={arrowRight} />
+              <i data-lucide="arrow-right" class="w-4 h-4" aria-hidden="true"></i>
             </a>
           </div>
           <div class="w-full sm:max-w-sm md:max-w-md mx-auto lg:w-[45%] relative mt-8 lg:mt-0 z-10">
             <div class="relative aspect-[4/5] rounded-[1.5rem] overflow-hidden bg-zinc-900 border border-zinc-700">
-              <img src="/aplikace.jpg" alt="Ukázka aplikace PrimeClean" width="600" height="750" class="w-full h-full object-cover object-top" loading="lazy" decoding="async" />
+              <img
+                src="/aplikace.jpg"
+                alt="Ukázka aplikace PrimeClean"
+                width="600" height="750"
+                class="w-full h-full object-cover object-top"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
           </div>
         </div>
@@ -336,18 +327,18 @@ const faqItems = [
       </div>
     </section>
 
-    <!-- 4. SEKCE: STATISTIKY -->
+    <!-- 4. STATISTIKY -->
     <section class="py-20 lg:py-28 bg-[#81b344] relative overflow-hidden count-up-container">
       <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
         <div class="scroll-animate opacity-0 text-center mb-14">
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-1.5">Výsledky, které budujeme každý den</h2>
-          <p class="text-white/70 font-medium text-[15px]">Čísla, která mluví za sebe</p>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-1.5">Výsledky, které budíme každý den</h2>
+          <p class="text-white/70 font-medium text-[15px]">Císla, která mluví za sebe</p>
         </div>
         <div class="scroll-animate opacity-0 grid grid-cols-2 md:grid-cols-4 gap-y-10 md:gap-y-0 text-center">
           {stats.map((stat, index) => (
             <div class={`flex flex-col items-center justify-center px-4 ${index < stats.length - 1 ? 'md:border-r md:border-white/20' : ''}`}>
               <div class="w-9 h-9 rounded-lg bg-white/15 flex items-center justify-center text-white mb-4">
-                <span class="w-4 h-4" set:html={statIcons[stat.icon]} />
+                <i data-lucide={stat.icon} class="w-4 h-4" aria-hidden="true"></i>
               </div>
               <div class="flex items-end justify-center text-white mb-2">
                 <span class="text-[3rem] md:text-[4rem] lg:text-[4.5rem] font-extrabold tracking-tighter leading-none count-up" data-target={stat.value}>0</span>
@@ -360,22 +351,20 @@ const faqItems = [
       </div>
     </section>
 
-    <!-- 5. SEKCE: RECENZE -->
+    <!-- 5. RECENZE -->
     <section class="py-20 md:py-32 bg-zinc-950 relative overflow-hidden">
-      <div class="hidden md:block pointer-events-none absolute top-0 left-1/4 w-[500px] h-[300px] rounded-full bg-[#81b344]/8" style="filter: blur(80px);"></div>
-      <div class="hidden md:block pointer-events-none absolute bottom-0 right-1/4 w-[400px] h-[250px] rounded-full bg-[#81b344]/6" style="filter: blur(70px);"></div>
+      <div class="review-blob review-blob--tl" aria-hidden="true"></div>
+      <div class="review-blob review-blob--br" aria-hidden="true"></div>
 
       <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
         <div class="scroll-animate opacity-0 text-center max-w-2xl mx-auto mb-16">
-          <div class="mb-4">
-            <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">Co říkají klienti</span>
-          </div>
+          <p class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-4">Co říkají klienti</p>
           <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tighter leading-[1.1] mb-4">
             Zkušenosti <span class="text-[#81b344]">našich klientů.</span>
           </h2>
           <div class="flex items-center justify-center gap-1.5">
             {[1,2,3,4,5].map(() => (
-              <span class="text-amber-400" set:html={starIcon} />
+              <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400" aria-hidden="true"></i>
             ))}
             <span class="ml-2 text-[15px] font-bold text-white">5,0</span>
             <span class="text-zinc-500 text-[14px] font-medium ml-1">průměrné hodnocení</span>
@@ -387,17 +376,17 @@ const faqItems = [
           <div
             id="testimonials-track"
             class="flex gap-4 overflow-x-auto pb-2 -mx-5"
-            style="scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; -ms-overflow-style: none; -webkit-overflow-scrolling: touch; padding-left: 20px; padding-right: 20px;"
+            style="scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;padding-left:20px;padding-right:20px;"
           >
-            {testimonials.map((t, i) => (
+            {testimonials.map(t => (
               <div
                 class="flex-shrink-0 flex flex-col bg-zinc-900 rounded-[1.5rem] p-7 border border-zinc-800 relative overflow-hidden"
-                style="scroll-snap-align: center; width: 82vw; max-width: 340px;"
+                style="scroll-snap-align:center;width:82vw;max-width:340px;"
               >
-                <span class="absolute -top-2 -right-1 text-[#81b344]" set:html={quoteIcon} />
+                <i data-lucide="quote" class="absolute -top-1 -right-1 w-8 h-8 text-[#81b344] opacity-25 fill-[#81b344]" aria-hidden="true"></i>
                 <div class="flex gap-1 mb-5">
                   {Array.from({length: t.rating}).map(() => (
-                    <span class="text-amber-400" set:html={starIcon} />
+                    <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400" aria-hidden="true"></i>
                   ))}
                 </div>
                 <p class="text-[14.5px] text-zinc-400 font-medium leading-relaxed mb-6 flex-grow">"{t.text}"</p>
@@ -430,12 +419,12 @@ const faqItems = [
           {testimonials.map((t, i) => (
             <div
               class="scroll-animate opacity-0 flex flex-col bg-zinc-900 rounded-[1.5rem] p-7 border border-zinc-800 hover:border-[#81b344]/30 hover:shadow-md transition-all duration-300 relative overflow-hidden"
-              style={`animation-delay: ${i * 100}ms`}
+              style={`animation-delay:${i * 100}ms`}
             >
-              <span class="absolute -top-2 -right-1 text-[#81b344]" set:html={quoteIcon} />
+              <i data-lucide="quote" class="absolute -top-1 -right-1 w-8 h-8 text-[#81b344] opacity-25 fill-[#81b344]" aria-hidden="true"></i>
               <div class="flex gap-1 mb-5">
                 {Array.from({length: t.rating}).map(() => (
-                  <span class="text-amber-400" set:html={starIcon} />
+                  <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400" aria-hidden="true"></i>
                 ))}
               </div>
               <p class="text-[14.5px] text-zinc-400 font-medium leading-relaxed mb-6 flex-grow">"{t.text}"</p>
@@ -454,14 +443,12 @@ const faqItems = [
       </div>
     </section>
 
-    <!-- 6. SEKCE: JAK TO FUNGUJE -->
+    <!-- 6. JAK TO FUNGUJE -->
     <section id="jak-to-funguje" class="py-20 md:py-32 bg-zinc-50 relative overflow-hidden scroll-mt-20 md:scroll-mt-24">
       <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10 text-center">
 
         <div class="scroll-animate opacity-0 max-w-3xl mx-auto mb-20 lg:mb-28">
-          <div class="mb-4">
-            <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">Proces spolupráce</span>
-          </div>
+          <p class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-4">Proces spoluprace</p>
           <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-6">
             Od poptávky k čistotě <br class="hidden md:block" /> během <span class="text-[#6a9438]">pár dnů.</span>
           </h2>
@@ -471,27 +458,22 @@ const faqItems = [
         </div>
 
         <div class="relative max-w-5xl mx-auto">
-          <div class="hidden lg:block absolute top-[40px] left-[10%] right-[10%] h-[2px] z-0"
-            style="background-image: repeating-linear-gradient(90deg, #d4e8b8 0, #d4e8b8 10px, transparent 10px, transparent 22px);">
-          </div>
-
+          <div class="process-line hidden lg:block" aria-hidden="true"></div>
           <div class="grid lg:grid-cols-4 gap-12 lg:gap-6 relative z-10">
             {[
-              { step: "1", title: "Nezávazná\npoptávka",   desc: "Zavolejte nám nebo vyplňte formulář. Probereme vaši představu a typ objektu.",     delay: 0 },
-              { step: "2", title: "Prohlídka\na nacenění",  desc: "Přijedeme na místo, zhodnotíme stav a navrhneme přesný plán úklidu i kalkulaci.", delay: 150 },
-              { step: "3", title: "Nastavení\naplikace",   desc: "Předáme přístupy do aplikace, zadáme rozsah prací, termíny a kontaktní osoby.",  delay: 300 },
+              { step: "1", title: "Nezávazná\npoptávka",  desc: "Zavolejte nám nebo vyplňte formulář. Probereme vaši představu a typ objektu.",     delay: 0   },
+              { step: "2", title: "Prohlídka\na nacenění", desc: "Přijedeme na místo, zhodnotíme stav a navrhneme přesný plán úklidu i kalkulaci.", delay: 120 },
+              { step: "3", title: "Nastavení\naplikace",   desc: "Předáme přístupy do aplikace, zadáme rozsah prací, termíny a kontaktní osoby.",  delay: 240 },
             ].map(({ step, title, desc, delay }) => (
-              <div class="flex flex-col items-center text-center scroll-animate opacity-0" style={`animation-delay: ${delay}ms`}>
-                <div class="w-20 h-20 rounded-full bg-white border-2 border-zinc-200 shadow-sm flex items-center justify-center text-[24px] font-extrabold text-zinc-400 mb-6 relative z-10">
-                  {step}
-                </div>
+              <div class="flex flex-col items-center text-center scroll-animate opacity-0" style={`animation-delay:${delay}ms`}>
+                <div class="w-20 h-20 rounded-full bg-white border-2 border-zinc-200 shadow-sm flex items-center justify-center text-[24px] font-extrabold text-zinc-400 mb-6 relative z-10">{step}</div>
                 <h3 class="text-[20px] font-bold text-zinc-950 leading-snug tracking-tight mb-3 whitespace-pre-line">{title}</h3>
                 <p class="text-[15px] text-zinc-600 font-medium leading-relaxed px-2">{desc}</p>
               </div>
             ))}
-            <div class="flex flex-col items-center text-center scroll-animate opacity-0" style="animation-delay: 450ms;">
+            <div class="flex flex-col items-center text-center scroll-animate opacity-0" style="animation-delay:360ms">
               <div class="w-20 h-20 rounded-full bg-[#81b344] shadow-md flex items-center justify-center text-white mb-6 relative z-10">
-                <span class="w-8 h-8" set:html={checkLg} />
+                <i data-lucide="check" class="w-8 h-8" style="stroke-width:3" aria-hidden="true"></i>
               </div>
               <h3 class="text-[20px] font-bold text-zinc-950 leading-snug tracking-tight mb-3">Pravidelný<br />a čistý chod</h3>
               <p class="text-[15px] text-zinc-600 font-medium leading-relaxed px-2">Přebíráme zodpovědnost. Vy se věnujete své práci, my se staráme o zbytek.</p>
@@ -501,13 +483,11 @@ const faqItems = [
       </div>
     </section>
 
-    <!-- 7. SEKCE: FAQ -->
+    <!-- 7. FAQ -->
     <section class="py-20 md:py-32 bg-white relative overflow-hidden">
       <div class="max-w-[860px] mx-auto px-5 md:px-8 lg:px-12">
         <div class="scroll-animate opacity-0 text-center mb-16">
-          <div class="mb-4">
-            <span class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase">Časté otázky</span>
-          </div>
+          <p class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-4">Časté otázky</p>
           <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1]">
             Máte <span class="text-[#6a9438]">otázky?</span>
           </h2>
@@ -516,15 +496,12 @@ const faqItems = [
           {faqItems.map((item, i) => (
             <div
               class="faq-item scroll-animate opacity-0 bg-zinc-50 border border-zinc-200 rounded-2xl transition-colors duration-200 overflow-hidden"
-              style={`animation-delay: ${i * 80}ms`}
+              style={`animation-delay:${i * 70}ms`}
             >
-              <button
-                class="faq-trigger w-full flex items-center justify-between gap-4 px-7 py-5 text-left cursor-pointer select-none"
-                aria-expanded="false"
-              >
+              <button class="faq-trigger w-full flex items-center justify-between gap-4 px-7 py-5 text-left cursor-pointer select-none" aria-expanded="false">
                 <span class="text-[16px] md:text-[17px] font-bold text-zinc-900">{item.q}</span>
                 <span class="faq-icon flex-shrink-0 w-8 h-8 rounded-full bg-zinc-200 transition-colors duration-200 flex items-center justify-center border border-transparent">
-                  <svg class="faq-chevron w-4 h-4 text-zinc-600 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg>
+                  <i data-lucide="plus" class="faq-chevron w-4 h-4 text-zinc-600 transition-transform duration-300" aria-hidden="true"></i>
                 </span>
               </button>
               <div class="faq-body max-h-0 overflow-hidden transition-[max-height] duration-300 ease-in-out">
@@ -536,44 +513,45 @@ const faqItems = [
       </div>
     </section>
 
-    <!-- 8. SEKCE: O NÁS & ZÁVĚREČNÉ CTA -->
+    <!-- 8. O NÁS & CTA -->
     <section id="o-nas" class="pt-16 pb-24 md:pt-24 md:pb-36 bg-zinc-50 relative overflow-hidden">
       <div class="max-w-[1000px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
-
         <div class="scroll-animate opacity-0 bg-white rounded-[2rem] p-8 sm:p-12 md:p-16 border border-zinc-200 shadow-sm flex flex-col md:flex-row items-center md:items-start gap-10 md:gap-16 relative overflow-hidden">
-
           <div class="flex-shrink-0 flex flex-col items-center text-center relative z-10">
             <div class="relative w-36 h-36 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-[#81b344]/15 bg-zinc-100 mb-5 shadow-sm">
-              <img src="/tomas-kytka.jpg" alt="Tomáš Kytka, Zakladatel PrimeClean" width="192" height="192" class="w-full h-full object-cover object-top" loading="lazy" decoding="async" />
+              <img
+                src="/tomas-kytka.jpg"
+                alt="Tomáš Kytka, Zakladatel PrimeClean"
+                width="192" height="192"
+                class="w-full h-full object-cover object-top"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
             <p class="text-[18px] font-extrabold text-zinc-900 leading-none mb-2 tracking-tight">Tomáš Kytka</p>
             <p class="text-[12px] text-zinc-500 font-bold uppercase tracking-[0.1em]">Zakladatel PrimeClean</p>
           </div>
-
           <div class="flex-1 text-center md:text-left flex flex-col h-full relative z-10">
             <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-extrabold text-zinc-900 tracking-tighter mb-6 leading-[1.1]">
               Úklid nemá být vaše starost, <br class="hidden xl:block"/> ale <span class="text-[#81b344]">naše vizitka.</span>
             </h2>
-
             <div class="relative flex-grow mb-10 md:pl-6">
               <div class="hidden md:block absolute left-0 top-0 bottom-0 w-[3px] bg-[#81b344]/30 rounded-full"></div>
               <p class="text-[16px] lg:text-[18px] text-zinc-600 font-medium leading-relaxed mb-5">
-                Při budování PrimeClean jsem měl jasný cíl: odstranit z oboru nedůvěru. Věděl jsem, že dokud klienti neuvidí výsledky na vlastní oči, nikdy nebudou stoprocentně klidní.
+                Při budování PrimeClean jsem měl jasnY cíl: odstranit z oboru nedůvěru. Věděl jsem, že dokud klienti neuvidou výsledky na vlastní oči, nikdy nebudou stoprocentně klidní.
               </p>
               <p class="text-[16px] lg:text-[18px] text-zinc-800 font-semibold leading-relaxed">
                 Proto jsme zavedli absolutní transparentnost díky naší aplikaci. Chci, abyste každé ráno přišli do čisté firmy s jistotou, že je o vše postaráno.
               </p>
             </div>
-
             <div class="mt-auto">
               <a href="/kontakt" class="inline-flex items-center justify-center gap-2 px-8 py-4 text-[16px] font-bold text-white transition-all duration-300 ease-out bg-[#81b344] rounded-xl hover:bg-[#6a9438] hover:-translate-y-1 shadow-md shadow-[#81b344]/20">
                 Domluvit osobní schůzku
-                <span class="w-5 h-5" set:html={arrowRightLg} />
+                <i data-lucide="arrow-right" class="w-5 h-5" aria-hidden="true"></i>
               </a>
               <p class="text-[13px] text-zinc-500 font-medium mt-4 tracking-wide">Rádi s vámi probereme vaše potřeby osobně na místě.</p>
             </div>
           </div>
-
         </div>
       </div>
     </section>
@@ -581,178 +559,242 @@ const faqItems = [
   </main>
 </Layout>
 
-<script is:inline>
-  (function () {
-    const cores = navigator.hardwareConcurrency || 4;
-    const ram = navigator.deviceMemory || 4;
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (cores <= 2 || ram <= 2 || reducedMotion) {
-      document.documentElement.classList.add('low-end');
-    }
-  })();
+<script>
+  // Low-end device detection — runs synchronously before paint via inline snippet in Layout
+  // This script handles all interactive behaviour on index page
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const isLowEnd = document.documentElement.classList.contains('low-end');
+  const isLowEnd = () => document.documentElement.classList.contains('low-end');
 
-    if (isLowEnd) {
-      document.querySelectorAll('.opacity-0').forEach(el => {
-        el.classList.remove('opacity-0');
+  // ── Hero elements: reveal without IntersectionObserver (above the fold) ─────
+  // We skip low-end guard for hero — CSS animation already handles opacity
+  // Low-end override is handled globally in <style> below
+
+  // ── Scroll-animate (below the fold) ──────────────────────────────────────────
+  function initScrollAnimate() {
+    if (isLowEnd()) {
+      document.querySelectorAll<HTMLElement>('.scroll-animate').forEach(el => {
         el.style.opacity = '1';
         el.style.transform = 'none';
         el.style.animation = 'none';
+        el.classList.remove('opacity-0');
       });
-    } else {
-      const scrollAnimateEls = document.querySelectorAll('.scroll-animate');
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-fade-in-up');
-            entry.target.classList.remove('opacity-0');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { root: null, threshold: 0, rootMargin: '0px 0px -10% 0px' });
-      scrollAnimateEls.forEach(el => observer.observe(el));
+      return;
     }
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        (entry.target as HTMLElement).classList.add('animate-fade-in-up');
+        (entry.target as HTMLElement).classList.remove('opacity-0');
+        observer.unobserve(entry.target);
+      }),
+      { threshold: 0, rootMargin: '0px 0px -5% 0px' }
+    );
+    document.querySelectorAll('.scroll-animate').forEach(el => observer.observe(el));
+  }
 
-    // FAQ toggle
+  // ── FAQ ───────────────────────────────────────────────────────────────────────
+  function initFaq() {
     document.querySelectorAll('.faq-item').forEach(item => {
-      const trigger = item.querySelector('.faq-trigger');
-      const body = item.querySelector('.faq-body');
-      const icon = item.querySelector('.faq-icon');
-      const chevron = item.querySelector('.faq-chevron');
-
+      const trigger = item.querySelector('.faq-trigger') as HTMLButtonElement | null;
+      const body    = item.querySelector('.faq-body')    as HTMLElement | null;
+      const icon    = item.querySelector('.faq-icon')    as HTMLElement | null;
+      const chevron = item.querySelector('.faq-chevron') as HTMLElement | null;
       if (!trigger || !body) return;
 
       trigger.addEventListener('click', () => {
-        const isOpen = trigger.getAttribute('aria-expanded') === 'true';
-
-        if (isOpen) {
+        const open = trigger.getAttribute('aria-expanded') === 'true';
+        if (open) {
           body.style.maxHeight = body.scrollHeight + 'px';
           requestAnimationFrame(() => { body.style.maxHeight = '0px'; });
           trigger.setAttribute('aria-expanded', 'false');
           item.classList.remove('border-[#81b344]/40', 'bg-white');
           item.classList.add('bg-zinc-50', 'border-zinc-200');
-          if (icon) { icon.classList.remove('bg-zinc-100', 'border-[#81b344]/30'); icon.classList.add('bg-zinc-200'); }
-          if (chevron) { chevron.classList.remove('text-[#81b344]', 'rotate-45'); chevron.classList.add('text-zinc-600'); }
+          icon?.classList.replace('bg-zinc-100', 'bg-zinc-200');
+          chevron?.classList.remove('text-[#81b344]', 'rotate-45');
+          chevron?.classList.add('text-zinc-600');
         } else {
           body.style.maxHeight = body.scrollHeight + 'px';
           trigger.setAttribute('aria-expanded', 'true');
           item.classList.add('border-[#81b344]/40', 'bg-white');
           item.classList.remove('bg-zinc-50', 'border-zinc-200');
-          if (icon) { icon.classList.add('bg-zinc-100', 'border-[#81b344]/30'); icon.classList.remove('bg-zinc-200'); }
-          if (chevron) { chevron.classList.add('text-[#81b344]', 'rotate-45'); chevron.classList.remove('text-zinc-600'); }
+          icon?.classList.replace('bg-zinc-200', 'bg-zinc-100');
+          chevron?.classList.add('text-[#81b344]', 'rotate-45');
+          chevron?.classList.remove('text-zinc-600');
         }
       });
 
       body.addEventListener('transitionend', () => {
-        if (trigger.getAttribute('aria-expanded') === 'true') { body.style.maxHeight = 'none'; }
+        if (trigger.getAttribute('aria-expanded') === 'true') body.style.maxHeight = 'none';
       });
     });
+  }
 
-    // Count-up
-    const statsSection = document.querySelector('.count-up-container');
-    if (!statsSection) return;
+  // ── Count-up ──────────────────────────────────────────────────────────────────
+  function initCountUp() {
+    const section = document.querySelector<HTMLElement>('.count-up-container');
+    if (!section) return;
 
-    if (isLowEnd) {
-      statsSection.querySelectorAll('.count-up').forEach(counter => {
-        counter.innerHTML = counter.getAttribute('data-target') || '0';
+    if (isLowEnd()) {
+      section.querySelectorAll<HTMLElement>('.count-up').forEach(el => {
+        el.textContent = el.dataset.target ?? '0';
       });
       return;
     }
 
-    let countUpDone = false;
-    const animateValue = (obj, start, end, duration) => {
-      let startTimestamp = null;
-      const step = (timestamp) => {
-        if (!startTimestamp) startTimestamp = timestamp;
-        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-        const easeOut = 1 - Math.pow(1 - progress, 3);
-        obj.innerHTML = Math.floor(easeOut * (end - start) + start).toString();
-        if (progress < 1) { window.requestAnimationFrame(step); }
-        else { obj.innerHTML = end.toString(); }
-      };
-      window.requestAnimationFrame(step);
-    };
-
-    const runCountUp = () => {
-      if (countUpDone) return;
-      countUpDone = true;
-      statsSection.querySelectorAll('.count-up').forEach(counter => {
-        animateValue(counter, 0, parseInt(counter.getAttribute('data-target') || '0', 10), 2000);
+    let done = false;
+    const run = () => {
+      if (done) return;
+      done = true;
+      section.querySelectorAll<HTMLElement>('.count-up').forEach(el => {
+        const target = parseInt(el.dataset.target ?? '0', 10);
+        const duration = 1400;
+        let start: number | null = null;
+        const step = (ts: number) => {
+          if (!start) start = ts;
+          const p = Math.min((ts - start) / duration, 1);
+          el.textContent = String(Math.floor((1 - Math.pow(1 - p, 3)) * target));
+          if (p < 1) requestAnimationFrame(step);
+          else el.textContent = String(target);
+        };
+        requestAnimationFrame(step);
       });
     };
 
-    const rect = statsSection.getBoundingClientRect();
-    if (rect.top < window.innerHeight && rect.bottom > 0) {
-      runCountUp();
-    } else {
-      const statsObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) { runCountUp(); statsObserver.unobserve(entry.target); }
-        });
-      }, { rootMargin: '0px 0px -10% 0px' });
-      statsObserver.observe(statsSection);
-    }
+    const r = section.getBoundingClientRect();
+    if (r.top < window.innerHeight && r.bottom > 0) { run(); return; }
+    const obs = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) { run(); obs.disconnect(); }
+    }, { rootMargin: '0px 0px -5% 0px' });
+    obs.observe(section);
+  }
 
-    // Mobile testimonials slider
-    const track = document.getElementById('testimonials-track');
-    const dots  = document.querySelectorAll('.testimonial-dot');
+  // ── Testimonials slider ───────────────────────────────────────────────────────
+  function initSlider() {
+    const track = document.getElementById('testimonials-track') as HTMLElement | null;
+    const dots  = document.querySelectorAll<HTMLElement>('.testimonial-dot');
+    if (!track || !dots.length) return;
 
-    if (track && dots.length) {
-      track.style.webkitOverflowScrolling = 'touch';
+    let rafId = 0;
+    const updateDots = () => {
+      const cards = track.children;
+      if (!cards.length) return;
+      const active = Math.round(track.scrollLeft / ((cards[0] as HTMLElement).offsetWidth + 16));
+      dots.forEach((dot, i) => {
+        dot.style.width      = i === active ? '24px' : '8px';
+        dot.style.height     = '8px';
+        dot.style.background = i === active ? '#81b344' : '#3f3f46';
+      });
+    };
 
-      const updateDots = () => {
-        const scrollLeft = track.scrollLeft;
+    track.addEventListener('scroll', () => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(updateDots);
+    }, { passive: true });
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
         const cards = track.children;
         if (!cards.length) return;
-        const active = Math.round(scrollLeft / (cards[0].offsetWidth + 16));
-        dots.forEach((dot, i) => {
-          dot.style.width  = i === active ? '24px' : '8px';
-          dot.style.height = '8px';
-          dot.style.background = i === active ? '#81b344' : '#3f3f46';
-        });
-      };
-
-      track.addEventListener('scroll', updateDots, { passive: true });
-      dots.forEach((dot, i) => {
-        dot.addEventListener('click', () => {
-          const cards = track.children;
-          if (!cards.length) return;
-          track.scrollTo({ left: i * (cards[0].offsetWidth + 16), behavior: 'smooth' });
-        });
+        track.scrollTo({ left: i * ((cards[0] as HTMLElement).offsetWidth + 16), behavior: 'smooth' });
       });
-    }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initScrollAnimate();
+    initFaq();
+    initCountUp();
+    initSlider();
   });
 </script>
 
-<style is:global>
-  #testimonials-track::-webkit-scrollbar { display: none; }
+<style>
+  /* ── Hero decorative blobs ──────────────────────────────────────── */
+  @media (min-width: 768px) {
+    .hero-blob {
+      pointer-events: none;
+      position: absolute;
+      border-radius: 9999px;
+      will-change: transform;
+    }
+    .hero-blob--tr {
+      top: -8rem; right: -8rem;
+      width: 600px; height: 600px;
+      background: rgb(129 179 68 / 0.05);
+      filter: blur(80px);
+    }
+    .hero-blob--bl {
+      bottom: -5rem; left: -5rem;
+      width: 400px; height: 400px;
+      background: rgb(129 179 68 / 0.04);
+      filter: blur(60px);
+    }
+    .review-blob {
+      pointer-events: none;
+      position: absolute;
+      border-radius: 9999px;
+      will-change: transform;
+    }
+    .review-blob--tl {
+      top: 0; left: 25%;
+      width: 500px; height: 300px;
+      background: rgb(129 179 68 / 0.08);
+      filter: blur(80px);
+    }
+    .review-blob--br {
+      bottom: 0; right: 25%;
+      width: 400px; height: 250px;
+      background: rgb(129 179 68 / 0.06);
+      filter: blur(70px);
+    }
+  }
 
+  /* ── Process dashed line ──────────────────────────────────────── */
+  .process-line {
+    position: absolute;
+    top: 40px; left: 10%; right: 10%;
+    height: 2px; z-index: 0;
+    background-image: repeating-linear-gradient(
+      90deg, #d4e8b8 0, #d4e8b8 10px, transparent 10px, transparent 22px
+    );
+  }
+
+  /* ── Scroll-reveal animation ───────────────────────────────────── */
   @keyframes softFadeUp {
-    0% { opacity: 0; transform: translateY(20px); }
-    100% { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
   .animate-fade-in-up {
-    animation-name: softFadeUp;
-    animation-duration: 0.9s;
-    animation-timing-function: cubic-bezier(0.25, 1, 0.4, 1);
-    animation-fill-mode: both;
+    animation: softFadeUp 0.75s cubic-bezier(0.25, 1, 0.4, 1) both;
   }
-  .faq-body { transition: max-height 0.3s cubic-bezier(0.25, 1, 0.4, 1); }
-  details summary::-webkit-details-marker { display: none; }
 
+  /* ── Testimonials scrollbar hide ────────────────────────────────── */
+  #testimonials-track::-webkit-scrollbar { display: none; }
+
+  /* ── FAQ body transition ────────────────────────────────────────── */
+  .faq-body { transition: max-height 0.3s cubic-bezier(0.25, 1, 0.4, 1); }
+
+  /* ── Reduced motion ──────────────────────────────────────────────── */
   @media (prefers-reduced-motion: reduce) {
     .animate-fade-in-up, .scroll-animate {
-      animation: none !important; opacity: 1 !important;
-      transform: none !important; transition: none !important;
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
     }
     .animate-pulse { animation: none !important; }
-    .faq-body { transition: none !important; }
+    .faq-body      { transition: none !important; }
   }
-  .low-end .animate-fade-in-up,
-  .low-end .scroll-animate { animation: none !important; opacity: 1 !important; transform: none !important; }
-  .low-end .animate-pulse { animation: none !important; }
-  .low-end img { transition: none !important; }
-  .low-end .faq-body { transition: none !important; }
+
+  /* ── Low-end device overrides ───────────────────────────────────────── */
+  :global(.low-end) .animate-fade-in-up,
+  :global(.low-end) .scroll-animate,
+  :global(.low-end) .opacity-0 {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  :global(.low-end) .animate-pulse { animation: none !important; }
+  :global(.low-end) img             { transition: none !important; }
+  :global(.low-end) .faq-body       { transition: none !important; }
 </style>
