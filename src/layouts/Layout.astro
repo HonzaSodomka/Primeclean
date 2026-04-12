@@ -17,6 +17,42 @@ const {
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, 'https://www.primeclean.cz');
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "PrimeClean",
+  "description": "Profesionální úklid Brno a okolí — kaneláře, SVJ a Airbnb apartmány.",
+  "url": "https://www.primeclean.cz",
+  "telephone": "+420773102770",
+  "email": "info@primeclean.cz",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Brno",
+    "addressRegion": "Jihomoravský kraj",
+    "addressCountry": "CZ"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 49.1951,
+    "longitude": 16.6068
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Brno" },
+    { "@type": "AdministrativeArea", "name": "Jihomoravský kraj" }
+  ],
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "08:00",
+      "closes": "20:00"
+    }
+  ],
+  "priceRange": "$$",
+  "image": "https://www.primeclean.cz/og-image.jpg",
+  "sameAs": []
+};
 ---
 
 <!doctype html>
@@ -43,6 +79,9 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://www.primeclean.cz');
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
+    <!-- LocalBusiness JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
@@ -55,8 +94,7 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://www.primeclean.cz');
     <script is:inline>
       (function () {
         const cores = navigator.hardwareConcurrency || 4;
-        // deviceMemory nefunguje ve Firefoxu/Safari — fallback na 4
-        const ram = (navigator as any).deviceMemory || 4;
+        const ram = navigator.deviceMemory || 4;
         const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         if (cores <= 2 || ram <= 2 || reducedMotion) {
           document.documentElement.classList.add('low-end');
