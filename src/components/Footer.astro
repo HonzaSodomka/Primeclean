@@ -1,5 +1,4 @@
 ---
-const currentYear = new Date().getFullYear();
 ---
 
 <footer class="bg-zinc-950 text-zinc-400 border-t border-zinc-900 pt-20 pb-10 relative overflow-hidden">
@@ -74,7 +73,7 @@ const currentYear = new Date().getFullYear();
 
     <div class="pt-8 border-t border-zinc-800/80 flex flex-col md:flex-row items-center justify-between gap-6">
       <p class="text-[13px] text-zinc-500 font-medium">
-        © {currentYear} PrimeClean. Všechna práva vyhrazena.
+        &copy; <span id="footer-year">2026</span> PrimeClean. Všechna práva vyhrazena.
       </p>
 
       <div class="flex items-center gap-6">
@@ -95,6 +94,11 @@ const currentYear = new Date().getFullYear();
     </div>
   </div>
 </footer>
+
+<script is:inline>
+  // Rok se promíne za běhu v prohlížeči, ne v čase buildu
+  document.getElementById('footer-year').textContent = new Date().getFullYear();
+</script>
 
 <script>
   declare global {
