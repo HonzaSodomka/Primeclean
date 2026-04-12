@@ -6,18 +6,81 @@ import '../styles/global.css';
 
 interface Props {
   title: string;
+  description?: string;
+  ogImage?: string;
 }
 
-const { title } = Astro.props;
+const {
+  title,
+  description = 'Profesionální úklid Brno a okolí | PrimeClean',
+  ogImage = '/og-image.jpg',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, 'https://www.primeclean.cz');
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "PrimeClean",
+  "description": "Profesionální úklid Brno a okolí — kaneláře, SVJ a Airbnb apartmány.",
+  "url": "https://www.primeclean.cz",
+  "telephone": "+420773102770",
+  "email": "info@primeclean.cz",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Brno",
+    "addressRegion": "Jihomoravský kraj",
+    "addressCountry": "CZ"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 49.1951,
+    "longitude": 16.6068
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Brno" },
+    { "@type": "AdministrativeArea", "name": "Jihomoravský kraj" }
+  ],
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "08:00",
+      "closes": "20:00"
+    }
+  ],
+  "priceRange": "$$",
+  "image": "https://www.primeclean.cz/og-image.jpg",
+  "sameAs": []
+};
 ---
 
 <!doctype html>
 <html lang="cs" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Profesionální úklid Brno a okolí" />
+    <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="cs_CZ" />
+    <meta property="og:site_name" content="PrimeClean" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- LocalBusiness JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -44,7 +107,8 @@ const { title } = Astro.props;
     <slot />
     <Footer />
     <CookieBanner />
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
+    <!-- Lucide ze spolehlivé cdnjs CDN místo unpkg -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.474.0/umd/lucide.min.js" defer></script>
     <script is:inline>
       document.addEventListener('DOMContentLoaded', function () {
         if (typeof lucide !== 'undefined') lucide.createIcons();
