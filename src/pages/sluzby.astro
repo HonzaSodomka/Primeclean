@@ -398,7 +398,6 @@ const tabData = { kancelare, svj, airbnb };
 
   const isLowEnd = () => document.documentElement.classList.contains('low-end');
 
-  // Single shared observer — disconnect & recreate on tab switch
   let scrollObserver: IntersectionObserver | null = null;
 
   function initScrollAnimations(scope: Element) {
@@ -425,7 +424,6 @@ const tabData = { kancelare, svj, airbnb };
   function activateTab(target: string, scrollToContent: boolean) {
     if (!(VALID_TABS as readonly string[]).includes(target)) return;
 
-    // Update buttons
     document.querySelectorAll<HTMLElement>('.tab-btn').forEach(btn => {
       const isMobile = !!btn.closest('#tab-switcher-mobile');
       const isTarget = btn.dataset.tab === target;
@@ -447,13 +445,11 @@ const tabData = { kancelare, svj, airbnb };
       }
     });
 
-    // Show active tab content
     document.querySelectorAll<HTMLElement>('.tab-content').forEach(c => c.classList.add('hidden'));
     const active = document.getElementById('tab-' + target);
     if (!active) return;
     active.classList.remove('hidden');
 
-    // Scroll
     if (scrollToContent) {
       const firstSection = active.querySelector('section');
       const offset = firstSection
@@ -462,18 +458,15 @@ const tabData = { kancelare, svj, airbnb };
       window.scrollTo({ top: offset, behavior: 'smooth' });
     }
 
-    // Reset + re-observe animations in newly visible tab
     active.querySelectorAll<HTMLElement>('.scroll-animate').forEach(el => {
       el.classList.remove('animate-fade-in-up');
       el.classList.add('opacity-0');
       el.style.opacity = '';
     });
-    // Double rAF ensures layout is settled before observing
     requestAnimationFrame(() => requestAnimationFrame(() => initScrollAnimations(active)));
   }
 
   document.addEventListener('DOMContentLoaded', () => {
-    // Low-end: kill all animations globally
     if (isLowEnd()) {
       document.querySelectorAll<HTMLElement>('.opacity-0').forEach(el => {
         el.style.opacity = '1';
@@ -483,25 +476,37 @@ const tabData = { kancelare, svj, airbnb };
       });
     }
 
-    // Activate initial tab from URL hash or default
     const hash = window.location.hash.replace('#tab-', '');
     const initial: string = (VALID_TABS as readonly string[]).includes(hash) ? hash : 'kancelare';
     activateTab(initial, false);
 
-    // Tab button clicks
+    // Tab button clicks — aktualizuje URL hash
     document.querySelectorAll<HTMLElement>('.tab-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const t = btn.dataset.tab;
-        if (t) activateTab(t, true);
+        if (t) {
+          history.pushState(null, '', '#tab-' + t);
+          activateTab(t, true);
+        }
       });
     });
 
-    // "Zjistit více" card clicks
+    // "Zjistit více" card clicks — aktualizuje URL hash
     document.addEventListener('click', e => {
       const card = (e.target as HTMLElement).closest<HTMLElement>('[data-tab-link]');
       if (!card) return;
       const t = card.dataset.tabLink;
-      if (t) activateTab(t, true);
+      if (t) {
+        history.pushState(null, '', '#tab-' + t);
+        activateTab(t, true);
+      }
+    });
+
+    // Browser back/forward
+    window.addEventListener('popstate', () => {
+      const hash = window.location.hash.replace('#tab-', '');
+      const target = (VALID_TABS as readonly string[]).includes(hash) ? hash : 'kancelare';
+      activateTab(target, false);
     });
   });
 </script>

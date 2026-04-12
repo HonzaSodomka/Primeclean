@@ -695,9 +695,14 @@ const airbnbApp = [
   const CENIK_TABS = ['kancelare', 'svj', 'airbnb'];
   let activeObserver: IntersectionObserver | null = null;
 
-  function activateCenikTab(target: string) {
+  function activateCenikTab(target: string, pushState = true) {
     if (!CENIK_TABS.includes(target)) return;
     const isLowEnd = document.documentElement.classList.contains('low-end');
+
+    // ── URL sync ──────────────────────────────────────────────────────────
+    if (pushState) {
+      history.pushState({ tab: target }, '', '/cenik#' + target);
+    }
 
     document.querySelectorAll('.cenik-tab-btn').forEach(btn => {
       const isMobile = btn.closest('#cenik-tab-switcher-mobile') !== null;
@@ -785,13 +790,22 @@ const airbnbApp = [
       document.querySelectorAll('.scroll-animate').forEach(el => observer.observe(el));
     }
 
-    activateCenikTab('kancelare');
+    // ── Načtení tabu z URL hashe (sdílené odkazy, refresh) ───────────────
+    const hashTab = window.location.hash.replace('#', '');
+    const initialTab = CENIK_TABS.includes(hashTab) ? hashTab : 'kancelare';
+    activateCenikTab(initialTab, false);
 
     document.querySelectorAll('.cenik-tab-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const target = btn.getAttribute('data-cenik-tab');
         if (target) activateCenikTab(target);
       });
+    });
+
+    // ── Zpět/vpřed v prohlížeči ──────────────────────────────────────────
+    window.addEventListener('popstate', (e) => {
+      const tab = e.state?.tab ?? 'kancelare';
+      activateCenikTab(tab, false);
     });
   });
 </script>
