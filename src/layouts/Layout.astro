@@ -107,12 +107,7 @@ const localBusinessSchema = {
     <slot />
     <Footer />
     <CookieBanner />
-    <!-- Lucide ze spolehlivé cdnjs CDN místo unpkg -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.474.0/umd/lucide.min.js" defer></script>
-    <script is:inline>
-      document.addEventListener('DOMContentLoaded', function () {
-        if (typeof lucide !== 'undefined') lucide.createIcons();
-      });
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.474.0/umd/lucide.min.js"></script>
+    <script is:inline>lucide.createIcons();</script>
   </body>
 </html>
