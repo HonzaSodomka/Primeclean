@@ -24,7 +24,7 @@ const currentPath = Astro.url.pathname;
           const isActive = currentPath === link.href || (currentPath.startsWith(link.href) && link.href !== '/');
           return (
             <li>
-              <a href={link.href} class={`text-[14.5px] font-bold transition-colors relative group py-2 ${isActive ? 'text-zinc-950' : 'text-zinc-500 hover:text-zinc-950'}`}>
+              <a href={link.href} class={`text-[14.5px] font-bold transition-colors relative group py-2 ${isActive ? 'text-zinc-950' : 'text-zinc-500 hover:text-zinc-950'}`} {...(isActive ? { 'aria-current': 'page' } : {})}>
                 {link.name}
                 <span class={`absolute inset-x-0 bottom-0 h-[2px] bg-[#81b344] transition-transform duration-300 origin-left ${isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}></span>
               </a>
@@ -40,7 +40,13 @@ const currentPath = Astro.url.pathname;
       </a>
     </nav>
 
-    <button id="mobile-menu-btn" class="md:hidden relative w-10 h-10 flex flex-col items-center justify-center gap-[5px] text-zinc-600 hover:text-zinc-950 transition-colors z-50" aria-label="Otevřít menu">
+    <button
+      id="mobile-menu-btn"
+      class="md:hidden relative w-10 h-10 flex flex-col items-center justify-center gap-[5px] text-zinc-600 hover:text-zinc-950 transition-colors z-50"
+      aria-label="Otevřít menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
       <span class="w-5 h-[2px] bg-current rounded-full transition-all duration-300 origin-center"></span>
       <span class="w-5 h-[2px] bg-current rounded-full transition-all duration-300 origin-center"></span>
       <span class="w-5 h-[2px] bg-current rounded-full transition-all duration-300 origin-center"></span>
@@ -52,7 +58,7 @@ const currentPath = Astro.url.pathname;
       {navLinks.map(link => {
         const isActive = currentPath === link.href || (currentPath.startsWith(link.href) && link.href !== '/');
         return (
-          <a href={link.href} class={`text-[17px] font-bold py-3 px-4 rounded-xl transition-colors ${isActive ? 'bg-[#81b344]/10 text-[#6a9438]' : 'text-zinc-800 hover:bg-zinc-50 hover:text-[#81b344]'}`}>
+          <a href={link.href} class={`text-[17px] font-bold py-3 px-4 rounded-xl transition-colors ${isActive ? 'bg-[#81b344]/10 text-[#6a9438]' : 'text-zinc-800 hover:bg-zinc-50 hover:text-[#81b344]'}`} {...(isActive ? { 'aria-current': 'page' } : {})}>
             {link.name}
           </a>
         );
@@ -72,8 +78,13 @@ const currentPath = Astro.url.pathname;
     const spans = btn?.querySelectorAll('span');
     let isOpen = false;
 
+    btn?.setAttribute('aria-expanded', 'false');
+
     btn?.addEventListener('click', () => {
       isOpen = !isOpen;
+      btn.setAttribute('aria-expanded', String(isOpen));
+      btn.setAttribute('aria-label', isOpen ? 'Zavřít menu' : 'Otevřít menu');
+
       if (isOpen) {
         menu?.classList.remove('opacity-0', 'invisible', '-translate-y-4');
         if (spans?.length === 3) {

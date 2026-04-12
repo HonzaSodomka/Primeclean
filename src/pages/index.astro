@@ -285,7 +285,7 @@ const faqItems = [
               <span class="text-[12px] font-bold text-zinc-300 tracking-[0.1em] uppercase">Klientská Aplikace</span>
             </div>
             <h3 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-[1.1] mb-6 tracking-tighter">
-              Přehled v aplikaci.<br /><span class="text-[#81b344]">Vše o úklidu pohodlně ve Vaší kapse.</span>
+              Přehled v aplikaci.<br /><span class="text-[#81b344]">Vše o úklidu pohodlně ve vaší kapse.</span>
             </h3>
             <p class="text-base md:text-[18px] text-zinc-400 font-medium leading-relaxed mb-8 max-w-lg">
               Objednávky, historie úklidů, faktury i platby přehledně na jednom místě. Žádné zbytečné maily a doptávání se, jestli už je hotovo.
@@ -494,21 +494,28 @@ const faqItems = [
         </div>
         <div class="flex flex-col gap-4" id="faq-list">
           {faqItems.map((item, i) => (
-            <div
-              class="faq-item scroll-animate opacity-0 bg-zinc-50 border border-zinc-200 rounded-2xl transition-colors duration-200 overflow-hidden"
-              style={`animation-delay:${i * 70}ms`}
-            >
-              <button class="faq-trigger w-full flex items-center justify-between gap-4 px-7 py-5 text-left cursor-pointer select-none" aria-expanded="false">
-                <span class="text-[16px] md:text-[17px] font-bold text-zinc-900">{item.q}</span>
-                <span class="faq-icon flex-shrink-0 w-8 h-8 rounded-full bg-zinc-200 transition-colors duration-200 flex items-center justify-center border border-transparent">
-                  <i data-lucide="plus" class="faq-chevron w-4 h-4 text-zinc-600 transition-transform duration-300" aria-hidden="true"></i>
-                </span>
-              </button>
-              <div class="faq-body max-h-0 overflow-hidden transition-[max-height] duration-300 ease-in-out">
-                <p class="text-[15px] text-zinc-600 font-medium leading-relaxed px-7 pb-6 pt-1">{item.a}</p>
-              </div>
-            </div>
-          ))}
+  <div
+    class="faq-item scroll-animate opacity-0 bg-zinc-50 border border-zinc-200 rounded-2xl transition-colors duration-200 overflow-hidden"
+    style={`animation-delay:${i * 70}ms`}
+  >
+    <button
+      class="faq-trigger w-full flex items-center justify-between gap-4 px-7 py-5 text-left cursor-pointer select-none"
+      aria-expanded="false"
+      aria-controls={`faq-body-${i}`}
+    >
+      <span class="text-[16px] md:text-[17px] font-bold text-zinc-900">{item.q}</span>
+      <span class="faq-icon flex-shrink-0 w-8 h-8 rounded-full bg-zinc-200 transition-colors duration-200 flex items-center justify-center border border-transparent">
+        <i data-lucide="plus" class="faq-chevron w-4 h-4 text-zinc-600 transition-transform duration-300" aria-hidden="true"></i>
+      </span>
+    </button>
+    <div
+      id={`faq-body-${i}`}
+      class="faq-body max-h-0 overflow-hidden transition-[max-height] duration-300 ease-in-out"
+    >
+      <p class="text-[15px] text-zinc-600 font-medium leading-relaxed px-7 pb-6 pt-1">{item.a}</p>
+    </div>
+  </div>
+))}
         </div>
       </div>
     </section>
