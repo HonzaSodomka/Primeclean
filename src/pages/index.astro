@@ -59,36 +59,25 @@ const trustBadges = [
 
 const testimonials = [
   {
-    name: "Ing. Petra Horáčková",
-    role: "Předsedkyně výboru SVJ",
-    location: "Brno-Královo Pole",
-    text: "S PrimeClean spolupracujeme druhý rok. Oceňuji hlavně aplikaci — víme přesně, kdy byl úklid proveden a co bylo uděláno. Žádné dohady, žádné telefonáty. Výbor i obyvatelé jsou spokojeni.",
+    name: "Veselý Medvěd",
+    role: "Hostitel na Airbnb",
+    text: "Jako hostitel na Airbnb potřebuju mít jistotu, že je apartmán vždy perfektně připravený a v naprostém pořádku. PrimeClean to zvládá spolehlivě i na poslední chvíli. Díky fotkám v aplikaci mám klid, i když zrovna nejsem v Brně.",
     rating: 5,
-    initials: "PH"
+    initials: "VM"
   },
   {
-    name: "Martin Blažek",
-    role: "Office Manager",
-    location: "IT firma, Brno-střed",
-    text: "Přešli jsme od předchozí firmy, která nás opakovaně zklamala pozdími příchody. PrimeClean přišli v domluvený čas od první návštěvy a drží to konzistentně. To je přesně to, co jsme hledali.",
+    name: "Autoškola TiGO s.r.o.",
+    role: "Kancelář & učebna",
+    text: "S touto úklidovou firmou máme velmi dobrou zkušenost. Už přibližně 3 měsíce se starají o čistotu naší kanceláře i učebny a vždy odvedou skvělou práci. Velké plus je komunikace — domluva je vždy rychlá a bez problémů. Dokonce ani změna termínu nikdy nebyla komplikace. Za nás maximální spokojenost.",
     rating: 5,
-    initials: "MB"
+    initials: "AT"
   },
   {
-    name: "Lucie Marková",
-    role: "Majitelka Airbnb",
-    location: "3 apartmány, Brno",
-    text: "Jako hostitelka na Airbnb potřebuji mít jistotu, že apartmán je vždy perfektně připravený. PrimeClean to zvládá spolehlivě i na poslední chvíli. Fotky v aplikaci mi dávají klid, i když jsem mimo Brno.",
+    name: "Magdalena Kopecká",
+    role: "Majitelka nemovitosti",
+    text: "Konečně úklidovka, co u práce i přemýšlí. Nejen že je všude čisto, ale hlavně nám v jejich appce přistávají fotky a hlášení, když je v baráku něco špatně – třeba prasklá žárovka nebo uvolněný práh. Máme o všem přehled dřív, než si začnou lidi stěžovat. Pecka přístup!",
     rating: 5,
-    initials: "LM"
-  },
-  {
-    name: "Radek Pospíšil",
-    role: "Správce nemovitostí",
-    location: "Brno a okolí",
-    text: "Spravuji více objektů a potřebuji partnera, který funguje bez dozoru. PrimeClean má nastavené procesy, stálé pracovníky a vše hlídá přes aplikaci. Ušetřil jsem si spoustu starostí.",
-    rating: 5,
-    initials: "RP"
+    initials: "MK"
   },
 ];
 
@@ -352,96 +341,96 @@ const faqItems = [
     </section>
 
     <!-- 5. RECENZE -->
-    <section class="py-20 md:py-32 bg-zinc-950 relative overflow-hidden">
-      <div class="review-blob review-blob--tl" aria-hidden="true"></div>
-      <div class="review-blob review-blob--br" aria-hidden="true"></div>
+<section class="py-20 md:py-32 bg-zinc-950 relative overflow-hidden">
+  <div class="review-blob review-blob--tl" aria-hidden="true"></div>
+  <div class="review-blob review-blob--br" aria-hidden="true"></div>
 
-      <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
-        <div class="scroll-animate opacity-0 text-center max-w-2xl mx-auto mb-16">
-          <p class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-4">Co říkají klienti</p>
-          <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tighter leading-[1.1] mb-4">
-            Zkušenosti <span class="text-[#81b344]">našich klientů.</span>
-          </h2>
-          <div class="flex items-center justify-center gap-1.5">
-            {[1,2,3,4,5].map(() => (
-              <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400" aria-hidden="true"></i>
-            ))}
-            <span class="ml-2 text-[15px] font-bold text-white">5,0</span>
-            <span class="text-zinc-500 text-[14px] font-medium ml-1">průměrné hodnocení</span>
-          </div>
-        </div>
+  <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
+    <div class="scroll-animate opacity-0 text-center max-w-2xl mx-auto mb-16">
+      <p class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-4">Co říkají klienti</p>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tighter leading-[1.1] mb-4">
+        Zkušenosti <span class="text-[#81b344]">našich klientů.</span>
+      </h2>
+      <div class="flex items-center justify-center gap-1.5">
+        {[1,2,3,4,5].map(() => (
+          <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400" aria-hidden="true"></i>
+        ))}
+        <span class="ml-2 text-[15px] font-bold text-white">5,0</span>
+        <span class="text-zinc-500 text-[14px] font-medium ml-1">průměrné hodnocení</span>
+      </div>
+    </div>
 
-        <!-- Mobile slider -->
-        <div class="sm:hidden">
+    <!-- Mobile slider -->
+    <div class="sm:hidden">
+      <div
+        id="testimonials-track"
+        class="flex gap-4 overflow-x-auto pb-2 -mx-5"
+        style="scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;padding-left:20px;padding-right:20px;"
+      >
+        {testimonials.map(t => (
           <div
-            id="testimonials-track"
-            class="flex gap-4 overflow-x-auto pb-2 -mx-5"
-            style="scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;padding-left:20px;padding-right:20px;"
+            class="flex-shrink-0 flex flex-col bg-zinc-900 rounded-[1.5rem] p-7 border border-zinc-800 relative overflow-hidden"
+            style="scroll-snap-align:center;width:82vw;max-width:340px;"
           >
-            {testimonials.map(t => (
-              <div
-                class="flex-shrink-0 flex flex-col bg-zinc-900 rounded-[1.5rem] p-7 border border-zinc-800 relative overflow-hidden"
-                style="scroll-snap-align:center;width:82vw;max-width:340px;"
-              >
-                <i data-lucide="quote" class="absolute -top-1 -right-1 w-8 h-8 text-[#81b344] opacity-25 fill-[#81b344]" aria-hidden="true"></i>
-                <div class="flex gap-1 mb-5">
-                  {Array.from({length: t.rating}).map(() => (
-                    <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400" aria-hidden="true"></i>
-                  ))}
-                </div>
-                <p class="text-[14.5px] text-zinc-400 font-medium leading-relaxed mb-6 flex-grow">"{t.text}"</p>
-                <div class="flex items-center gap-3 mt-auto pt-5 border-t border-zinc-800">
-                  <div class="flex-shrink-0 w-10 h-10 rounded-full bg-[#81b344]/15 flex items-center justify-center">
-                    <span class="text-[13px] font-extrabold text-[#81b344]">{t.initials}</span>
-                  </div>
-                  <div>
-                    <p class="text-[13.5px] font-bold text-white leading-tight">{t.name}</p>
-                    <p class="text-[12px] text-zinc-500 font-medium">{t.role} · {t.location}</p>
-                  </div>
-                </div>
+            <i data-lucide="quote" class="absolute -top-1 -right-1 w-8 h-8 text-[#81b344] opacity-25 fill-[#81b344]" aria-hidden="true"></i>
+            <div class="flex gap-1 mb-5">
+              {Array.from({length: t.rating}).map(() => (
+                <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400" aria-hidden="true"></i>
+              ))}
+            </div>
+            <p class="text-[14.5px] text-zinc-400 font-medium leading-relaxed mb-6 flex-grow">"{t.text}"</p>
+            <div class="flex items-center gap-3 mt-auto pt-5 border-t border-zinc-800">
+              <div class="flex-shrink-0 w-10 h-10 rounded-full bg-[#81b344]/15 flex items-center justify-center">
+                <span class="text-[13px] font-extrabold text-[#81b344]">{t.initials}</span>
               </div>
-            ))}
-          </div>
-          <div class="flex justify-center items-center gap-2 mt-6" id="testimonials-dots" aria-hidden="true">
-            {testimonials.map((_, i) => (
-              <button
-                class="testimonial-dot rounded-full transition-all duration-300"
-                style={i === 0 ? 'width:24px;height:8px;background:#81b344;' : 'width:8px;height:8px;background:#3f3f46;'}
-                data-index={i}
-                aria-label={`Recenze ${i + 1}`}
-              />
-            ))}
-          </div>
-        </div>
-
-        <!-- Desktop grid -->
-        <div class="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {testimonials.map((t, i) => (
-            <div
-              class="scroll-animate opacity-0 flex flex-col bg-zinc-900 rounded-[1.5rem] p-7 border border-zinc-800 hover:border-[#81b344]/30 hover:shadow-md transition-all duration-300 relative overflow-hidden"
-              style={`animation-delay:${i * 100}ms`}
-            >
-              <i data-lucide="quote" class="absolute -top-1 -right-1 w-8 h-8 text-[#81b344] opacity-25 fill-[#81b344]" aria-hidden="true"></i>
-              <div class="flex gap-1 mb-5">
-                {Array.from({length: t.rating}).map(() => (
-                  <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400" aria-hidden="true"></i>
-                ))}
-              </div>
-              <p class="text-[14.5px] text-zinc-400 font-medium leading-relaxed mb-6 flex-grow">"{t.text}"</p>
-              <div class="flex items-center gap-3 mt-auto pt-5 border-t border-zinc-800">
-                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-[#81b344]/15 flex items-center justify-center">
-                  <span class="text-[13px] font-extrabold text-[#81b344]">{t.initials}</span>
-                </div>
-                <div>
-                  <p class="text-[13.5px] font-bold text-white leading-tight">{t.name}</p>
-                  <p class="text-[12px] text-zinc-500 font-medium">{t.role} · {t.location}</p>
-                </div>
+              <div>
+                <p class="text-[13.5px] font-bold text-white leading-tight">{t.name}</p>
+                <p class="text-[12px] text-zinc-500 font-medium">{t.role}</p>
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
-    </section>
+      <div class="flex justify-center items-center gap-2 mt-6" id="testimonials-dots" aria-hidden="true">
+        {testimonials.map((_, i) => (
+          <button
+            class="testimonial-dot rounded-full transition-all duration-300"
+            style={i === 0 ? 'width:24px;height:8px;background:#81b344;' : 'width:8px;height:8px;background:#3f3f46;'}
+            data-index={i}
+            aria-label={`Recenze ${i + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+
+    <!-- Desktop grid — 3 sloupce pro 3 recenze -->
+    <div class="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {testimonials.map((t, i) => (
+        <div
+          class="scroll-animate opacity-0 flex flex-col bg-zinc-900 rounded-[1.5rem] p-7 border border-zinc-800 hover:border-[#81b344]/30 hover:shadow-md transition-all duration-300 relative overflow-hidden"
+          style={`animation-delay:${i * 100}ms`}
+        >
+          <i data-lucide="quote" class="absolute -top-1 -right-1 w-8 h-8 text-[#81b344] opacity-25 fill-[#81b344]" aria-hidden="true"></i>
+          <div class="flex gap-1 mb-5">
+            {Array.from({length: t.rating}).map(() => (
+              <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400" aria-hidden="true"></i>
+            ))}
+          </div>
+          <p class="text-[14.5px] text-zinc-400 font-medium leading-relaxed mb-6 flex-grow">"{t.text}"</p>
+          <div class="flex items-center gap-3 mt-auto pt-5 border-t border-zinc-800">
+            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-[#81b344]/15 flex items-center justify-center">
+              <span class="text-[13px] font-extrabold text-[#81b344]">{t.initials}</span>
+            </div>
+            <div>
+              <p class="text-[13.5px] font-bold text-white leading-tight">{t.name}</p>
+              <p class="text-[12px] text-zinc-500 font-medium">{t.role}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
 
     <!-- 6. JAK TO FUNGUJE -->
     <section id="jak-to-funguje" class="py-20 md:py-32 bg-zinc-50 relative overflow-hidden scroll-mt-20 md:scroll-mt-24">
