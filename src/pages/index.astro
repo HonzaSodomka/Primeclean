@@ -99,11 +99,11 @@ const faqItems = [
   },
   {
     q: "Jak je to s komunikací a změnami (svátky, mimořádný úklid, úprava frekvence)?",
-    a: "Změny řešíme vždy po dohodě. Předem vás informujeme o úpravách kvůli svátkům, mimořádnému úklidu nebo změně frekvence. Máte jasno, co se bude dít a kdy – bez chaosu a nejasností."
+    a: "Uklízíme stabilně v domluvených termínech, a to i během svátků. Pokud vám termín vyhovuje, nic se nemění. Jakékoliv mimořádné požadavky, úpravy frekvence nebo změny termínů řešíme vždy včasnou dohodou, abyste měli absolutní jasno bez chaosu a nejasností."
   },
   {
     q: "Pracujete s vlastními zaměstnanci, nebo živnostníky?",
-    a: "Pouze s prověřenými zaměstnanci na HPP. Nejsme agentura — každý pracovník prochází naším zaškolením, zná váš objekt a vy vždy víte, kdo u vás uklizí."
+    a: "Pouze s našimi kmenovými a prověřenými zaměstnanci. Nejsme agentura — každý pracovník prochází interním zaškolením, zná váš objekt a vy vždy víte, kdo u vás uklízí."
   },
   {
     q: "Jste pojištěni?",
@@ -352,7 +352,7 @@ const faqItems = [
       <div class="review-blob review-blob--tl" aria-hidden="true"></div>
       <div class="review-blob review-blob--br" aria-hidden="true"></div>
 
-      <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
+      <div class="max-w-[1400px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
         <div class="scroll-animate opacity-0 text-center max-w-2xl mx-auto mb-16">
           <p class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-4">Co říkají klienti</p>
           <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tighter leading-[1.1] mb-4">
@@ -410,11 +410,11 @@ const faqItems = [
           </div>
         </div>
 
-        <!-- Desktop grid — 2 sloupce pro 4 recenze -->
-        <div class="hidden sm:grid sm:grid-cols-2 gap-6">
+        <!-- Desktop grid — 4 sloupce vedle sebe -->
+        <div class="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {testimonials.map((t, i) => (
             <div
-              class="scroll-animate opacity-0 flex flex-col bg-zinc-900 rounded-[1.5rem] p-7 border border-zinc-800 hover:border-[#81b344]/30 hover:shadow-md transition-all duration-300 relative overflow-hidden"
+              class="scroll-animate opacity-0 flex flex-col bg-zinc-900 rounded-[1.5rem] p-6 border border-zinc-800 hover:border-[#81b344]/30 hover:shadow-md transition-all duration-300 relative overflow-hidden"
               style={`animation-delay:${i * 100}ms`}
             >
               <i data-lucide="quote" class="absolute -top-1 -right-1 w-8 h-8 text-[#81b344] opacity-25 fill-[#81b344]" aria-hidden="true"></i>
@@ -423,7 +423,7 @@ const faqItems = [
                   <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400" aria-hidden="true"></i>
                 ))}
               </div>
-              <p class="text-[14.5px] text-zinc-400 font-medium leading-relaxed mb-6 flex-grow">"{t.text}"</p>
+              <p class="text-[13.5px] text-zinc-400 font-medium leading-relaxed mb-6 flex-grow">"{t.text}"</p>
               <div class="flex items-center gap-3 mt-auto pt-5 border-t border-zinc-800">
                 <div class="flex-shrink-0 w-10 h-10 rounded-full bg-[#81b344]/15 flex items-center justify-center">
                   <span class="text-[13px] font-extrabold text-[#81b344]">{t.initials}</span>
