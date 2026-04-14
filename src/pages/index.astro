@@ -44,10 +44,10 @@ const services = [
 ];
 
 const stats = [
-  { value: 295, label: "Aktivních úklidů",     icon: "calendar-check" },
-  { value: 400, label: "Spokojených klientů",  icon: "users"          },
-  { value: 527, label: "Dokončených zakázek", icon: "badge-check"    },
-  { value: 21,  label: "Pravidelných objektů", icon: "building-2"     },
+  { value: 21,  suffix: '',  label: "Pravidelných objektů",  icon: "building-2"     },
+  { value: 90,  suffix: '+', label: "Spokojených klientů",   icon: "users"          },
+  { value: 290, suffix: '+', label: "Realizovaných úklidů",  icon: "badge-check"    },
+  { value: 5,   suffix: '+', label: "Let v oboru",           icon: "calendar-check" },
 ];
 
 const trustBadges = [
@@ -74,10 +74,17 @@ const testimonials = [
   },
   {
     name: "Magdalena Kopecká",
-    role: "Majitelka nemovitosti",
+    role: "Správce objektů",
     text: "Konečně úklidovka, co u práce i přemýšlí. Nejen že je všude čisto, ale hlavně nám v jejich appce přistávají fotky a hlášení, když je v baráku něco špatně – třeba prasklá žárovka nebo uvolněný práh. Máme o všem přehled dřív, než si začnou lidi stěžovat. Pecka přístup!",
     rating: 5,
     initials: "MK"
+  },
+  {
+    name: "Petr Zeman",
+    role: "Majitel kanceláří",
+    text: "Po špatné zkušenosti s nespolehlivou firmou jsem konečně narazil na úklidovou firmu, na kterou je opravdu spoleh. Vše je vždy perfektně uklizené, termíny dodržují a komunikace je bezproblémová. Jsem rád, že jsem je našel, a určitě je doporučuji dál.",
+    rating: 5,
+    initials: "PZ"
   },
 ];
 
@@ -331,7 +338,7 @@ const faqItems = [
               </div>
               <div class="flex items-end justify-center text-white mb-2">
                 <span class="text-[3rem] md:text-[4rem] lg:text-[4.5rem] font-extrabold tracking-tighter leading-none count-up" data-target={stat.value}>0</span>
-                <span class="text-[1.75rem] md:text-[2.25rem] font-bold text-white/70 ml-1 pb-1 md:pb-2">+</span>
+                <span class="text-[1.75rem] md:text-[2.25rem] font-bold text-white/70 ml-1 pb-1 md:pb-2">{stat.suffix}</span>
               </div>
               <div class="text-[12px] md:text-[13px] font-bold uppercase tracking-[0.1em] text-white/80">{stat.label}</div>
             </div>
@@ -341,96 +348,96 @@ const faqItems = [
     </section>
 
     <!-- 5. RECENZE -->
-<section class="py-20 md:py-32 bg-zinc-950 relative overflow-hidden">
-  <div class="review-blob review-blob--tl" aria-hidden="true"></div>
-  <div class="review-blob review-blob--br" aria-hidden="true"></div>
+    <section class="py-20 md:py-32 bg-zinc-950 relative overflow-hidden">
+      <div class="review-blob review-blob--tl" aria-hidden="true"></div>
+      <div class="review-blob review-blob--br" aria-hidden="true"></div>
 
-  <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
-    <div class="scroll-animate opacity-0 text-center max-w-2xl mx-auto mb-16">
-      <p class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-4">Co říkají klienti</p>
-      <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tighter leading-[1.1] mb-4">
-        Zkušenosti <span class="text-[#81b344]">našich klientů.</span>
-      </h2>
-      <div class="flex items-center justify-center gap-1.5">
-        {[1,2,3,4,5].map(() => (
-          <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400" aria-hidden="true"></i>
-        ))}
-        <span class="ml-2 text-[15px] font-bold text-white">5,0</span>
-        <span class="text-zinc-500 text-[14px] font-medium ml-1">průměrné hodnocení</span>
-      </div>
-    </div>
-
-    <!-- Mobile slider -->
-    <div class="sm:hidden">
-      <div
-        id="testimonials-track"
-        class="flex gap-4 overflow-x-auto pb-2 -mx-5"
-        style="scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;padding-left:20px;padding-right:20px;"
-      >
-        {testimonials.map(t => (
-          <div
-            class="flex-shrink-0 flex flex-col bg-zinc-900 rounded-[1.5rem] p-7 border border-zinc-800 relative overflow-hidden"
-            style="scroll-snap-align:center;width:82vw;max-width:340px;"
-          >
-            <i data-lucide="quote" class="absolute -top-1 -right-1 w-8 h-8 text-[#81b344] opacity-25 fill-[#81b344]" aria-hidden="true"></i>
-            <div class="flex gap-1 mb-5">
-              {Array.from({length: t.rating}).map(() => (
-                <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400" aria-hidden="true"></i>
-              ))}
-            </div>
-            <p class="text-[14.5px] text-zinc-400 font-medium leading-relaxed mb-6 flex-grow">"{t.text}"</p>
-            <div class="flex items-center gap-3 mt-auto pt-5 border-t border-zinc-800">
-              <div class="flex-shrink-0 w-10 h-10 rounded-full bg-[#81b344]/15 flex items-center justify-center">
-                <span class="text-[13px] font-extrabold text-[#81b344]">{t.initials}</span>
-              </div>
-              <div>
-                <p class="text-[13.5px] font-bold text-white leading-tight">{t.name}</p>
-                <p class="text-[12px] text-zinc-500 font-medium">{t.role}</p>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-      <div class="flex justify-center items-center gap-2 mt-6" id="testimonials-dots" aria-hidden="true">
-        {testimonials.map((_, i) => (
-          <button
-            class="testimonial-dot rounded-full transition-all duration-300"
-            style={i === 0 ? 'width:24px;height:8px;background:#81b344;' : 'width:8px;height:8px;background:#3f3f46;'}
-            data-index={i}
-            aria-label={`Recenze ${i + 1}`}
-          />
-        ))}
-      </div>
-    </div>
-
-    <!-- Desktop grid — 3 sloupce pro 3 recenze -->
-    <div class="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {testimonials.map((t, i) => (
-        <div
-          class="scroll-animate opacity-0 flex flex-col bg-zinc-900 rounded-[1.5rem] p-7 border border-zinc-800 hover:border-[#81b344]/30 hover:shadow-md transition-all duration-300 relative overflow-hidden"
-          style={`animation-delay:${i * 100}ms`}
-        >
-          <i data-lucide="quote" class="absolute -top-1 -right-1 w-8 h-8 text-[#81b344] opacity-25 fill-[#81b344]" aria-hidden="true"></i>
-          <div class="flex gap-1 mb-5">
-            {Array.from({length: t.rating}).map(() => (
+      <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
+        <div class="scroll-animate opacity-0 text-center max-w-2xl mx-auto mb-16">
+          <p class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-4">Co říkají klienti</p>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tighter leading-[1.1] mb-4">
+            Zkušenosti <span class="text-[#81b344]">našich klientů.</span>
+          </h2>
+          <div class="flex items-center justify-center gap-1.5">
+            {[1,2,3,4,5].map(() => (
               <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400" aria-hidden="true"></i>
             ))}
-          </div>
-          <p class="text-[14.5px] text-zinc-400 font-medium leading-relaxed mb-6 flex-grow">"{t.text}"</p>
-          <div class="flex items-center gap-3 mt-auto pt-5 border-t border-zinc-800">
-            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-[#81b344]/15 flex items-center justify-center">
-              <span class="text-[13px] font-extrabold text-[#81b344]">{t.initials}</span>
-            </div>
-            <div>
-              <p class="text-[13.5px] font-bold text-white leading-tight">{t.name}</p>
-              <p class="text-[12px] text-zinc-500 font-medium">{t.role}</p>
-            </div>
+            <span class="ml-2 text-[15px] font-bold text-white">5,0</span>
+            <span class="text-zinc-500 text-[14px] font-medium ml-1">průměrné hodnocení</span>
           </div>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
+
+        <!-- Mobile slider -->
+        <div class="sm:hidden">
+          <div
+            id="testimonials-track"
+            class="flex gap-4 overflow-x-auto pb-2 -mx-5"
+            style="scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;padding-left:20px;padding-right:20px;"
+          >
+            {testimonials.map(t => (
+              <div
+                class="flex-shrink-0 flex flex-col bg-zinc-900 rounded-[1.5rem] p-7 border border-zinc-800 relative overflow-hidden"
+                style="scroll-snap-align:center;width:82vw;max-width:340px;"
+              >
+                <i data-lucide="quote" class="absolute -top-1 -right-1 w-8 h-8 text-[#81b344] opacity-25 fill-[#81b344]" aria-hidden="true"></i>
+                <div class="flex gap-1 mb-5">
+                  {Array.from({length: t.rating}).map(() => (
+                    <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400" aria-hidden="true"></i>
+                  ))}
+                </div>
+                <p class="text-[14.5px] text-zinc-400 font-medium leading-relaxed mb-6 flex-grow">"{t.text}"</p>
+                <div class="flex items-center gap-3 mt-auto pt-5 border-t border-zinc-800">
+                  <div class="flex-shrink-0 w-10 h-10 rounded-full bg-[#81b344]/15 flex items-center justify-center">
+                    <span class="text-[13px] font-extrabold text-[#81b344]">{t.initials}</span>
+                  </div>
+                  <div>
+                    <p class="text-[13.5px] font-bold text-white leading-tight">{t.name}</p>
+                    <p class="text-[12px] text-zinc-500 font-medium">{t.role}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div class="flex justify-center items-center gap-2 mt-6" id="testimonials-dots" aria-hidden="true">
+            {testimonials.map((_, i) => (
+              <button
+                class="testimonial-dot rounded-full transition-all duration-300"
+                style={i === 0 ? 'width:24px;height:8px;background:#81b344;' : 'width:8px;height:8px;background:#3f3f46;'}
+                data-index={i}
+                aria-label={`Recenze ${i + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+
+        <!-- Desktop grid — 2 sloupce pro 4 recenze -->
+        <div class="hidden sm:grid sm:grid-cols-2 gap-6">
+          {testimonials.map((t, i) => (
+            <div
+              class="scroll-animate opacity-0 flex flex-col bg-zinc-900 rounded-[1.5rem] p-7 border border-zinc-800 hover:border-[#81b344]/30 hover:shadow-md transition-all duration-300 relative overflow-hidden"
+              style={`animation-delay:${i * 100}ms`}
+            >
+              <i data-lucide="quote" class="absolute -top-1 -right-1 w-8 h-8 text-[#81b344] opacity-25 fill-[#81b344]" aria-hidden="true"></i>
+              <div class="flex gap-1 mb-5">
+                {Array.from({length: t.rating}).map(() => (
+                  <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400" aria-hidden="true"></i>
+                ))}
+              </div>
+              <p class="text-[14.5px] text-zinc-400 font-medium leading-relaxed mb-6 flex-grow">"{t.text}"</p>
+              <div class="flex items-center gap-3 mt-auto pt-5 border-t border-zinc-800">
+                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-[#81b344]/15 flex items-center justify-center">
+                  <span class="text-[13px] font-extrabold text-[#81b344]">{t.initials}</span>
+                </div>
+                <div>
+                  <p class="text-[13.5px] font-bold text-white leading-tight">{t.name}</p>
+                  <p class="text-[12px] text-zinc-500 font-medium">{t.role}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
 
     <!-- 6. JAK TO FUNGUJE -->
     <section id="jak-to-funguje" class="py-20 md:py-32 bg-zinc-50 relative overflow-hidden scroll-mt-20 md:scroll-mt-24">
@@ -483,28 +490,28 @@ const faqItems = [
         </div>
         <div class="flex flex-col gap-4" id="faq-list">
           {faqItems.map((item, i) => (
-  <div
-    class="faq-item scroll-animate opacity-0 bg-zinc-50 border border-zinc-200 rounded-2xl transition-colors duration-200 overflow-hidden"
-    style={`animation-delay:${i * 70}ms`}
-  >
-    <button
-      class="faq-trigger w-full flex items-center justify-between gap-4 px-7 py-5 text-left cursor-pointer select-none"
-      aria-expanded="false"
-      aria-controls={`faq-body-${i}`}
-    >
-      <span class="text-[16px] md:text-[17px] font-bold text-zinc-900">{item.q}</span>
-      <span class="faq-icon flex-shrink-0 w-8 h-8 rounded-full bg-zinc-200 transition-colors duration-200 flex items-center justify-center border border-transparent">
-        <i data-lucide="plus" class="faq-chevron w-4 h-4 text-zinc-600 transition-transform duration-300" aria-hidden="true"></i>
-      </span>
-    </button>
-    <div
-      id={`faq-body-${i}`}
-      class="faq-body max-h-0 overflow-hidden transition-[max-height] duration-300 ease-in-out"
-    >
-      <p class="text-[15px] text-zinc-600 font-medium leading-relaxed px-7 pb-6 pt-1">{item.a}</p>
-    </div>
-  </div>
-))}
+            <div
+              class="faq-item scroll-animate opacity-0 bg-zinc-50 border border-zinc-200 rounded-2xl transition-colors duration-200 overflow-hidden"
+              style={`animation-delay:${i * 70}ms`}
+            >
+              <button
+                class="faq-trigger w-full flex items-center justify-between gap-4 px-7 py-5 text-left cursor-pointer select-none"
+                aria-expanded="false"
+                aria-controls={`faq-body-${i}`}
+              >
+                <span class="text-[16px] md:text-[17px] font-bold text-zinc-900">{item.q}</span>
+                <span class="faq-icon flex-shrink-0 w-8 h-8 rounded-full bg-zinc-200 transition-colors duration-200 flex items-center justify-center border border-transparent">
+                  <i data-lucide="plus" class="faq-chevron w-4 h-4 text-zinc-600 transition-transform duration-300" aria-hidden="true"></i>
+                </span>
+              </button>
+              <div
+                id={`faq-body-${i}`}
+                class="faq-body max-h-0 overflow-hidden transition-[max-height] duration-300 ease-in-out"
+              >
+                <p class="text-[15px] text-zinc-600 font-medium leading-relaxed px-7 pb-6 pt-1">{item.a}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -556,16 +563,8 @@ const faqItems = [
 </Layout>
 
 <script>
-  // Low-end device detection — runs synchronously before paint via inline snippet in Layout
-  // This script handles all interactive behaviour on index page
-
   const isLowEnd = () => document.documentElement.classList.contains('low-end');
 
-  // ── Hero elements: reveal without IntersectionObserver (above the fold) ─────
-  // We skip low-end guard for hero — CSS animation already handles opacity
-  // Low-end override is handled globally in <style> below
-
-  // ── Scroll-animate (below the fold) ──────────────────────────────────────────
   function initScrollAnimate() {
     if (isLowEnd()) {
       document.querySelectorAll<HTMLElement>('.scroll-animate').forEach(el => {
@@ -588,7 +587,6 @@ const faqItems = [
     document.querySelectorAll('.scroll-animate').forEach(el => observer.observe(el));
   }
 
-  // ── FAQ ───────────────────────────────────────────────────────────────────────
   function initFaq() {
     document.querySelectorAll('.faq-item').forEach(item => {
       const trigger = item.querySelector('.faq-trigger') as HTMLButtonElement | null;
@@ -625,7 +623,6 @@ const faqItems = [
     });
   }
 
-  // ── Count-up ──────────────────────────────────────────────────────────────────
   function initCountUp() {
     const section = document.querySelector<HTMLElement>('.count-up-container');
     if (!section) return;
@@ -664,7 +661,6 @@ const faqItems = [
     obs.observe(section);
   }
 
-  // ── Testimonials slider ───────────────────────────────────────────────────────
   function initSlider() {
     const track = document.getElementById('testimonials-track') as HTMLElement | null;
     const dots  = document.querySelectorAll<HTMLElement>('.testimonial-dot');
@@ -705,7 +701,6 @@ const faqItems = [
 </script>
 
 <style>
-  /* ── Hero decorative blobs ──────────────────────────────────────── */
   @media (min-width: 768px) {
     .hero-blob {
       pointer-events: none;
@@ -745,7 +740,6 @@ const faqItems = [
     }
   }
 
-  /* ── Process dashed line ──────────────────────────────────────── */
   .process-line {
     position: absolute;
     top: 40px; left: 10%; right: 10%;
@@ -755,7 +749,6 @@ const faqItems = [
     );
   }
 
-  /* ── Scroll-reveal animation ───────────────────────────────────── */
   @keyframes softFadeUp {
     from { opacity: 0; transform: translateY(18px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -764,13 +757,10 @@ const faqItems = [
     animation: softFadeUp 0.75s cubic-bezier(0.25, 1, 0.4, 1) both;
   }
 
-  /* ── Testimonials scrollbar hide ────────────────────────────────── */
   #testimonials-track::-webkit-scrollbar { display: none; }
 
-  /* ── FAQ body transition ────────────────────────────────────────── */
   .faq-body { transition: max-height 0.3s cubic-bezier(0.25, 1, 0.4, 1); }
 
-  /* ── Reduced motion ──────────────────────────────────────────────── */
   @media (prefers-reduced-motion: reduce) {
     .animate-fade-in-up, .scroll-animate {
       animation: none !important;
@@ -782,7 +772,6 @@ const faqItems = [
     .faq-body      { transition: none !important; }
   }
 
-  /* ── Low-end device overrides ───────────────────────────────────────── */
   :global(.low-end) .animate-fade-in-up,
   :global(.low-end) .scroll-animate,
   :global(.low-end) .opacity-0 {
