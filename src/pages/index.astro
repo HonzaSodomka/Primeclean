@@ -309,7 +309,7 @@ const faqItems = [
           <div class="w-full sm:max-w-sm md:max-w-md mx-auto lg:w-[45%] relative mt-8 lg:mt-0 z-10">
             <div class="relative aspect-[4/5] rounded-[1.5rem] overflow-hidden bg-zinc-900 border border-zinc-700">
               <img
-                src="/aplikace.jpg"
+                src="/dashboard.jpg"
                 alt="Ukázka aplikace PrimeClean"
                 width="600" height="750"
                 class="w-full h-full object-cover object-top"
@@ -516,45 +516,81 @@ const faqItems = [
       </div>
     </section>
 
-    <!-- 8. O NÁS & CTA -->
+          <!-- 8. O NÁS -->
     <section id="o-nas" class="pt-16 pb-24 md:pt-24 md:pb-36 bg-zinc-50 relative overflow-hidden">
-      <div class="max-w-[1000px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
-        <div class="scroll-animate opacity-0 bg-white rounded-[2rem] p-8 sm:p-12 md:p-16 border border-zinc-200 shadow-sm flex flex-col md:flex-row items-center md:items-start gap-10 md:gap-16 relative overflow-hidden">
-          <div class="flex-shrink-0 flex flex-col items-center text-center relative z-10">
-            <div class="relative w-36 h-36 md:w-48 md:h-48 rounded-full overflow-hidden border-4 border-[#81b344]/15 bg-zinc-100 mb-5 shadow-sm">
-              <img
-                src="/tomas-kytka.jpg"
-                alt="Tomáš Kytka, Zakladatel PrimeClean"
-                width="192" height="192"
-                class="w-full h-full object-cover object-top"
-                loading="lazy"
-                decoding="async"
-              />
+      <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
+
+        <div class="scroll-animate opacity-0 text-center max-w-3xl mx-auto mb-14">
+          <p class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-4">Poznejte nás</p>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1]">
+            Úklid nemá být vaše starost, <br class="hidden md:block" /> ale <span class="text-[#81b344]">naše vizitka.</span>
+          </h2>
+        </div>
+
+        <div class="flex flex-col gap-10">
+
+          <!-- Tomáš -->
+          <div class="scroll-animate opacity-0 bg-white rounded-[2rem] p-8 sm:p-12 border border-zinc-200 shadow-sm flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12">
+            <div class="flex-shrink-0 flex flex-col items-center text-center w-44">
+              <div class="relative w-32 h-32 md:w-44 md:h-44 rounded-full overflow-hidden border-4 border-[#81b344]/15 bg-zinc-100 shadow-sm mb-4">
+                <img
+                  src="/tomas-kytka.jpg"
+                  alt="Tomáš Kytka, Zakladatel PrimeClean"
+                  width="192" height="192"
+                  class="w-full h-full object-cover object-top"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <p class="text-[18px] font-extrabold text-zinc-900 leading-tight tracking-tight">Tomáš Kytka</p>
+              <p class="text-[11px] text-zinc-500 font-bold uppercase tracking-[0.12em] mt-1">Zakladatel &amp; jednatel</p>
             </div>
-            <p class="text-[18px] font-extrabold text-zinc-900 leading-none mb-2 tracking-tight">Tomáš Kytka</p>
-            <p class="text-[12px] text-zinc-500 font-bold uppercase tracking-[0.1em]">Zakladatel PrimeClean</p>
-          </div>
-          <div class="flex-1 text-center md:text-left flex flex-col h-full relative z-10">
-            <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-extrabold text-zinc-900 tracking-tighter mb-6 leading-[1.1]">
-              Úklid nemá být vaše starost, <br class="hidden xl:block"/> ale <span class="text-[#81b344]">naše vizitka.</span>
-            </h2>
-            <div class="relative flex-grow mb-10 md:pl-6">
-              <div class="hidden md:block absolute left-0 top-0 bottom-0 w-[3px] bg-[#81b344]/30 rounded-full"></div>
-              <p class="text-[16px] lg:text-[18px] text-zinc-600 font-medium leading-relaxed mb-5">
-                Při budování PrimeClean jsem měl jasný cíl: odstranit z oboru nedůvěru. Věděl jsem, že dokud klienti neuvidí výsledky na vlastní oči, nikdy nebudou stoprocentně klidní.
+            <div class="flex-1 text-center md:text-left border-l-0 md:border-l-[3px] md:border-[#81b344]/30 md:pl-10">
+              <p class="text-[16px] text-zinc-600 font-medium leading-relaxed mb-4">
+                Jsem detailista. Tři roky v auto detailingu mě naučily, že rozdíl mezi „hotovo" a „perfektně čisté" spočívá v detailech, které většina lidí přehlíží. Právě tuhle nekompromisní preciznost, na kterou jsem byl zvyklý u luxusních vozů, jsem přenesl i do světa firemního úklidu.
               </p>
-              <p class="text-[16px] lg:text-[18px] text-zinc-800 font-semibold leading-relaxed">
-                Proto jsme zavedli absolutní transparentnost díky naší aplikaci. Chci, abyste každé ráno přišli do čisté firmy s jistotou, že je o vše postaráno.
+              <p class="text-[16px] text-zinc-600 font-medium leading-relaxed mb-4">
+                Při budování PrimeClean jsem měl jasný cíl: odstranit z oboru povrchnost a nedůvěru. Vím, že dokud klient neuvidí výsledky na vlastní oči, nebude stoprocentně klidný.
               </p>
-            </div>
-            <div class="mt-auto">
-              <a href="/kontakt" class="inline-flex items-center justify-center gap-2 px-8 py-4 text-[16px] font-bold text-white transition-all duration-300 ease-out bg-[#81b344] rounded-xl hover:bg-[#6a9438] hover:-translate-y-1 shadow-md shadow-[#81b344]/20">
+              <p class="text-[16px] text-zinc-600 font-medium leading-relaxed mb-8">
+                Proto jsme zavedli absolutní transparentnost díky naší aplikaci. Chci, abyste každé ráno přicházeli do firmy s jistotou, že je o vše postaráno se stejným zápalem, jako by šlo o výstavní veterán. Vy se soustřeďte na svůj byznys, čistotu nechte na nás – do posledního detailu.
+              </p>
+              <a href="/kontakt" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[15px] font-bold text-white transition-all duration-300 ease-out bg-[#81b344] rounded-xl hover:bg-[#6a9438] hover:-translate-y-1 shadow-md shadow-[#81b344]/20">
                 Domluvit osobní schůzku
-                <i data-lucide="arrow-right" class="w-5 h-5" aria-hidden="true"></i>
+                <i data-lucide="arrow-right" class="w-4 h-4" aria-hidden="true"></i>
               </a>
-              <p class="text-[13px] text-zinc-500 font-medium mt-4 tracking-wide">Rádi s vámi probereme vaše potřeby osobně na místě.</p>
             </div>
           </div>
+
+          <!-- Martina -->
+          <div class="scroll-animate opacity-0 bg-white rounded-[2rem] p-8 sm:p-12 border border-zinc-200 shadow-sm flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12" style="animation-delay:120ms">
+            <div class="flex-shrink-0 flex flex-col items-center text-center w-44">
+              <div class="relative w-32 h-32 md:w-44 md:h-44 rounded-full overflow-hidden border-4 border-[#81b344]/15 bg-zinc-100 shadow-sm mb-4">
+                <img
+                  src="/martina-backova.jpg"
+                  alt="Martina Bačková, Péče o zákazníky a organizace"
+                  width="192" height="192"
+                  class="w-full h-full object-cover object-top"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <p class="text-[18px] font-extrabold text-zinc-900 leading-tight tracking-tight">Martina Bačková</p>
+              <p class="text-[11px] text-zinc-500 font-bold uppercase tracking-[0.12em] mt-1">Péče o zákazníky &amp; organizace</p>
+            </div>
+            <div class="flex-1 text-center md:text-left border-l-0 md:border-l-[3px] md:border-[#81b344]/30 md:pl-10">
+              <p class="text-[16px] text-zinc-600 font-medium leading-relaxed mb-4 italic">
+                „Možná nemám zkušenosti z auto detailingu jako Tomáš, ale mám přirozený talent vnést řád i do toho největšího chaosu."
+              </p>
+              <p class="text-[16px] text-zinc-600 font-medium leading-relaxed mb-4">
+                Zatímco se Tomáš soustředí na nekompromisní čistotu a technické standardy, já jsem tu pro vás. Mým úkolem v PrimeClean je dohlížet na to, aby celá spolupráce šlapala jako hodinky. Mám na starosti kompletní logistiku, vedení našich týmů a především komunikaci s vámi – našimi klienty.
+              </p>
+              <p class="text-[16px] text-zinc-600 font-medium leading-relaxed">
+                Věřím, že precizní výsledek potřebuje precizní plán. Starám se o to, aby naše sliby nebyly jen slova, ale realita, kterou uvidíte každé ráno při příchodu do své kanceláře. Jsem tu, abych zajistila, že o vaše potřeby bude postaráno s maximálním zápalem a bez zbytečných starostí z vaší strany.
+              </p>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
