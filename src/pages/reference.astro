@@ -1,0 +1,439 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const testimonials = [
+  {
+    name: "Veselý Medvěd",
+    role: "Hostitel na Airbnb",
+    text: "Jako hostitel na Airbnb potřebuju mít jistotu, že je apartmán vždy perfektně připravený a v naprostém pořádku. PrimeClean to zvládá spolehlivě i na poslední chvíli. Díky fotkám v aplikaci mám klid, i když zrovna nejsem v Brně.",
+    rating: 5,
+    initials: "VM"
+  },
+  {
+    name: "Autoškola TiGO s.r.o.",
+    role: "Kancelář & učebna",
+    text: "S touto úklidovou firmou máme velmi dobrou zkušenost. Už přibližně 3 měsíce se starají o čistotu naší kanceláře i učebny a vždy odvedou skvělou práci. Velké plus je komunikace — domluva je vždy rychlá a bez problémů.",
+    rating: 5,
+    initials: "AT"
+  },
+  {
+    name: "Magdalena Kopecká",
+    role: "Správce objektu",
+    text: "Konečně úklidovka, co u práce i přemýšlí. Nejen že je všude čisto, ale hlavně nám v jejich appce přistávají fotky a hlášení, když je v baráku něco špatně – třeba prasklá žárovka nebo uvolněný práh. Máme o všem přehled dřív, než si začnou lidi stěžovat.",
+    rating: 5,
+    initials: "MK"
+  },
+  {
+    name: "Petr Zeman",
+    role: "Majitel kanceláří",
+    text: "Po špatné zkušenosti s nespolehlivou firmou jsem konečně narazil na úklidovou firmu, na kterou je opravdu spoleh. Vše je vždy perfektně uklizené, termíny dodržují a komunikace je bezproblémová.",
+    rating: 5,
+    initials: "PZ"
+  },
+];
+
+const pairs = [
+  {
+    label: "Sklep",
+    before: "/ref-before-1.jpg",
+    after: "/ref-after-1.jpg",
+  },
+  {
+    label: "Chodba",
+    before: "/IMG_6127.jpg",
+    after: "/IMG_6130.jpg",
+  },
+  {
+    label: "Vstup do domu",
+    before: "/ref-before-2.jpg",
+    after: "/ref-after-2.jpg",
+  },
+  {
+    label: "Výtah",
+    before: "/IMG_5404.jpg",
+    after: "/IMG_5405.jpg",
+  },
+];
+---
+
+<Layout
+  title="Reference | PrimeClean"
+  description="Podívejte se na skutečné výsledky naší práce. Fotografie před a po úklidu a recenze spokojených klientů PrimeClean Brno."
+>
+  <main class="bg-white selection:bg-[#81b344]/30 selection:text-zinc-900">
+
+    <!-- HERO -->
+    <section class="relative pt-28 pb-20 md:pt-36 md:pb-28 lg:pt-44 lg:pb-36 overflow-hidden bg-zinc-50">
+      <div class="hidden md:block pointer-events-none absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full bg-[#81b344]/5 blur-[80px]"></div>
+      <div class="hidden md:block pointer-events-none absolute -bottom-20 -left-20 w-[400px] h-[400px] rounded-full bg-[#81b344]/4 blur-[60px]"></div>
+      <div class="relative z-10 max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12 text-center">
+
+        <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-white border border-zinc-200 shadow-sm mb-6 md:mb-8 opacity-0 animate-fade-in-up" style="animation-delay:0ms">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#81b344] animate-pulse flex-shrink-0"></span>
+          <span class="text-[11px] sm:text-xs font-bold text-zinc-600 tracking-[0.15em] uppercase">Výsledky naší práce</span>
+        </div>
+
+        <h1 class="text-[2.75rem] sm:text-[3.75rem] md:text-6xl lg:text-[6rem] font-extrabold text-zinc-950 tracking-tighter leading-[1.05] md:leading-[0.95] mb-6 opacity-0 animate-fade-in-up" style="animation-delay:150ms">
+          Rozdíl vidíte<br class="hidden sm:block" />
+          <span class="text-[#6a9438]">na první pohled.</span>
+        </h1>
+
+        <p class="text-base sm:text-lg md:text-[19px] lg:text-[21px] text-zinc-600 max-w-xl lg:max-w-2xl mx-auto leading-relaxed font-medium mb-10 opacity-0 animate-fade-in-up" style="animation-delay:300ms">
+          Nenechte se přesvědčovat slovy. Prohlédněte si fotografie přímo z našich zakázek a přečtěte si, co o nás říkají klienti.
+        </p>
+
+        <div class="opacity-0 animate-fade-in-up flex items-center justify-center gap-2" style="animation-delay:450ms">
+          <div class="flex gap-1">
+            {[1,2,3,4,5].map(() => (
+              <i data-lucide="star" class="w-5 h-5 text-amber-400 fill-amber-400" aria-hidden="true"></i>
+            ))}
+          </div>
+          <span class="text-[16px] font-bold text-zinc-900">5,0</span>
+          <span class="text-zinc-400 text-[14px] font-medium">· 5 recenzí na Google</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PŘED & PO GRID -->
+    <section class="py-20 md:py-32 bg-white">
+      <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
+
+        <div class="scroll-animate opacity-0 text-center max-w-3xl mx-auto mb-16">
+          <p class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-4">Fotodokumentace</p>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-4">
+            Před a <span class="text-[#6a9438]">po úklidu.</span>
+          </h2>
+          <p class="text-[16px] md:text-[18px] text-zinc-500 font-medium leading-relaxed">
+            Fotografie přímo z našich zakázek — žádné retušování, žádné triky.
+          </p>
+        </div>
+
+        <!-- 2 řady po 2 dvojicích -->
+        <div class="flex flex-col gap-10">
+          {[pairs.slice(0, 2), pairs.slice(2, 4)].map((row, rowIdx) => (
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {row.map((pair, i) => (
+                <div
+                  class="scroll-animate opacity-0 flex flex-col gap-3"
+                  style={`animation-delay:${(rowIdx * 2 + i) * 100}ms`}
+                >
+                  <div class="grid grid-cols-2 gap-2">
+                    <!-- PŘED -->
+                    <div
+                      class="lightbox-trigger relative rounded-2xl overflow-hidden bg-zinc-100 aspect-[3/4] cursor-zoom-in group"
+                      data-src={pair.before}
+                      data-label={`Před — ${pair.label}`}
+                    >
+                      <img
+                        src={pair.before}
+                        alt={`Před úklidem — ${pair.label}`}
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <span class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-black/55 text-white text-[10px] font-bold tracking-[0.08em] uppercase backdrop-blur-sm">Před</span>
+                      <div class="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300 flex items-center justify-center">
+                        <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-10 h-10 rounded-full bg-white/90 flex items-center justify-center shadow-md">
+                          <i data-lucide="zoom-in" class="w-5 h-5 text-zinc-700" aria-hidden="true"></i>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- PO -->
+                    <div
+                      class="lightbox-trigger relative rounded-2xl overflow-hidden bg-zinc-100 aspect-[3/4] cursor-zoom-in group"
+                      data-src={pair.after}
+                      data-label={`Po — ${pair.label}`}
+                    >
+                      <img
+                        src={pair.after}
+                        alt={`Po úklidu — ${pair.label}`}
+                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <span class="absolute top-2 right-2 px-2 py-0.5 rounded-full bg-[#81b344]/90 text-white text-[10px] font-bold tracking-[0.08em] uppercase backdrop-blur-sm">Po</span>
+                      <div class="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300 flex items-center justify-center">
+                        <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-10 h-10 rounded-full bg-white/90 flex items-center justify-center shadow-md">
+                          <i data-lucide="zoom-in" class="w-5 h-5 text-zinc-700" aria-hidden="true"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex items-center px-1">
+                    <span class="text-[14px] font-bold text-zinc-900">{pair.label}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    <!-- LIGHTBOX -->
+    <div
+      id="lightbox"
+      class="fixed inset-0 z-[9999] bg-black/90 backdrop-blur-sm hidden items-center justify-center p-4"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Náhled fotografie"
+    >
+      <button
+        id="lightbox-close"
+        class="absolute top-4 right-4 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors duration-200 z-10"
+        aria-label="Zavřít"
+      >
+        <i data-lucide="x" class="w-5 h-5 text-white" aria-hidden="true"></i>
+      </button>
+      <div class="relative max-w-2xl w-full flex flex-col items-center gap-4">
+        <img
+          id="lightbox-img"
+          src=""
+          alt=""
+          class="max-h-[85vh] w-auto max-w-full rounded-2xl shadow-2xl object-contain"
+        />
+        <p id="lightbox-label" class="text-white/70 text-[13px] font-medium tracking-wide"></p>
+      </div>
+    </div>
+
+    <!-- RECENZE -->
+    <section class="py-20 md:py-32 bg-zinc-950 relative overflow-hidden">
+      <div class="pointer-events-none absolute top-0 left-1/4 w-[500px] h-[300px] rounded-full bg-[#81b344]/8 blur-[80px]"></div>
+      <div class="pointer-events-none absolute bottom-0 right-1/4 w-[400px] h-[250px] rounded-full bg-[#81b344]/6 blur-[70px]"></div>
+
+      <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
+
+        <div class="scroll-animate opacity-0 text-center max-w-2xl mx-auto mb-16">
+          <p class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-4">Co říkají klienti</p>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tighter leading-[1.1] mb-4">
+            Zkušenosti <span class="text-[#81b344]">našich klientů.</span>
+          </h2>
+          <div class="flex items-center justify-center gap-1.5">
+            {[1,2,3,4,5].map(() => (
+              <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400" aria-hidden="true"></i>
+            ))}
+            <span class="ml-2 text-[15px] font-bold text-white">5,0</span>
+            <span class="text-zinc-500 text-[14px] font-medium ml-1">průměrné hodnocení · 5 recenzí</span>
+          </div>
+        </div>
+
+        <!-- Mobile slider -->
+        <div class="sm:hidden">
+          <div
+            id="ref-testimonials-track"
+            class="flex gap-4 overflow-x-auto pb-2 -mx-5"
+            style="scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;padding-left:20px;padding-right:20px;"
+          >
+            {testimonials.map(t => (
+              <div
+                class="flex-shrink-0 flex flex-col bg-zinc-900 rounded-[1.5rem] p-7 border border-zinc-800 relative overflow-hidden"
+                style="scroll-snap-align:center;width:82vw;max-width:340px;"
+              >
+                <i data-lucide="quote" class="absolute -top-1 -right-1 w-8 h-8 text-[#81b344] opacity-25 fill-[#81b344]" aria-hidden="true"></i>
+                <div class="flex gap-1 mb-5">
+                  {Array.from({length: t.rating}).map(() => (
+                    <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400" aria-hidden="true"></i>
+                  ))}
+                </div>
+                <p class="text-[14.5px] text-zinc-400 font-medium leading-relaxed mb-6 flex-grow">"{t.text}"</p>
+                <div class="flex items-center gap-3 mt-auto pt-5 border-t border-zinc-800">
+                  <div class="flex-shrink-0 w-10 h-10 rounded-full bg-[#81b344]/15 flex items-center justify-center">
+                    <span class="text-[13px] font-extrabold text-[#81b344]">{t.initials}</span>
+                  </div>
+                  <div>
+                    <p class="text-[13.5px] font-bold text-white leading-tight">{t.name}</p>
+                    <p class="text-[12px] text-zinc-500 font-medium">{t.role}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div class="flex justify-center items-center gap-2 mt-6" id="ref-dots" aria-hidden="true">
+            {testimonials.map((_, i) => (
+              <button
+                class="ref-dot rounded-full transition-all duration-300"
+                style={i === 0 ? 'width:24px;height:8px;background:#81b344;' : 'width:8px;height:8px;background:#3f3f46;'}
+                data-index={i}
+                aria-label={`Recenze ${i + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+
+        <!-- Desktop grid -->
+        <div class="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {testimonials.map((t, i) => (
+            <div
+              class="scroll-animate opacity-0 flex flex-col bg-zinc-900 rounded-[1.5rem] p-6 border border-zinc-800 hover:border-[#81b344]/30 hover:shadow-md transition-all duration-300 relative overflow-hidden"
+              style={`animation-delay:${i * 100}ms`}
+            >
+              <i data-lucide="quote" class="absolute -top-1 -right-1 w-8 h-8 text-[#81b344] opacity-25 fill-[#81b344]" aria-hidden="true"></i>
+              <div class="flex gap-1 mb-5">
+                {Array.from({length: t.rating}).map(() => (
+                  <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400" aria-hidden="true"></i>
+                ))}
+              </div>
+              <p class="text-[13.5px] text-zinc-400 font-medium leading-relaxed mb-6 flex-grow">"{t.text}"</p>
+              <div class="flex items-center gap-3 mt-auto pt-5 border-t border-zinc-800">
+                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-[#81b344]/15 flex items-center justify-center">
+                  <span class="text-[13px] font-extrabold text-[#81b344]">{t.initials}</span>
+                </div>
+                <div>
+                  <p class="text-[13.5px] font-bold text-white leading-tight">{t.name}</p>
+                  <p class="text-[12px] text-zinc-500 font-medium">{t.role}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="relative py-20 md:py-28 bg-zinc-50 overflow-hidden">
+      <div class="hidden md:block pointer-events-none absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full bg-[#81b344]/5 blur-[80px]"></div>
+      <div class="hidden md:block pointer-events-none absolute -bottom-20 -left-20 w-[400px] h-[400px] rounded-full bg-[#81b344]/5 blur-[60px]"></div>
+      <div class="relative z-10 max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12 text-center">
+        <p class="scroll-animate opacity-0 text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-4">Přesvědčeni?</p>
+        <h2 class="scroll-animate opacity-0 text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.08] mb-5" style="animation-delay:100ms">
+          Stejné výsledky<br />
+          <span class="text-[#6a9438]">i u vás.</span>
+        </h2>
+        <p class="scroll-animate opacity-0 text-[16px] md:text-[18px] text-zinc-500 font-medium leading-relaxed mb-10 max-w-xl mx-auto" style="animation-delay:200ms">
+          Napište nám a připravíme nezávaznou nabídku přímo pro váš objekt. Bez překvapení, bez DPH navíc.
+        </p>
+        <div class="scroll-animate opacity-0" style="animation-delay:300ms">
+          <a href="/kontakt" class="inline-flex items-center justify-center gap-2 px-10 py-4 text-[16px] font-bold text-white bg-[#81b344] rounded-xl hover:bg-[#6a9438] transition-all duration-300 hover:-translate-y-1 shadow-lg shadow-[#81b344]/20">
+            Chci nezávaznou nabídku
+            <i data-lucide="arrow-right" class="w-5 h-5" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</Layout>
+
+<script>
+  /* ── Scroll animace ── */
+  function initScrollAnimate() {
+    if (document.documentElement.classList.contains('low-end')) {
+      document.querySelectorAll<HTMLElement>('.scroll-animate').forEach(el => {
+        el.style.opacity = '1';
+        el.classList.remove('opacity-0');
+      });
+      return;
+    }
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        (entry.target as HTMLElement).classList.add('animate-fade-in-up');
+        (entry.target as HTMLElement).classList.remove('opacity-0');
+        obs.unobserve(entry.target);
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -5% 0px' });
+    document.querySelectorAll('.scroll-animate').forEach(el => obs.observe(el));
+  }
+
+  /* ── Recenze slider (mobil) ── */
+  function initRefSlider() {
+    const track = document.getElementById('ref-testimonials-track') as HTMLElement | null;
+    const dots  = document.querySelectorAll<HTMLElement>('.ref-dot');
+    if (!track || !dots.length) return;
+    let rafId = 0;
+    const update = () => {
+      const cards = track.children;
+      if (!cards.length) return;
+      const active = Math.round(track.scrollLeft / ((cards[0] as HTMLElement).offsetWidth + 16));
+      dots.forEach((d, i) => {
+        d.style.width      = i === active ? '24px' : '8px';
+        d.style.height     = '8px';
+        d.style.background = i === active ? '#81b344' : '#3f3f46';
+      });
+    };
+    track.addEventListener('scroll', () => { cancelAnimationFrame(rafId); rafId = requestAnimationFrame(update); }, { passive: true });
+    dots.forEach((d, i) => {
+      d.addEventListener('click', () => {
+        const cards = track.children;
+        if (!cards.length) return;
+        track.scrollTo({ left: i * ((cards[0] as HTMLElement).offsetWidth + 16), behavior: 'smooth' });
+      });
+    });
+  }
+
+  /* ── Lightbox ── */
+  function initLightbox() {
+    const lightbox  = document.getElementById('lightbox')!;
+    const img       = document.getElementById('lightbox-img') as HTMLImageElement;
+    const label     = document.getElementById('lightbox-label')!;
+    const closeBtn  = document.getElementById('lightbox-close')!;
+
+    const open = (src: string, lbl: string) => {
+      img.src = src;
+      img.alt = lbl;
+      label.textContent = lbl;
+      lightbox.classList.remove('hidden');
+      lightbox.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const close = () => {
+      lightbox.classList.add('hidden');
+      lightbox.classList.remove('flex');
+      document.body.style.overflow = '';
+      img.src = '';
+    };
+
+    document.querySelectorAll<HTMLElement>('.lightbox-trigger').forEach(el => {
+      el.addEventListener('click', () => {
+        const src = el.dataset.src ?? '';
+        const lbl = el.dataset.label ?? '';
+        open(src, lbl);
+      });
+    });
+
+    closeBtn.addEventListener('click', close);
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) close(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initScrollAnimate();
+    initRefSlider();
+    initLightbox();
+  });
+</script>
+
+<style>
+  @keyframes softFadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in-up {
+    animation: softFadeUp 0.75s cubic-bezier(0.25, 1, 0.4, 1) both;
+  }
+
+  #ref-testimonials-track::-webkit-scrollbar { display: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-fade-in-up, .scroll-animate {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+    .animate-pulse { animation: none !important; }
+  }
+
+  :global(.low-end) .animate-fade-in-up,
+  :global(.low-end) .scroll-animate,
+  :global(.low-end) .opacity-0 {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  :global(.low-end) .animate-pulse { animation: none !important; }
+  :global(.low-end) img { transition: none !important; }
+</style>
