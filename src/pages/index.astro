@@ -420,8 +420,8 @@ const faqItems = [
         <div class="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {testimonials.map((t, i) => (
             <div
-              class="scroll-animate opacity-0 flex flex-col bg-zinc-900 rounded-[1.5rem] p-6 border border-zinc-800 hover:border-[#81b344]/30 hover:shadow-md transition-all duration-300 relative overflow-hidden"
-              style={`animation-delay:${i * 100}ms;will-change:opacity,transform;`}
+              class="scroll-animate opacity-0 flex flex-col bg-zinc-900 rounded-[1.5rem] p-6 border border-zinc-800 hover:border-[#81b344]/30 hover:shadow-md transition-[border-color,box-shadow] duration-300 relative overflow-hidden"
+              style={`animation-delay:${i * 100}ms`}
             >
               <i data-lucide="quote" class="absolute -top-1 -right-1 w-8 h-8 text-[#81b344] opacity-25 fill-[#81b344]" aria-hidden="true"></i>
               <div class="flex gap-1 mb-5" aria-label={`Hodnocení: ${t.rating} z 5`}>
