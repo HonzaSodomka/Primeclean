@@ -1,4 +1,3 @@
----
 import Layout from '../layouts/Layout.astro';
 
 const features = [
@@ -23,21 +22,21 @@ const services = [
   {
     title: "Kanceláře a firmy",
     description: "Pravidelný úklid přizpůsobený provozu vaší firmy. Stálý tým, jasný rozsah prací a přehled o úklidech bez starostí.",
-    image: "/sluzba-kancelare.jpg",
+    image: "/sluzba-kancelare.webp",
     link: "/sluzby#tab-kancelare",
     tag: "Nejoblíbenější"
   },
   {
     title: "SVJ a bytové domy",
     description: "Pravidelný úklid vchodů, chodeb a společných prostor. Spolehlivé řešení pro bytová družstva a správce nemovitostí.",
-    image: "/sluzba-svj.jpg",
+    image: "/sluzba-svj.webp",
     link: "/sluzby#tab-svj",
     tag: "Správa budov"
   },
   {
     title: "Airbnb a apartmány",
     description: "Spolehlivý úklid pro krátkodobé pronájmy mezi pobyty hostů. Rychlá příprava bytu a přehled o každém úklidu online.",
-    image: "/sluzba-airbnb.jpg",
+    image: "/sluzba-airbnb.webp",
     link: "/sluzby#tab-airbnb",
     tag: "Krátkodobé pronájmy"
   }
@@ -91,7 +90,7 @@ const testimonials = [
 const faqItems = [
   {
     q: "Jak máme jistotu, že se úklid opravdu provádí pravidelně a kvalitně?",
-    a: "Každý úklid je evidovaný a dohledatelný. V naší aplikaci vidíte, kdy byl úklid proveden, v jakém rozsahu a případné poznámky. Nemusíte nikoho obcházet ani kontrolovat osobně – máte přehled kdykoliv."
+    a: "Každý úklid je evidovaný a dohledatelný. V naší webové aplikaci vidíte, kdy byl úklid proveden, v jakém rozsahu a případné poznámky. Nemusíte nikoho obcházet ani kontrolovat osobně – máte přehled kdykoliv, přímo v prohlížeči bez instalace."
   },
   {
     q: "Co když nebude kvalita odpovídat domluvě nebo někdo úklid vynechá?",
@@ -122,7 +121,6 @@ const faqItems = [
 
       <div class="relative z-10 max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12 text-center">
 
-        <!-- FIX #8: text-xs (12px) jako minimum, žádný text-[11px] -->
         <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-white border border-zinc-200 shadow-sm mb-6 md:mb-8 opacity-0 animate-fade-in-up" style="animation-delay:0ms">
           <span class="w-1.5 h-1.5 rounded-full bg-[#81b344] flex-shrink-0"></span>
           <span class="text-xs font-bold text-zinc-600 tracking-[0.15em] uppercase">Profesionální úklid Brno a okolí</span>
@@ -142,7 +140,7 @@ const faqItems = [
         </div>
 
         <p class="text-base sm:text-lg md:text-[19px] lg:text-[21px] text-zinc-600 max-w-[95%] md:max-w-xl lg:max-w-2xl mx-auto leading-relaxed font-medium mb-12 opacity-0 animate-fade-in-up" style="animation-delay:450ms">
-          Mějte úklid konečně vyřešený. S naší klientskou aplikací vidíte fotoreporty ihned po dokončení práce. Pojištění 5 mil. Kč a prověřený personál.
+          Mějte úklid konečně vyřešený. S naší klientskou webovou aplikací vidíte fotoreporty ihned po dokončení práce. Pojištění 5 mil. Kč a prověřený personál.
         </p>
 
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4 px-4 sm:px-0 opacity-0 animate-fade-in-up" style="animation-delay:600ms">
@@ -155,26 +153,25 @@ const faqItems = [
           </a>
         </div>
 
-        <!-- FIX #6: hero tooltip karta — overflow-hidden přidán na hero sekci, karta dostane clip na mobile -->
         <div class="mt-16 md:mt-24 relative max-w-5xl mx-auto group opacity-0 animate-fade-in-up pb-10 sm:pb-0" style="animation-delay:800ms">
           <div class="relative aspect-[4/3] sm:aspect-[16/9] rounded-2xl md:rounded-[2rem] overflow-hidden bg-zinc-100 border border-zinc-200/50 z-10">
             <img
-              src="/hero-image.jpg"
+              src="/hero-image.webp"
               alt="PrimeClean profesionální úklid kancelářských prostor"
               width="1200" height="675"
               class="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.02]"
               fetchpriority="high"
+              loading="eager"
               decoding="async"
             />
           </div>
-          <!-- karta má na xs max-width 100% - padding, na sm normálně -->
           <div class="absolute -bottom-6 left-2 sm:-bottom-8 sm:left-8 z-20 bg-white rounded-2xl shadow-xl border border-zinc-100 p-4 flex items-center gap-4 w-[calc(100%-1rem)] sm:w-auto sm:max-w-[320px]">
             <div class="flex-shrink-0 w-11 h-11 bg-[#81b344]/10 rounded-xl flex items-center justify-center text-[#6a9438]">
               <i data-lucide="image" class="w-5 h-5" aria-hidden="true"></i>
             </div>
             <div class="text-left min-w-0">
               <p class="text-[13.5px] font-bold text-zinc-950 leading-tight">Fotografie z úklidu</p>
-              <p class="text-xs font-medium text-zinc-600 mt-0.5 leading-snug">Prohlížejte si fotoreporty po každém úklidu rovnou v aplikaci.</p>
+              <p class="text-xs font-medium text-zinc-600 mt-0.5 leading-snug">Prohlížejte si fotoreporty po každém úklidu rovnou ve webové aplikaci — bez instalace, přímo v prohlížeči.</p>
             </div>
           </div>
         </div>
@@ -183,10 +180,9 @@ const faqItems = [
     </section>
 
     <!-- 1b. TRUST BADGE BAR -->
-    <!-- FIX #13: grid-cols-2 jako základ na mobile místo grid-cols-1 -->
     <section class="bg-white border-y border-zinc-100 py-4 sm:py-5">
       <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
-        <div class="grid grid-cols-2 md:flex md:flex-wrap items-center justify-center gap-y-3 sm:gap-y-4 gap-x-8 md:gap-x-12">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:flex md:flex-wrap items-center justify-center gap-y-3 sm:gap-y-4 gap-x-8 md:gap-x-12">
           {trustBadges.map(badge => (
             <div class="flex items-center gap-2.5 text-zinc-600 justify-center md:justify-start">
               <span class="text-[#81b344] flex-shrink-0" aria-hidden="true">
@@ -227,7 +223,7 @@ const faqItems = [
                   decoding="async"
                 />
                 <div class="absolute top-4 left-4 px-2.5 py-1 rounded-full bg-white shadow-sm">
-                  <span class="text-[11px] font-bold text-zinc-700 tracking-[0.06em] uppercase">{service.tag}</span>
+                  <span class="text-xs font-bold text-zinc-700 tracking-[0.06em] uppercase">{service.tag}</span>
                 </div>
               </div>
               <div class="p-8 flex-grow flex flex-col">
@@ -282,13 +278,16 @@ const faqItems = [
         <div class="scroll-animate opacity-0 flex flex-col lg:flex-row items-center gap-12 lg:gap-20 bg-zinc-950 text-white rounded-[2rem] lg:rounded-[3rem] p-8 sm:p-12 md:p-16 border border-zinc-800 shadow-2xl">
           <div class="w-full lg:w-[55%] relative z-10">
             <div class="inline-block px-3 py-1.5 rounded-md bg-white/10 mb-6">
-              <span class="text-[12px] font-bold text-zinc-300 tracking-[0.1em] uppercase">Klientská Aplikace</span>
+              <span class="text-[12px] font-bold text-zinc-300 tracking-[0.1em] uppercase">Klientská webová aplikace</span>
             </div>
             <h3 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-[1.1] mb-6 tracking-tighter">
               Přehled v aplikaci.<br /><span class="text-[#81b344]">Vše o úklidu pohodlně ve vaší kapse.</span>
             </h3>
-            <p class="text-base md:text-[18px] text-zinc-400 font-medium leading-relaxed mb-8 max-w-lg">
+            <p class="text-base md:text-[18px] text-zinc-400 font-medium leading-relaxed mb-4 max-w-lg">
               Objednávky, historie úklidů, faktury i platby přehledně na jednom místě. Žádné zbytečné maily a doptávání se, jestli už je hotovo.
+            </p>
+            <p class="text-sm text-zinc-500 font-medium leading-relaxed mb-8 max-w-lg">
+              Funguje přímo v prohlížeči — žádná instalace, dostupné z mobilu i počítače.
             </p>
             <ul class="flex flex-col gap-4 mb-10" role="list">
               {[
@@ -313,8 +312,8 @@ const faqItems = [
           <div class="w-full sm:max-w-sm md:max-w-md mx-auto lg:w-[45%] relative mt-8 lg:mt-0 z-10">
             <div class="relative aspect-[4/5] rounded-[1.5rem] overflow-hidden bg-zinc-900 border border-zinc-700">
               <img
-                src="/dashboard.jpg"
-                alt="Ukázka klientské aplikace PrimeClean — přehled úklidů a fotoreportů"
+                src="/dashboard.webp"
+                alt="Ukázka klientské webové aplikace PrimeClean — přehled úklidů a fotoreportů"
                 width="600" height="750"
                 class="w-full h-full object-cover object-top"
                 loading="lazy"
@@ -328,7 +327,6 @@ const faqItems = [
     </section>
 
     <!-- 4. STATISTIKY -->
-    <!-- FIX #10: tabular-nums na count-up čísla -->
     <section class="py-20 lg:py-28 bg-[#81b344] relative overflow-hidden count-up-container">
       <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
         <div class="scroll-animate opacity-0 text-center mb-14">
@@ -353,7 +351,6 @@ const faqItems = [
     </section>
 
     <!-- 5. RECENZE -->
-    <!-- FIX #9: aria-labelledby na sekci -->
     <section class="py-20 md:py-32 bg-zinc-950 relative overflow-hidden" aria-labelledby="reviews-heading">
       <div class="review-blob review-blob--tl" aria-hidden="true"></div>
       <div class="review-blob review-blob--br" aria-hidden="true"></div>
@@ -373,7 +370,7 @@ const faqItems = [
           </div>
         </div>
 
-        <!-- Mobile slider — FIX #3: aria-live pro screen readery -->
+        <!-- Mobile slider -->
         <div class="sm:hidden">
           <div
             id="testimonials-track"
@@ -406,7 +403,8 @@ const faqItems = [
               </div>
             ))}
           </div>
-          <div class="flex justify-center items-center gap-2 mt-6" id="testimonials-dots" aria-hidden="true">
+          <!-- FIX: aria-hidden odstraněn z wrapperu, tlačítka jsou nyní přístupná -->
+          <div class="flex justify-center items-center gap-2 mt-6" id="testimonials-dots">
             {testimonials.map((_, i) => (
               <button
                 class="testimonial-dot rounded-full transition-all duration-300"
@@ -448,7 +446,6 @@ const faqItems = [
     </section>
 
     <!-- 6. JAK TO FUNGUJE -->
-    <!-- FIX #11: process-line končí před posledním krokem (right: 25% místo 10%) -->
     <section id="jak-to-funguje" class="py-20 md:py-32 bg-zinc-50 relative overflow-hidden scroll-mt-20 md:scroll-mt-24">
       <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10 text-center">
 
@@ -463,13 +460,12 @@ const faqItems = [
         </div>
 
         <div class="relative max-w-5xl mx-auto">
-          <!-- čára teď končí před posledním (zeleným) krokem -->
           <div class="process-line hidden lg:block" aria-hidden="true"></div>
           <div class="grid lg:grid-cols-4 gap-12 lg:gap-6 relative z-10">
             {[
               { step: "1", title: "Nezávazná\npoptávka",  desc: "Zavolejte nám nebo vyplňte formulář. Probereme vaši představu a typ objektu.",     delay: 0   },
               { step: "2", title: "Prohlídka\na nacenění", desc: "Přijedeme na místo, zhodnotíme stav a navrhneme přesný plán úklidu i kalkulaci.", delay: 120 },
-              { step: "3", title: "Nastavení\naplikace",   desc: "Předáme přístupy do aplikace, zadáme rozsah prací, termíny a kontaktní osoby.",  delay: 240 },
+              { step: "3", title: "Nastavení\naplikace",   desc: "Předáme přístupy do webové aplikace, zadáme rozsah prací, termíny a kontaktní osoby.",  delay: 240 },
             ].map(({ step, title, desc, delay }) => (
               <div class="flex flex-col items-center text-center scroll-animate opacity-0" style={`animation-delay:${delay}ms`}>
                 <div class="w-20 h-20 rounded-full bg-white border-2 border-zinc-200 shadow-sm flex items-center justify-center text-[24px] font-extrabold text-zinc-400 mb-6 relative z-10">{step}</div>
@@ -510,7 +506,6 @@ const faqItems = [
                 aria-controls={`faq-body-${i}`}
               >
                 <span class="text-[16px] md:text-[17px] font-bold text-zinc-900">{item.q}</span>
-                <!-- FIX #14: swap plus↔x ikonky přes data-open atribut místo rotate -->
                 <span class="faq-icon flex-shrink-0 w-8 h-8 rounded-full bg-zinc-200 transition-colors duration-200 flex items-center justify-center border border-transparent">
                   <i data-lucide="plus" class="faq-icon-plus w-4 h-4 text-zinc-600 transition-all duration-300" aria-hidden="true"></i>
                   <i data-lucide="x" class="faq-icon-x w-4 h-4 text-[#81b344] hidden transition-all duration-300" aria-hidden="true"></i>
@@ -529,7 +524,6 @@ const faqItems = [
     </section>
 
     <!-- 8. O NÁS -->
-    <!-- FIX #7: border-l anti-pattern odstraněn, nahrazen padding + surface shift -->
     <section id="o-nas" class="pt-16 pb-24 md:pt-24 md:pb-36 bg-zinc-50 relative overflow-hidden">
       <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
 
@@ -547,7 +541,7 @@ const faqItems = [
             <div class="flex-shrink-0 flex flex-col items-center text-center w-44">
               <div class="relative w-32 h-32 md:w-44 md:h-44 rounded-full overflow-hidden border-4 border-[#81b344]/15 bg-zinc-100 shadow-sm mb-4">
                 <img
-                  src="/tomas-kytka.jpg"
+                  src="/tomas-kytka.webp"
                   alt="Tomáš Kytka, zakladatel PrimeClean"
                   width="192" height="192"
                   class="w-full h-full object-cover object-top"
@@ -556,10 +550,8 @@ const faqItems = [
                 />
               </div>
               <p class="text-[18px] font-extrabold text-zinc-900 leading-tight tracking-tight">Tomáš Kytka</p>
-              <!-- FIX: text-[11px] → text-xs (12px) -->
               <p class="text-xs text-zinc-500 font-bold uppercase tracking-[0.12em] mt-1">Zakladatel &amp; jednatel</p>
             </div>
-            <!-- FIX #7: border-l odstraněn, použit bg-zinc-50 na vnitřní oblast pro oddělení -->
             <div class="flex-1 text-center md:text-left md:bg-zinc-50 md:rounded-2xl md:p-8">
               <p class="text-[16px] text-zinc-600 font-medium leading-relaxed mb-4">
                 Jsem detailista. Tři roky v auto detailingu mě naučily, že rozdíl mezi „hotovo" a „perfektně čisté" spočívá v detailech, které většina lidí přehlíží. Právě tuhle nekompromisní preciznost, na kterou jsem byl zvyklý u luxusních vozů, jsem přenesl i do světa firemního úklidu.
@@ -568,7 +560,7 @@ const faqItems = [
                 Při budování PrimeClean jsem měl jasný cíl: odstranit z oboru povrchnost a nedůvěru. Vím, že dokud klient neuvidí výsledky na vlastní oči, nebude stoprocentně klidný.
               </p>
               <p class="text-[16px] text-zinc-600 font-medium leading-relaxed mb-8">
-                Proto jsme zavedli absolutní transparentnost díky naší aplikaci. Chci, abyste každé ráno přicházeli do firmy s jistotou, že je o vše postaráno se stejným zápalem, jako by šlo o výstavní veterán. Vy se soustřeďte na svůj byznys, čistotu nechte na nás – do posledního detailu.
+                Proto jsme zavedli absolutní transparentnost díky naší webové aplikaci. Chci, abyste každé ráno přicházeli do firmy s jistotou, že je o vše postaráno se stejným zápalem, jako by šlo o výstavní veterán. Vy se soustřeďte na svůj byznys, čistotu nechte na nás – do posledního detailu.
               </p>
               <a href="/kontakt" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[15px] font-bold text-white transition-all duration-300 ease-out bg-[#81b344] rounded-xl hover:bg-[#6a9438] hover:-translate-y-1 shadow-md shadow-[#81b344]/20">
                 Domluvit osobní schůzku
@@ -582,7 +574,7 @@ const faqItems = [
             <div class="flex-shrink-0 flex flex-col items-center text-center w-44">
               <div class="relative w-32 h-32 md:w-44 md:h-44 rounded-full overflow-hidden border-4 border-[#81b344]/15 bg-zinc-100 shadow-sm mb-4">
                 <img
-                  src="/martina-backova.jpg"
+                  src="/martina-backova.webp"
                   alt="Martina Bačková, péče o zákazníky a organizace"
                   width="192" height="192"
                   class="w-full h-full object-cover object-top"
@@ -638,7 +630,6 @@ const faqItems = [
     document.querySelectorAll('.scroll-animate').forEach(el => observer.observe(el));
   }
 
-  // FIX #1: FAQ collapse — double rAF pro spolehlivý collapse + swap ikon místo rotate
   function initFaq() {
     document.querySelectorAll('.faq-item').forEach(item => {
       const trigger   = item.querySelector('.faq-trigger')   as HTMLButtonElement | null;
@@ -652,7 +643,6 @@ const faqItems = [
         const open = trigger.getAttribute('aria-expanded') === 'true';
 
         if (open) {
-          // FIX: double rAF — prohlížeč zaregistruje výšku před přechodem na 0
           body.style.maxHeight = body.scrollHeight + 'px';
           requestAnimationFrame(() => requestAnimationFrame(() => {
             body.style.maxHeight = '0px';
@@ -661,7 +651,6 @@ const faqItems = [
           item.classList.remove('border-[#81b344]/40', 'bg-white');
           item.classList.add('bg-zinc-50', 'border-zinc-200');
           iconWrap?.classList.replace('bg-zinc-100', 'bg-zinc-200');
-          // swap ikon
           iconPlus?.classList.remove('hidden');
           iconX?.classList.add('hidden');
         } else {
@@ -670,7 +659,6 @@ const faqItems = [
           item.classList.add('border-[#81b344]/40', 'bg-white');
           item.classList.remove('bg-zinc-50', 'border-zinc-200');
           iconWrap?.classList.replace('bg-zinc-200', 'bg-zinc-100');
-          // swap ikon
           iconPlus?.classList.add('hidden');
           iconX?.classList.remove('hidden');
         }
@@ -799,7 +787,6 @@ const faqItems = [
     }
   }
 
-  /* FIX #11: čára končí před posledním krokem (right: 25% = cca 3/4 gridu ze 4 sloupců) */
   .process-line {
     position: absolute;
     top: 40px; left: 10%; right: 27%;
@@ -819,7 +806,6 @@ const faqItems = [
 
   #testimonials-track::-webkit-scrollbar { display: none; }
 
-  /* FIX #1: transition na faq-body */
   .faq-body { transition: max-height 0.35s cubic-bezier(0.25, 1, 0.4, 1); }
 
   @media (prefers-reduced-motion: reduce) {
