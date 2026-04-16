@@ -48,17 +48,14 @@ const currentPath = Astro.url.pathname;
 
     <button
       id="mobile-menu-btn"
-      class="md:hidden relative w-10 h-10 flex items-center justify-center text-zinc-600 hover:text-zinc-950 transition-colors z-50"
+      class="md:hidden relative w-10 h-10 flex flex-col items-center justify-center gap-[5px] text-zinc-600 hover:text-zinc-950 transition-colors z-50"
       aria-label="Otevřít menu"
       aria-expanded="false"
       aria-controls="mobile-menu"
     >
-      <svg id="icon-hamburger" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-        <path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/>
-      </svg>
-      <svg id="icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-        <path stroke-linecap="round" d="M6 6l12 12M6 18L18 6"/>
-      </svg>
+      <span class="w-5 h-[2px] bg-current rounded-full transition-all duration-300 origin-center"></span>
+      <span class="w-5 h-[2px] bg-current rounded-full transition-all duration-300 origin-center"></span>
+      <span class="w-5 h-[2px] bg-current rounded-full transition-all duration-300 origin-center"></span>
     </button>
   </div>
 
@@ -84,8 +81,7 @@ const currentPath = Astro.url.pathname;
   document.addEventListener('DOMContentLoaded', () => {
     const btn = document.getElementById('mobile-menu-btn') as HTMLButtonElement | null;
     const menu = document.getElementById('mobile-menu') as HTMLElement | null;
-    const iconHamburger = document.getElementById('icon-hamburger');
-    const iconClose = document.getElementById('icon-close');
+    const spans = btn?.querySelectorAll('span');
     let isOpen = false;
 
     const closeMenu = () => {
@@ -94,8 +90,11 @@ const currentPath = Astro.url.pathname;
       btn?.setAttribute('aria-label', 'Otevřít menu');
       menu?.classList.add('opacity-0', 'invisible', '-translate-y-4');
       menu?.setAttribute('inert', '');
-      iconHamburger?.classList.remove('hidden');
-      iconClose?.classList.add('hidden');
+      if (spans?.length === 3) {
+        (spans[0] as HTMLElement).style.transform = 'none';
+        (spans[1] as HTMLElement).style.opacity = '1';
+        (spans[2] as HTMLElement).style.transform = 'none';
+      }
     };
 
     const openMenu = () => {
@@ -104,15 +103,17 @@ const currentPath = Astro.url.pathname;
       btn?.setAttribute('aria-label', 'Zavřít menu');
       menu?.classList.remove('opacity-0', 'invisible', '-translate-y-4');
       menu?.removeAttribute('inert');
-      iconHamburger?.classList.add('hidden');
-      iconClose?.classList.remove('hidden');
+      if (spans?.length === 3) {
+        (spans[0] as HTMLElement).style.transform = 'translateY(7px) rotate(45deg)';
+        (spans[1] as HTMLElement).style.opacity = '0';
+        (spans[2] as HTMLElement).style.transform = 'translateY(-7px) rotate(-45deg)';
+      }
     };
 
     btn?.addEventListener('click', () => {
       isOpen ? closeMenu() : openMenu();
     });
 
-    // Zavřít menu po kliknutí na jakýkoliv link
     menu?.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', () => closeMenu());
     });
