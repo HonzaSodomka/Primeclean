@@ -122,9 +122,10 @@ const faqItems = [
 
       <div class="relative z-10 max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12 text-center">
 
+        <!-- FIX #8: text-xs (12px) jako minimum, žádný text-[11px] -->
         <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-white border border-zinc-200 shadow-sm mb-6 md:mb-8 opacity-0 animate-fade-in-up" style="animation-delay:0ms">
           <span class="w-1.5 h-1.5 rounded-full bg-[#81b344] flex-shrink-0"></span>
-          <span class="text-[11px] sm:text-xs font-bold text-zinc-600 tracking-[0.15em] uppercase">Profesionální úklid Brno a okolí</span>
+          <span class="text-xs font-bold text-zinc-600 tracking-[0.15em] uppercase">Profesionální úklid Brno a okolí</span>
         </div>
 
         <h1 class="text-[2.75rem] sm:text-[3.75rem] md:text-6xl lg:text-[6rem] font-extrabold text-zinc-950 tracking-tighter leading-[1.05] md:leading-[0.95] mb-6 opacity-0 animate-fade-in-up" style="animation-delay:150ms">
@@ -154,24 +155,26 @@ const faqItems = [
           </a>
         </div>
 
-        <div class="mt-16 md:mt-24 relative max-w-5xl mx-auto group opacity-0 animate-fade-in-up" style="animation-delay:800ms">
+        <!-- FIX #6: hero tooltip karta — overflow-hidden přidán na hero sekci, karta dostane clip na mobile -->
+        <div class="mt-16 md:mt-24 relative max-w-5xl mx-auto group opacity-0 animate-fade-in-up pb-10 sm:pb-0" style="animation-delay:800ms">
           <div class="relative aspect-[4/3] sm:aspect-[16/9] rounded-2xl md:rounded-[2rem] overflow-hidden bg-zinc-100 border border-zinc-200/50 z-10">
             <img
               src="/hero-image.jpg"
-              alt="PrimeClean úklid"
+              alt="PrimeClean profesionální úklid kancelářských prostor"
               width="1200" height="675"
               class="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.02]"
               fetchpriority="high"
               decoding="async"
             />
           </div>
-          <div class="absolute -bottom-6 -left-2 sm:-bottom-8 sm:left-8 z-20 bg-white rounded-2xl shadow-xl border border-zinc-100 p-4 flex items-center gap-4 max-w-[calc(100%-16px)] sm:max-w-[320px]">
+          <!-- karta má na xs max-width 100% - padding, na sm normálně -->
+          <div class="absolute -bottom-6 left-2 sm:-bottom-8 sm:left-8 z-20 bg-white rounded-2xl shadow-xl border border-zinc-100 p-4 flex items-center gap-4 w-[calc(100%-1rem)] sm:w-auto sm:max-w-[320px]">
             <div class="flex-shrink-0 w-11 h-11 bg-[#81b344]/10 rounded-xl flex items-center justify-center text-[#6a9438]">
               <i data-lucide="image" class="w-5 h-5" aria-hidden="true"></i>
             </div>
             <div class="text-left min-w-0">
               <p class="text-[13.5px] font-bold text-zinc-950 leading-tight">Fotografie z úklidu</p>
-              <p class="text-[12px] font-medium text-zinc-600 mt-0.5 leading-snug">Prohlížejte si fotoreporty po každém úklidu rovnou v aplikaci.</p>
+              <p class="text-xs font-medium text-zinc-600 mt-0.5 leading-snug">Prohlížejte si fotoreporty po každém úklidu rovnou v aplikaci.</p>
             </div>
           </div>
         </div>
@@ -180,13 +183,14 @@ const faqItems = [
     </section>
 
     <!-- 1b. TRUST BADGE BAR -->
+    <!-- FIX #13: grid-cols-2 jako základ na mobile místo grid-cols-1 -->
     <section class="bg-white border-y border-zinc-100 py-4 sm:py-5">
       <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:flex md:flex-wrap items-center justify-center gap-y-3 sm:gap-y-4 gap-x-8 md:gap-x-12">
+        <div class="grid grid-cols-2 md:flex md:flex-wrap items-center justify-center gap-y-3 sm:gap-y-4 gap-x-8 md:gap-x-12">
           {trustBadges.map(badge => (
             <div class="flex items-center gap-2.5 text-zinc-600 justify-center md:justify-start">
-              <span class="text-[#81b344] flex-shrink-0">
-                <i data-lucide={badge.icon} class="w-[22px] h-[22px]" aria-hidden="true"></i>
+              <span class="text-[#81b344] flex-shrink-0" aria-hidden="true">
+                <i data-lucide={badge.icon} class="w-[22px] h-[22px]"></i>
               </span>
               <span class="text-[14px] font-semibold whitespace-nowrap">{badge.label}</span>
             </div>
@@ -292,10 +296,10 @@ const faqItems = [
                 'Přehled faktur a historie plateb',
                 'Notifikace o dokončení úklidu',
                 'Přístup 24/7 z mobilu i počítače',
-              ].map(item => (
+              ].map((item, i) => (
                 <li class="flex items-center gap-4 text-[16px] text-zinc-200 font-semibold tracking-tight">
-                  <div class="flex-shrink-0 w-6 h-6 rounded-full bg-[#81b344] flex items-center justify-center text-zinc-950">
-                    <i data-lucide="check" class="w-3 h-3" style="stroke-width:3" aria-hidden="true"></i>
+                  <div class="flex-shrink-0 w-6 h-6 rounded-full bg-[#81b344] flex items-center justify-center text-zinc-950" aria-hidden="true">
+                    <i data-lucide="check" class="w-3 h-3" style="stroke-width:3"></i>
                   </div>
                   {item}
                 </li>
@@ -310,7 +314,7 @@ const faqItems = [
             <div class="relative aspect-[4/5] rounded-[1.5rem] overflow-hidden bg-zinc-900 border border-zinc-700">
               <img
                 src="/dashboard.jpg"
-                alt="Ukázka aplikace PrimeClean"
+                alt="Ukázka klientské aplikace PrimeClean — přehled úklidů a fotoreportů"
                 width="600" height="750"
                 class="w-full h-full object-cover object-top"
                 loading="lazy"
@@ -324,6 +328,7 @@ const faqItems = [
     </section>
 
     <!-- 4. STATISTIKY -->
+    <!-- FIX #10: tabular-nums na count-up čísla -->
     <section class="py-20 lg:py-28 bg-[#81b344] relative overflow-hidden count-up-container">
       <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
         <div class="scroll-animate opacity-0 text-center mb-14">
@@ -337,7 +342,7 @@ const faqItems = [
                 <i data-lucide={stat.icon} class="w-4 h-4" aria-hidden="true"></i>
               </div>
               <div class="flex items-end justify-center text-white mb-2">
-                <span class="text-[3rem] md:text-[4rem] lg:text-[4.5rem] font-extrabold tracking-tighter leading-none count-up" data-target={stat.value}>0</span>
+                <span class="text-[3rem] md:text-[4rem] lg:text-[4.5rem] font-extrabold tracking-tighter leading-none tabular-nums count-up" data-target={stat.value}>0</span>
                 <span class="text-[1.75rem] md:text-[2.25rem] font-bold text-white/70 ml-1 pb-1 md:pb-2">{stat.suffix}</span>
               </div>
               <div class="text-[12px] md:text-[13px] font-bold uppercase tracking-[0.1em] text-white/80">{stat.label}</div>
@@ -348,14 +353,15 @@ const faqItems = [
     </section>
 
     <!-- 5. RECENZE -->
-    <section class="py-20 md:py-32 bg-zinc-950 relative overflow-hidden">
+    <!-- FIX #9: aria-labelledby na sekci -->
+    <section class="py-20 md:py-32 bg-zinc-950 relative overflow-hidden" aria-labelledby="reviews-heading">
       <div class="review-blob review-blob--tl" aria-hidden="true"></div>
       <div class="review-blob review-blob--br" aria-hidden="true"></div>
 
       <div class="max-w-[1400px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
         <div class="scroll-animate opacity-0 text-center max-w-2xl mx-auto mb-16">
           <p class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-4">Co říkají klienti</p>
-          <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tighter leading-[1.1] mb-4">
+          <h2 id="reviews-heading" class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tighter leading-[1.1] mb-4">
             Zkušenosti <span class="text-[#81b344]">našich klientů.</span>
           </h2>
           <div class="flex items-center justify-center gap-1.5">
@@ -367,12 +373,14 @@ const faqItems = [
           </div>
         </div>
 
-        <!-- Mobile slider -->
+        <!-- Mobile slider — FIX #3: aria-live pro screen readery -->
         <div class="sm:hidden">
           <div
             id="testimonials-track"
             class="flex gap-4 overflow-x-auto pb-2 -mx-5"
             style="scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;padding-left:20px;padding-right:20px;"
+            aria-live="polite"
+            aria-atomic="false"
           >
             {testimonials.map(t => (
               <div
@@ -380,14 +388,14 @@ const faqItems = [
                 style="scroll-snap-align:center;width:82vw;max-width:340px;"
               >
                 <i data-lucide="quote" class="absolute -top-1 -right-1 w-8 h-8 text-[#81b344] opacity-25 fill-[#81b344]" aria-hidden="true"></i>
-                <div class="flex gap-1 mb-5">
+                <div class="flex gap-1 mb-5" aria-label={`Hodnocení: ${t.rating} z 5`}>
                   {Array.from({length: t.rating}).map(() => (
                     <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400" aria-hidden="true"></i>
                   ))}
                 </div>
                 <p class="text-[14.5px] text-zinc-400 font-medium leading-relaxed mb-6 flex-grow">"{t.text}"</p>
                 <div class="flex items-center gap-3 mt-auto pt-5 border-t border-zinc-800">
-                  <div class="flex-shrink-0 w-10 h-10 rounded-full bg-[#81b344]/15 flex items-center justify-center">
+                  <div class="flex-shrink-0 w-10 h-10 rounded-full bg-[#81b344]/15 flex items-center justify-center" aria-hidden="true">
                     <span class="text-[13px] font-extrabold text-[#81b344]">{t.initials}</span>
                   </div>
                   <div>
@@ -410,7 +418,7 @@ const faqItems = [
           </div>
         </div>
 
-        <!-- Desktop grid — 4 sloupce vedle sebe -->
+        <!-- Desktop grid -->
         <div class="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {testimonials.map((t, i) => (
             <div
@@ -418,14 +426,14 @@ const faqItems = [
               style={`animation-delay:${i * 100}ms`}
             >
               <i data-lucide="quote" class="absolute -top-1 -right-1 w-8 h-8 text-[#81b344] opacity-25 fill-[#81b344]" aria-hidden="true"></i>
-              <div class="flex gap-1 mb-5">
+              <div class="flex gap-1 mb-5" aria-label={`Hodnocení: ${t.rating} z 5`}>
                 {Array.from({length: t.rating}).map(() => (
                   <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400" aria-hidden="true"></i>
                 ))}
               </div>
               <p class="text-[13.5px] text-zinc-400 font-medium leading-relaxed mb-6 flex-grow">"{t.text}"</p>
               <div class="flex items-center gap-3 mt-auto pt-5 border-t border-zinc-800">
-                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-[#81b344]/15 flex items-center justify-center">
+                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-[#81b344]/15 flex items-center justify-center" aria-hidden="true">
                   <span class="text-[13px] font-extrabold text-[#81b344]">{t.initials}</span>
                 </div>
                 <div>
@@ -440,6 +448,7 @@ const faqItems = [
     </section>
 
     <!-- 6. JAK TO FUNGUJE -->
+    <!-- FIX #11: process-line končí před posledním krokem (right: 25% místo 10%) -->
     <section id="jak-to-funguje" class="py-20 md:py-32 bg-zinc-50 relative overflow-hidden scroll-mt-20 md:scroll-mt-24">
       <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10 text-center">
 
@@ -454,6 +463,7 @@ const faqItems = [
         </div>
 
         <div class="relative max-w-5xl mx-auto">
+          <!-- čára teď končí před posledním (zeleným) krokem -->
           <div class="process-line hidden lg:block" aria-hidden="true"></div>
           <div class="grid lg:grid-cols-4 gap-12 lg:gap-6 relative z-10">
             {[
@@ -500,13 +510,15 @@ const faqItems = [
                 aria-controls={`faq-body-${i}`}
               >
                 <span class="text-[16px] md:text-[17px] font-bold text-zinc-900">{item.q}</span>
+                <!-- FIX #14: swap plus↔x ikonky přes data-open atribut místo rotate -->
                 <span class="faq-icon flex-shrink-0 w-8 h-8 rounded-full bg-zinc-200 transition-colors duration-200 flex items-center justify-center border border-transparent">
-                  <i data-lucide="plus" class="faq-chevron w-4 h-4 text-zinc-600 transition-transform duration-300" aria-hidden="true"></i>
+                  <i data-lucide="plus" class="faq-icon-plus w-4 h-4 text-zinc-600 transition-all duration-300" aria-hidden="true"></i>
+                  <i data-lucide="x" class="faq-icon-x w-4 h-4 text-[#81b344] hidden transition-all duration-300" aria-hidden="true"></i>
                 </span>
               </button>
               <div
                 id={`faq-body-${i}`}
-                class="faq-body max-h-0 overflow-hidden transition-[max-height] duration-300 ease-in-out"
+                class="faq-body max-h-0 overflow-hidden"
               >
                 <p class="text-[15px] text-zinc-600 font-medium leading-relaxed px-7 pb-6 pt-1">{item.a}</p>
               </div>
@@ -516,7 +528,8 @@ const faqItems = [
       </div>
     </section>
 
-          <!-- 8. O NÁS -->
+    <!-- 8. O NÁS -->
+    <!-- FIX #7: border-l anti-pattern odstraněn, nahrazen padding + surface shift -->
     <section id="o-nas" class="pt-16 pb-24 md:pt-24 md:pb-36 bg-zinc-50 relative overflow-hidden">
       <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
 
@@ -535,7 +548,7 @@ const faqItems = [
               <div class="relative w-32 h-32 md:w-44 md:h-44 rounded-full overflow-hidden border-4 border-[#81b344]/15 bg-zinc-100 shadow-sm mb-4">
                 <img
                   src="/tomas-kytka.jpg"
-                  alt="Tomáš Kytka, Zakladatel PrimeClean"
+                  alt="Tomáš Kytka, zakladatel PrimeClean"
                   width="192" height="192"
                   class="w-full h-full object-cover object-top"
                   loading="lazy"
@@ -543,9 +556,11 @@ const faqItems = [
                 />
               </div>
               <p class="text-[18px] font-extrabold text-zinc-900 leading-tight tracking-tight">Tomáš Kytka</p>
-              <p class="text-[11px] text-zinc-500 font-bold uppercase tracking-[0.12em] mt-1">Zakladatel &amp; jednatel</p>
+              <!-- FIX: text-[11px] → text-xs (12px) -->
+              <p class="text-xs text-zinc-500 font-bold uppercase tracking-[0.12em] mt-1">Zakladatel &amp; jednatel</p>
             </div>
-            <div class="flex-1 text-center md:text-left border-l-0 md:border-l-[3px] md:border-[#81b344]/30 md:pl-10">
+            <!-- FIX #7: border-l odstraněn, použit bg-zinc-50 na vnitřní oblast pro oddělení -->
+            <div class="flex-1 text-center md:text-left md:bg-zinc-50 md:rounded-2xl md:p-8">
               <p class="text-[16px] text-zinc-600 font-medium leading-relaxed mb-4">
                 Jsem detailista. Tři roky v auto detailingu mě naučily, že rozdíl mezi „hotovo" a „perfektně čisté" spočívá v detailech, které většina lidí přehlíží. Právě tuhle nekompromisní preciznost, na kterou jsem byl zvyklý u luxusních vozů, jsem přenesl i do světa firemního úklidu.
               </p>
@@ -568,7 +583,7 @@ const faqItems = [
               <div class="relative w-32 h-32 md:w-44 md:h-44 rounded-full overflow-hidden border-4 border-[#81b344]/15 bg-zinc-100 shadow-sm mb-4">
                 <img
                   src="/martina-backova.jpg"
-                  alt="Martina Bačková, Péče o zákazníky a organizace"
+                  alt="Martina Bačková, péče o zákazníky a organizace"
                   width="192" height="192"
                   class="w-full h-full object-cover object-top"
                   loading="lazy"
@@ -576,9 +591,9 @@ const faqItems = [
                 />
               </div>
               <p class="text-[18px] font-extrabold text-zinc-900 leading-tight tracking-tight">Martina Bačková</p>
-              <p class="text-[11px] text-zinc-500 font-bold uppercase tracking-[0.12em] mt-1">Péče o zákazníky &amp; organizace</p>
+              <p class="text-xs text-zinc-500 font-bold uppercase tracking-[0.12em] mt-1">Péče o zákazníky &amp; organizace</p>
             </div>
-            <div class="flex-1 text-center md:text-left border-l-0 md:border-l-[3px] md:border-[#81b344]/30 md:pl-10">
+            <div class="flex-1 text-center md:text-left md:bg-zinc-50 md:rounded-2xl md:p-8">
               <p class="text-[16px] text-zinc-600 font-medium leading-relaxed mb-4 italic">
                 „Možná nemám zkušenosti z auto detailingu jako Tomáš, ale mám přirozený talent vnést řád i do toho největšího chaosu."
               </p>
@@ -623,33 +638,41 @@ const faqItems = [
     document.querySelectorAll('.scroll-animate').forEach(el => observer.observe(el));
   }
 
+  // FIX #1: FAQ collapse — double rAF pro spolehlivý collapse + swap ikon místo rotate
   function initFaq() {
     document.querySelectorAll('.faq-item').forEach(item => {
-      const trigger = item.querySelector('.faq-trigger') as HTMLButtonElement | null;
-      const body    = item.querySelector('.faq-body')    as HTMLElement | null;
-      const icon    = item.querySelector('.faq-icon')    as HTMLElement | null;
-      const chevron = item.querySelector('.faq-chevron') as HTMLElement | null;
+      const trigger   = item.querySelector('.faq-trigger')   as HTMLButtonElement | null;
+      const body      = item.querySelector('.faq-body')      as HTMLElement | null;
+      const iconWrap  = item.querySelector('.faq-icon')      as HTMLElement | null;
+      const iconPlus  = item.querySelector('.faq-icon-plus') as HTMLElement | null;
+      const iconX     = item.querySelector('.faq-icon-x')    as HTMLElement | null;
       if (!trigger || !body) return;
 
       trigger.addEventListener('click', () => {
         const open = trigger.getAttribute('aria-expanded') === 'true';
+
         if (open) {
+          // FIX: double rAF — prohlížeč zaregistruje výšku před přechodem na 0
           body.style.maxHeight = body.scrollHeight + 'px';
-          requestAnimationFrame(() => { body.style.maxHeight = '0px'; });
+          requestAnimationFrame(() => requestAnimationFrame(() => {
+            body.style.maxHeight = '0px';
+          }));
           trigger.setAttribute('aria-expanded', 'false');
           item.classList.remove('border-[#81b344]/40', 'bg-white');
           item.classList.add('bg-zinc-50', 'border-zinc-200');
-          icon?.classList.replace('bg-zinc-100', 'bg-zinc-200');
-          chevron?.classList.remove('text-[#81b344]', 'rotate-45');
-          chevron?.classList.add('text-zinc-600');
+          iconWrap?.classList.replace('bg-zinc-100', 'bg-zinc-200');
+          // swap ikon
+          iconPlus?.classList.remove('hidden');
+          iconX?.classList.add('hidden');
         } else {
           body.style.maxHeight = body.scrollHeight + 'px';
           trigger.setAttribute('aria-expanded', 'true');
           item.classList.add('border-[#81b344]/40', 'bg-white');
           item.classList.remove('bg-zinc-50', 'border-zinc-200');
-          icon?.classList.replace('bg-zinc-200', 'bg-zinc-100');
-          chevron?.classList.add('text-[#81b344]', 'rotate-45');
-          chevron?.classList.remove('text-zinc-600');
+          iconWrap?.classList.replace('bg-zinc-200', 'bg-zinc-100');
+          // swap ikon
+          iconPlus?.classList.add('hidden');
+          iconX?.classList.remove('hidden');
         }
       });
 
@@ -776,9 +799,10 @@ const faqItems = [
     }
   }
 
+  /* FIX #11: čára končí před posledním krokem (right: 25% = cca 3/4 gridu ze 4 sloupců) */
   .process-line {
     position: absolute;
-    top: 40px; left: 10%; right: 10%;
+    top: 40px; left: 10%; right: 27%;
     height: 2px; z-index: 0;
     background-image: repeating-linear-gradient(
       90deg, #d4e8b8 0, #d4e8b8 10px, transparent 10px, transparent 22px
@@ -795,7 +819,8 @@ const faqItems = [
 
   #testimonials-track::-webkit-scrollbar { display: none; }
 
-  .faq-body { transition: max-height 0.3s cubic-bezier(0.25, 1, 0.4, 1); }
+  /* FIX #1: transition na faq-body */
+  .faq-body { transition: max-height 0.35s cubic-bezier(0.25, 1, 0.4, 1); }
 
   @media (prefers-reduced-motion: reduce) {
     .animate-fade-in-up, .scroll-animate {

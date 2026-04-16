@@ -11,17 +11,23 @@ const navLinks = [
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="fixed top-0 inset-x-0 z-[100] bg-white/95 border-b border-zinc-200/50 shadow-[0_4px_30px_rgba(0,0,0,0.04)] transition-all duration-300" id="main-nav">
+<header class="fixed top-0 inset-x-0 z-[100] bg-white/95 border-b border-zinc-200/50 shadow-[0_4px_30px_rgba(0,0,0,0.04)]" id="main-nav">
   <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 h-20 md:h-24 flex items-center justify-between">
 
-    <a href="/" aria-label="PrimeClean" class="flex items-center gap-2 group flex-shrink-0 transition-transform duration-300 hover:scale-105 active:scale-95">
-      <img src="/logo.png" alt="PrimeClean" class="h-9 w-auto drop-shadow-sm" />
+    <a href="/" class="flex items-center gap-2 group flex-shrink-0 transition-transform duration-300 hover:scale-105 active:scale-95">
+      <img
+        src="/logo.png"
+        alt="PrimeClean"
+        class="h-9 w-auto drop-shadow-sm"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='block';"
+      />
+      <span style="display:none;" class="text-2xl font-extrabold text-zinc-950 tracking-tighter">Prime<span class="text-[#81b344]">Clean</span></span>
     </a>
 
     <nav class="hidden md:flex items-center gap-6 lg:gap-8">
       <ul class="flex items-center gap-6 lg:gap-8">
         {navLinks.map(link => {
-          const isActive = currentPath === link.href || (currentPath.startsWith(link.href) && link.href !== '/');
+          const isActive = currentPath === link.href || (currentPath.startsWith(link.href + '/') && link.href !== '/');
           return (
             <li>
               <a href={link.href} class={`text-[14.5px] font-bold transition-colors relative group py-2 ${isActive ? 'text-zinc-950' : 'text-zinc-500 hover:text-zinc-950'}`} {...(isActive ? { 'aria-current': 'page' } : {})}>
@@ -35,14 +41,14 @@ const currentPath = Astro.url.pathname;
 
       <div class="w-px h-5 bg-zinc-200 mx-1"></div>
 
-      <a href="/kontakt" class="inline-flex items-center justify-center px-6 py-2.5 text-[14px] font-bold text-white transition-all duration-300 bg-[#81b344] rounded-[0.85rem] shadow-[0_4px_10px_rgba(129,179,68,0.15)] hover:bg-[#6a9438] hover:shadow-[0_8px_20px_rgba(129,179,68,0.3)] hover:-translate-y-0.5 active:scale-95">
+      <a href="/kontakt" class="inline-flex items-center justify-center px-6 py-2.5 text-[14px] font-bold text-white transition-all duration-300 bg-[#81b344] rounded-xl shadow-[0_4px_10px_rgba(129,179,68,0.15)] hover:bg-[#6a9438] hover:shadow-[0_8px_20px_rgba(129,179,68,0.3)] hover:-translate-y-0.5 active:scale-95">
         Poptat úklid
       </a>
     </nav>
 
     <button
       id="mobile-menu-btn"
-      class="md:hidden relative w-10 h-10 flex flex-col items-center justify-center gap-[5px] text-zinc-600 hover:text-zinc-950 transition-colors z-50"
+      class="md:hidden relative w-10 h-10 flex flex-col items-center justify-center gap-1.5 text-zinc-600 hover:text-zinc-950 transition-colors z-50"
       aria-label="Otevřít menu"
       aria-expanded="false"
       aria-controls="mobile-menu"
@@ -53,10 +59,10 @@ const currentPath = Astro.url.pathname;
     </button>
   </div>
 
-  <div id="mobile-menu" class="absolute top-[100%] left-0 w-full bg-white border-b border-zinc-200/50 shadow-2xl transition-all duration-300 ease-in-out opacity-0 invisible -translate-y-4 md:hidden">
+  <div id="mobile-menu" class="absolute top-[100%] left-0 w-full bg-white border-b border-zinc-200/50 shadow-2xl transition-all duration-300 ease-in-out opacity-0 invisible -translate-y-4 md:hidden" inert>
     <div class="px-5 py-6 flex flex-col gap-2">
       {navLinks.map(link => {
-        const isActive = currentPath === link.href || (currentPath.startsWith(link.href) && link.href !== '/');
+        const isActive = currentPath === link.href || (currentPath.startsWith(link.href + '/') && link.href !== '/');
         return (
           <a href={link.href} class={`text-[17px] font-bold py-3 px-4 rounded-xl transition-colors ${isActive ? 'bg-[#81b344]/10 text-[#6a9438]' : 'text-zinc-800 hover:bg-zinc-50 hover:text-[#81b344]'}`} {...(isActive ? { 'aria-current': 'page' } : {})}>
             {link.name}
@@ -73,33 +79,44 @@ const currentPath = Astro.url.pathname;
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const btn = document.getElementById('mobile-menu-btn');
-    const menu = document.getElementById('mobile-menu');
+    const btn = document.getElementById('mobile-menu-btn') as HTMLButtonElement | null;
+    const menu = document.getElementById('mobile-menu') as HTMLElement | null;
     const spans = btn?.querySelectorAll('span');
     let isOpen = false;
 
-    btn?.setAttribute('aria-expanded', 'false');
+    const closeMenu = () => {
+      isOpen = false;
+      btn?.setAttribute('aria-expanded', 'false');
+      btn?.setAttribute('aria-label', 'Otevřít menu');
+      menu?.classList.add('opacity-0', 'invisible', '-translate-y-4');
+      menu?.setAttribute('inert', '');
+      if (spans?.length === 3) {
+        (spans[0] as HTMLElement).style.transform = 'none';
+        (spans[1] as HTMLElement).style.opacity = '1';
+        (spans[2] as HTMLElement).style.transform = 'none';
+      }
+    };
+
+    const openMenu = () => {
+      isOpen = true;
+      btn?.setAttribute('aria-expanded', 'true');
+      btn?.setAttribute('aria-label', 'Zavřít menu');
+      menu?.classList.remove('opacity-0', 'invisible', '-translate-y-4');
+      menu?.removeAttribute('inert');
+      if (spans?.length === 3) {
+        (spans[0] as HTMLElement).style.transform = 'translateY(7px) rotate(45deg)';
+        (spans[1] as HTMLElement).style.opacity = '0';
+        (spans[2] as HTMLElement).style.transform = 'translateY(-7px) rotate(-45deg)';
+      }
+    };
 
     btn?.addEventListener('click', () => {
-      isOpen = !isOpen;
-      btn.setAttribute('aria-expanded', String(isOpen));
-      btn.setAttribute('aria-label', isOpen ? 'Zavřít menu' : 'Otevřít menu');
+      isOpen ? closeMenu() : openMenu();
+    });
 
-      if (isOpen) {
-        menu?.classList.remove('opacity-0', 'invisible', '-translate-y-4');
-        if (spans?.length === 3) {
-          (spans[0] as HTMLElement).style.transform = 'translateY(7px) rotate(45deg)';
-          (spans[1] as HTMLElement).style.opacity = '0';
-          (spans[2] as HTMLElement).style.transform = 'translateY(-7px) rotate(-45deg)';
-        }
-      } else {
-        menu?.classList.add('opacity-0', 'invisible', '-translate-y-4');
-        if (spans?.length === 3) {
-          (spans[0] as HTMLElement).style.transform = 'none';
-          (spans[1] as HTMLElement).style.opacity = '1';
-          (spans[2] as HTMLElement).style.transform = 'none';
-        }
-      }
+    // Zavřít menu po kliknutí na jakýkoliv link
+    menu?.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => closeMenu());
     });
   });
 </script>

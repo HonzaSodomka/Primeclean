@@ -15,7 +15,7 @@
         </p>
       </div>
 
-      <!-- Navigace -->
+      <!-- Navigace (lg:col-start-6 = záměrná mezera za Brand sloupcem) -->
       <div class="md:col-span-4 lg:col-span-3 lg:col-start-6">
         <h4 class="text-[12px] font-bold text-white uppercase tracking-[0.2em] mb-6">Navigace</h4>
         <ul class="space-y-3.5">
@@ -35,7 +35,7 @@
           <li>
             <a href="tel:+420773102770" class="flex items-center gap-3 group">
               <div class="w-10 h-10 rounded-full border border-zinc-800 flex items-center justify-center text-zinc-400 group-hover:border-[#81b344] group-hover:text-[#81b344] transition-all duration-300">
-                <i data-lucide="phone" class="w-4 h-4"></i>
+                <i data-lucide="phone" class="w-4 h-4" aria-hidden="true"></i>
               </div>
               <div>
                 <p class="text-[11px] font-bold uppercase tracking-wider text-zinc-600 mb-0.5">Zavolejte nám</p>
@@ -46,7 +46,7 @@
           <li>
             <a href="mailto:info@primeclean.cz" class="flex items-center gap-3 group">
               <div class="w-10 h-10 rounded-full border border-zinc-800 flex items-center justify-center text-zinc-400 group-hover:border-[#81b344] group-hover:text-[#81b344] transition-all duration-300">
-                <i data-lucide="mail" class="w-4 h-4"></i>
+                <i data-lucide="mail" class="w-4 h-4" aria-hidden="true"></i>
               </div>
               <div>
                 <p class="text-[11px] font-bold uppercase tracking-wider text-zinc-600 mb-0.5">Napište nám</p>
@@ -56,7 +56,7 @@
           </li>
           <li class="flex items-center gap-3">
             <div class="w-10 h-10 rounded-full border border-zinc-800 flex items-center justify-center text-zinc-500">
-              <i data-lucide="clock" class="w-4 h-4"></i>
+              <i data-lucide="clock" class="w-4 h-4" aria-hidden="true"></i>
             </div>
             <div>
               <p class="text-[11px] font-bold uppercase tracking-wider text-zinc-600 mb-0.5">Pracovní doba</p>
@@ -70,21 +70,21 @@
 
     <div class="pt-8 border-t border-zinc-800/80 flex flex-col md:flex-row items-center justify-between gap-6">
       <p class="text-[13px] text-zinc-500 font-medium">
-        &copy; <span id="footer-year">2026</span> PrimeClean. Všechna práva vyhrazena.
+        &copy; <span id="footer-year"></span> PrimeClean. Všechna práva vyhrazena.
       </p>
 
       <div class="flex items-center gap-6">
         <button
           id="open-cookie-banner"
-          class="text-[13px] text-zinc-500 hover:text-zinc-300 font-medium transition-colors duration-200 underline underline-offset-4 decoration-zinc-700 hover:decoration-zinc-400"
+          class="text-[13px] text-zinc-500 hover:text-zinc-300 font-medium transition-colors duration-200 underline underline-offset-4 decoration-zinc-700 hover:decoration-zinc-400 disabled:opacity-40 disabled:cursor-not-allowed"
         >
           Nastavení cookies
         </button>
 
-        <button id="scrollToTop" class="inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-wider text-zinc-400 hover:text-white transition-colors group">
+        <button id="scrollToTop" aria-label="Přejít na začátek stránky" class="inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-wider text-zinc-400 hover:text-white transition-colors group">
           Zpět nahoru
           <div class="w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center border border-zinc-800 group-hover:bg-[#81b344] group-hover:border-[#81b344] transition-all duration-300">
-            <i data-lucide="chevron-up" class="w-4 h-4"></i>
+            <i data-lucide="chevron-up" class="w-4 h-4" aria-hidden="true"></i>
           </div>
         </button>
       </div>
@@ -109,8 +109,21 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    document.getElementById('open-cookie-banner')?.addEventListener('click', () => {
-      if (typeof window.openCookieBanner === 'function') window.openCookieBanner();
-    });
+    const cookieBtn = document.getElementById('open-cookie-banner') as HTMLButtonElement | null;
+    if (cookieBtn) {
+      // Počkáme tick aby měl CookieBanner.astro čas zaregistrovat window.openCookieBanner
+      setTimeout(() => {
+        if (typeof window.openCookieBanner !== 'function') {
+          cookieBtn.setAttribute('disabled', '');
+          cookieBtn.setAttribute('title', 'Nastavení cookies není momentálně dostupné');
+        }
+      }, 300);
+
+      cookieBtn.addEventListener('click', () => {
+        if (typeof window.openCookieBanner === 'function') {
+          window.openCookieBanner();
+        }
+      });
+    }
   });
 </script>
