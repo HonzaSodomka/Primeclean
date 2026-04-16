@@ -1,4 +1,4 @@
-<footer class="bg-zinc-950 text-zinc-400 border-t border-zinc-900 pt-20 pb-10 relative overflow-hidden">
+<footer class="bg-zinc-950 text-zinc-400 border-t border-zinc-900 pt-20 pb-10 relative overflow-hidden" aria-label="Patička stránky">
   <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[800px] h-[1px] bg-gradient-to-r from-transparent via-[#81b344]/30 to-transparent"></div>
   <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[#81b344]/5 blur-[100px] pointer-events-none rounded-full"></div>
 
@@ -61,6 +61,7 @@
             <div>
               <p class="text-[11px] font-bold uppercase tracking-wider text-zinc-600 mb-0.5">Pracovní doba</p>
               <p class="text-[15px] text-white font-medium">Po–Pá: 08:00–20:00</p>
+              <p class="text-[13px] text-zinc-500 font-medium">So–Ne: po domluvě</p>
             </div>
           </li>
         </ul>
@@ -76,7 +77,7 @@
       <div class="flex items-center gap-6">
         <button
           id="open-cookie-banner"
-          class="text-[13px] text-zinc-500 hover:text-zinc-300 font-medium transition-colors duration-200 underline underline-offset-4 decoration-zinc-700 hover:decoration-zinc-400 disabled:opacity-40 disabled:cursor-not-allowed"
+          class="text-[13px] text-zinc-500 hover:text-zinc-300 font-medium transition-colors duration-200 underline underline-offset-4 decoration-zinc-700 hover:decoration-zinc-400"
         >
           Nastavení cookies
         </button>
@@ -111,14 +112,6 @@
 
     const cookieBtn = document.getElementById('open-cookie-banner') as HTMLButtonElement | null;
     if (cookieBtn) {
-      // Počkáme tick aby měl CookieBanner.astro čas zaregistrovat window.openCookieBanner
-      setTimeout(() => {
-        if (typeof window.openCookieBanner !== 'function') {
-          cookieBtn.setAttribute('disabled', '');
-          cookieBtn.setAttribute('title', 'Nastavení cookies není momentálně dostupné');
-        }
-      }, 300);
-
       cookieBtn.addEventListener('click', () => {
         if (typeof window.openCookieBanner === 'function') {
           window.openCookieBanner();
