@@ -2,13 +2,13 @@
 import Layout from '../layouts/Layout.astro';
 
 const tabs = [
-  { id: 'kancelare', label: 'Kanceláře a firmy' },
-  { id: 'svj',       label: 'SVJ a bytové domy' },
-  { id: 'airbnb',    label: 'Airbnb a apartmány' },
+  { id: 'kancelare', label: 'Kanceláře a firmy',  icon: 'briefcase'   },
+  { id: 'svj',       label: 'SVJ a bytové domy',  icon: 'building-2'  },
+  { id: 'airbnb',    label: 'Airbnb a apartmány', icon: 'key-round'   },
 ];
 
 const kancPricing = [
-  { plocha: '80 m²',    freq: '1× týdně',  cena1: '690 Kč',    pausal: '2 900 Kč',  tech: 'Přístup do aplikace PrimeClean' },
+  { plocha: '80 m²',    freq: '1× týdně',  cena1: '690 Kč',    pausal: '2 900 Kč',  tech: 'Checklisty a fotodokumentace po každém úklidu' },
   { plocha: '150 m²',   freq: '2× týdně',  cena1: '840 Kč',    pausal: '6 900 Kč',  tech: 'Fotodokumentace každého úklidu' },
   { plocha: '300 m²',   freq: '3× týdně',  cena1: '1 120 Kč',  pausal: '14 500 Kč', tech: 'Online správa skladu a zásob' },
   { plocha: '500 m²',   freq: '3× týdně',  cena1: '1 480 Kč',  pausal: '19 800 Kč', tech: 'Detailní checklisty a reporty' },
@@ -78,11 +78,11 @@ const airbnbWhyUs = [
   {
     icon: 'camera',
     title: 'Fotoreport po každém úklidu',
-    desc: 'Fotky připraveného bytu v aplikaci ihned po dokončení. Víte, že je vše v pořádku ještě před příjezdem hosta.',
+    desc: 'Fotky připraveného bytu v webové aplikaci ihned po dokončení. Víte, že je vše v pořádku ještě před příjezdem hosta.',
   },
   {
     icon: 'alert-triangle',
-    title: 'Damage Report',
+    title: 'Hlášení škod po hostech',
     desc: 'Poškození po hostech okamžitě vyfotíme a nahrajeme. Máte důkaz pro Airbnb k vymáhání náhrady škody.',
   },
   {
@@ -110,7 +110,7 @@ const airbnbWhyUs = [
 
         <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-white border border-zinc-200 shadow-sm mb-6 md:mb-8 opacity-0 animate-fade-in-up" style="animation-delay:100ms">
           <span class="w-1.5 h-1.5 rounded-full bg-[#81b344] flex-shrink-0"></span>
-          <span class="text-[11px] sm:text-xs font-bold text-zinc-600 tracking-[0.15em] uppercase">Transparentní ceník</span>
+          <span class="text-xs font-bold text-zinc-600 tracking-[0.15em] uppercase">Transparentní ceník</span>
         </div>
 
         <h1 class="text-[2.75rem] sm:text-[3.75rem] md:text-6xl lg:text-[6rem] font-extrabold text-zinc-950 tracking-tighter leading-[1.05] md:leading-[0.95] mb-6 opacity-0 animate-fade-in-up" style="animation-delay:200ms">
@@ -128,12 +128,13 @@ const airbnbWhyUs = [
             {tabs.map((tab, i) => (
               <button
                 data-cenik-tab={tab.id}
-                class={`cenik-tab-btn px-6 py-3.5 rounded-xl text-[14px] font-bold transition-all duration-200 whitespace-nowrap ${
+                class={`cenik-tab-btn inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-[14px] font-bold transition-all duration-200 whitespace-nowrap ${
                   i === 0
                     ? 'bg-[#81b344] text-white shadow-md shadow-[#81b344]/25'
                     : 'text-zinc-500 hover:text-zinc-800 hover:bg-zinc-50'
                 }`}
               >
+                <i data-lucide={tab.icon} class="w-4 h-4" aria-hidden="true"></i>
                 {tab.label}
               </button>
             ))}
@@ -143,12 +144,13 @@ const airbnbWhyUs = [
             {tabs.map((tab, i) => (
               <button
                 data-cenik-tab={tab.id}
-                class={`cenik-tab-btn w-full px-5 py-4 rounded-2xl text-[15px] font-bold transition-all duration-200 ${
+                class={`cenik-tab-btn w-full inline-flex items-center justify-center gap-2 px-5 py-4 rounded-2xl text-[15px] font-bold transition-all duration-200 ${
                   i === 0
                     ? 'bg-[#81b344] text-white shadow-md shadow-[#81b344]/25'
                     : 'bg-white border border-zinc-200 text-zinc-600'
                 }`}
               >
+                <i data-lucide={tab.icon} class="w-4 h-4" aria-hidden="true"></i>
                 {tab.label}
               </button>
             ))}
@@ -167,15 +169,15 @@ const airbnbWhyUs = [
       <section class="py-20 md:py-28 bg-white">
         <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12">
           <div class="scroll-animate opacity-0 text-center max-w-3xl mx-auto mb-12">
-            <h2 class="text-[20px] sm:text-[24px] md:text-[28px] font-extrabold text-[#81b344] uppercase tracking-wider mb-6">
+            <p class="text-[20px] sm:text-[24px] md:text-[28px] font-extrabold text-[#81b344] uppercase tracking-wider mb-6">
               Kanceláře a firmy
-            </h2>
-            <p class="text-[16px] md:text-[18px] text-zinc-600 font-medium leading-relaxed mb-10">
-              Jsme lokální brněnská firma a nejsme plátci DPH. Cena, kterou vidíte, je pro vás konečná. Žádné navýšení o 21 % na faktuře. K tomu vám jako jediní v Brně dáváme přístup do naší unikátní aplikace, se kterou máte čistotu svého objektu pod kontrolou přímo v kapse.
             </p>
-            <h3 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-4">
+            <p class="text-[16px] md:text-[18px] text-zinc-600 font-medium leading-relaxed mb-10">
+              Jsme lokální brněnská firma a nejsme plátci DPH. Cena, kterou vidíte, je pro vás konečná. Žádné navýšení o 21 % na faktuře. K tomu vám jako jediní v Brně dáváme přístup do naší unikátní webové aplikace, se kterou máte čistotu svého objektu pod kontrolou přímo v kapse.
+            </p>
+            <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-4">
               Příklady nacenění <span class="text-[#6a9438]">úklidu kanceláří.</span>
-            </h3>
+            </h2>
             <p class="text-[16px] text-zinc-500 font-medium leading-relaxed">
               Měsíční paušály jsou orientační, finální kalkulaci připravíme na míru vaší firmě.
             </p>
@@ -213,7 +215,7 @@ const airbnbWhyUs = [
       <!-- PROČ SI VYBRAT NÁS — černá -->
       <section class="py-16 md:py-20 bg-zinc-950 relative overflow-hidden">
         <div class="hidden md:block pointer-events-none absolute top-0 left-1/4 w-[500px] h-[300px] rounded-full bg-[#81b344]/10 blur-[80px]"></div>
-        <div class="hidden md:block pointer-events-none absolute bottom-0 right-1/4 w-[400px] h-[250px] rounded-full bg-[#81b344]/6 blur-[70px]"></div>
+        <div class="hidden md:block pointer-events-none absolute bottom-0 right-1/4 w-[400px] h-[250px] rounded-full bg-[#81b344]/5 blur-[70px]"></div>
         <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
           <div class="scroll-animate opacity-0 text-center mb-10">
             <p class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-3">Proč si vybrat nás</p>
@@ -295,15 +297,15 @@ const airbnbWhyUs = [
       <section class="py-20 md:py-28 bg-white">
         <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12">
           <div class="scroll-animate opacity-0 text-center max-w-3xl mx-auto mb-12">
-            <h2 class="text-[20px] sm:text-[24px] md:text-[28px] font-extrabold text-[#81b344] uppercase tracking-wider mb-6">
+            <p class="text-[20px] sm:text-[24px] md:text-[28px] font-extrabold text-[#81b344] uppercase tracking-wider mb-6">
               Vchody SVJ a panelové domy
-            </h2>
+            </p>
             <p class="text-[16px] md:text-[18px] text-zinc-600 font-medium leading-relaxed mb-10">
               Úklid společných prostor bez starostí a dohadů s nájemníky. Díky digitální kontrole přesně víte, kdy byl dům uklizen.
             </p>
-            <h3 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-4">
+            <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-4">
               Příklady nacenění <span class="text-[#6a9438]">úklidu SVJ (1× týdně).</span>
-            </h3>
+            </h2>
             <p class="text-[16px] text-zinc-500 font-medium leading-relaxed">
               Měsíční paušály jsou orientační, finální kalkulaci připravíme na míru vašemu domu.
             </p>
@@ -358,7 +360,7 @@ const airbnbWhyUs = [
       <!-- PROČ SI VYBRAT NÁS — černá -->
       <section class="py-16 md:py-20 bg-zinc-950 relative overflow-hidden">
         <div class="hidden md:block pointer-events-none absolute top-0 left-1/4 w-[500px] h-[300px] rounded-full bg-[#81b344]/10 blur-[80px]"></div>
-        <div class="hidden md:block pointer-events-none absolute bottom-0 right-1/4 w-[400px] h-[250px] rounded-full bg-[#81b344]/6 blur-[70px]"></div>
+        <div class="hidden md:block pointer-events-none absolute bottom-0 right-1/4 w-[400px] h-[250px] rounded-full bg-[#81b344]/5 blur-[70px]"></div>
         <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
           <div class="scroll-animate opacity-0 text-center mb-10">
             <p class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-3">Proč si vybrat nás</p>
@@ -440,18 +442,18 @@ const airbnbWhyUs = [
       <section class="py-20 md:py-28 bg-white">
         <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12">
           <div class="scroll-animate opacity-0 text-center max-w-3xl mx-auto mb-12">
-            <h2 class="text-[20px] sm:text-[24px] md:text-[28px] font-extrabold text-[#81b344] uppercase tracking-wider mb-6">
+            <p class="text-[20px] sm:text-[24px] md:text-[28px] font-extrabold text-[#81b344] uppercase tracking-wider mb-6">
               Úklid a správa Airbnb v Brně
-            </h2>
-            <h3 class="text-2xl sm:text-3xl font-extrabold text-zinc-950 tracking-tighter mb-4">
-              Získejte 5* hodnocení a neřešte úklid. <span class="text-[#6a9438]">My se postaráme o vše.</span>
-            </h3>
-            <p class="text-[16px] md:text-[18px] text-zinc-600 font-medium leading-relaxed mb-10">
-              Jsme specialisté na krátkodobé pronájmy v Brně. S naší aplikací PrimeClean máte absolutní kontrolu nad stavem svého bytu, i když jste zrovna na druhém konci světa. Nejsme plátci DPH – vaše marže zůstává vám.
             </p>
-            <h3 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-4">
+            <p class="text-[16px] md:text-[18px] text-zinc-600 font-medium leading-relaxed mb-6">
+              Získejte 5* hodnocení a neřešte úklid. <span class="text-[#6a9438] font-bold">My se postaráme o vše.</span>
+            </p>
+            <p class="text-[16px] md:text-[18px] text-zinc-600 font-medium leading-relaxed mb-10">
+              Jsme specialisté na krátkodobé pronájmy v Brně. S naší webovou aplikací PrimeClean máte absolutní kontrolu nad stavem svého bytu, i když jste zrovna na druhém konci světa. Nejsme plátci DPH – vaše marže zůstává vám.
+            </p>
+            <h2 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-4">
               Příklady nacenění <span class="text-[#6a9438]">úklidu Airbnb.</span>
-            </h3>
+            </h2>
             <p class="text-[15px] text-zinc-500 font-medium leading-relaxed">
               Ceny jsou orientační a odpovídají standardnímu „Cleaning Fee", které hosté na Airbnb běžně hradí. Vy tak za čistotu svého bytu neplatíte nic – náklady pokryje host.
             </p>
@@ -497,7 +499,7 @@ const airbnbWhyUs = [
       <!-- PROČ SI VYBRAT NÁS — černá -->
       <section class="py-16 md:py-20 bg-zinc-950 relative overflow-hidden">
         <div class="hidden md:block pointer-events-none absolute top-0 left-1/4 w-[500px] h-[300px] rounded-full bg-[#81b344]/10 blur-[80px]"></div>
-        <div class="hidden md:block pointer-events-none absolute bottom-0 right-1/4 w-[400px] h-[250px] rounded-full bg-[#81b344]/6 blur-[70px]"></div>
+        <div class="hidden md:block pointer-events-none absolute bottom-0 right-1/4 w-[400px] h-[250px] rounded-full bg-[#81b344]/5 blur-[70px]"></div>
         <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
           <div class="scroll-animate opacity-0 text-center mb-10">
             <p class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-3">Proč si vybrat nás</p>
