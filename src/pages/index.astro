@@ -58,11 +58,11 @@ const trustBadges = [
 
 const testimonials = [
   {
-    name: "Veselý Medvěd",
+    name: "Anatolij Ramaldan",
     role: "Hostitel na Airbnb",
     text: "Jako hostitel na Airbnb potřebuju mít jistotu, že je apartmán vždy perfektně připravený a v naprostém pořádku. PrimeClean to zvládá spolehlivě i na poslední chvíli. Díky fotkám v aplikaci mám klid, i když zrovna nejsem v Brně.",
     rating: 5,
-    initials: "VM"
+    initials: "AR"
   },
   {
     name: "Autoškola TiGO s.r.o.",
@@ -403,7 +403,6 @@ const faqItems = [
               </div>
             ))}
           </div>
-          <!-- FIX: aria-hidden odstraněn z wrapperu, tlačítka jsou nyní přístupná -->
           <div class="flex justify-center items-center gap-2 mt-6" id="testimonials-dots">
             {testimonials.map((_, i) => (
               <button
@@ -416,12 +415,12 @@ const faqItems = [
           </div>
         </div>
 
-        <!-- Desktop grid -->
+        <!-- Desktop grid — will-change přidán pro plynulou animaci na iPadu -->
         <div class="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {testimonials.map((t, i) => (
             <div
               class="scroll-animate opacity-0 flex flex-col bg-zinc-900 rounded-[1.5rem] p-6 border border-zinc-800 hover:border-[#81b344]/30 hover:shadow-md transition-all duration-300 relative overflow-hidden"
-              style={`animation-delay:${i * 100}ms`}
+              style={`animation-delay:${i * 100}ms;will-change:opacity,transform;`}
             >
               <i data-lucide="quote" class="absolute -top-1 -right-1 w-8 h-8 text-[#81b344] opacity-25 fill-[#81b344]" aria-hidden="true"></i>
               <div class="flex gap-1 mb-5" aria-label={`Hodnocení: ${t.rating} z 5`}>
@@ -787,9 +786,13 @@ const faqItems = [
     }
   }
 
+  /* Přerušovaná čára nyní sahá od středu 1. kroužku ke středu 4. kroužku:
+     grid má 4 stejné sloupce, každý zabírá 25 %.
+     Střed 1. sloupce = 12.5 %, střed 4. sloupce = 87.5 %.
+     left: 12.5%; right: 12.5% → čára přesně spojuje všechny 4 kroužky. */
   .process-line {
     position: absolute;
-    top: 40px; left: 10%; right: 27%;
+    top: 40px; left: 12.5%; right: 12.5%;
     height: 2px; z-index: 0;
     background-image: repeating-linear-gradient(
       90deg, #d4e8b8 0, #d4e8b8 10px, transparent 10px, transparent 22px
