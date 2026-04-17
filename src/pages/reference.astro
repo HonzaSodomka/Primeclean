@@ -3,11 +3,11 @@ import Layout from '../layouts/Layout.astro';
 
 const testimonials = [
   {
-    name: "Veselý Medvěd",
+    name: "Anatolij Ramaldan",
     role: "Hostitel na Airbnb",
     text: "Jako hostitel na Airbnb potřebuju mít jistotu, že je apartmán vždy perfektně připravený a v naprostém pořádku. PrimeClean to zvládá spolehlivě i na poslední chvíli. Díky fotkám v aplikaci mám klid, i když zrovna nejsem v Brně.",
     rating: 5,
-    initials: "VM"
+    initials: "AR"
   },
   {
     name: "Autoškola TiGO s.r.o.",
@@ -35,25 +35,31 @@ const testimonials = [
 const pairs = [
   {
     label: "Sklep",
-    before: "/ref-before-1.jpg",
-    after: "/ref-after-1.jpg",
+    before: "/sklep-pred.webp",
+    after: "/sklep-po.webp",
   },
   {
     label: "Chodba",
-    before: "/IMG_6127.jpg",
-    after: "/IMG_6130.jpg",
+    before: "/chodba-pred.webp",
+    after: "/chodba-po.webp",
   },
   {
     label: "Vstup do domu",
-    before: "/ref-before-2.jpg",
-    after: "/ref-after-2.jpg",
+    before: "/vstup-pred.webp",
+    after: "/vstup-po.webp",
   },
   {
     label: "Výtah",
-    before: "/IMG_5404.jpg",
-    after: "/IMG_5405.jpg",
+    before: "/vytah-pred.webp",
+    after: "/vytah-po.webp",
   },
 ];
+
+// Flat list všech fotek pro lightbox navigaci šipkami
+const allImages = pairs.flatMap(p => [
+  { src: p.before, label: `Před — ${p.label}` },
+  { src: p.after,  label: `Po — ${p.label}` },
+]);
 ---
 
 <Layout
@@ -120,10 +126,11 @@ const pairs = [
                 >
                   <div class="grid grid-cols-2 gap-2">
                     <!-- PŘED -->
-                    <div
-                      class="lightbox-trigger relative rounded-2xl overflow-hidden bg-zinc-100 aspect-[3/4] cursor-zoom-in group"
+                    <button
+                      class="lightbox-trigger relative rounded-2xl overflow-hidden bg-zinc-100 aspect-[3/4] cursor-zoom-in group w-full"
                       data-src={pair.before}
                       data-label={`Před — ${pair.label}`}
+                      aria-label={`Zobrazit zvětšeně: Před úklidem — ${pair.label}`}
                     >
                       <img
                         src={pair.before}
@@ -132,18 +139,19 @@ const pairs = [
                         loading="lazy"
                         decoding="async"
                       />
-                      <span class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-black/55 text-white text-[10px] font-bold tracking-[0.08em] uppercase backdrop-blur-sm">Před</span>
-                      <div class="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300 flex items-center justify-center">
+                      <span class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-black/55 text-white text-[10px] font-bold tracking-[0.08em] uppercase backdrop-blur-sm pointer-events-none">Před</span>
+                      <div class="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300 flex items-center justify-center pointer-events-none">
                         <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-10 h-10 rounded-full bg-white/90 flex items-center justify-center shadow-md">
                           <i data-lucide="zoom-in" class="w-5 h-5 text-zinc-700" aria-hidden="true"></i>
                         </div>
                       </div>
-                    </div>
+                    </button>
                     <!-- PO -->
-                    <div
-                      class="lightbox-trigger relative rounded-2xl overflow-hidden bg-zinc-100 aspect-[3/4] cursor-zoom-in group"
+                    <button
+                      class="lightbox-trigger relative rounded-2xl overflow-hidden bg-zinc-100 aspect-[3/4] cursor-zoom-in group w-full"
                       data-src={pair.after}
                       data-label={`Po — ${pair.label}`}
+                      aria-label={`Zobrazit zvětšeně: Po úklidu — ${pair.label}`}
                     >
                       <img
                         src={pair.after}
@@ -152,13 +160,13 @@ const pairs = [
                         loading="lazy"
                         decoding="async"
                       />
-                      <span class="absolute top-2 right-2 px-2 py-0.5 rounded-full bg-[#81b344]/90 text-white text-[10px] font-bold tracking-[0.08em] uppercase backdrop-blur-sm">Po</span>
-                      <div class="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300 flex items-center justify-center">
+                      <span class="absolute top-2 right-2 px-2 py-0.5 rounded-full bg-[#81b344]/90 text-white text-[10px] font-bold tracking-[0.08em] uppercase backdrop-blur-sm pointer-events-none">Po</span>
+                      <div class="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300 flex items-center justify-center pointer-events-none">
                         <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-10 h-10 rounded-full bg-white/90 flex items-center justify-center shadow-md">
                           <i data-lucide="zoom-in" class="w-5 h-5 text-zinc-700" aria-hidden="true"></i>
                         </div>
                       </div>
-                    </div>
+                    </button>
                   </div>
                   <div class="flex items-center px-1">
                     <span class="text-[14px] font-bold text-zinc-900">{pair.label}</span>
@@ -180,13 +188,33 @@ const pairs = [
       aria-modal="true"
       aria-label="Náhled fotografie"
     >
+      <!-- Zavřít -->
       <button
         id="lightbox-close"
         class="absolute top-4 right-4 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors duration-200 z-10"
-        aria-label="Zavřít"
+        aria-label="Zavřít náhled"
       >
         <i data-lucide="x" class="w-5 h-5 text-white" aria-hidden="true"></i>
       </button>
+
+      <!-- Šipka doleva -->
+      <button
+        id="lightbox-prev"
+        class="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors duration-200 z-10"
+        aria-label="Předchozí fotografie"
+      >
+        <i data-lucide="chevron-left" class="w-6 h-6 text-white" aria-hidden="true"></i>
+      </button>
+
+      <!-- Šipka doprava -->
+      <button
+        id="lightbox-next"
+        class="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors duration-200 z-10"
+        aria-label="Další fotografie"
+      >
+        <i data-lucide="chevron-right" class="w-6 h-6 text-white" aria-hidden="true"></i>
+      </button>
+
       <div class="relative max-w-2xl w-full flex flex-col items-center gap-4">
         <img
           id="lightbox-img"
@@ -250,13 +278,15 @@ const pairs = [
               </div>
             ))}
           </div>
-          <div class="flex justify-center items-center gap-2 mt-6" id="ref-dots" aria-hidden="true">
+          <div class="flex justify-center items-center gap-2 mt-6" id="ref-dots" role="tablist" aria-label="Recenze">
             {testimonials.map((_, i) => (
               <button
                 class="ref-dot rounded-full transition-all duration-300"
                 style={i === 0 ? 'width:24px;height:8px;background:#81b344;' : 'width:8px;height:8px;background:#3f3f46;'}
                 data-index={i}
                 aria-label={`Recenze ${i + 1}`}
+                aria-pressed={i === 0 ? "true" : "false"}
+                role="tab"
               />
             ))}
           </div>
@@ -317,11 +347,11 @@ const pairs = [
   </main>
 </Layout>
 
-<script>
+<script define:vars={{ allImages }}>
   /* ── Scroll animace ── */
   function initScrollAnimate() {
     if (document.documentElement.classList.contains('low-end')) {
-      document.querySelectorAll<HTMLElement>('.scroll-animate').forEach(el => {
+      document.querySelectorAll('.scroll-animate').forEach(el => {
         el.style.opacity = '1';
         el.classList.remove('opacity-0');
       });
@@ -330,8 +360,8 @@ const pairs = [
     const obs = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
-        (entry.target as HTMLElement).classList.add('animate-fade-in-up');
-        (entry.target as HTMLElement).classList.remove('opacity-0');
+        entry.target.classList.add('animate-fade-in-up');
+        entry.target.classList.remove('opacity-0');
         obs.unobserve(entry.target);
       });
     }, { threshold: 0, rootMargin: '0px 0px -5% 0px' });
@@ -340,18 +370,20 @@ const pairs = [
 
   /* ── Recenze slider (mobil) ── */
   function initRefSlider() {
-    const track = document.getElementById('ref-testimonials-track') as HTMLElement | null;
-    const dots  = document.querySelectorAll<HTMLElement>('.ref-dot');
+    const track = document.getElementById('ref-testimonials-track');
+    const dots  = document.querySelectorAll('.ref-dot');
     if (!track || !dots.length) return;
     let rafId = 0;
     const update = () => {
       const cards = track.children;
       if (!cards.length) return;
-      const active = Math.round(track.scrollLeft / ((cards[0] as HTMLElement).offsetWidth + 16));
+      const active = Math.round(track.scrollLeft / (cards[0].offsetWidth + 16));
       dots.forEach((d, i) => {
-        d.style.width      = i === active ? '24px' : '8px';
+        const isActive = i === active;
+        d.style.width      = isActive ? '24px' : '8px';
         d.style.height     = '8px';
-        d.style.background = i === active ? '#81b344' : '#3f3f46';
+        d.style.background = isActive ? '#81b344' : '#3f3f46';
+        d.setAttribute('aria-pressed', isActive ? 'true' : 'false');
       });
     };
     track.addEventListener('scroll', () => { cancelAnimationFrame(rafId); rafId = requestAnimationFrame(update); }, { passive: true });
@@ -359,25 +391,43 @@ const pairs = [
       d.addEventListener('click', () => {
         const cards = track.children;
         if (!cards.length) return;
-        track.scrollTo({ left: i * ((cards[0] as HTMLElement).offsetWidth + 16), behavior: 'smooth' });
+        track.scrollTo({ left: i * (cards[0].offsetWidth + 16), behavior: 'smooth' });
       });
     });
   }
 
   /* ── Lightbox ── */
   function initLightbox() {
-    const lightbox  = document.getElementById('lightbox')!;
-    const img       = document.getElementById('lightbox-img') as HTMLImageElement;
-    const label     = document.getElementById('lightbox-label')!;
-    const closeBtn  = document.getElementById('lightbox-close')!;
+    const lightbox = document.getElementById('lightbox');
+    const img      = document.getElementById('lightbox-img');
+    const label    = document.getElementById('lightbox-label');
+    const closeBtn = document.getElementById('lightbox-close');
+    const prevBtn  = document.getElementById('lightbox-prev');
+    const nextBtn  = document.getElementById('lightbox-next');
 
-    const open = (src: string, lbl: string) => {
-      img.src = src;
-      img.alt = lbl;
-      label.textContent = lbl;
+    let currentIndex = 0;
+    let lastTrigger  = null;
+
+    const show = (index) => {
+      currentIndex = (index + allImages.length) % allImages.length;
+      const item = allImages[currentIndex];
+      img.src = item.src;
+      img.alt = item.label;
+      label.textContent = item.label;
+      // Skryj šipky pokud je jen jedna fotka
+      const single = allImages.length <= 1;
+      prevBtn.style.display = single ? 'none' : '';
+      nextBtn.style.display = single ? 'none' : '';
+    };
+
+    const open = (src, lbl) => {
+      const idx = allImages.findIndex(i => i.src === src && i.label === lbl);
+      show(idx >= 0 ? idx : 0);
       lightbox.classList.remove('hidden');
       lightbox.classList.add('flex');
       document.body.style.overflow = 'hidden';
+      // Focus trap — přesun focusu na close button
+      requestAnimationFrame(() => closeBtn.focus());
     };
 
     const close = () => {
@@ -385,10 +435,13 @@ const pairs = [
       lightbox.classList.remove('flex');
       document.body.style.overflow = '';
       img.src = '';
+      // Vrátit focus na trigger
+      if (lastTrigger) lastTrigger.focus();
     };
 
-    document.querySelectorAll<HTMLElement>('.lightbox-trigger').forEach(el => {
+    document.querySelectorAll('.lightbox-trigger').forEach(el => {
       el.addEventListener('click', () => {
+        lastTrigger = el;
         const src = el.dataset.src ?? '';
         const lbl = el.dataset.label ?? '';
         open(src, lbl);
@@ -396,8 +449,17 @@ const pairs = [
     });
 
     closeBtn.addEventListener('click', close);
+    prevBtn.addEventListener('click', () => show(currentIndex - 1));
+    nextBtn.addEventListener('click', () => show(currentIndex + 1));
+
     lightbox.addEventListener('click', e => { if (e.target === lightbox) close(); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+
+    document.addEventListener('keydown', e => {
+      if (lightbox.classList.contains('hidden')) return;
+      if (e.key === 'Escape')      close();
+      if (e.key === 'ArrowLeft')  show(currentIndex - 1);
+      if (e.key === 'ArrowRight') show(currentIndex + 1);
+    });
   }
 
   document.addEventListener('DOMContentLoaded', () => {
