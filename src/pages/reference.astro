@@ -55,7 +55,6 @@ const pairs = [
   },
 ];
 
-// Flat list všech fotek pro lightbox navigaci šipkami
 const allImages = pairs.flatMap(p => [
   { src: p.before, label: `Před — ${p.label}` },
   { src: p.after,  label: `Po — ${p.label}` },
@@ -88,21 +87,31 @@ const allImages = pairs.flatMap(p => [
           Nenechte se přesvědčovat slovy. Prohlédněte si fotografie přímo z našich zakázek a přečtěte si, co o nás říkají klienti.
         </p>
 
-        <div class="opacity-0 animate-fade-in-up flex items-center justify-center gap-2" style="animation-delay:450ms">
-          <div class="flex gap-1">
+        <div class="opacity-0 animate-fade-in-up flex items-center justify-center gap-2 mb-10" style="animation-delay:450ms">
+          <div class="flex gap-1" aria-label="Hodnocení 5 z 5">
             {[1,2,3,4,5].map(() => (
               <i data-lucide="star" class="w-5 h-5 text-amber-400 fill-amber-400" aria-hidden="true"></i>
             ))}
           </div>
           <span class="text-[16px] font-bold text-zinc-900">5,0</span>
-          <span class="text-zinc-400 text-[14px] font-medium">· 5 recenzí na Google</span>
+          <span class="text-zinc-400 text-[14px] font-medium">· průměrné hodnocení na Google</span>
+        </div>
+
+        <div class="opacity-0 animate-fade-in-up" style="animation-delay:600ms">
+          <a
+            href="#fotodokumentace"
+            class="inline-flex items-center gap-2 px-8 py-3.5 text-[15px] font-bold text-white bg-[#81b344] rounded-xl hover:bg-[#6a9438] transition-all duration-300 hover:-translate-y-0.5 shadow-lg shadow-[#81b344]/25"
+          >
+            Prohlédnout fotografie
+            <i data-lucide="arrow-down" class="w-4 h-4" aria-hidden="true"></i>
+          </a>
         </div>
 
       </div>
     </section>
 
     <!-- PŘED & PO GRID -->
-    <section class="py-20 md:py-32 bg-white">
+    <section id="fotodokumentace" class="py-20 md:py-32 bg-white scroll-mt-24">
       <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
 
         <div class="scroll-animate opacity-0 text-center max-w-3xl mx-auto mb-16">
@@ -115,7 +124,6 @@ const allImages = pairs.flatMap(p => [
           </p>
         </div>
 
-        <!-- 2 řady po 2 dvojicích -->
         <div class="flex flex-col gap-10">
           {[pairs.slice(0, 2), pairs.slice(2, 4)].map((row, rowIdx) => (
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -188,7 +196,6 @@ const allImages = pairs.flatMap(p => [
       aria-modal="true"
       aria-label="Náhled fotografie"
     >
-      <!-- Zavřít -->
       <button
         id="lightbox-close"
         class="absolute top-4 right-4 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors duration-200 z-10"
@@ -197,7 +204,6 @@ const allImages = pairs.flatMap(p => [
         <i data-lucide="x" class="w-5 h-5 text-white" aria-hidden="true"></i>
       </button>
 
-      <!-- Šipka doleva -->
       <button
         id="lightbox-prev"
         class="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors duration-200 z-10"
@@ -206,7 +212,6 @@ const allImages = pairs.flatMap(p => [
         <i data-lucide="chevron-left" class="w-6 h-6 text-white" aria-hidden="true"></i>
       </button>
 
-      <!-- Šipka doprava -->
       <button
         id="lightbox-next"
         class="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors duration-200 z-10"
@@ -227,15 +232,15 @@ const allImages = pairs.flatMap(p => [
     </div>
 
     <!-- RECENZE -->
-    <section class="py-20 md:py-32 bg-zinc-950 relative overflow-hidden">
-      <div class="pointer-events-none absolute top-0 left-1/4 w-[500px] h-[300px] rounded-full bg-[#81b344]/8 blur-[80px]"></div>
-      <div class="pointer-events-none absolute bottom-0 right-1/4 w-[400px] h-[250px] rounded-full bg-[#81b344]/6 blur-[70px]"></div>
+    <section class="py-20 md:py-32 bg-zinc-950 relative overflow-hidden" aria-labelledby="reviews-heading">
+      <div class="review-blob review-blob--tl" aria-hidden="true"></div>
+      <div class="review-blob review-blob--br" aria-hidden="true"></div>
 
-      <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
+      <div class="max-w-[1400px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
 
         <div class="scroll-animate opacity-0 text-center max-w-2xl mx-auto mb-16">
           <p class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-4">Co říkají klienti</p>
-          <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tighter leading-[1.1] mb-4">
+          <h2 id="reviews-heading" class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tighter leading-[1.1] mb-4">
             Zkušenosti <span class="text-[#81b344]">našich klientů.</span>
           </h2>
           <div class="flex items-center justify-center gap-1.5">
@@ -243,7 +248,7 @@ const allImages = pairs.flatMap(p => [
               <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400" aria-hidden="true"></i>
             ))}
             <span class="ml-2 text-[15px] font-bold text-white">5,0</span>
-            <span class="text-zinc-500 text-[14px] font-medium ml-1">průměrné hodnocení · 5 recenzí</span>
+            <span class="text-zinc-500 text-[14px] font-medium ml-1">průměrné hodnocení</span>
           </div>
         </div>
 
@@ -253,6 +258,8 @@ const allImages = pairs.flatMap(p => [
             id="ref-testimonials-track"
             class="flex gap-4 overflow-x-auto pb-2 -mx-5"
             style="scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;padding-left:20px;padding-right:20px;"
+            aria-live="polite"
+            aria-atomic="false"
           >
             {testimonials.map(t => (
               <div
@@ -260,14 +267,14 @@ const allImages = pairs.flatMap(p => [
                 style="scroll-snap-align:center;width:82vw;max-width:340px;"
               >
                 <i data-lucide="quote" class="absolute -top-1 -right-1 w-8 h-8 text-[#81b344] opacity-25 fill-[#81b344]" aria-hidden="true"></i>
-                <div class="flex gap-1 mb-5">
+                <div class="flex gap-1 mb-5" aria-label={`Hodnocení: ${t.rating} z 5`}>
                   {Array.from({length: t.rating}).map(() => (
                     <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400" aria-hidden="true"></i>
                   ))}
                 </div>
                 <p class="text-[14.5px] text-zinc-400 font-medium leading-relaxed mb-6 flex-grow">"{t.text}"</p>
                 <div class="flex items-center gap-3 mt-auto pt-5 border-t border-zinc-800">
-                  <div class="flex-shrink-0 w-10 h-10 rounded-full bg-[#81b344]/15 flex items-center justify-center">
+                  <div class="flex-shrink-0 w-10 h-10 rounded-full bg-[#81b344]/15 flex items-center justify-center" aria-hidden="true">
                     <span class="text-[13px] font-extrabold text-[#81b344]">{t.initials}</span>
                   </div>
                   <div>
@@ -278,7 +285,7 @@ const allImages = pairs.flatMap(p => [
               </div>
             ))}
           </div>
-          <div class="flex justify-center items-center gap-2 mt-6" id="ref-dots" role="tablist" aria-label="Recenze">
+          <div class="flex justify-center items-center gap-2 mt-6" id="ref-dots">
             {testimonials.map((_, i) => (
               <button
                 class="ref-dot rounded-full transition-all duration-300"
@@ -286,7 +293,6 @@ const allImages = pairs.flatMap(p => [
                 data-index={i}
                 aria-label={`Recenze ${i + 1}`}
                 aria-pressed={i === 0 ? "true" : "false"}
-                role="tab"
               />
             ))}
           </div>
@@ -296,18 +302,18 @@ const allImages = pairs.flatMap(p => [
         <div class="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {testimonials.map((t, i) => (
             <div
-              class="scroll-animate opacity-0 flex flex-col bg-zinc-900 rounded-[1.5rem] p-6 border border-zinc-800 hover:border-[#81b344]/30 hover:shadow-md transition-all duration-300 relative overflow-hidden"
+              class="scroll-animate opacity-0 flex flex-col bg-zinc-900 rounded-[1.5rem] p-6 border border-zinc-800 hover:border-[#81b344]/30 hover:shadow-md transition-[border-color,box-shadow] duration-300 relative overflow-hidden"
               style={`animation-delay:${i * 100}ms`}
             >
               <i data-lucide="quote" class="absolute -top-1 -right-1 w-8 h-8 text-[#81b344] opacity-25 fill-[#81b344]" aria-hidden="true"></i>
-              <div class="flex gap-1 mb-5">
+              <div class="flex gap-1 mb-5" aria-label={`Hodnocení: ${t.rating} z 5`}>
                 {Array.from({length: t.rating}).map(() => (
                   <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400" aria-hidden="true"></i>
                 ))}
               </div>
               <p class="text-[13.5px] text-zinc-400 font-medium leading-relaxed mb-6 flex-grow">"{t.text}"</p>
               <div class="flex items-center gap-3 mt-auto pt-5 border-t border-zinc-800">
-                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-[#81b344]/15 flex items-center justify-center">
+                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-[#81b344]/15 flex items-center justify-center" aria-hidden="true">
                   <span class="text-[13px] font-extrabold text-[#81b344]">{t.initials}</span>
                 </div>
                 <div>
@@ -353,19 +359,22 @@ const allImages = pairs.flatMap(p => [
     if (document.documentElement.classList.contains('low-end')) {
       document.querySelectorAll('.scroll-animate').forEach(el => {
         el.style.opacity = '1';
+        el.style.transform = 'none';
+        el.style.animation = 'none';
         el.classList.remove('opacity-0');
       });
       return;
     }
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(entry => {
         if (!entry.isIntersecting) return;
         entry.target.classList.add('animate-fade-in-up');
         entry.target.classList.remove('opacity-0');
-        obs.unobserve(entry.target);
-      });
-    }, { threshold: 0, rootMargin: '0px 0px -5% 0px' });
-    document.querySelectorAll('.scroll-animate').forEach(el => obs.observe(el));
+        observer.unobserve(entry.target);
+      }),
+      { threshold: 0, rootMargin: '0px 0px -5% 0px' }
+    );
+    document.querySelectorAll('.scroll-animate').forEach(el => observer.observe(el));
   }
 
   /* ── Recenze slider (mobil) ── */
@@ -374,21 +383,23 @@ const allImages = pairs.flatMap(p => [
     const dots  = document.querySelectorAll('.ref-dot');
     if (!track || !dots.length) return;
     let rafId = 0;
-    const update = () => {
+    const updateDots = () => {
       const cards = track.children;
       if (!cards.length) return;
       const active = Math.round(track.scrollLeft / (cards[0].offsetWidth + 16));
-      dots.forEach((d, i) => {
-        const isActive = i === active;
-        d.style.width      = isActive ? '24px' : '8px';
-        d.style.height     = '8px';
-        d.style.background = isActive ? '#81b344' : '#3f3f46';
-        d.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      dots.forEach((dot, i) => {
+        dot.style.width      = i === active ? '24px' : '8px';
+        dot.style.height     = '8px';
+        dot.style.background = i === active ? '#81b344' : '#3f3f46';
+        dot.setAttribute('aria-pressed', i === active ? 'true' : 'false');
       });
     };
-    track.addEventListener('scroll', () => { cancelAnimationFrame(rafId); rafId = requestAnimationFrame(update); }, { passive: true });
-    dots.forEach((d, i) => {
-      d.addEventListener('click', () => {
+    track.addEventListener('scroll', () => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(updateDots);
+    }, { passive: true });
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
         const cards = track.children;
         if (!cards.length) return;
         track.scrollTo({ left: i * (cards[0].offsetWidth + 16), behavior: 'smooth' });
@@ -404,6 +415,7 @@ const allImages = pairs.flatMap(p => [
     const closeBtn = document.getElementById('lightbox-close');
     const prevBtn  = document.getElementById('lightbox-prev');
     const nextBtn  = document.getElementById('lightbox-next');
+    const focusable = [closeBtn, prevBtn, nextBtn];
 
     let currentIndex = 0;
     let lastTrigger  = null;
@@ -414,7 +426,6 @@ const allImages = pairs.flatMap(p => [
       img.src = item.src;
       img.alt = item.label;
       label.textContent = item.label;
-      // Skryj šipky pokud je jen jedna fotka
       const single = allImages.length <= 1;
       prevBtn.style.display = single ? 'none' : '';
       nextBtn.style.display = single ? 'none' : '';
@@ -426,7 +437,6 @@ const allImages = pairs.flatMap(p => [
       lightbox.classList.remove('hidden');
       lightbox.classList.add('flex');
       document.body.style.overflow = 'hidden';
-      // Focus trap — přesun focusu na close button
       requestAnimationFrame(() => closeBtn.focus());
     };
 
@@ -435,30 +445,34 @@ const allImages = pairs.flatMap(p => [
       lightbox.classList.remove('flex');
       document.body.style.overflow = '';
       img.src = '';
-      // Vrátit focus na trigger
       if (lastTrigger) lastTrigger.focus();
     };
 
     document.querySelectorAll('.lightbox-trigger').forEach(el => {
       el.addEventListener('click', () => {
         lastTrigger = el;
-        const src = el.dataset.src ?? '';
-        const lbl = el.dataset.label ?? '';
-        open(src, lbl);
+        open(el.dataset.src ?? '', el.dataset.label ?? '');
       });
     });
 
     closeBtn.addEventListener('click', close);
     prevBtn.addEventListener('click', () => show(currentIndex - 1));
     nextBtn.addEventListener('click', () => show(currentIndex + 1));
-
     lightbox.addEventListener('click', e => { if (e.target === lightbox) close(); });
 
-    document.addEventListener('keydown', e => {
-      if (lightbox.classList.contains('hidden')) return;
-      if (e.key === 'Escape')      close();
-      if (e.key === 'ArrowLeft')  show(currentIndex - 1);
-      if (e.key === 'ArrowRight') show(currentIndex + 1);
+    // Focus trap + klávesnice
+    lightbox.addEventListener('keydown', e => {
+      if (e.key === 'Escape')      { close(); return; }
+      if (e.key === 'ArrowLeft')   { show(currentIndex - 1); return; }
+      if (e.key === 'ArrowRight')  { show(currentIndex + 1); return; }
+      if (e.key === 'Tab') {
+        e.preventDefault();
+        const current = focusable.indexOf(document.activeElement);
+        const next = e.shiftKey
+          ? (current - 1 + focusable.length) % focusable.length
+          : (current + 1) % focusable.length;
+        focusable[next].focus();
+      }
     });
   }
 
@@ -479,6 +493,24 @@ const allImages = pairs.flatMap(p => [
   }
 
   #ref-testimonials-track::-webkit-scrollbar { display: none; }
+
+  .review-blob {
+    pointer-events: none;
+    position: absolute;
+    border-radius: 9999px;
+  }
+  .review-blob--tl {
+    top: 0; left: 25%;
+    width: 500px; height: 300px;
+    background: rgb(129 179 68 / 0.08);
+    filter: blur(80px);
+  }
+  .review-blob--br {
+    bottom: 0; right: 25%;
+    width: 400px; height: 250px;
+    background: rgb(129 179 68 / 0.06);
+    filter: blur(70px);
+  }
 
   @media (prefers-reduced-motion: reduce) {
     .animate-fade-in-up, .scroll-animate {
