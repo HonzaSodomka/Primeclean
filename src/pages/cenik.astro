@@ -581,7 +581,7 @@ const airbnbWhyUs = [
   const CENIK_TABS = ['kancelare', 'svj', 'airbnb'];
   let activeObserver: IntersectionObserver | null = null;
 
-  function activateCenikTab(target: string, pushState = true) {
+  function activateCenikTab(target: string, scrollToContent = false, pushState = true) {
     if (!CENIK_TABS.includes(target)) return;
     const isLowEnd = document.documentElement.classList.contains('low-end');
 
@@ -614,6 +614,14 @@ const airbnbWhyUs = [
     const active = document.getElementById('cenik-tab-' + target);
     if (!active) return;
     active.classList.remove('hidden');
+
+    if (scrollToContent) {
+      const firstSection = active.querySelector('section');
+      const offset = firstSection
+        ? firstSection.getBoundingClientRect().top + window.scrollY - 80
+        : 0;
+      window.scrollTo({ top: offset, behavior: 'smooth' });
+    }
 
     const animEls = active.querySelectorAll<HTMLElement>('.scroll-animate');
     animEls.forEach(el => {
@@ -672,18 +680,18 @@ const airbnbWhyUs = [
 
     const hashTab = window.location.hash.replace('#', '');
     const initialTab = CENIK_TABS.includes(hashTab) ? hashTab : 'kancelare';
-    activateCenikTab(initialTab, false);
+    activateCenikTab(initialTab, false, false);
 
     document.querySelectorAll('.cenik-tab-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const target = btn.getAttribute('data-cenik-tab');
-        if (target) activateCenikTab(target);
+        if (target) activateCenikTab(target, true);
       });
     });
 
     window.addEventListener('popstate', e => {
       const tab = (e.state as { tab?: string })?.tab ?? 'kancelare';
-      activateCenikTab(tab, false);
+      activateCenikTab(tab, false, false);
     });
   });
 </script>

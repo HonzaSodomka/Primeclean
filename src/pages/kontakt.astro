@@ -1,17 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const trustPoints = [
-  'Odpovíme do 1 pracovního dne',
-  'Nezávazná prohlídka objektu zdarma',
-  'Nabídka na míru bez skrytých poplatků',
-];
-
 const contactItems = [
   { label: 'Telefon',         value: '+420 773 102 770',   href: 'tel:+420773102770',         icon: 'phone'    },
   { label: 'E-mail',          value: 'info@primeclean.cz', href: 'mailto:info@primeclean.cz', icon: 'mail'     },
   { label: 'Pracovní doba',   value: 'Po–Pá, 8:00–20:00', href: null,                        icon: 'clock'    },
-  { label: 'Oblast působení', value: 'Brno a okolí',      href: null,                        icon: 'map-pin'  },
+  { label: 'Oblast působení', value: 'Brno a okolí',       href: null,                        icon: 'map-pin'  },
 ];
 
 const services = [
@@ -22,9 +16,9 @@ const services = [
 ];
 
 const sidebarPerks = [
-  { title: 'Odpověď do 24 hodin',          desc: 'Ozveme se s konkrétním návrhem, ne obecnou nabídkou.' },
+  { title: 'Odpověď do 1 pracovního dne',  desc: 'Ozveme se s konkrétním návrhem, ne obecnou nabídkou.' },
   { title: 'Prohlídka objektu zdarma',     desc: 'Přijedeme na místo a připravíme nacenění na míru.'    },
-  { title: 'Jasná smlouva bez překvapení', desc: 'Rozsah, cena i podmínky — vše domluvné předem.'     },
+  { title: 'Jasná smlouva bez překvapení', desc: 'Rozsah, cena i podmínky — vše domluvné předem.'       },
 ];
 
 const trustBadges = [
@@ -47,9 +41,9 @@ const trustBadges = [
           <div class="scroll-animate opacity-0">
             <div class="mb-10">
               <p class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-4">Kontaktní formulář</p>
-              <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-4">
+              <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-4">
                 Napište nám.<br /><span class="text-[#6a9438]">Ozveme se brzy.</span>
-              </h2>
+              </h1>
               <p class="text-lg text-zinc-600 font-medium leading-relaxed max-w-xl">
                 Vyplňte formulář a dostanete konkrétní nabídku na míru. Bez závazků, bez skrytých poplatků.
               </p>
@@ -82,7 +76,7 @@ const trustBadges = [
               <div class="flex flex-col gap-2">
                 <label for="service" class="field-label">Typ služby <span class="text-[#81b344]" aria-hidden="true">*</span></label>
                 <div class="relative">
-                  <select id="service" name="service" required class="field-input w-full appearance-none cursor-pointer">
+                  <select id="service" name="service" required class="field-input w-full appearance-none cursor-pointer pr-12">
                     <option value="" disabled selected>Vyberte typ služby</option>
                     {services.map(s => <option value={s.value}>{s.label}</option>)}
                   </select>
@@ -139,13 +133,9 @@ const trustBadges = [
                   <p class="text-[12px] font-bold text-zinc-500 uppercase tracking-[0.08em] mt-0.5">Zakladatel PrimeClean</p>
                 </div>
               </div>
-              <p class="text-[15px] text-zinc-600 font-medium leading-relaxed mb-6">
-                „Rád se s vámi sejdu osobně a probereme potřeby přímo na místě. Bez závazků, bez zbytečného papírování“
+              <p class="text-[15px] text-zinc-600 font-medium leading-relaxed">
+                „Rád se s vámi sejdu osobně a probereme potřeby přímo na místě. Bez závazků, bez zbytečného papírování"
               </p>
-              <div class="flex items-center gap-2.5 pt-6 border-t border-zinc-200">
-                <span class="w-1.5 h-1.5 rounded-full bg-[#81b344] flex-shrink-0"></span>
-                <span class="text-[13px] font-semibold text-zinc-500">Průměrná odpověď do <span class="text-[#81b344] font-bold">4 hodin</span></span>
-              </div>
             </div>
 
             <!-- Co vás čeká -->
@@ -184,28 +174,26 @@ const trustBadges = [
     </section>
 
     <section class="bg-[#81b344] py-12 md:py-14">
-  <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
-    <div class="scroll-animate opacity-0 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0 md:divide-x md:divide-white/20">
-      {contactItems.map(item => (
-        <div class="flex flex-col gap-2 md:px-8 first:pl-0 last:pr-0">
-          <span class="text-[11px] font-bold text-white/60 uppercase tracking-[0.12em]">{item.label}</span>
-          {item.href ? (
-            <a href={item.href} class="text-[16px] font-bold text-white underline decoration-white/30 underline-offset-2 hover:decoration-white transition-colors">{item.value}</a>
-          ) : (
-            <span class="text-[16px] font-bold text-white">{item.value}</span>
-          )}
+      <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
+        <div class="scroll-animate opacity-0 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0 md:divide-x md:divide-white/20">
+          {contactItems.map(item => (
+            <div class="flex flex-col gap-2 md:px-8 first:pl-0 last:pr-0">
+              <span class="text-[11px] font-bold text-white/60 uppercase tracking-[0.12em]">{item.label}</span>
+              {item.href ? (
+                <a href={item.href} class="text-[16px] font-bold text-white underline decoration-white/30 underline-offset-2 hover:decoration-white transition-colors">{item.value}</a>
+              ) : (
+                <span class="text-[16px] font-bold text-white/70">{item.value}</span>
+              )}
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
-  </div>
-</section>
+      </div>
+    </section>
 
   </main>
 </Layout>
 
 <script>
-  // low-end detection is already handled in Layout.astro — no duplicate needed here
-
   document.addEventListener('DOMContentLoaded', () => {
     const isLowEnd = document.documentElement.classList.contains('low-end');
 
@@ -270,7 +258,6 @@ const trustBadges = [
 </script>
 
 <style>
-  /* ── Animations ───────────────────────────────────────────────────── */
   @keyframes softFadeUp {
     from { opacity: 0; transform: translateY(18px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -285,7 +272,6 @@ const trustBadges = [
     animation: spin 0.8s linear infinite;
   }
 
-  /* ── Field component styles ───────────────────────────────────────── */
   .field-label {
     font-size: 13px;
     font-weight: 700;
@@ -317,7 +303,6 @@ const trustBadges = [
     background-color: rgb(254 242 242) !important;
   }
 
-  /* ── Reduced motion ─────────────────────────────────────────────── */
   @media (prefers-reduced-motion: reduce) {
     .animate-fade-in-up, .scroll-animate {
       animation: none !important;
@@ -328,7 +313,6 @@ const trustBadges = [
     .animate-pulse, .animate-spin { animation: none !important; }
   }
 
-  /* ── Low-end device overrides ────────────────────────────────────── */
   :global(.low-end) .animate-fade-in-up,
   :global(.low-end) .scroll-animate,
   :global(.low-end) .opacity-0 {
