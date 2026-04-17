@@ -33,10 +33,10 @@ const testimonials = [
 ];
 
 const pairs = [
-  { label: "Sklep",        before: "/sklep-pred.webp",  after: "/sklep-po.webp"  },
-  { label: "Chodba",       before: "/chodba-pred.webp", after: "/chodba-po.webp" },
-  { label: "Vstup do domu",before: "/vstup-pred.webp",  after: "/vstup-po.webp"  },
-  { label: "Výtah",        before: "/vytah-pred.webp",  after: "/vytah-po.webp"  },
+  { label: "Sklep",         before: "/sklep-pred.webp",  after: "/sklep-po.webp"  },
+  { label: "Chodba",        before: "/chodba-pred.webp", after: "/chodba-po.webp" },
+  { label: "Vstup do domu", before: "/vstup-pred.webp",  after: "/vstup-po.webp"  },
+  { label: "Výtah",         before: "/vytah-pred.webp",  after: "/vytah-po.webp"  },
 ];
 
 const allImages = pairs.flatMap(p => [
@@ -46,45 +46,46 @@ const allImages = pairs.flatMap(p => [
 ---
 
 <Layout
-  title="Reference | PrimeClean"
-  description="Podívejte se na skutečné výsledky naší práce. Fotografie před a po úklidu a recenze spokojených klientů PrimeClean Brno."
+  title="Reference a fotky před/po úklidu Brno | PrimeClean"
+  description="Podívejte se na skutečné výsledky úklidu PrimeClean Brno. Fotografie před a po úklidu kanceláří, SVJ a Airbnb. Recenze spokojených klientů — hodnocení 5,0 na Google."
 >
   <main class="bg-white selection:bg-[#81b344]/30 selection:text-zinc-900">
 
     <!-- HERO -->
-    <section class="relative pt-28 pb-20 md:pt-36 md:pb-28 lg:pt-44 lg:pb-36 overflow-hidden bg-zinc-50">
+    <section class="relative pt-24 pb-16 md:pt-32 md:pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-zinc-50">
       <div class="hidden md:block pointer-events-none absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full bg-[#81b344]/5 blur-[80px]"></div>
       <div class="hidden md:block pointer-events-none absolute -bottom-20 -left-20 w-[400px] h-[400px] rounded-full bg-[#81b344]/4 blur-[60px]"></div>
+
       <div class="relative z-10 max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12 text-center">
 
-        <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-white border border-zinc-200 shadow-sm mb-6 md:mb-8 opacity-0 animate-fade-in-up" style="animation-delay:0ms">
+        <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-white border border-zinc-200 shadow-sm mb-5 md:mb-7 opacity-0 animate-fade-in-up" style="animation-delay:0ms">
           <span class="w-1.5 h-1.5 rounded-full bg-[#81b344] flex-shrink-0"></span>
           <span class="text-[11px] sm:text-xs font-bold text-zinc-600 tracking-[0.15em] uppercase">Výsledky naší práce</span>
         </div>
 
-        <h1 class="text-[2.75rem] sm:text-[3.75rem] md:text-6xl lg:text-[6rem] font-extrabold text-zinc-950 tracking-tighter leading-[1.05] md:leading-[0.95] mb-6 opacity-0 animate-fade-in-up" style="animation-delay:150ms">
+        <h1 class="fluid-h1 font-extrabold text-zinc-950 tracking-tighter leading-[1.05] mb-5 opacity-0 animate-fade-in-up" style="animation-delay:150ms">
           Rozdíl vidíte<br class="hidden sm:block" />
           <span class="text-[#6a9438]">na první pohled.</span>
         </h1>
 
-        <p class="text-base sm:text-lg md:text-[19px] lg:text-[21px] text-zinc-600 max-w-xl lg:max-w-2xl mx-auto leading-relaxed font-medium mb-10 opacity-0 animate-fade-in-up" style="animation-delay:300ms">
+        <p class="text-[15px] sm:text-[16px] md:text-[17px] text-zinc-600 max-w-xl lg:max-w-2xl mx-auto leading-relaxed font-medium mb-8 opacity-0 animate-fade-in-up" style="animation-delay:300ms">
           Nenechte se přesvědčovat slovy. Prohlédněte si fotografie přímo z našich zakázek a přečtěte si, co o nás říkají klienti.
         </p>
 
-        <div class="opacity-0 animate-fade-in-up flex items-center justify-center gap-2 mb-10" style="animation-delay:450ms">
+        <div class="opacity-0 animate-fade-in-up flex items-center justify-center gap-2 mb-8" style="animation-delay:450ms">
           <div class="flex gap-1" aria-label="Hodnocení 5 z 5">
             {[1,2,3,4,5].map(() => (
-              <i data-lucide="star" class="w-5 h-5 text-amber-400 fill-amber-400" aria-hidden="true"></i>
+              <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400" aria-hidden="true"></i>
             ))}
           </div>
-          <span class="text-[16px] font-bold text-zinc-900">5,0</span>
-          <span class="text-zinc-400 text-[14px] font-medium">· průměrné hodnocení na Google</span>
+          <span class="text-[15px] font-bold text-zinc-900">5,0</span>
+          <span class="text-zinc-400 text-[13px] font-medium">· průměrné hodnocení na Google</span>
         </div>
 
         <div class="opacity-0 animate-fade-in-up" style="animation-delay:600ms">
           <a
             href="#fotodokumentace"
-            class="inline-flex items-center gap-2 px-8 py-3.5 text-[15px] font-bold text-white bg-[#81b344] rounded-xl hover:bg-[#6a9438] transition-all duration-300 hover:-translate-y-0.5 shadow-lg shadow-[#81b344]/25"
+            class="inline-flex items-center gap-2 px-7 py-3.5 text-[15px] font-bold text-white bg-[#81b344] rounded-xl hover:bg-[#6a9438] transition-all duration-300 hover:-translate-y-0.5 shadow-lg shadow-[#81b344]/25"
           >
             Prohlédnout fotografie
             <i data-lucide="arrow-down" class="w-4 h-4" aria-hidden="true"></i>
@@ -95,25 +96,25 @@ const allImages = pairs.flatMap(p => [
     </section>
 
     <!-- PŘED & PO GRID -->
-    <section id="fotodokumentace" class="py-20 md:py-32 bg-white scroll-mt-24">
-      <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
+    <section id="fotodokumentace" class="py-16 md:py-20 lg:py-28 bg-white scroll-mt-24">
+      <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12">
 
-        <div class="scroll-animate opacity-0 text-center max-w-3xl mx-auto mb-16">
-          <p class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-4">Fotodokumentace</p>
-          <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-4">
+        <div class="scroll-animate opacity-0 text-center max-w-2xl mx-auto mb-12">
+          <p class="text-[12px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-3">Fotodokumentace</p>
+          <h2 class="fluid-h2 font-extrabold text-zinc-950 tracking-tighter leading-[1.15] mb-3">
             Před a <span class="text-[#6a9438]">po úklidu.</span>
           </h2>
-          <p class="text-[16px] md:text-[18px] text-zinc-500 font-medium leading-relaxed">
+          <p class="text-[14px] md:text-[15px] text-zinc-500 font-medium leading-relaxed">
             Fotografie přímo z našich zakázek — žádné retušování, žádné triky.
           </p>
         </div>
 
-        <div class="flex flex-col gap-10">
+        <div class="flex flex-col gap-8">
           {[pairs.slice(0, 2), pairs.slice(2, 4)].map((row, rowIdx) => (
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
               {row.map((pair, i) => (
                 <div
-                  class="scroll-animate opacity-0 flex flex-col gap-3"
+                  class="scroll-animate opacity-0 flex flex-col gap-2.5"
                   style={`animation-delay:${(rowIdx * 2 + i) * 100}ms`}
                 >
                   <div class="grid grid-cols-2 gap-2">
@@ -126,15 +127,15 @@ const allImages = pairs.flatMap(p => [
                     >
                       <img
                         src={pair.before}
-                        alt={`Před úklidem — ${pair.label}`}
+                        alt={`Před úklidem — ${pair.label} | PrimeClean Brno`}
                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                         loading="lazy"
                         decoding="async"
                       />
                       <span class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-black/55 text-white text-[10px] font-bold tracking-[0.08em] uppercase backdrop-blur-sm pointer-events-none">Před</span>
                       <div class="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300 flex items-center justify-center pointer-events-none">
-                        <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-10 h-10 rounded-full bg-white/90 flex items-center justify-center shadow-md">
-                          <i data-lucide="zoom-in" class="w-5 h-5 text-zinc-700" aria-hidden="true"></i>
+                        <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-9 h-9 rounded-full bg-white/90 flex items-center justify-center shadow-md">
+                          <i data-lucide="zoom-in" class="w-4 h-4 text-zinc-700" aria-hidden="true"></i>
                         </div>
                       </div>
                     </button>
@@ -147,21 +148,21 @@ const allImages = pairs.flatMap(p => [
                     >
                       <img
                         src={pair.after}
-                        alt={`Po úklidu — ${pair.label}`}
+                        alt={`Po úklidu — ${pair.label} | PrimeClean Brno`}
                         class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                         loading="lazy"
                         decoding="async"
                       />
                       <span class="absolute top-2 right-2 px-2 py-0.5 rounded-full bg-[#81b344]/90 text-white text-[10px] font-bold tracking-[0.08em] uppercase backdrop-blur-sm pointer-events-none">Po</span>
                       <div class="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300 flex items-center justify-center pointer-events-none">
-                        <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-10 h-10 rounded-full bg-white/90 flex items-center justify-center shadow-md">
-                          <i data-lucide="zoom-in" class="w-5 h-5 text-zinc-700" aria-hidden="true"></i>
+                        <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 w-9 h-9 rounded-full bg-white/90 flex items-center justify-center shadow-md">
+                          <i data-lucide="zoom-in" class="w-4 h-4 text-zinc-700" aria-hidden="true"></i>
                         </div>
                       </div>
                     </button>
                   </div>
                   <div class="flex items-center px-1">
-                    <span class="text-[14px] font-bold text-zinc-900">{pair.label}</span>
+                    <span class="text-[13px] font-bold text-zinc-900">{pair.label}</span>
                   </div>
                 </div>
               ))}
@@ -182,59 +183,57 @@ const allImages = pairs.flatMap(p => [
     >
       <button
         id="lightbox-close"
-        class="absolute top-4 right-4 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors duration-200 z-10"
+        class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors duration-200 z-10"
         aria-label="Zavřít náhled"
       >
-        <i data-lucide="x" class="w-5 h-5 text-white" aria-hidden="true"></i>
+        <i data-lucide="x" class="w-4 h-4 text-white" aria-hidden="true"></i>
       </button>
       <button
         id="lightbox-prev"
-        class="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors duration-200 z-10"
+        class="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors duration-200 z-10"
         aria-label="Předchozí fotografie"
       >
-        <i data-lucide="chevron-left" class="w-6 h-6 text-white" aria-hidden="true"></i>
+        <i data-lucide="chevron-left" class="w-5 h-5 text-white" aria-hidden="true"></i>
       </button>
       <button
         id="lightbox-next"
-        class="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors duration-200 z-10"
+        class="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors duration-200 z-10"
         aria-label="Další fotografie"
       >
-        <i data-lucide="chevron-right" class="w-6 h-6 text-white" aria-hidden="true"></i>
+        <i data-lucide="chevron-right" class="w-5 h-5 text-white" aria-hidden="true"></i>
       </button>
-      <div class="relative max-w-2xl w-full flex flex-col items-center gap-4">
+      <div class="relative max-w-2xl w-full flex flex-col items-center gap-3">
         <img id="lightbox-img" src="" alt="" class="max-h-[85vh] w-auto max-w-full rounded-2xl shadow-2xl object-contain" />
         <p id="lightbox-label" class="text-white/70 text-[13px] font-medium tracking-wide"></p>
       </div>
     </div>
 
     <!-- RECENZE -->
-    <section class="py-20 md:py-32 bg-zinc-950 relative overflow-hidden" aria-labelledby="reviews-heading">
-      <div class="review-blob review-blob--tl" aria-hidden="true"></div>
-      <div class="review-blob review-blob--br" aria-hidden="true"></div>
+    <section class="py-16 md:py-20 lg:py-24 bg-zinc-950 relative overflow-hidden" aria-labelledby="reviews-heading">
+      <div class="pointer-events-none absolute top-0 left-1/4 w-[500px] h-[300px] rounded-full bg-[#81b344]/8 blur-[80px]" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute bottom-0 right-1/4 w-[400px] h-[250px] rounded-full bg-[#81b344]/6 blur-[70px]" aria-hidden="true"></div>
 
-      <div class="max-w-[1400px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
+      <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
 
-        <!-- Nadpis -->
-        <div class="scroll-animate opacity-0 text-center max-w-2xl mx-auto mb-10">
-          <p class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-4">Co říkají klienti</p>
-          <h2 id="reviews-heading" class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tighter leading-[1.1] mb-4">
+        <div class="scroll-animate opacity-0 text-center max-w-2xl mx-auto mb-9">
+          <p class="text-[12px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-3">Co říkají klienti</p>
+          <h2 id="reviews-heading" class="fluid-h2 font-extrabold text-white tracking-tighter leading-[1.15] mb-3">
             Zkušenosti <span class="text-[#81b344]">našich klientů.</span>
           </h2>
         </div>
 
         <!-- Google badge -->
-        <div class="scroll-animate opacity-0 max-w-lg mx-auto mb-14" style="animation-delay:100ms">
+        <div class="scroll-animate opacity-0 max-w-lg mx-auto mb-10" style="animation-delay:100ms">
           <a
             href="https://www.google.com/search?q=PrimeClean+Brno+recenze"
             target="_blank"
             rel="noopener noreferrer"
-            class="group flex items-center justify-between gap-4 bg-zinc-900 border border-zinc-800 hover:border-[#81b344]/40 rounded-2xl px-6 py-4 transition-all duration-300 hover:bg-zinc-800/60"
+            class="group flex items-center justify-between gap-4 bg-zinc-900 border border-zinc-800 hover:border-[#81b344]/40 rounded-2xl px-5 py-4 transition-all duration-300 hover:bg-zinc-800/60"
             aria-label="Zobrazit recenze PrimeClean na Google (otevře nové okno)"
           >
             <div class="flex items-center gap-4">
-              <!-- Google G SVG -->
-              <div class="flex-shrink-0 w-10 h-10 rounded-xl bg-zinc-800 border border-zinc-700 flex items-center justify-center group-hover:border-zinc-600 transition-colors duration-200">
-                <svg width="20" height="20" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+              <div class="flex-shrink-0 w-9 h-9 rounded-xl bg-zinc-800 border border-zinc-700 flex items-center justify-center group-hover:border-zinc-600 transition-colors duration-200">
+                <svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
                   <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.08 17.74 9.5 24 9.5z"/>
                   <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
                   <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
@@ -245,15 +244,15 @@ const allImages = pairs.flatMap(p => [
                 <div class="flex items-center gap-2 mb-0.5">
                   <div class="flex gap-0.5" aria-label="Hodnocení 5 z 5 hvězdiček">
                     {[1,2,3,4,5].map(() => (
-                      <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="#FBBF24" aria-hidden="true">
+                      <svg class="w-3 h-3" viewBox="0 0 20 20" fill="#FBBF24" aria-hidden="true">
                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
                       </svg>
                     ))}
                   </div>
-                  <span class="text-[15px] font-extrabold text-white leading-none">5,0</span>
-                  <span class="text-zinc-500 text-[12px] font-medium">· 5+ recenzí</span>
+                  <span class="text-[14px] font-extrabold text-white leading-none">5,0</span>
+                  <span class="text-zinc-500 text-[11px] font-medium">· 5+ recenzí</span>
                 </div>
-                <p class="text-[12px] text-zinc-500 font-medium">Přečíst recenze na Google</p>
+                <p class="text-[11px] text-zinc-500 font-medium">Přečíst recenze na Google</p>
               </div>
             </div>
             <i data-lucide="arrow-up-right" class="w-4 h-4 text-zinc-600 group-hover:text-[#81b344] transition-colors duration-200 flex-shrink-0" aria-hidden="true"></i>
@@ -271,29 +270,29 @@ const allImages = pairs.flatMap(p => [
           >
             {testimonials.map(t => (
               <div
-                class="flex-shrink-0 flex flex-col bg-zinc-900 rounded-[1.5rem] p-7 border border-zinc-800 relative overflow-hidden"
+                class="flex-shrink-0 flex flex-col bg-zinc-900 rounded-[1.5rem] p-6 border border-zinc-800 relative overflow-hidden"
                 style="scroll-snap-align:center;width:82vw;max-width:340px;"
               >
-                <i data-lucide="quote" class="absolute -top-1 -right-1 w-8 h-8 text-[#81b344] opacity-25 fill-[#81b344]" aria-hidden="true"></i>
-                <div class="flex gap-1 mb-5" aria-label={`Hodnocení: ${t.rating} z 5`}>
+                <i data-lucide="quote" class="absolute -top-1 -right-1 w-7 h-7 text-[#81b344] opacity-25 fill-[#81b344]" aria-hidden="true"></i>
+                <div class="flex gap-1 mb-4" aria-label={`Hodnocení: ${t.rating} z 5`}>
                   {Array.from({length: t.rating}).map(() => (
-                    <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400" aria-hidden="true"></i>
+                    <i data-lucide="star" class="w-3.5 h-3.5 text-amber-400 fill-amber-400" aria-hidden="true"></i>
                   ))}
                 </div>
-                <p class="text-[14.5px] text-zinc-400 font-medium leading-relaxed mb-6 flex-grow">"{t.text}"</p>
-                <div class="flex items-center gap-3 mt-auto pt-5 border-t border-zinc-800">
-                  <div class="flex-shrink-0 w-10 h-10 rounded-full bg-[#81b344]/15 flex items-center justify-center" aria-hidden="true">
-                    <span class="text-[13px] font-extrabold text-[#81b344]">{t.initials}</span>
+                <p class="text-[13px] text-zinc-400 font-medium leading-relaxed mb-5 flex-grow">"{t.text}"</p>
+                <div class="flex items-center gap-3 mt-auto pt-4 border-t border-zinc-800">
+                  <div class="flex-shrink-0 w-9 h-9 rounded-full bg-[#81b344]/15 flex items-center justify-center" aria-hidden="true">
+                    <span class="text-[12px] font-extrabold text-[#81b344]">{t.initials}</span>
                   </div>
                   <div>
-                    <p class="text-[13.5px] font-bold text-white leading-tight">{t.name}</p>
-                    <p class="text-[12px] text-zinc-500 font-medium">{t.role}</p>
+                    <p class="text-[13px] font-bold text-white leading-tight">{t.name}</p>
+                    <p class="text-[11px] text-zinc-500 font-medium">{t.role}</p>
                   </div>
                 </div>
               </div>
             ))}
           </div>
-          <div class="flex justify-center items-center gap-2 mt-6" id="ref-dots">
+          <div class="flex justify-center items-center gap-2 mt-5" id="ref-dots">
             {testimonials.map((_, i) => (
               <button
                 class="ref-dot rounded-full transition-all duration-300"
@@ -307,26 +306,26 @@ const allImages = pairs.flatMap(p => [
         </div>
 
         <!-- Desktop grid -->
-        <div class="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {testimonials.map((t, i) => (
             <div
-              class="scroll-animate opacity-0 flex flex-col bg-zinc-900 rounded-[1.5rem] p-6 border border-zinc-800 hover:border-[#81b344]/30 hover:shadow-md transition-[border-color,box-shadow] duration-300 relative overflow-hidden"
+              class="scroll-animate opacity-0 flex flex-col bg-zinc-900 rounded-[1.5rem] p-5 border border-zinc-800 hover:border-[#81b344]/30 hover:shadow-md transition-[border-color,box-shadow] duration-300 relative overflow-hidden"
               style={`animation-delay:${(i + 2) * 100}ms`}
             >
-              <i data-lucide="quote" class="absolute -top-1 -right-1 w-8 h-8 text-[#81b344] opacity-25 fill-[#81b344]" aria-hidden="true"></i>
-              <div class="flex gap-1 mb-5" aria-label={`Hodnocení: ${t.rating} z 5`}>
+              <i data-lucide="quote" class="absolute -top-1 -right-1 w-7 h-7 text-[#81b344] opacity-25 fill-[#81b344]" aria-hidden="true"></i>
+              <div class="flex gap-1 mb-4" aria-label={`Hodnocení: ${t.rating} z 5`}>
                 {Array.from({length: t.rating}).map(() => (
-                  <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400" aria-hidden="true"></i>
+                  <i data-lucide="star" class="w-3.5 h-3.5 text-amber-400 fill-amber-400" aria-hidden="true"></i>
                 ))}
               </div>
-              <p class="text-[13.5px] text-zinc-400 font-medium leading-relaxed mb-6 flex-grow">"{t.text}"</p>
-              <div class="flex items-center gap-3 mt-auto pt-5 border-t border-zinc-800">
-                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-[#81b344]/15 flex items-center justify-center" aria-hidden="true">
-                  <span class="text-[13px] font-extrabold text-[#81b344]">{t.initials}</span>
+              <p class="text-[13px] text-zinc-400 font-medium leading-relaxed mb-5 flex-grow">"{t.text}"</p>
+              <div class="flex items-center gap-3 mt-auto pt-4 border-t border-zinc-800">
+                <div class="flex-shrink-0 w-9 h-9 rounded-full bg-[#81b344]/15 flex items-center justify-center" aria-hidden="true">
+                  <span class="text-[12px] font-extrabold text-[#81b344]">{t.initials}</span>
                 </div>
                 <div>
-                  <p class="text-[13.5px] font-bold text-white leading-tight">{t.name}</p>
-                  <p class="text-[12px] text-zinc-500 font-medium">{t.role}</p>
+                  <p class="text-[13px] font-bold text-white leading-tight">{t.name}</p>
+                  <p class="text-[11px] text-zinc-500 font-medium">{t.role}</p>
                 </div>
               </div>
             </div>
@@ -337,22 +336,22 @@ const allImages = pairs.flatMap(p => [
     </section>
 
     <!-- CTA -->
-    <section class="relative py-20 md:py-28 bg-zinc-50 overflow-hidden">
+    <section class="relative py-16 md:py-20 lg:py-24 bg-zinc-50 overflow-hidden">
       <div class="hidden md:block pointer-events-none absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full bg-[#81b344]/5 blur-[80px]"></div>
       <div class="hidden md:block pointer-events-none absolute -bottom-20 -left-20 w-[400px] h-[400px] rounded-full bg-[#81b344]/5 blur-[60px]"></div>
       <div class="relative z-10 max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12 text-center">
-        <p class="scroll-animate opacity-0 text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-4">Přesvědčeni?</p>
-        <h2 class="scroll-animate opacity-0 text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.08] mb-5" style="animation-delay:100ms">
+        <p class="scroll-animate opacity-0 text-[12px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-3">Přesvědčeni?</p>
+        <h2 class="scroll-animate opacity-0 fluid-h2 font-extrabold text-zinc-950 tracking-tighter leading-[1.15] mb-4" style="animation-delay:100ms">
           Stejné výsledky<br />
           <span class="text-[#6a9438]">i u vás.</span>
         </h2>
-        <p class="scroll-animate opacity-0 text-[16px] md:text-[18px] text-zinc-500 font-medium leading-relaxed mb-10 max-w-xl mx-auto" style="animation-delay:200ms">
+        <p class="scroll-animate opacity-0 text-[14px] md:text-[15px] text-zinc-500 font-medium leading-relaxed mb-9 max-w-xl mx-auto" style="animation-delay:200ms">
           Napište nám a připravíme nezávaznou nabídku přímo pro váš objekt. Bez překvapení, bez DPH navíc.
         </p>
         <div class="scroll-animate opacity-0" style="animation-delay:300ms">
-          <a href="/kontakt" class="inline-flex items-center justify-center gap-2 px-10 py-4 text-[16px] font-bold text-white bg-[#81b344] rounded-xl hover:bg-[#6a9438] transition-all duration-300 hover:-translate-y-1 shadow-lg shadow-[#81b344]/20">
+          <a href="/kontakt" class="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-[15px] font-bold text-white bg-[#81b344] rounded-xl hover:bg-[#6a9438] transition-all duration-300 hover:-translate-y-1 shadow-lg shadow-[#81b344]/20">
             Chci nezávaznou nabídku
-            <i data-lucide="arrow-right" class="w-5 h-5" aria-hidden="true"></i>
+            <i data-lucide="arrow-right" class="w-4 h-4" aria-hidden="true"></i>
           </a>
         </div>
       </div>
@@ -417,12 +416,12 @@ const allImages = pairs.flatMap(p => [
 
   /* ── Lightbox ── */
   function initLightbox() {
-    const lightbox = document.getElementById('lightbox');
-    const img      = document.getElementById('lightbox-img');
-    const label    = document.getElementById('lightbox-label');
-    const closeBtn = document.getElementById('lightbox-close');
-    const prevBtn  = document.getElementById('lightbox-prev');
-    const nextBtn  = document.getElementById('lightbox-next');
+    const lightbox  = document.getElementById('lightbox');
+    const img       = document.getElementById('lightbox-img');
+    const label     = document.getElementById('lightbox-label');
+    const closeBtn  = document.getElementById('lightbox-close');
+    const prevBtn   = document.getElementById('lightbox-prev');
+    const nextBtn   = document.getElementById('lightbox-next');
     const focusable = [closeBtn, prevBtn, nextBtn];
 
     let currentIndex = 0;
@@ -469,9 +468,9 @@ const allImages = pairs.flatMap(p => [
     lightbox.addEventListener('click', e => { if (e.target === lightbox) close(); });
 
     lightbox.addEventListener('keydown', e => {
-      if (e.key === 'Escape')      { close(); return; }
-      if (e.key === 'ArrowLeft')   { show(currentIndex - 1); return; }
-      if (e.key === 'ArrowRight')  { show(currentIndex + 1); return; }
+      if (e.key === 'Escape')     { close(); return; }
+      if (e.key === 'ArrowLeft')  { show(currentIndex - 1); return; }
+      if (e.key === 'ArrowRight') { show(currentIndex + 1); return; }
       if (e.key === 'Tab') {
         e.preventDefault();
         const current = focusable.indexOf(document.activeElement);
@@ -491,6 +490,14 @@ const allImages = pairs.flatMap(p => [
 </script>
 
 <style>
+  /*
+    FLUID TYPOGRAPHY — stejný systém jako ostatní stránky
+    fluid-h1: clamp(2rem, 4.5vw, 4.5rem)
+    fluid-h2: clamp(1.625rem, 3vw, 2.75rem)
+  */
+  .fluid-h1 { font-size: clamp(2rem,    4.5vw, 4.5rem); }
+  .fluid-h2 { font-size: clamp(1.625rem, 3vw,  2.75rem); }
+
   @keyframes softFadeUp {
     from { opacity: 0; transform: translateY(18px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -501,26 +508,9 @@ const allImages = pairs.flatMap(p => [
 
   #ref-testimonials-track::-webkit-scrollbar { display: none; }
 
-  .review-blob {
-    pointer-events: none;
-    position: absolute;
-    border-radius: 9999px;
-  }
-  .review-blob--tl {
-    top: 0; left: 25%;
-    width: 500px; height: 300px;
-    background: rgb(129 179 68 / 0.08);
-    filter: blur(80px);
-  }
-  .review-blob--br {
-    bottom: 0; right: 25%;
-    width: 400px; height: 250px;
-    background: rgb(129 179 68 / 0.06);
-    filter: blur(70px);
-  }
-
   @media (prefers-reduced-motion: reduce) {
-    .animate-fade-in-up, .scroll-animate {
+    .animate-fade-in-up,
+    .scroll-animate {
       animation: none !important;
       opacity: 1 !important;
       transform: none !important;

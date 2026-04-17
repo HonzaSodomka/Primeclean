@@ -14,15 +14,16 @@ const kancelare = {
   sub: 'Většina klientů k nám přichází proto, že předchozí firma nedodržovala termíny nebo měnila pracovníky každý měsíc. My nastavujeme pravidelný harmonogram, stálý tým a vše sledujete ve webové aplikaci — bez telefonování a doptávání.',
   cta: 'Nacenit úklid kanceláře',
   image: '/sluzba-kancelare.webp',
+  imageAlt: 'Profesionální úklid kanceláří a firem v Brně — PrimeClean',
   imageWidth: 800, imageHeight: 600,
   services: [
-    { icon: 'footprints',  title: 'Kompletní péče o podlahy',  desc: 'Vysávání koberců a vytírání tvrdých podlah (laminát, dlažba, vinyl) profesionální neutralizační chemií.' },
-    { icon: 'monitor',     title: 'Prach a povrchy',           desc: 'Otření prachu z pracovních stolů (volné plochy), parapetů, polic a skříní do výšky 1,7 m.' },
-    { icon: 'keyboard',    title: 'IT technika',               desc: 'Šetrné očištění monitorů, klávesnic a tiskáren speciální antistatickou utěrkou.' },
-    { icon: 'droplets',    title: 'Hygienické zázemí',         desc: 'Hloubková dezinfekce toalet, umyvadel, zrcadel a obkladů. Leštění vodovodních baterií.' },
-    { icon: 'coffee',      title: 'Kuchyňka a denní místnost', desc: 'Otření kuchyňské linky, dřezu a vnějších ploch spotřebičů (lednice, mikrovlnka, kávovar).' },
-    { icon: 'trash-2',     title: 'Odpadové hospodářství',     desc: 'Vynesení všech košů, výměna sáčků a odvoz tříděného odpadu do domovních kontejnerů.' },
-    { icon: 'door-open',   title: 'Reprezentativní vstup',     desc: 'Čištění skleněných výplní vnitřních dveří, leštění klik a otření vypínačů — nejčastější zdroj bakterií.' },
+    { icon: 'footprints',  title: 'Kompletní péče o podlahy',      desc: 'Vysávání koberců a vytírání tvrdých podlah (laminát, dlažba, vinyl) profesionální neutralizační chemií.' },
+    { icon: 'monitor',     title: 'Prach a povrchy',               desc: 'Otření prachu z pracovních stolů (volné plochy), parapetů, polic a skříní do výšky 1,7 m.' },
+    { icon: 'keyboard',    title: 'IT technika',                   desc: 'Šetrné očištění monitorů, klávesnic a tiskáren speciální antistatickou utěrkou.' },
+    { icon: 'droplets',    title: 'Hygienické zázemí',             desc: 'Hloubková dezinfekce toalet, umyvadel, zrcadel a obkladů. Leštění vodovodních baterií.' },
+    { icon: 'coffee',      title: 'Kuchyňka a denní místnost',     desc: 'Otření kuchyňské linky, dřezu a vnějších ploch spotřebičů (lednice, mikrovlnka, kávovar).' },
+    { icon: 'trash-2',     title: 'Odpadové hospodářství',         desc: 'Vynesení všech košů, výměna sáčků a odvoz tříděného odpadu do domovních kontejnerů.' },
+    { icon: 'door-open',   title: 'Reprezentativní vstup',         desc: 'Čištění skleněných výplní vnitřních dveří, leštění klik a otření vypínačů — nejčastější zdroj bakterií.' },
     { icon: 'camera',      title: 'Fotoreport ve webové aplikaci', desc: 'Po každém úklidu nahrajeme fotodokumentaci přímo do webové aplikace PrimeClean — vidíte výsledky okamžitě v prohlížeči.' },
   ],
   material: [
@@ -46,6 +47,7 @@ const svj = {
   sub: 'Správci a výbory SVJ nejčastěji řeší reklamace od obyvatel nebo zoufale shání náhradu za brigádníky. My dodáváme stálý tým se stálým harmonogramem — a každý úklid je doložen fotodokumentací ve webové aplikaci.',
   cta: 'nabídku pro SVJ',
   image: '/sluzba-svj.webp',
+  imageAlt: 'Úklid společných prostor SVJ a bytových domů v Brně — PrimeClean',
   imageWidth: 800, imageHeight: 600,
   services: [
     { icon: 'calendar-check', title: 'Pravidelný servis',       desc: 'Zametání a vytírání chodeb, sklepů, čištění zábradlí, madel, parapetů, schránek a vypínačů.' },
@@ -74,6 +76,7 @@ const airbnb = {
   sub: 'Hostitelé nejvíce stresují z toho, že apartmán nebude včas připravený nebo že nemají přehled o jeho stavu, když jsou mimo město. My řešíme obě věci najednou.',
   cta: 'nabídku pro Airbnb',
   image: '/sluzba-airbnb.webp',
+  imageAlt: 'Úklid Airbnb apartmánů a krátkodobých pronájmů v Brně — PrimeClean',
   imageWidth: 800, imageHeight: 600,
   standard: [
     { icon: 'bed-double',   title: 'Hotelový styling',     desc: 'Profesionální stlaní postelí, načechrání polštářů a příprava ručníků pro hosty.' },
@@ -107,25 +110,29 @@ const airbnb = {
 };
 ---
 
-<Layout title="Naše služby | PrimeClean">
+<Layout
+  title="Úklidové služby Brno — Kanceláře, SVJ, Airbnb | PrimeClean"
+  description="Profesionální úklidové služby v Brně a okolí pro kanceláře, SVJ a Airbnb apartmány. Stálý tým, fotoreport po každém úklidu, pojištění 5 mil. Kč."
+>
   <main class="bg-white selection:bg-[#81b344]/30 selection:text-zinc-900">
 
     <!-- ═══════════ HERO ═══════════ -->
-    <section class="relative pt-28 pb-20 md:pt-36 md:pb-28 lg:pt-44 lg:pb-36 bg-zinc-50 overflow-hidden">
+    <section class="relative pt-24 pb-16 md:pt-32 md:pb-20 lg:pt-40 lg:pb-28 bg-zinc-50 overflow-hidden">
       <div class="hidden md:block pointer-events-none absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full bg-[#81b344]/5 blur-[80px]"></div>
       <div class="hidden md:block pointer-events-none absolute -bottom-20 -left-20 w-[400px] h-[400px] rounded-full bg-[#81b344]/5 blur-[60px]"></div>
 
       <div class="relative z-10 max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12 text-center">
-        <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-white border border-zinc-200 shadow-sm mb-6 md:mb-8 opacity-0 animate-fade-in-up" style="animation-delay:0ms">
+        <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-white border border-zinc-200 shadow-sm mb-5 md:mb-7 opacity-0 animate-fade-in-up" style="animation-delay:0ms">
           <span class="w-1.5 h-1.5 rounded-full bg-[#81b344] flex-shrink-0"></span>
           <span class="text-xs font-bold text-zinc-600 tracking-[0.15em] uppercase">Kanceláře · SVJ · Airbnb</span>
         </div>
 
-        <h1 class="text-[2.75rem] sm:text-[3.75rem] md:text-6xl lg:text-[6rem] font-extrabold text-zinc-950 tracking-tighter leading-[1.05] md:leading-[0.95] mb-6 opacity-0 animate-fade-in-up" style="animation-delay:150ms">
+        <!-- H1: fluid, jediný na stránce -->
+        <h1 class="fluid-h1 font-extrabold text-zinc-950 tracking-tighter leading-[1.05] mb-5 md:mb-6 opacity-0 animate-fade-in-up" style="animation-delay:150ms">
           Tři služby.<br class="hidden sm:block" /><span class="text-[#6a9438]"> Jeden standard.</span>
         </h1>
 
-        <p class="text-base sm:text-lg md:text-[19px] lg:text-[21px] text-zinc-600 max-w-xl mx-auto leading-relaxed font-medium mb-10 md:mb-14 opacity-0 animate-fade-in-up" style="animation-delay:300ms">
+        <p class="text-[15px] sm:text-[16px] md:text-[17px] text-zinc-600 max-w-xl mx-auto leading-relaxed font-medium mb-9 opacity-0 animate-fade-in-up" style="animation-delay:300ms">
           Specializujeme se na tři oblasti, kde máme vyladěné procesy a prověřené týmy. Vyberte si tu vaši.
         </p>
 
@@ -135,7 +142,7 @@ const airbnb = {
             {tabs.map((tab, i) => (
               <button
                 data-tab={tab.id}
-                class={`tab-btn flex items-center gap-2.5 px-6 py-3.5 rounded-xl text-sm font-bold transition-all duration-200 whitespace-nowrap ${
+                class={`tab-btn flex items-center gap-2.5 px-5 py-3 rounded-xl text-sm font-bold transition-all duration-200 whitespace-nowrap ${
                   i === 0
                     ? 'bg-[#81b344] text-white shadow-md shadow-[#81b344]/25'
                     : 'text-zinc-500 hover:text-zinc-800 hover:bg-zinc-50'
@@ -151,7 +158,7 @@ const airbnb = {
             {tabs.map((tab, i) => (
               <button
                 data-tab={tab.id}
-                class={`tab-btn flex items-center justify-center gap-2.5 w-full px-5 py-4 rounded-2xl text-[15px] font-bold transition-all duration-200 ${
+                class={`tab-btn flex items-center justify-center gap-2.5 w-full px-5 py-3.5 rounded-2xl text-[15px] font-bold transition-all duration-200 ${
                   i === 0
                     ? 'bg-[#81b344] text-white shadow-md shadow-[#81b344]/25'
                     : 'bg-white border border-zinc-200 text-zinc-600 hover:border-[#81b344]/40 hover:text-zinc-900'
@@ -166,44 +173,44 @@ const airbnb = {
       </div>
     </section>
 
-
     <!-- ══════════════════════════════════════════
          TAB: KANCELÁŘE
     ══════════════════════════════════════════ -->
     <div id="tab-kancelare" class="tab-content">
 
-      <section class="py-20 md:py-28 bg-white">
+      <section class="py-16 md:py-20 lg:py-28 bg-white">
         <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12">
-          <div class="flex flex-col gap-12 lg:gap-20 items-center lg:flex-row">
+          <div class="flex flex-col gap-10 lg:gap-16 items-center lg:flex-row">
             <div class="w-full lg:w-1/2">
-              <div class="scroll-animate opacity-0 mb-5">
+              <div class="scroll-animate opacity-0 mb-4">
                 <span class="inline-block px-3 py-1.5 rounded-md bg-[#81b344]/10">
                   <span class="text-xs font-bold text-[#6a9438] tracking-[0.1em] uppercase">{kancelare.tag}</span>
                 </span>
               </div>
-              <h2 class="scroll-animate opacity-0 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-6 whitespace-pre-line" style="animation-delay:80ms">
+              <!-- H2: fluid, výrazně menší než H1 -->
+              <h2 class="scroll-animate opacity-0 fluid-h2 font-extrabold text-zinc-950 tracking-tighter leading-[1.15] mb-5 whitespace-pre-line" style="animation-delay:80ms">
                 {kancelare.headline}
               </h2>
-              <p class="scroll-animate opacity-0 text-[17px] md:text-[19px] text-zinc-600 font-medium leading-relaxed mb-10" style="animation-delay:160ms">
+              <p class="scroll-animate opacity-0 text-[15px] md:text-[16px] text-zinc-600 font-medium leading-relaxed mb-8" style="animation-delay:160ms">
                 {kancelare.sub}
               </p>
               <div class="scroll-animate opacity-0 flex flex-col sm:flex-row gap-3" style="animation-delay:240ms">
-                <a href="/kontakt" class="inline-flex items-center justify-center gap-2 px-7 py-4 text-[15px] font-bold text-white bg-[#81b344] rounded-xl hover:bg-[#729f3c] hover:-translate-y-1 transition-all duration-300 ease-out shadow-md shadow-[#81b344]/20 whitespace-nowrap">
+                <a href="/kontakt" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-[14px] font-bold text-white bg-[#81b344] rounded-xl hover:bg-[#729f3c] hover:-translate-y-1 transition-all duration-300 ease-out shadow-md shadow-[#81b344]/20 whitespace-nowrap">
                   {kancelare.cta}
                   <i data-lucide="arrow-right" class="w-4 h-4 flex-shrink-0" aria-hidden="true"></i>
                 </a>
-                <a href="#features-kancelare" data-scroll-to="features-kancelare" class="inline-flex items-center justify-center gap-2 px-7 py-4 text-[15px] font-bold text-zinc-700 bg-white border-2 border-zinc-200 rounded-xl hover:border-zinc-300 hover:bg-zinc-50 hover:-translate-y-1 transition-all duration-300 ease-out whitespace-nowrap">
+                <a href="#features-kancelare" data-scroll-to="features-kancelare" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-[14px] font-bold text-zinc-700 bg-white border-2 border-zinc-200 rounded-xl hover:border-zinc-300 hover:bg-zinc-50 hover:-translate-y-1 transition-all duration-300 ease-out whitespace-nowrap">
                   Co zahrnuje služba
                 </a>
               </div>
             </div>
             <div class="scroll-animate opacity-0 w-full lg:w-1/2" style="animation-delay:200ms">
-              <div class="relative aspect-[4/3] rounded-[2rem] overflow-hidden bg-zinc-100 border border-zinc-200/60 shadow-lg group">
-                <img src={kancelare.image} alt={kancelare.tag} width={kancelare.imageWidth} height={kancelare.imageHeight}
+              <div class="relative aspect-[4/3] rounded-[1.75rem] overflow-hidden bg-zinc-100 border border-zinc-200/60 shadow-lg group">
+                <img src={kancelare.image} alt={kancelare.imageAlt} width={kancelare.imageWidth} height={kancelare.imageHeight}
                   class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                   loading="eager" decoding="async" fetchpriority="high" />
                 <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/20 to-transparent pointer-events-none"></div>
-                <div class="absolute bottom-5 left-5 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-sm shadow-sm">
+                <div class="absolute bottom-4 left-4 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-sm shadow-sm">
                   <span class="text-xs font-bold text-zinc-700 tracking-[0.06em] uppercase">{kancelare.tagBadge}</span>
                 </div>
               </div>
@@ -212,29 +219,29 @@ const airbnb = {
         </div>
       </section>
 
-      <section id="features-kancelare" class="py-20 md:py-28 bg-zinc-50">
+      <section id="features-kancelare" class="py-16 md:py-20 lg:py-28 bg-zinc-50">
         <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12">
-          <div class="scroll-animate opacity-0 text-center max-w-3xl mx-auto mb-12">
-            <p class="text-xs font-bold text-[#81b344] tracking-[0.2em] uppercase mb-4">Rozsah služby</p>
-            <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-4">
+          <div class="scroll-animate opacity-0 text-center max-w-2xl mx-auto mb-10">
+            <p class="text-[12px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-3">Rozsah služby</p>
+            <h2 class="fluid-h2 font-extrabold text-zinc-950 tracking-tighter leading-[1.15] mb-3">
               Co zahrnuje <span class="text-[#6a9438]">každá návštěva.</span>
             </h2>
-            <p class="text-base text-zinc-500 font-medium leading-relaxed">
+            <p class="text-[14px] md:text-[15px] text-zinc-500 font-medium leading-relaxed">
               Všechny tyto činnosti jsou standardní součástí každé návštěvy. Probíhají podle přesně definovaných checklistů viditelných ve webové aplikaci.
             </p>
           </div>
-          <div class="grid sm:grid-cols-2 gap-4 md:gap-5">
+          <div class="grid sm:grid-cols-2 gap-4">
             {kancelare.services.map((item, i) => (
               <div
-                class="scroll-animate opacity-0 flex items-start gap-4 bg-white border border-zinc-100 rounded-[1.5rem] p-5 md:p-6 hover:border-[#81b344]/30 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group"
+                class="scroll-animate opacity-0 flex items-start gap-4 bg-white border border-zinc-100 rounded-[1.5rem] p-5 hover:border-[#81b344]/30 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group"
                 style={`animation-delay:${(i + 1) * 80}ms`}
               >
-                <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-[#81b344]/10 flex items-center justify-center text-[#6a9438] group-hover:bg-[#81b344]/15 transition-colors duration-200">
-                  <i data-lucide={item.icon} class="w-6 h-6" aria-hidden="true"></i>
+                <div class="flex-shrink-0 w-11 h-11 rounded-xl bg-[#81b344]/10 flex items-center justify-center text-[#6a9438] group-hover:bg-[#81b344]/15 transition-colors duration-200">
+                  <i data-lucide={item.icon} class="w-5 h-5" aria-hidden="true"></i>
                 </div>
                 <div>
-                  <h4 class="text-[15px] font-bold text-zinc-900 mb-1">{item.title}</h4>
-                  <p class="text-sm font-medium text-zinc-500 leading-relaxed">{item.desc}</p>
+                  <h3 class="text-[14px] font-bold text-zinc-900 mb-1">{item.title}</h3>
+                  <p class="text-[13px] font-medium text-zinc-500 leading-relaxed">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -242,30 +249,30 @@ const airbnb = {
         </div>
       </section>
 
-      <section class="py-20 md:py-28 bg-white">
+      <section class="py-16 md:py-20 lg:py-24 bg-white">
         <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12">
-          <div class="scroll-animate opacity-0 max-w-2xl mx-auto text-center mb-12">
-            <p class="text-xs font-bold text-[#81b344] tracking-[0.2em] uppercase mb-4">Doplňkový servis</p>
-            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-4">
+          <div class="scroll-animate opacity-0 max-w-xl mx-auto text-center mb-10">
+            <p class="text-[12px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-3">Doplňkový servis</p>
+            <h2 class="fluid-h2 font-extrabold text-zinc-950 tracking-tighter leading-[1.15] mb-3">
               Doplňování hygieny —<br class="hidden sm:block" />
               <span class="text-[#6a9438]">s námi vám nedojde.</span>
             </h2>
-            <p class="text-base text-zinc-500 font-medium leading-relaxed">
-              Spotřební materiál fakturujeme zvlášť za tržní ceny. Vy ušetříte čas, my zajistíme, aby v kuchyňce ani na WC nikdy nic nechybělo. Vše sledujeme ve webové aplikaci.
+            <p class="text-[14px] md:text-[15px] text-zinc-500 font-medium leading-relaxed">
+              Spotřební materiál fakturujeme zvlášť za tržní ceny. Vy ušetříte čas, my zajistíme, aby v kuchyňce ani na WC nikdy nic nechybělo.
             </p>
           </div>
-          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {kancelare.material.map((item, i) => (
               <div
-                class="scroll-animate opacity-0 flex flex-col gap-4 bg-zinc-50 border border-zinc-100 rounded-[1.5rem] p-6 hover:border-[#81b344]/30 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group"
+                class="scroll-animate opacity-0 flex flex-col gap-4 bg-zinc-50 border border-zinc-100 rounded-[1.5rem] p-5 hover:border-[#81b344]/30 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group"
                 style={`animation-delay:${(i + 1) * 100}ms`}
               >
-                <div class="w-12 h-12 rounded-xl bg-[#81b344]/10 flex items-center justify-center text-[#6a9438] group-hover:bg-[#81b344]/15 transition-colors duration-200">
-                  <i data-lucide={item.icon} class="w-6 h-6" aria-hidden="true"></i>
+                <div class="w-11 h-11 rounded-xl bg-[#81b344]/10 flex items-center justify-center text-[#6a9438] group-hover:bg-[#81b344]/15 transition-colors duration-200">
+                  <i data-lucide={item.icon} class="w-5 h-5" aria-hidden="true"></i>
                 </div>
                 <div>
-                  <p class="text-[15px] font-bold text-zinc-900 mb-1">{item.label}</p>
-                  <p class="text-xs font-medium text-zinc-500 leading-relaxed">{item.desc}</p>
+                  <p class="text-[14px] font-bold text-zinc-900 mb-1">{item.label}</p>
+                  <p class="text-[12px] font-medium text-zinc-500 leading-relaxed">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -273,30 +280,30 @@ const airbnb = {
         </div>
       </section>
 
-      <section class="py-20 lg:py-24 bg-zinc-950 relative overflow-hidden">
+      <section class="py-16 lg:py-20 bg-zinc-950 relative overflow-hidden">
         <div class="hidden md:block pointer-events-none absolute top-0 left-1/4 w-[500px] h-[300px] rounded-full bg-[#81b344]/10 blur-[80px]"></div>
         <div class="hidden md:block pointer-events-none absolute bottom-0 right-1/4 w-[400px] h-[250px] rounded-full bg-[#81b344]/5 blur-[70px]"></div>
         <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
-          <div class="scroll-animate opacity-0 text-center mb-12">
-            <p class="text-xs font-bold text-[#81b344] tracking-[0.2em] uppercase mb-3">Cílová skupina</p>
-            <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-2">Pro koho je tato služba</h2>
-            <p class="text-zinc-400 font-medium text-[15px]">Pracujeme s firmami, které chtějí spolehlivý a prověřený tým — ne brigádníky.</p>
+          <div class="scroll-animate opacity-0 text-center mb-10">
+            <p class="text-[12px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-3">Cílová skupina</p>
+            <h2 class="text-xl sm:text-2xl font-extrabold text-white tracking-tight mb-2">Pro koho je tato služba</h2>
+            <p class="text-zinc-400 font-medium text-[14px]">Pracujeme s firmami, které chtějí spolehlivý a prověřený tým — ne brigádníky.</p>
           </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
             {kancelare.forWhom.map((item, i) => (
               <div
-                class="scroll-animate opacity-0 flex items-center gap-4 p-5 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 hover:-translate-y-0.5 transition-all duration-200 group"
+                class="scroll-animate opacity-0 flex items-center gap-3 p-4 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 hover:-translate-y-0.5 transition-all duration-200 group"
                 style={`animation-delay:${i * 80}ms`}
               >
                 <div class="flex-shrink-0 w-10 h-10 rounded-xl bg-[#81b344]/15 border border-[#81b344]/20 flex items-center justify-center text-[#81b344] group-hover:bg-[#81b344]/25 transition-colors duration-200">
                   <i data-lucide={item.icon} class="w-5 h-5" aria-hidden="true"></i>
                 </div>
-                <span class="text-[15px] font-semibold text-zinc-200 leading-snug">{item.label}</span>
+                <span class="text-[14px] font-semibold text-zinc-200 leading-snug">{item.label}</span>
               </div>
             ))}
           </div>
           <div class="scroll-animate opacity-0 text-center" style="animation-delay:400ms">
-            <a href="/kontakt" class="inline-flex items-center justify-center gap-2 px-8 py-4 text-[15px] font-bold text-white bg-[#81b344] rounded-xl hover:bg-[#729f3c] hover:-translate-y-1 transition-all duration-300 ease-out shadow-md shadow-[#81b344]/20">
+            <a href="/kontakt" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[14px] font-bold text-white bg-[#81b344] rounded-xl hover:bg-[#729f3c] hover:-translate-y-1 transition-all duration-300 ease-out shadow-md shadow-[#81b344]/20">
               Domluvit pravidelný úklid
               <i data-lucide="arrow-right" class="w-4 h-4" aria-hidden="true"></i>
             </a>
@@ -304,32 +311,32 @@ const airbnb = {
         </div>
       </section>
 
-      <section class="py-20 md:py-28 bg-zinc-50">
+      <section class="py-16 md:py-20 lg:py-24 bg-zinc-50">
         <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12">
-          <div class="scroll-animate opacity-0 text-center max-w-2xl mx-auto mb-14">
-            <p class="text-xs font-bold text-[#81b344] tracking-[0.2em] uppercase mb-4">Další možnosti</p>
-            <h2 class="text-3xl sm:text-4xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1]">
+          <div class="scroll-animate opacity-0 text-center max-w-xl mx-auto mb-12">
+            <p class="text-[12px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-3">Další možnosti</p>
+            <h2 class="fluid-h2 font-extrabold text-zinc-950 tracking-tighter leading-[1.15]">
               Poptáváte něco <span class="text-[#6a9438]">jiného?</span>
             </h2>
           </div>
-          <div class="grid sm:grid-cols-2 gap-8">
+          <div class="grid sm:grid-cols-2 gap-6">
             {[svj, airbnb].map((s, i) => (
               <button
                 data-tab-link={i === 0 ? 'svj' : 'airbnb'}
-                class="scroll-animate opacity-0 text-left flex flex-col bg-white rounded-[2rem] border border-zinc-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 ease-out overflow-hidden group cursor-pointer"
+                class="scroll-animate opacity-0 text-left flex flex-col bg-white rounded-[1.75rem] border border-zinc-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 ease-out overflow-hidden group cursor-pointer"
                 style={`animation-delay:${i * 120}ms`}
               >
                 <div class="relative w-full aspect-[4/3] bg-zinc-100 overflow-hidden">
-                  <img src={s.image} alt={s.tag} width="600" height="450" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]" loading="lazy" decoding="async" />
-                  <div class="absolute top-4 left-4 px-2.5 py-1 rounded-full bg-white shadow-sm">
+                  <img src={s.image} alt={s.imageAlt} width="600" height="450" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]" loading="lazy" decoding="async" />
+                  <div class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-white shadow-sm">
                     <span class="text-xs font-bold text-zinc-700 tracking-[0.06em] uppercase">{s.tagBadge}</span>
                   </div>
                 </div>
-                <div class="p-7 flex-grow flex flex-col">
-                  <h3 class="text-xl font-bold text-zinc-950 tracking-tight leading-snug mb-3">{s.headline.replace(/\n/g, ' ')}</h3>
-                  <p class="text-[15px] text-zinc-600 font-medium leading-relaxed mb-5 flex-grow">{s.sub.slice(0, 100)}…</p>
+                <div class="p-6 flex-grow flex flex-col">
+                  <h3 class="text-[17px] font-bold text-zinc-950 tracking-tight leading-snug mb-2">{s.headline.replace(/\n/g, ' ')}</h3>
+                  <p class="text-[13px] text-zinc-600 font-medium leading-relaxed mb-4 flex-grow">{s.sub.slice(0, 100)}…</p>
                   <div class="pt-4 border-t border-zinc-100">
-                    <span class="inline-flex items-center gap-1.5 font-bold text-[15px] text-[#81b344] group-hover:text-[#6a9438] transition-colors">
+                    <span class="inline-flex items-center gap-1.5 font-bold text-[14px] text-[#81b344] group-hover:text-[#6a9438] transition-colors">
                       Zjistit více
                       <i data-lucide="arrow-right" class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true"></i>
                     </span>
@@ -343,44 +350,43 @@ const airbnb = {
 
     </div>
 
-
     <!-- ══════════════════════════════════════════
          TAB: SVJ
     ══════════════════════════════════════════ -->
     <div id="tab-svj" class="tab-content hidden">
 
-      <section class="py-20 md:py-28 bg-white">
+      <section class="py-16 md:py-20 lg:py-28 bg-white">
         <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12">
-          <div class="flex flex-col gap-12 lg:gap-20 items-center lg:flex-row-reverse">
+          <div class="flex flex-col gap-10 lg:gap-16 items-center lg:flex-row-reverse">
             <div class="w-full lg:w-1/2">
-              <div class="scroll-animate opacity-0 mb-5">
+              <div class="scroll-animate opacity-0 mb-4">
                 <span class="inline-block px-3 py-1.5 rounded-md bg-[#81b344]/10">
                   <span class="text-xs font-bold text-[#6a9438] tracking-[0.1em] uppercase">{svj.tag}</span>
                 </span>
               </div>
-              <h2 class="scroll-animate opacity-0 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-6 whitespace-pre-line" style="animation-delay:80ms">
+              <h2 class="scroll-animate opacity-0 fluid-h2 font-extrabold text-zinc-950 tracking-tighter leading-[1.15] mb-5 whitespace-pre-line" style="animation-delay:80ms">
                 {svj.headline}
               </h2>
-              <p class="scroll-animate opacity-0 text-[17px] md:text-[19px] text-zinc-600 font-medium leading-relaxed mb-10" style="animation-delay:160ms">
+              <p class="scroll-animate opacity-0 text-[15px] md:text-[16px] text-zinc-600 font-medium leading-relaxed mb-8" style="animation-delay:160ms">
                 {svj.sub}
               </p>
               <div class="scroll-animate opacity-0 flex flex-col sm:flex-row gap-3" style="animation-delay:240ms">
-                <a href="/kontakt" class="inline-flex items-center justify-center gap-2 px-7 py-4 text-[15px] font-bold text-white bg-[#81b344] rounded-xl hover:bg-[#729f3c] hover:-translate-y-1 transition-all duration-300 ease-out shadow-md shadow-[#81b344]/20 whitespace-nowrap">
+                <a href="/kontakt" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-[14px] font-bold text-white bg-[#81b344] rounded-xl hover:bg-[#729f3c] hover:-translate-y-1 transition-all duration-300 ease-out shadow-md shadow-[#81b344]/20 whitespace-nowrap">
                   Chci {svj.cta}
                   <i data-lucide="arrow-right" class="w-4 h-4 flex-shrink-0" aria-hidden="true"></i>
                 </a>
-                <a href="#features-svj" data-scroll-to="features-svj" class="inline-flex items-center justify-center gap-2 px-7 py-4 text-[15px] font-bold text-zinc-700 bg-white border-2 border-zinc-200 rounded-xl hover:border-zinc-300 hover:bg-zinc-50 hover:-translate-y-1 transition-all duration-300 ease-out whitespace-nowrap">
+                <a href="#features-svj" data-scroll-to="features-svj" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-[14px] font-bold text-zinc-700 bg-white border-2 border-zinc-200 rounded-xl hover:border-zinc-300 hover:bg-zinc-50 hover:-translate-y-1 transition-all duration-300 ease-out whitespace-nowrap">
                   Co zahrnuje služba
                 </a>
               </div>
             </div>
             <div class="scroll-animate opacity-0 w-full lg:w-1/2" style="animation-delay:200ms">
-              <div class="relative aspect-[4/3] rounded-[2rem] overflow-hidden bg-zinc-100 border border-zinc-200/60 shadow-lg group">
-                <img src={svj.image} alt={svj.tag} width={svj.imageWidth} height={svj.imageHeight}
+              <div class="relative aspect-[4/3] rounded-[1.75rem] overflow-hidden bg-zinc-100 border border-zinc-200/60 shadow-lg group">
+                <img src={svj.image} alt={svj.imageAlt} width={svj.imageWidth} height={svj.imageHeight}
                   class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                   loading="lazy" decoding="async" />
                 <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/20 to-transparent pointer-events-none"></div>
-                <div class="absolute bottom-5 left-5 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-sm shadow-sm">
+                <div class="absolute bottom-4 left-4 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-sm shadow-sm">
                   <span class="text-xs font-bold text-zinc-700 tracking-[0.06em] uppercase">{svj.tagBadge}</span>
                 </div>
               </div>
@@ -389,26 +395,26 @@ const airbnb = {
         </div>
       </section>
 
-      <section id="features-svj" class="py-20 md:py-28 bg-zinc-50">
+      <section id="features-svj" class="py-16 md:py-20 lg:py-28 bg-zinc-50">
         <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12">
-          <div class="scroll-animate opacity-0 text-center max-w-2xl mx-auto mb-12">
-            <p class="text-xs font-bold text-[#81b344] tracking-[0.2em] uppercase mb-4">Rozsah služby</p>
-            <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-4">
+          <div class="scroll-animate opacity-0 text-center max-w-xl mx-auto mb-10">
+            <p class="text-[12px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-3">Rozsah služby</p>
+            <h2 class="fluid-h2 font-extrabold text-zinc-950 tracking-tighter leading-[1.15] mb-3">
               Standardy zahrnuté <span class="text-[#6a9438]">v ceně.</span>
             </h2>
           </div>
-          <div class="grid sm:grid-cols-2 gap-4 md:gap-5">
+          <div class="grid sm:grid-cols-2 gap-4">
             {svj.services.map((item, i) => (
               <div
-                class="scroll-animate opacity-0 flex items-start gap-4 bg-white border border-zinc-100 rounded-[1.5rem] p-5 md:p-6 hover:border-[#81b344]/30 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group"
+                class="scroll-animate opacity-0 flex items-start gap-4 bg-white border border-zinc-100 rounded-[1.5rem] p-5 hover:border-[#81b344]/30 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group"
                 style={`animation-delay:${(i + 1) * 100}ms`}
               >
-                <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-[#81b344]/10 flex items-center justify-center text-[#6a9438] group-hover:bg-[#81b344]/15 transition-colors duration-200">
-                  <i data-lucide={item.icon} class="w-6 h-6" aria-hidden="true"></i>
+                <div class="flex-shrink-0 w-11 h-11 rounded-xl bg-[#81b344]/10 flex items-center justify-center text-[#6a9438] group-hover:bg-[#81b344]/15 transition-colors duration-200">
+                  <i data-lucide={item.icon} class="w-5 h-5" aria-hidden="true"></i>
                 </div>
                 <div>
-                  <h4 class="text-[15px] font-bold text-zinc-900 mb-1">{item.title}</h4>
-                  <p class="text-sm font-medium text-zinc-500 leading-relaxed">{item.desc}</p>
+                  <h3 class="text-[14px] font-bold text-zinc-900 mb-1">{item.title}</h3>
+                  <p class="text-[13px] font-medium text-zinc-500 leading-relaxed">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -416,31 +422,31 @@ const airbnb = {
         </div>
       </section>
 
-      <section class="py-16 md:py-20 bg-white border-y border-zinc-100">
+      <section class="py-14 md:py-16 bg-white border-y border-zinc-100">
         <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12">
-          <div class="scroll-animate opacity-0 mb-8">
-            <div class="flex items-center gap-3 mb-3">
-              <i data-lucide="snowflake" class="w-6 h-6 text-blue-500 flex-shrink-0" aria-hidden="true"></i>
-              <h2 class="text-3xl sm:text-4xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1]">
+          <div class="scroll-animate opacity-0 mb-7">
+            <div class="flex items-center gap-3 mb-2">
+              <i data-lucide="snowflake" class="w-5 h-5 text-blue-500 flex-shrink-0" aria-hidden="true"></i>
+              <h2 class="text-xl sm:text-2xl md:text-3xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1]">
                 Zimní servisní režim <span class="text-blue-500">(+10 % k paušálu)</span>
               </h2>
             </div>
-            <p class="text-[15px] text-zinc-500 font-medium leading-relaxed max-w-2xl">
+            <p class="text-[14px] text-zinc-500 font-medium leading-relaxed max-w-2xl">
               V zimních měsících (listopad–březen) přepínáme na intenzivnější režim — dům trpí náporem soli, břečky a písku.
             </p>
           </div>
           <div class="grid sm:grid-cols-3 gap-4">
             {svj.winter.map((item, i) => (
               <div
-                class="scroll-animate opacity-0 flex flex-col gap-4 bg-blue-50 border border-blue-100 rounded-[1.5rem] p-6 hover:border-blue-200 hover:shadow-sm transition-all duration-200"
+                class="scroll-animate opacity-0 flex flex-col gap-3 bg-blue-50 border border-blue-100 rounded-[1.5rem] p-5 hover:border-blue-200 hover:shadow-sm transition-all duration-200"
                 style={`animation-delay:${(i + 1) * 100}ms`}
               >
-                <div class="w-11 h-11 rounded-xl bg-white border border-blue-100 flex items-center justify-center text-blue-500">
+                <div class="w-10 h-10 rounded-xl bg-white border border-blue-100 flex items-center justify-center text-blue-500">
                   <i data-lucide={item.icon} class="w-5 h-5" aria-hidden="true"></i>
                 </div>
                 <div>
-                  <p class="text-[15px] font-bold text-zinc-900 mb-1">{item.title}</p>
-                  <p class="text-xs font-medium text-zinc-500 leading-relaxed">{item.desc}</p>
+                  <p class="text-[14px] font-bold text-zinc-900 mb-1">{item.title}</p>
+                  <p class="text-[12px] font-medium text-zinc-500 leading-relaxed">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -448,30 +454,30 @@ const airbnb = {
         </div>
       </section>
 
-      <section class="py-20 lg:py-24 bg-zinc-950 relative overflow-hidden">
+      <section class="py-16 lg:py-20 bg-zinc-950 relative overflow-hidden">
         <div class="hidden md:block pointer-events-none absolute top-0 left-1/4 w-[500px] h-[300px] rounded-full bg-[#81b344]/10 blur-[80px]"></div>
         <div class="hidden md:block pointer-events-none absolute bottom-0 right-1/4 w-[400px] h-[250px] rounded-full bg-[#81b344]/5 blur-[70px]"></div>
         <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
-          <div class="scroll-animate opacity-0 text-center mb-12">
-            <p class="text-xs font-bold text-[#81b344] tracking-[0.2em] uppercase mb-3">Cílová skupina</p>
-            <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-2">Pro koho je tato služba</h2>
-            <p class="text-zinc-400 font-medium text-[15px]">Dodáváme stálý tým správcům i výborům SVJ, kteří mají dost řešení reklamací.</p>
+          <div class="scroll-animate opacity-0 text-center mb-10">
+            <p class="text-[12px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-3">Cílová skupina</p>
+            <h2 class="text-xl sm:text-2xl font-extrabold text-white tracking-tight mb-2">Pro koho je tato služba</h2>
+            <p class="text-zinc-400 font-medium text-[14px]">Dodáváme stálý tým správcům i výborům SVJ, kteří mají dost řešení reklamací.</p>
           </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
             {svj.forWhom.map((item, i) => (
               <div
-                class="scroll-animate opacity-0 flex items-center gap-4 p-5 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 hover:-translate-y-0.5 transition-all duration-200 group"
+                class="scroll-animate opacity-0 flex items-center gap-3 p-4 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 hover:-translate-y-0.5 transition-all duration-200 group"
                 style={`animation-delay:${i * 80}ms`}
               >
                 <div class="flex-shrink-0 w-10 h-10 rounded-xl bg-[#81b344]/15 border border-[#81b344]/20 flex items-center justify-center text-[#81b344] group-hover:bg-[#81b344]/25 transition-colors duration-200">
                   <i data-lucide={item.icon} class="w-5 h-5" aria-hidden="true"></i>
                 </div>
-                <span class="text-[15px] font-semibold text-zinc-200 leading-snug">{item.label}</span>
+                <span class="text-[14px] font-semibold text-zinc-200 leading-snug">{item.label}</span>
               </div>
             ))}
           </div>
           <div class="scroll-animate opacity-0 text-center" style="animation-delay:400ms">
-            <a href="/kontakt" class="inline-flex items-center justify-center gap-2 px-8 py-4 text-[15px] font-bold text-white bg-[#81b344] rounded-xl hover:bg-[#729f3c] hover:-translate-y-1 transition-all duration-300 ease-out shadow-md shadow-[#81b344]/20">
+            <a href="/kontakt" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[14px] font-bold text-white bg-[#81b344] rounded-xl hover:bg-[#729f3c] hover:-translate-y-1 transition-all duration-300 ease-out shadow-md shadow-[#81b344]/20">
               Domluvit úklid domu
               <i data-lucide="arrow-right" class="w-4 h-4" aria-hidden="true"></i>
             </a>
@@ -479,32 +485,32 @@ const airbnb = {
         </div>
       </section>
 
-      <section class="py-20 md:py-28 bg-zinc-50">
+      <section class="py-16 md:py-20 lg:py-24 bg-zinc-50">
         <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12">
-          <div class="scroll-animate opacity-0 text-center max-w-2xl mx-auto mb-14">
-            <p class="text-xs font-bold text-[#81b344] tracking-[0.2em] uppercase mb-4">Další možnosti</p>
-            <h2 class="text-3xl sm:text-4xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1]">
+          <div class="scroll-animate opacity-0 text-center max-w-xl mx-auto mb-12">
+            <p class="text-[12px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-3">Další možnosti</p>
+            <h2 class="fluid-h2 font-extrabold text-zinc-950 tracking-tighter leading-[1.15]">
               Poptáváte něco <span class="text-[#6a9438]">jiného?</span>
             </h2>
           </div>
-          <div class="grid sm:grid-cols-2 gap-8">
+          <div class="grid sm:grid-cols-2 gap-6">
             {[kancelare, airbnb].map((s, i) => (
               <button
                 data-tab-link={i === 0 ? 'kancelare' : 'airbnb'}
-                class="scroll-animate opacity-0 text-left flex flex-col bg-white rounded-[2rem] border border-zinc-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 ease-out overflow-hidden group cursor-pointer"
+                class="scroll-animate opacity-0 text-left flex flex-col bg-white rounded-[1.75rem] border border-zinc-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 ease-out overflow-hidden group cursor-pointer"
                 style={`animation-delay:${i * 120}ms`}
               >
                 <div class="relative w-full aspect-[4/3] bg-zinc-100 overflow-hidden">
-                  <img src={s.image} alt={s.tag} width="600" height="450" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]" loading="lazy" decoding="async" />
-                  <div class="absolute top-4 left-4 px-2.5 py-1 rounded-full bg-white shadow-sm">
+                  <img src={s.image} alt={s.imageAlt} width="600" height="450" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]" loading="lazy" decoding="async" />
+                  <div class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-white shadow-sm">
                     <span class="text-xs font-bold text-zinc-700 tracking-[0.06em] uppercase">{s.tagBadge}</span>
                   </div>
                 </div>
-                <div class="p-7 flex-grow flex flex-col">
-                  <h3 class="text-xl font-bold text-zinc-950 tracking-tight leading-snug mb-3">{s.headline.replace(/\n/g, ' ')}</h3>
-                  <p class="text-[15px] text-zinc-600 font-medium leading-relaxed mb-5 flex-grow">{s.sub.slice(0, 100)}…</p>
+                <div class="p-6 flex-grow flex flex-col">
+                  <h3 class="text-[17px] font-bold text-zinc-950 tracking-tight leading-snug mb-2">{s.headline.replace(/\n/g, ' ')}</h3>
+                  <p class="text-[13px] text-zinc-600 font-medium leading-relaxed mb-4 flex-grow">{s.sub.slice(0, 100)}…</p>
                   <div class="pt-4 border-t border-zinc-100">
-                    <span class="inline-flex items-center gap-1.5 font-bold text-[15px] text-[#81b344] group-hover:text-[#6a9438] transition-colors">
+                    <span class="inline-flex items-center gap-1.5 font-bold text-[14px] text-[#81b344] group-hover:text-[#6a9438] transition-colors">
                       Zjistit více
                       <i data-lucide="arrow-right" class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true"></i>
                     </span>
@@ -518,44 +524,43 @@ const airbnb = {
 
     </div>
 
-
     <!-- ══════════════════════════════════════════
          TAB: AIRBNB
     ══════════════════════════════════════════ -->
     <div id="tab-airbnb" class="tab-content hidden">
 
-      <section class="py-20 md:py-28 bg-white">
+      <section class="py-16 md:py-20 lg:py-28 bg-white">
         <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12">
-          <div class="flex flex-col gap-12 lg:gap-20 items-center lg:flex-row">
+          <div class="flex flex-col gap-10 lg:gap-16 items-center lg:flex-row">
             <div class="w-full lg:w-1/2">
-              <div class="scroll-animate opacity-0 mb-5">
+              <div class="scroll-animate opacity-0 mb-4">
                 <span class="inline-block px-3 py-1.5 rounded-md bg-[#81b344]/10">
                   <span class="text-xs font-bold text-[#6a9438] tracking-[0.1em] uppercase">{airbnb.tag}</span>
                 </span>
               </div>
-              <h2 class="scroll-animate opacity-0 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-6 whitespace-pre-line" style="animation-delay:80ms">
+              <h2 class="scroll-animate opacity-0 fluid-h2 font-extrabold text-zinc-950 tracking-tighter leading-[1.15] mb-5 whitespace-pre-line" style="animation-delay:80ms">
                 {airbnb.headline}
               </h2>
-              <p class="scroll-animate opacity-0 text-[17px] md:text-[19px] text-zinc-600 font-medium leading-relaxed mb-10" style="animation-delay:160ms">
+              <p class="scroll-animate opacity-0 text-[15px] md:text-[16px] text-zinc-600 font-medium leading-relaxed mb-8" style="animation-delay:160ms">
                 {airbnb.sub}
               </p>
               <div class="scroll-animate opacity-0 flex flex-col sm:flex-row gap-3" style="animation-delay:240ms">
-                <a href="/kontakt" class="inline-flex items-center justify-center gap-2 px-7 py-4 text-[15px] font-bold text-white bg-[#81b344] rounded-xl hover:bg-[#729f3c] hover:-translate-y-1 transition-all duration-300 ease-out shadow-md shadow-[#81b344]/20 whitespace-nowrap">
+                <a href="/kontakt" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-[14px] font-bold text-white bg-[#81b344] rounded-xl hover:bg-[#729f3c] hover:-translate-y-1 transition-all duration-300 ease-out shadow-md shadow-[#81b344]/20 whitespace-nowrap">
                   Chci {airbnb.cta}
                   <i data-lucide="arrow-right" class="w-4 h-4 flex-shrink-0" aria-hidden="true"></i>
                 </a>
-                <a href="#features-airbnb" data-scroll-to="features-airbnb" class="inline-flex items-center justify-center gap-2 px-7 py-4 text-[15px] font-bold text-zinc-700 bg-white border-2 border-zinc-200 rounded-xl hover:border-zinc-300 hover:bg-zinc-50 hover:-translate-y-1 transition-all duration-300 ease-out whitespace-nowrap">
+                <a href="#features-airbnb" data-scroll-to="features-airbnb" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-[14px] font-bold text-zinc-700 bg-white border-2 border-zinc-200 rounded-xl hover:border-zinc-300 hover:bg-zinc-50 hover:-translate-y-1 transition-all duration-300 ease-out whitespace-nowrap">
                   Co zahrnuje služba
                 </a>
               </div>
             </div>
             <div class="scroll-animate opacity-0 w-full lg:w-1/2" style="animation-delay:200ms">
-              <div class="relative aspect-[4/3] rounded-[2rem] overflow-hidden bg-zinc-100 border border-zinc-200/60 shadow-lg group">
-                <img src={airbnb.image} alt={airbnb.tag} width={airbnb.imageWidth} height={airbnb.imageHeight}
+              <div class="relative aspect-[4/3] rounded-[1.75rem] overflow-hidden bg-zinc-100 border border-zinc-200/60 shadow-lg group">
+                <img src={airbnb.image} alt={airbnb.imageAlt} width={airbnb.imageWidth} height={airbnb.imageHeight}
                   class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                   loading="lazy" decoding="async" />
                 <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/20 to-transparent pointer-events-none"></div>
-                <div class="absolute bottom-5 left-5 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-sm shadow-sm">
+                <div class="absolute bottom-4 left-4 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-sm shadow-sm">
                   <span class="text-xs font-bold text-zinc-700 tracking-[0.06em] uppercase">{airbnb.tagBadge}</span>
                 </div>
               </div>
@@ -564,26 +569,26 @@ const airbnb = {
         </div>
       </section>
 
-      <section id="features-airbnb" class="py-20 md:py-28 bg-zinc-50">
+      <section id="features-airbnb" class="py-16 md:py-20 lg:py-28 bg-zinc-50">
         <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12">
-          <div class="scroll-animate opacity-0 text-center max-w-2xl mx-auto mb-12">
-            <p class="text-xs font-bold text-[#81b344] tracking-[0.2em] uppercase mb-4">Rozsah služby</p>
-            <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-4">
+          <div class="scroll-animate opacity-0 text-center max-w-xl mx-auto mb-10">
+            <p class="text-[12px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-3">Rozsah služby</p>
+            <h2 class="fluid-h2 font-extrabold text-zinc-950 tracking-tighter leading-[1.15] mb-3">
               Náš <span class="text-[#6a9438]">„Standard 5 hvězd"</span> zahrnuje:
             </h2>
           </div>
-          <div class="grid sm:grid-cols-2 gap-4 md:gap-5">
+          <div class="grid sm:grid-cols-2 gap-4">
             {airbnb.standard.map((item, i) => (
               <div
-                class="scroll-animate opacity-0 flex items-start gap-4 bg-white border border-zinc-100 rounded-[1.5rem] p-5 md:p-6 hover:border-[#81b344]/30 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group"
+                class="scroll-animate opacity-0 flex items-start gap-4 bg-white border border-zinc-100 rounded-[1.5rem] p-5 hover:border-[#81b344]/30 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group"
                 style={`animation-delay:${(i + 1) * 100}ms`}
               >
-                <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-[#81b344]/10 flex items-center justify-center text-[#6a9438] group-hover:bg-[#81b344]/15 transition-colors duration-200">
-                  <i data-lucide={item.icon} class="w-6 h-6" aria-hidden="true"></i>
+                <div class="flex-shrink-0 w-11 h-11 rounded-xl bg-[#81b344]/10 flex items-center justify-center text-[#6a9438] group-hover:bg-[#81b344]/15 transition-colors duration-200">
+                  <i data-lucide={item.icon} class="w-5 h-5" aria-hidden="true"></i>
                 </div>
                 <div>
-                  <h4 class="text-[15px] font-bold text-zinc-900 mb-1">{item.title}</h4>
-                  <p class="text-sm font-medium text-zinc-500 leading-relaxed">{item.desc}</p>
+                  <h3 class="text-[14px] font-bold text-zinc-900 mb-1">{item.title}</h3>
+                  <p class="text-[13px] font-medium text-zinc-500 leading-relaxed">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -591,18 +596,18 @@ const airbnb = {
         </div>
       </section>
 
-      <section class="py-20 md:py-28 bg-white border-y border-zinc-100">
+      <section class="py-16 md:py-20 lg:py-24 bg-white border-y border-zinc-100">
         <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12">
-          <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          <div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
 
             <div class="scroll-animate opacity-0">
-              <div class="inline-block px-3 py-1.5 rounded-md bg-[#81b344]/10 mb-6">
+              <div class="inline-block px-3 py-1.5 rounded-md bg-[#81b344]/10 mb-5">
                 <span class="text-xs font-bold text-[#6a9438] tracking-[0.1em] uppercase">Klientská webová aplikace</span>
               </div>
-              <h3 class="text-2xl sm:text-3xl font-extrabold text-zinc-950 mb-3 tracking-tight">
+              <h2 class="fluid-h2-sm font-extrabold text-zinc-950 mb-3 tracking-tighter leading-[1.15]">
                 Byt v kapse díky <span class="text-[#6a9438]">PrimeClean.</span>
-              </h3>
-              <p class="text-[15px] text-zinc-500 font-medium leading-relaxed mb-8">
+              </h2>
+              <p class="text-[14px] md:text-[15px] text-zinc-500 font-medium leading-relaxed mb-7">
                 Přehled v reálném čase přímo v prohlížeči — fotky, zásoby, hlášení závad. Žádná instalace, funguje z mobilu i počítače.
               </p>
               <ul class="flex flex-col gap-4">
@@ -611,12 +616,12 @@ const airbnb = {
                     class="scroll-animate opacity-0 flex items-center gap-4"
                     style={`animation-delay:${(i + 1) * 100}ms`}
                   >
-                    <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-[#81b344]/10 border border-[#81b344]/15 flex items-center justify-center text-[#6a9438]">
+                    <div class="flex-shrink-0 w-11 h-11 rounded-xl bg-[#81b344]/10 border border-[#81b344]/15 flex items-center justify-center text-[#6a9438]">
                       <i data-lucide={item.icon} class="w-5 h-5" aria-hidden="true"></i>
                     </div>
                     <div>
-                      <p class="text-[15px] font-bold text-zinc-900 leading-tight">{item.label}</p>
-                      <p class="text-xs font-medium text-zinc-500 mt-0.5">{item.desc}</p>
+                      <p class="text-[14px] font-bold text-zinc-900 leading-tight">{item.label}</p>
+                      <p class="text-[12px] font-medium text-zinc-500 mt-0.5">{item.desc}</p>
                     </div>
                   </li>
                 ))}
@@ -624,39 +629,39 @@ const airbnb = {
             </div>
 
             <div class="scroll-animate opacity-0" style="animation-delay:150ms">
-              <div class="inline-block px-3 py-1.5 rounded-md bg-[#81b344]/10 mb-6">
+              <div class="inline-block px-3 py-1.5 rounded-md bg-[#81b344]/10 mb-5">
                 <span class="text-xs font-bold text-[#6a9438] tracking-[0.1em] uppercase">Logistika prádla</span>
               </div>
-              <h3 class="text-2xl sm:text-3xl font-extrabold text-zinc-950 mb-3 tracking-tight">
+              <h2 class="fluid-h2-sm font-extrabold text-zinc-950 mb-3 tracking-tighter leading-[1.15]">
                 Jak funguje náš <span class="text-[#6a9438]">Model 3 sad?</span>
-              </h3>
-              <p class="text-[15px] text-zinc-500 font-medium leading-relaxed mb-8">
+              </h2>
+              <p class="text-[14px] md:text-[15px] text-zinc-500 font-medium leading-relaxed mb-7">
                 Pro maximální efektivitu a jistotu, že váš byt bude vždy připraven včas, využíváme systém tří sad ložního prádla.
               </p>
-              <div class="flex flex-col gap-4 mb-6">
+              <div class="flex flex-col gap-3 mb-5">
                 {airbnb.laundry.map((s, i) => (
                   <div
-                    class="scroll-animate opacity-0 flex items-start gap-4 bg-zinc-50 border border-zinc-100 rounded-[1.5rem] p-5 hover:border-[#81b344]/30 hover:shadow-sm transition-all duration-200"
+                    class="scroll-animate opacity-0 flex items-start gap-4 bg-zinc-50 border border-zinc-100 rounded-[1.5rem] p-4 hover:border-[#81b344]/30 hover:shadow-sm transition-all duration-200"
                     style={`animation-delay:${(i + 1) * 100}ms`}
                   >
-                    <div class="flex-shrink-0 w-10 h-10 rounded-full bg-[#81b344]/10 text-[#6a9438] flex items-center justify-center">
-                      <span class="text-sm font-extrabold">{i + 1}</span>
+                    <div class="flex-shrink-0 w-9 h-9 rounded-full bg-[#81b344]/10 text-[#6a9438] flex items-center justify-center">
+                      <span class="text-[13px] font-extrabold">{i + 1}</span>
                     </div>
                     <div>
-                      <p class="text-[15px] font-bold text-zinc-900 mb-1">{s.set}</p>
-                      <p class="text-xs font-medium text-zinc-500 leading-relaxed">{s.desc}</p>
+                      <p class="text-[14px] font-bold text-zinc-900 mb-0.5">{s.set}</p>
+                      <p class="text-[12px] font-medium text-zinc-500 leading-relaxed">{s.desc}</p>
                     </div>
                   </div>
                 ))}
               </div>
-              <div class="scroll-animate opacity-0 bg-amber-50 border border-amber-200/60 rounded-[1.5rem] p-6" style="animation-delay:400ms">
-                <div class="flex items-start gap-4">
-                  <div class="flex-shrink-0 mt-0.5 w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center text-amber-600">
-                    <i data-lucide="alert-triangle" class="w-5 h-5" aria-hidden="true"></i>
+              <div class="scroll-animate opacity-0 bg-amber-50 border border-amber-200/60 rounded-[1.5rem] p-5" style="animation-delay:400ms">
+                <div class="flex items-start gap-3">
+                  <div class="flex-shrink-0 mt-0.5 w-9 h-9 rounded-xl bg-amber-100 flex items-center justify-center text-amber-600">
+                    <i data-lucide="alert-triangle" class="w-4 h-4" aria-hidden="true"></i>
                   </div>
                   <div>
-                    <p class="text-[15px] font-bold text-zinc-900 mb-1">Podmínka spolupráce</p>
-                    <p class="text-xs font-medium text-zinc-600 leading-relaxed">
+                    <p class="text-[14px] font-bold text-zinc-900 mb-1">Podmínka spolupráce</p>
+                    <p class="text-[12px] font-medium text-zinc-600 leading-relaxed">
                       Abychom zaručili 100% připravenost i u navazujících rezervací (tzv. back-to-back), vyžadujeme vybavení bytu 3 kompletními sadami ložního prádla a ručníků.
                     </p>
                   </div>
@@ -668,29 +673,29 @@ const airbnb = {
         </div>
       </section>
 
-      <section class="py-20 md:py-28 bg-zinc-50">
+      <section class="py-16 md:py-20 lg:py-24 bg-zinc-50">
         <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12">
-          <div class="scroll-animate opacity-0 text-center max-w-xl mx-auto mb-12">
-            <p class="text-xs font-bold text-[#81b344] tracking-[0.2em] uppercase mb-4">Nadstandardní péče</p>
-            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-4">
+          <div class="scroll-animate opacity-0 text-center max-w-xl mx-auto mb-10">
+            <p class="text-[12px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-3">Nadstandardní péče</p>
+            <h2 class="fluid-h2 font-extrabold text-zinc-950 tracking-tighter leading-[1.15] mb-3">
               Doplňkové služby <span class="text-[#6a9438]">pro hostitele.</span>
             </h2>
           </div>
-          <div class="grid sm:grid-cols-2 gap-5">
+          <div class="grid sm:grid-cols-2 gap-4">
             {airbnb.extras.map((item, i) => (
               <div
-                class="scroll-animate opacity-0 flex items-start gap-4 bg-white border border-zinc-100 rounded-[1.5rem] p-6 hover:border-[#81b344]/30 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group"
+                class="scroll-animate opacity-0 flex items-start gap-4 bg-white border border-zinc-100 rounded-[1.5rem] p-5 hover:border-[#81b344]/30 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group"
                 style={`animation-delay:${(i + 1) * 100}ms`}
               >
-                <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-[#81b344]/10 flex items-center justify-center text-[#6a9438] group-hover:bg-[#81b344]/15 transition-colors duration-200">
-                  <i data-lucide={item.icon} class="w-6 h-6" aria-hidden="true"></i>
+                <div class="flex-shrink-0 w-11 h-11 rounded-xl bg-[#81b344]/10 flex items-center justify-center text-[#6a9438] group-hover:bg-[#81b344]/15 transition-colors duration-200">
+                  <i data-lucide={item.icon} class="w-5 h-5" aria-hidden="true"></i>
                 </div>
                 <div class="flex-1">
                   <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-3 mb-1 mt-0.5">
-                    <p class="text-[15px] font-bold text-zinc-900">{item.label}</p>
-                    <span class="text-xs font-bold text-[#6a9438] whitespace-nowrap">{item.price}</span>
+                    <p class="text-[14px] font-bold text-zinc-900">{item.label}</p>
+                    <span class="text-[12px] font-bold text-[#6a9438] whitespace-nowrap">{item.price}</span>
                   </div>
-                  <p class="text-xs font-medium text-zinc-500 leading-relaxed mt-2">{item.desc}</p>
+                  <p class="text-[12px] font-medium text-zinc-500 leading-relaxed mt-1.5">{item.desc}</p>
                 </div>
               </div>
             ))}
@@ -698,30 +703,30 @@ const airbnb = {
         </div>
       </section>
 
-      <section class="py-20 lg:py-24 bg-zinc-950 relative overflow-hidden">
+      <section class="py-16 lg:py-20 bg-zinc-950 relative overflow-hidden">
         <div class="hidden md:block pointer-events-none absolute top-0 left-1/4 w-[500px] h-[300px] rounded-full bg-[#81b344]/10 blur-[80px]"></div>
         <div class="hidden md:block pointer-events-none absolute bottom-0 right-1/4 w-[400px] h-[250px] rounded-full bg-[#81b344]/5 blur-[70px]"></div>
         <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
-          <div class="scroll-animate opacity-0 text-center mb-12">
-            <p class="text-xs font-bold text-[#81b344] tracking-[0.2em] uppercase mb-3">Cílová skupina</p>
-            <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-2">Pro koho je tato služba</h2>
-            <p class="text-zinc-400 font-medium text-[15px]">Pomáháme hostitelům, kteří chtějí mít apartmán vždy připravený — i když jsou stovky kilometrů daleko.</p>
+          <div class="scroll-animate opacity-0 text-center mb-10">
+            <p class="text-[12px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-3">Cílová skupina</p>
+            <h2 class="text-xl sm:text-2xl font-extrabold text-white tracking-tight mb-2">Pro koho je tato služba</h2>
+            <p class="text-zinc-400 font-medium text-[14px]">Pomáháme hostitelům, kteří chtějí mít apartmán vždy připravený — i když jsou stovky kilometrů daleko.</p>
           </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
             {airbnb.forWhom.map((item, i) => (
               <div
-                class="scroll-animate opacity-0 flex items-center gap-4 p-5 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 hover:-translate-y-0.5 transition-all duration-200 group"
+                class="scroll-animate opacity-0 flex items-center gap-3 p-4 bg-white/5 border border-white/10 rounded-2xl hover:bg-white/10 hover:border-white/20 hover:-translate-y-0.5 transition-all duration-200 group"
                 style={`animation-delay:${i * 80}ms`}
               >
                 <div class="flex-shrink-0 w-10 h-10 rounded-xl bg-[#81b344]/15 border border-[#81b344]/20 flex items-center justify-center text-[#81b344] group-hover:bg-[#81b344]/25 transition-colors duration-200">
                   <i data-lucide={item.icon} class="w-5 h-5" aria-hidden="true"></i>
                 </div>
-                <span class="text-[15px] font-semibold text-zinc-200 leading-snug">{item.label}</span>
+                <span class="text-[14px] font-semibold text-zinc-200 leading-snug">{item.label}</span>
               </div>
             ))}
           </div>
           <div class="scroll-animate opacity-0 text-center" style="animation-delay:400ms">
-            <a href="/kontakt" class="inline-flex items-center justify-center gap-2 px-8 py-4 text-[15px] font-bold text-white bg-[#81b344] rounded-xl hover:bg-[#729f3c] hover:-translate-y-1 transition-all duration-300 ease-out shadow-md shadow-[#81b344]/20">
+            <a href="/kontakt" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[14px] font-bold text-white bg-[#81b344] rounded-xl hover:bg-[#729f3c] hover:-translate-y-1 transition-all duration-300 ease-out shadow-md shadow-[#81b344]/20">
               Nastavit úklid apartmánu
               <i data-lucide="arrow-right" class="w-4 h-4" aria-hidden="true"></i>
             </a>
@@ -729,32 +734,32 @@ const airbnb = {
         </div>
       </section>
 
-      <section class="py-20 md:py-28 bg-white">
+      <section class="py-16 md:py-20 lg:py-24 bg-white">
         <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12">
-          <div class="scroll-animate opacity-0 text-center max-w-2xl mx-auto mb-14">
-            <p class="text-xs font-bold text-[#81b344] tracking-[0.2em] uppercase mb-4">Další možnosti</p>
-            <h2 class="text-3xl sm:text-4xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1]">
+          <div class="scroll-animate opacity-0 text-center max-w-xl mx-auto mb-12">
+            <p class="text-[12px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-3">Další možnosti</p>
+            <h2 class="fluid-h2 font-extrabold text-zinc-950 tracking-tighter leading-[1.15]">
               Poptáváte něco <span class="text-[#6a9438]">jiného?</span>
             </h2>
           </div>
-          <div class="grid sm:grid-cols-2 gap-8">
+          <div class="grid sm:grid-cols-2 gap-6">
             {[kancelare, svj].map((s, i) => (
               <button
                 data-tab-link={i === 0 ? 'kancelare' : 'svj'}
-                class="scroll-animate opacity-0 text-left flex flex-col bg-white rounded-[2rem] border border-zinc-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 ease-out overflow-hidden group cursor-pointer"
+                class="scroll-animate opacity-0 text-left flex flex-col bg-white rounded-[1.75rem] border border-zinc-200 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 ease-out overflow-hidden group cursor-pointer"
                 style={`animation-delay:${i * 120}ms`}
               >
                 <div class="relative w-full aspect-[4/3] bg-zinc-100 overflow-hidden">
-                  <img src={s.image} alt={s.tag} width="600" height="450" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]" loading="lazy" decoding="async" />
-                  <div class="absolute top-4 left-4 px-2.5 py-1 rounded-full bg-white shadow-sm">
+                  <img src={s.image} alt={s.imageAlt} width="600" height="450" class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]" loading="lazy" decoding="async" />
+                  <div class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-white shadow-sm">
                     <span class="text-xs font-bold text-zinc-700 tracking-[0.06em] uppercase">{s.tagBadge}</span>
                   </div>
                 </div>
-                <div class="p-7 flex-grow flex flex-col">
-                  <h3 class="text-xl font-bold text-zinc-950 tracking-tight leading-snug mb-3">{s.headline.replace(/\n/g, ' ')}</h3>
-                  <p class="text-[15px] text-zinc-600 font-medium leading-relaxed mb-5 flex-grow">{s.sub.slice(0, 100)}…</p>
+                <div class="p-6 flex-grow flex flex-col">
+                  <h3 class="text-[17px] font-bold text-zinc-950 tracking-tight leading-snug mb-2">{s.headline.replace(/\n/g, ' ')}</h3>
+                  <p class="text-[13px] text-zinc-600 font-medium leading-relaxed mb-4 flex-grow">{s.sub.slice(0, 100)}…</p>
                   <div class="pt-4 border-t border-zinc-100">
-                    <span class="inline-flex items-center gap-1.5 font-bold text-[15px] text-[#81b344] group-hover:text-[#6a9438] transition-colors">
+                    <span class="inline-flex items-center gap-1.5 font-bold text-[14px] text-[#81b344] group-hover:text-[#6a9438] transition-colors">
                       Zjistit více
                       <i data-lucide="arrow-right" class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true"></i>
                     </span>
@@ -865,8 +870,7 @@ const airbnb = {
       const link = (e.target as HTMLElement).closest<HTMLAnchorElement>('a[data-scroll-to]');
       if (!link) return;
       e.preventDefault();
-      const sectionId = link.dataset.scrollTo!;
-      scrollToSectionInActiveTab(sectionId);
+      scrollToSectionInActiveTab(link.dataset.scrollTo!);
     });
 
     document.addEventListener('click', e => {
@@ -902,6 +906,16 @@ const airbnb = {
 </script>
 
 <style>
+  /*
+    FLUID TYPOGRAPHY
+    fluid-h1:    32px → 72px  (4.5vw)
+    fluid-h2:    26px → 44px  (3vw)
+    fluid-h2-sm: 20px → 32px  (2.5vw) — pro menší bloky (app, laundry)
+  */
+  .fluid-h1    { font-size: clamp(2rem,    4.5vw, 4.5rem);  }
+  .fluid-h2    { font-size: clamp(1.625rem, 3vw,  2.75rem); }
+  .fluid-h2-sm { font-size: clamp(1.25rem,  2.5vw, 2rem);   }
+
   @keyframes softFadeUp {
     from { opacity: 0; transform: translateY(18px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -918,7 +932,6 @@ const airbnb = {
       transform: none !important;
       transition: none !important;
     }
-    .animate-pulse { animation: none !important; }
   }
 
   :global(.low-end) .animate-fade-in-up,
@@ -928,6 +941,5 @@ const airbnb = {
     opacity: 1 !important;
     transform: none !important;
   }
-  :global(.low-end) .animate-pulse { animation: none !important; }
   :global(.low-end) img { transition: none !important; }
 </style>

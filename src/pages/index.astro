@@ -21,21 +21,21 @@ const features = [
 
 const services = [
   {
-    title: "Kanceláře a firmy",
+    title: "Úklid kanceláří a firem",
     description: "Pravidelný úklid přizpůsobený provozu vaší firmy. Stálý tým, jasný rozsah prací a přehled o úklidech bez starostí.",
     image: "/sluzba-kancelare.webp",
     link: "/sluzby#tab-kancelare",
     tag: "Nejoblíbenější"
   },
   {
-    title: "SVJ a bytové domy",
+    title: "Úklid SVJ a bytových domů",
     description: "Pravidelný úklid vchodů, chodeb a společných prostor. Spolehlivé řešení pro bytová družstva a správce nemovitostí.",
     image: "/sluzba-svj.webp",
     link: "/sluzby#tab-svj",
     tag: "Správa budov"
   },
   {
-    title: "Airbnb a apartmány",
+    title: "Úklid pro Airbnb a apartmány",
     description: "Spolehlivý úklid pro krátkodobé pronájmy mezi pobyty hostů. Rychlá příprava bytu a přehled o každém úklidu online.",
     image: "/sluzba-airbnb.webp",
     link: "/sluzby#tab-airbnb",
@@ -51,10 +51,10 @@ const stats = [
 ];
 
 const trustBadges = [
-  { icon: "shield-check", label: "Pojištění 5 mil. Kč"        },
-  { icon: "user-check",   label: "Prověřený personál"         },
+  { icon: "shield-check", label: "Pojištění 5 mil. Kč"         },
+  { icon: "user-check",   label: "Prověřený personál"          },
   { icon: "camera",       label: "Fotoreport po každém úklidu" },
-  { icon: "clock",        label: "Pravidelný harmonogram"       },
+  { icon: "clock",        label: "Pravidelný harmonogram"      },
 ];
 
 const testimonials = [
@@ -112,27 +112,37 @@ const faqItems = [
 ];
 ---
 
-<Layout title="Profesionální úklid Brno a okolí | PrimeClean">
+<Layout
+  title="PrimeClean | Úklidová firma Brno a okolí"
+  description="Úklidová firma v Brně a okolí. Postaráme se o vaši kancelář, bytový dům nebo apartmán — spolehlivě, s fotodokumentací po každém úklidu a pojištěním 5 mil. Kč."
+>
   <main class="bg-white selection:bg-[#81b344]/30 selection:text-zinc-900">
 
     <!-- 1. HERO -->
-    <section class="relative pt-28 pb-20 md:pt-36 md:pb-28 lg:pt-44 lg:pb-36 overflow-hidden bg-zinc-50">
+    <section class="relative pt-24 pb-16 md:pt-32 md:pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-zinc-50">
       <div class="hero-blob hero-blob--tr" aria-hidden="true"></div>
       <div class="hero-blob hero-blob--bl" aria-hidden="true"></div>
 
       <div class="relative z-10 max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12 text-center">
 
-        <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-white border border-zinc-200 shadow-sm mb-6 md:mb-8 opacity-0 animate-fade-in-up" style="animation-delay:0ms">
+        <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-white border border-zinc-200 shadow-sm mb-5 md:mb-7 opacity-0 animate-fade-in-up" style="animation-delay:0ms">
           <span class="w-1.5 h-1.5 rounded-full bg-[#81b344] flex-shrink-0"></span>
           <span class="text-xs font-bold text-zinc-600 tracking-[0.15em] uppercase">Profesionální úklid Brno a okolí</span>
         </div>
 
-        <h1 class="text-[2.75rem] sm:text-[3.75rem] md:text-6xl lg:text-[6rem] font-extrabold text-zinc-950 tracking-tighter leading-[1.05] md:leading-[0.95] mb-6 opacity-0 animate-fade-in-up" style="animation-delay:150ms">
-          Čistota, kterou máte <br class="hidden sm:block" />
-          <span class="text-[#6a9438]">plně pod kontrolou.</span>
+        <!--
+          H1: fluid clamp()
+          min  = 2rem   (32px)  — mobil
+          mid  = 6vw          — plynulý přechod
+          max  = 5rem   (80px) — desktop
+          Na notasu ~1024px = 6vw → ~61px ✓  velkej monitor 1440px = capped 80px ✓
+        -->
+        <h1 class="fluid-h1 font-extrabold text-zinc-950 tracking-tighter leading-[1.05] mb-5 md:mb-6 opacity-0 animate-fade-in-up" style="animation-delay:150ms">
+          Úklidová firma pro Brno a okolí,<br class="hidden sm:block" />
+          <span class="text-[#6a9438]">na kterou se můžete spolehnout.</span>
         </h1>
 
-        <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-[14px] sm:text-[15px] md:text-[16px] font-bold tracking-[0.1em] uppercase mb-8 md:mb-10 opacity-0 animate-fade-in-up" style="animation-delay:300ms">
+        <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-[13px] sm:text-[14px] font-bold tracking-[0.1em] uppercase mb-7 md:mb-9 opacity-0 animate-fade-in-up" style="animation-delay:300ms">
           <span class="text-zinc-800 bg-zinc-200/50 px-3 py-1 rounded-md">SVJ</span>
           <span class="text-[#81b344]">·</span>
           <span class="text-zinc-800 bg-zinc-200/50 px-3 py-1 rounded-md">Kanceláře</span>
@@ -140,25 +150,25 @@ const faqItems = [
           <span class="text-zinc-800 bg-zinc-200/50 px-3 py-1 rounded-md">Airbnb</span>
         </div>
 
-        <p class="text-base sm:text-lg md:text-[19px] lg:text-[21px] text-zinc-600 max-w-[95%] md:max-w-xl lg:max-w-2xl mx-auto leading-relaxed font-medium mb-12 opacity-0 animate-fade-in-up" style="animation-delay:450ms">
+        <p class="text-[15px] sm:text-[16px] md:text-[17px] text-zinc-600 max-w-[95%] md:max-w-xl lg:max-w-2xl mx-auto leading-relaxed font-medium mb-10 opacity-0 animate-fade-in-up" style="animation-delay:450ms">
           Mějte úklid konečně vyřešený. S naší klientskou webovou aplikací vidíte fotoreporty ihned po dokončení práce. Pojištění 5 mil. Kč a prověřený personál.
         </p>
 
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 px-4 sm:px-0 opacity-0 animate-fade-in-up" style="animation-delay:600ms">
-          <a href="/kontakt" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 text-[16px] font-bold text-white transition-all duration-300 ease-out bg-[#81b344] rounded-xl hover:bg-[#729f3c] hover:-translate-y-1 shadow-md shadow-[#81b344]/20">
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 px-4 sm:px-0 opacity-0 animate-fade-in-up" style="animation-delay:600ms">
+          <a href="/kontakt" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[15px] font-bold text-white transition-all duration-300 ease-out bg-[#81b344] rounded-xl hover:bg-[#729f3c] hover:-translate-y-1 shadow-md shadow-[#81b344]/20">
             Chci nezávaznou nabídku
             <i data-lucide="arrow-right" class="w-4 h-4" aria-hidden="true"></i>
           </a>
-          <a href="#proc-my" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-[16px] font-bold text-zinc-700 transition-all duration-300 ease-out bg-white border-2 border-zinc-200 rounded-xl hover:border-zinc-300 hover:bg-zinc-50 hover:-translate-y-1">
+          <a href="#proc-my" class="w-full sm:w-auto inline-flex items-center justify-center px-7 py-3.5 text-[15px] font-bold text-zinc-700 transition-all duration-300 ease-out bg-white border-2 border-zinc-200 rounded-xl hover:border-zinc-300 hover:bg-zinc-50 hover:-translate-y-1">
             Proč PrimeClean?
           </a>
         </div>
 
-        <div class="mt-16 md:mt-24 relative max-w-5xl mx-auto group opacity-0 animate-fade-in-up pb-10 sm:pb-0" style="animation-delay:800ms">
+        <div class="mt-12 md:mt-20 relative max-w-5xl mx-auto group opacity-0 animate-fade-in-up pb-10 sm:pb-0" style="animation-delay:800ms">
           <div class="relative aspect-[4/3] sm:aspect-[16/9] rounded-2xl md:rounded-[2rem] overflow-hidden bg-zinc-100 border border-zinc-200/50 z-10">
             <img
               src="/hero-image.webp"
-              alt="PrimeClean profesionální úklid kancelářských prostor"
+              alt="PrimeClean — profesionální úklid kancelářských prostor v Brně"
               width="1200" height="675"
               class="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.02]"
               fetchpriority="high"
@@ -167,11 +177,11 @@ const faqItems = [
             />
           </div>
           <div class="absolute -bottom-6 left-2 sm:-bottom-8 sm:left-8 z-20 bg-white rounded-2xl shadow-xl border border-zinc-100 p-4 flex items-center gap-4 w-[calc(100%-1rem)] sm:w-auto sm:max-w-[320px]">
-            <div class="flex-shrink-0 w-11 h-11 bg-[#81b344]/10 rounded-xl flex items-center justify-center text-[#6a9438]">
+            <div class="flex-shrink-0 w-10 h-10 bg-[#81b344]/10 rounded-xl flex items-center justify-center text-[#6a9438]">
               <i data-lucide="image" class="w-5 h-5" aria-hidden="true"></i>
             </div>
             <div class="text-left min-w-0">
-              <p class="text-[13.5px] font-bold text-zinc-950 leading-tight">Fotografie z úklidu</p>
+              <p class="text-[13px] font-bold text-zinc-950 leading-tight">Fotografie z úklidu</p>
               <p class="text-xs font-medium text-zinc-600 mt-0.5 leading-snug">Prohlížejte si fotoreporty po každém úklidu rovnou ve webové aplikaci — bez instalace, přímo v prohlížeči.</p>
             </div>
           </div>
@@ -181,15 +191,15 @@ const faqItems = [
     </section>
 
     <!-- 1b. TRUST BADGE BAR -->
-    <section class="bg-white border-y border-zinc-100 py-4 sm:py-5">
+    <section class="bg-white border-y border-zinc-100 py-4">
       <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
-        <div class="scroll-animate opacity-0 grid grid-cols-1 sm:grid-cols-2 md:flex md:flex-wrap items-center justify-center gap-y-3 sm:gap-y-4 gap-x-8 md:gap-x-12">
+        <div class="scroll-animate opacity-0 grid grid-cols-2 md:flex md:flex-wrap items-center justify-center gap-y-3 gap-x-8 md:gap-x-10">
           {trustBadges.map(badge => (
-            <div class="flex items-center gap-2.5 text-zinc-600 justify-center md:justify-start">
+            <div class="flex items-center gap-2 text-zinc-600 justify-center md:justify-start">
               <span class="text-[#81b344] flex-shrink-0" aria-hidden="true">
-                <i data-lucide={badge.icon} class="w-[22px] h-[22px]"></i>
+                <i data-lucide={badge.icon} class="w-5 h-5"></i>
               </span>
-              <span class="text-[14px] font-semibold whitespace-nowrap">{badge.label}</span>
+              <span class="text-[13px] font-semibold whitespace-nowrap">{badge.label}</span>
             </div>
           ))}
         </div>
@@ -197,21 +207,27 @@ const faqItems = [
     </section>
 
     <!-- 2. SLUŽBY -->
-    <section id="sluzby" class="py-20 md:py-32 bg-zinc-50 relative overflow-hidden scroll-mt-20 md:scroll-mt-24">
+    <section id="sluzby" class="py-16 md:py-20 lg:py-28 bg-zinc-50 relative overflow-hidden scroll-mt-20 md:scroll-mt-24">
       <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10 text-center">
-        <div class="scroll-animate opacity-0 max-w-3xl mx-auto mb-16 lg:mb-24">
-          <p class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-4">NAŠE SLUŽBY</p>
-          <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-6">
+        <div class="scroll-animate opacity-0 max-w-2xl mx-auto mb-12 lg:mb-16">
+          <p class="text-[12px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-3">NAŠE SLUŽBY</p>
+          <!--
+            H2: fluid clamp()
+            min 1.5rem (24px) — mobil
+            mid 3.5vw         — tablet/notas
+            max 2.5rem (40px) — desktop
+          -->
+          <h2 class="fluid-h2 font-extrabold text-zinc-950 tracking-tighter leading-[1.15] mb-4">
             Kde odvádíme tu <span class="text-[#6a9438]">nejlepší práci.</span>
           </h2>
-          <p class="text-lg md:text-[20px] text-zinc-600 font-medium leading-relaxed max-w-2xl mx-auto">
-            Specializujeme se na oblasti, kde máme vyladěné procesy. Díky našim zkušenostem a klientské aplikaci vám zajistíme spolehlivé plánování a absolutní kontrolu.
+          <p class="text-[15px] md:text-[16px] text-zinc-600 font-medium leading-relaxed max-w-xl mx-auto">
+            Specializujeme se na oblasti, kde máme vyladěné procesy. Díky zkušenostem a klientské aplikaci vám zajistíme spolehlivé plánování a absolutní kontrolu.
           </p>
         </div>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
           {services.map((service, index) => (
             <div
-              class="scroll-animate opacity-0 flex flex-col bg-white rounded-[2rem] border border-zinc-200 shadow-sm transition-all duration-300 ease-out hover:shadow-lg hover:-translate-y-1 overflow-hidden group"
+              class="scroll-animate opacity-0 flex flex-col bg-white rounded-[1.75rem] border border-zinc-200 shadow-sm transition-all duration-300 ease-out hover:shadow-lg hover:-translate-y-1 overflow-hidden group"
               style={`animation-delay:${index * 120}ms`}
             >
               <div class="relative w-full aspect-[4/3] bg-zinc-100 overflow-hidden">
@@ -223,15 +239,15 @@ const faqItems = [
                   loading="lazy"
                   decoding="async"
                 />
-                <div class="absolute top-4 left-4 px-2.5 py-1 rounded-full bg-white shadow-sm">
+                <div class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-white shadow-sm">
                   <span class="text-xs font-bold text-zinc-700 tracking-[0.06em] uppercase">{service.tag}</span>
                 </div>
               </div>
-              <div class="p-8 flex-grow flex flex-col">
-                <h3 class="text-[22px] font-bold text-zinc-950 tracking-tight leading-snug mb-3">{service.title}</h3>
-                <p class="text-[15px] text-zinc-600 font-medium leading-relaxed mb-6 flex-grow">{service.description}</p>
-                <div class="pt-5 border-t border-zinc-100">
-                  <a href={service.link} class="inline-flex items-center gap-1.5 font-bold text-[15px] text-[#81b344] hover:text-[#6a9438] transition-colors group/link">
+              <div class="p-6 md:p-7 flex-grow flex flex-col">
+                <h3 class="text-[18px] font-bold text-zinc-950 tracking-tight leading-snug mb-2">{service.title}</h3>
+                <p class="text-[14px] text-zinc-600 font-medium leading-relaxed mb-5 flex-grow">{service.description}</p>
+                <div class="pt-4 border-t border-zinc-100">
+                  <a href={service.link} class="inline-flex items-center gap-1.5 font-bold text-[14px] text-[#81b344] hover:text-[#6a9438] transition-colors group/link">
                     Zjistit více
                     <i data-lucide="arrow-right" class="w-4 h-4 transition-transform duration-300 group-hover/link:translate-x-1" aria-hidden="true"></i>
                   </a>
@@ -244,77 +260,83 @@ const faqItems = [
     </section>
 
     <!-- 3. PROČ MY & APLIKACE -->
-    <section id="proc-my" class="py-20 md:py-32 bg-white scroll-mt-20 md:scroll-mt-24 relative overflow-hidden">
+    <section id="proc-my" class="py-16 md:py-20 lg:py-28 bg-white scroll-mt-20 md:scroll-mt-24 relative overflow-hidden">
       <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
 
-        <div class="text-center max-w-3xl mx-auto mb-16 lg:mb-24 scroll-animate opacity-0">
-          <p class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-4">Výhody spolupráce</p>
-          <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-zinc-950 tracking-tighter mb-6 leading-[1.1]">
+        <div class="text-center max-w-2xl mx-auto mb-12 lg:mb-16 scroll-animate opacity-0">
+          <p class="text-[12px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-3">Výhody spolupráce</p>
+          <h2 class="fluid-h2 font-extrabold text-zinc-950 tracking-tighter mb-4 leading-[1.15]">
             Nenechte nic <span class="text-[#6a9438]">náhodě.</span>
           </h2>
-          <p class="text-lg md:text-[20px] text-zinc-600 font-medium leading-relaxed max-w-2xl mx-auto">
+          <p class="text-[15px] md:text-[16px] text-zinc-600 font-medium leading-relaxed max-w-xl mx-auto">
             Úklid v Brně a okolí zajišťujeme profesionálně a bez výmluv. Pracujeme systematicky, s nekompromisní kontrolou kvality.
           </p>
         </div>
 
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-24">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 mb-16 md:mb-20">
           {features.map((feature, index) => (
             <div
-              class="scroll-animate opacity-0 relative bg-zinc-50 rounded-[1.5rem] p-8 lg:p-10 border border-zinc-100 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg hover:border-[#81b344]/20 overflow-hidden group"
+              class="scroll-animate opacity-0 relative bg-zinc-50 rounded-[1.5rem] p-7 lg:p-8 border border-zinc-100 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg hover:border-[#81b344]/20 overflow-hidden group"
               style={`animation-delay:${index * 120}ms`}
             >
-              <span class="absolute top-5 right-7 text-[4rem] font-extrabold text-[#81b344]/8 leading-none select-none pointer-events-none" aria-hidden="true">
+              <span class="absolute top-4 right-6 text-[3.5rem] font-extrabold text-[#81b344]/8 leading-none select-none pointer-events-none" aria-hidden="true">
                 {String(index + 1).padStart(2, '0')}
               </span>
-              <div class="w-14 h-14 rounded-2xl bg-white border border-zinc-200 flex items-center justify-center text-[#6a9438] mb-8 relative z-10 group-hover:border-[#81b344]/30 group-hover:bg-[#81b344]/5 transition-colors duration-300">
-                <i data-lucide={feature.icon} class="w-6 h-6" aria-hidden="true"></i>
+              <div class="w-12 h-12 rounded-xl bg-white border border-zinc-200 flex items-center justify-center text-[#6a9438] mb-6 relative z-10 group-hover:border-[#81b344]/30 group-hover:bg-[#81b344]/5 transition-colors duration-300">
+                <i data-lucide={feature.icon} class="w-5 h-5" aria-hidden="true"></i>
               </div>
-              <h3 class="text-[20px] lg:text-[22px] font-bold text-zinc-950 tracking-tight leading-snug mb-4 relative z-10">{feature.title}</h3>
-              <p class="text-[15px] lg:text-[16px] font-medium text-zinc-600 leading-relaxed relative z-10">{feature.description}</p>
+              <h3 class="text-[18px] font-bold text-zinc-950 tracking-tight leading-snug mb-3 relative z-10">{feature.title}</h3>
+              <p class="text-[14px] font-medium text-zinc-600 leading-relaxed relative z-10">{feature.description}</p>
             </div>
           ))}
         </div>
 
         <!-- DARK APP PROMO -->
-        <div class="scroll-animate opacity-0 flex flex-col lg:flex-row items-center gap-12 lg:gap-20 bg-zinc-950 text-white rounded-[2rem] lg:rounded-[3rem] p-8 sm:p-12 md:p-16 border border-zinc-800 shadow-2xl">
+        <div class="scroll-animate opacity-0 flex flex-col lg:flex-row items-center gap-10 lg:gap-16 bg-zinc-950 text-white rounded-[2rem] p-7 sm:p-10 md:p-12 border border-zinc-800 shadow-2xl">
           <div class="w-full lg:w-[55%] relative z-10">
-            <div class="inline-block px-3 py-1.5 rounded-md bg-white/10 mb-6">
-              <span class="text-[12px] font-bold text-zinc-300 tracking-[0.1em] uppercase">Klientská webová aplikace</span>
+            <div class="inline-block px-3 py-1.5 rounded-md bg-white/10 mb-5">
+              <span class="text-[11px] font-bold text-zinc-300 tracking-[0.1em] uppercase">Klientská webová aplikace</span>
             </div>
-            <h3 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-[1.1] mb-6 tracking-tighter">
+            <!--
+              H3 app: fluid clamp()
+              min 1.375rem (22px) — mobil
+              mid 3vw             — tablet
+              max 2.25rem  (36px) — desktop
+            -->
+            <h3 class="fluid-h3-app font-extrabold leading-[1.2] mb-5 tracking-tighter">
               Přehled v aplikaci.<br /><span class="text-[#81b344]">Vše o úklidu pohodlně ve vaší kapse.</span>
             </h3>
-            <p class="text-base md:text-[18px] text-zinc-400 font-medium leading-relaxed mb-4 max-w-lg">
+            <p class="text-[15px] md:text-[16px] text-zinc-400 font-medium leading-relaxed mb-3 max-w-lg">
               Objednávky, historie úklidů, faktury i platby přehledně na jednom místě. Žádné zbytečné maily a doptávání se, jestli už je hotovo.
             </p>
-            <p class="text-sm text-zinc-500 font-medium leading-relaxed mb-8 max-w-lg">
+            <p class="text-[13px] text-zinc-500 font-medium leading-relaxed mb-7 max-w-lg">
               Funguje přímo v prohlížeči — žádná instalace, dostupné z mobilu i počítače.
             </p>
-            <ul class="flex flex-col gap-4 mb-10" role="list">
+            <ul class="flex flex-col gap-3 mb-8" role="list">
               {[
                 'Živé fotoreporty po každém úklidu',
                 'Přehled faktur a historie plateb',
                 'Notifikace o dokončení úklidu',
                 'Přístup 24/7 z mobilu i počítače',
-              ].map((item, i) => (
-                <li class="flex items-center gap-4 text-[16px] text-zinc-200 font-semibold tracking-tight">
-                  <div class="flex-shrink-0 w-6 h-6 rounded-full bg-[#81b344] flex items-center justify-center text-zinc-950" aria-hidden="true">
+              ].map((item) => (
+                <li class="flex items-center gap-3 text-[14px] text-zinc-200 font-semibold tracking-tight">
+                  <div class="flex-shrink-0 w-5 h-5 rounded-full bg-[#81b344] flex items-center justify-center text-zinc-950" aria-hidden="true">
                     <i data-lucide="check" class="w-3 h-3" style="stroke-width:3"></i>
                   </div>
                   {item}
                 </li>
               ))}
             </ul>
-            <a href="/aplikace" class="inline-flex items-center justify-center gap-2 px-8 py-4 text-[15px] font-bold text-zinc-950 transition-all duration-300 ease-out bg-[#81b344] rounded-xl hover:bg-white hover:-translate-y-1">
+            <a href="/aplikace" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[14px] font-bold text-zinc-950 transition-all duration-300 ease-out bg-[#81b344] rounded-xl hover:bg-white hover:-translate-y-1">
               Prozkoumat aplikaci
               <i data-lucide="arrow-right" class="w-4 h-4" aria-hidden="true"></i>
             </a>
           </div>
-          <div class="w-full sm:max-w-sm md:max-w-md mx-auto lg:w-[45%] relative mt-8 lg:mt-0 z-10">
+          <div class="w-full sm:max-w-xs md:max-w-sm mx-auto lg:w-[45%] relative mt-6 lg:mt-0 z-10">
             <div class="relative aspect-[4/5] rounded-[1.5rem] overflow-hidden bg-zinc-900 border border-zinc-700">
               <img
                 src="/dashboard.webp"
-                alt="Ukázka klientské webové aplikace PrimeClean — přehled úklidů a fotoreportů"
+                alt="Klientská webová aplikace PrimeClean — přehled úklidů a fotoreportů"
                 width="600" height="750"
                 class="w-full h-full object-cover object-top"
                 loading="lazy"
@@ -328,23 +350,23 @@ const faqItems = [
     </section>
 
     <!-- 4. STATISTIKY -->
-    <section class="py-20 lg:py-28 bg-[#81b344] relative overflow-hidden count-up-container">
+    <section class="py-16 lg:py-20 bg-[#81b344] relative overflow-hidden count-up-container">
       <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
-        <div class="scroll-animate opacity-0 text-center mb-14">
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-1.5">Výsledky, které budujeme každý den</h2>
-          <p class="text-white/70 font-medium text-[15px]">Čísla, která mluví za sebe</p>
+        <div class="scroll-animate opacity-0 text-center mb-10 md:mb-12">
+          <h2 class="text-xl sm:text-2xl font-extrabold text-white tracking-tight mb-1">Výsledky, které budujeme každý den</h2>
+          <p class="text-white/70 font-medium text-[14px]">Čísla, která mluví za sebe</p>
         </div>
-        <div class="scroll-animate opacity-0 grid grid-cols-2 md:grid-cols-4 gap-y-10 md:gap-y-0 text-center">
+        <div class="scroll-animate opacity-0 grid grid-cols-2 md:grid-cols-4 gap-y-8 md:gap-y-0 text-center">
           {stats.map((stat, index) => (
-            <div class={`flex flex-col items-center justify-center px-4 ${index < stats.length - 1 ? 'md:border-r md:border-white/20' : ''}`}>
-              <div class="w-9 h-9 rounded-lg bg-white/15 flex items-center justify-center text-white mb-4">
+            <div class={`flex flex-col items-center justify-center px-3 ${index < stats.length - 1 ? 'md:border-r md:border-white/20' : ''}`}>
+              <div class="w-8 h-8 rounded-lg bg-white/15 flex items-center justify-center text-white mb-3">
                 <i data-lucide={stat.icon} class="w-4 h-4" aria-hidden="true"></i>
               </div>
-              <div class="flex items-end justify-center text-white mb-2">
-                <span class="text-[3rem] md:text-[4rem] lg:text-[4.5rem] font-extrabold tracking-tighter leading-none tabular-nums count-up" data-target={stat.value}>0</span>
-                <span class="text-[1.75rem] md:text-[2.25rem] font-bold text-white/70 ml-1 pb-1 md:pb-2">{stat.suffix}</span>
+              <div class="flex items-end justify-center text-white mb-1.5">
+                <span class="text-[2.5rem] md:text-[3.5rem] lg:text-[4rem] font-extrabold tracking-tighter leading-none tabular-nums count-up" data-target={stat.value}>0</span>
+                <span class="text-[1.5rem] md:text-[2rem] font-bold text-white/70 ml-1 pb-1">{stat.suffix}</span>
               </div>
-              <div class="text-[12px] md:text-[13px] font-bold uppercase tracking-[0.1em] text-white/80">{stat.label}</div>
+              <div class="text-[11px] md:text-[12px] font-bold uppercase tracking-[0.1em] text-white/80">{stat.label}</div>
             </div>
           ))}
         </div>
@@ -352,22 +374,22 @@ const faqItems = [
     </section>
 
     <!-- 5. RECENZE -->
-    <section class="py-20 md:py-32 bg-zinc-950 relative overflow-hidden" aria-labelledby="reviews-heading">
+    <section class="py-16 md:py-20 lg:py-28 bg-zinc-950 relative overflow-hidden" aria-labelledby="reviews-heading">
       <div class="review-blob review-blob--tl" aria-hidden="true"></div>
       <div class="review-blob review-blob--br" aria-hidden="true"></div>
 
       <div class="max-w-[1400px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
-        <div class="scroll-animate opacity-0 text-center max-w-2xl mx-auto mb-16">
-          <p class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-4">Co říkají klienti</p>
-          <h2 id="reviews-heading" class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tighter leading-[1.1] mb-4">
+        <div class="scroll-animate opacity-0 text-center max-w-xl mx-auto mb-12">
+          <p class="text-[12px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-3">Co říkají klienti</p>
+          <h2 id="reviews-heading" class="fluid-h2 font-extrabold text-white tracking-tighter leading-[1.15] mb-4">
             Zkušenosti <span class="text-[#81b344]">našich klientů.</span>
           </h2>
-          <div class="flex items-center justify-center gap-1.5">
+          <div class="flex items-center justify-center gap-1">
             {[1,2,3,4,5].map(() => (
               <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400" aria-hidden="true"></i>
             ))}
-            <span class="ml-2 text-[15px] font-bold text-white">5,0</span>
-            <span class="text-zinc-500 text-[14px] font-medium ml-1">průměrné hodnocení</span>
+            <span class="ml-2 text-[14px] font-bold text-white">5,0</span>
+            <span class="text-zinc-500 text-[13px] font-medium ml-1">průměrné hodnocení</span>
           </div>
         </div>
 
@@ -382,29 +404,29 @@ const faqItems = [
           >
             {testimonials.map(t => (
               <div
-                class="flex-shrink-0 flex flex-col bg-zinc-900 rounded-[1.5rem] p-7 border border-zinc-800 relative overflow-hidden"
-                style="scroll-snap-align:center;width:82vw;max-width:340px;"
+                class="flex-shrink-0 flex flex-col bg-zinc-900 rounded-[1.5rem] p-6 border border-zinc-800 relative overflow-hidden"
+                style="scroll-snap-align:center;width:82vw;max-width:320px;"
               >
-                <i data-lucide="quote" class="absolute -top-1 -right-1 w-8 h-8 text-[#81b344] opacity-25 fill-[#81b344]" aria-hidden="true"></i>
-                <div class="flex gap-1 mb-5" aria-label={`Hodnocení: ${t.rating} z 5`}>
+                <i data-lucide="quote" class="absolute -top-1 -right-1 w-7 h-7 text-[#81b344] opacity-25 fill-[#81b344]" aria-hidden="true"></i>
+                <div class="flex gap-1 mb-4" aria-label={`Hodnocení: ${t.rating} z 5`}>
                   {Array.from({length: t.rating}).map(() => (
-                    <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400" aria-hidden="true"></i>
+                    <i data-lucide="star" class="w-3.5 h-3.5 text-amber-400 fill-amber-400" aria-hidden="true"></i>
                   ))}
                 </div>
-                <p class="text-[14.5px] text-zinc-400 font-medium leading-relaxed mb-6 flex-grow">"{t.text}"</p>
-                <div class="flex items-center gap-3 mt-auto pt-5 border-t border-zinc-800">
-                  <div class="flex-shrink-0 w-10 h-10 rounded-full bg-[#81b344]/15 flex items-center justify-center" aria-hidden="true">
-                    <span class="text-[13px] font-extrabold text-[#81b344]">{t.initials}</span>
+                <p class="text-[13.5px] text-zinc-400 font-medium leading-relaxed mb-5 flex-grow">"{t.text}"</p>
+                <div class="flex items-center gap-3 mt-auto pt-4 border-t border-zinc-800">
+                  <div class="flex-shrink-0 w-9 h-9 rounded-full bg-[#81b344]/15 flex items-center justify-center" aria-hidden="true">
+                    <span class="text-[12px] font-extrabold text-[#81b344]">{t.initials}</span>
                   </div>
                   <div>
-                    <p class="text-[13.5px] font-bold text-white leading-tight">{t.name}</p>
-                    <p class="text-[12px] text-zinc-500 font-medium">{t.role}</p>
+                    <p class="text-[13px] font-bold text-white leading-tight">{t.name}</p>
+                    <p class="text-[11px] text-zinc-500 font-medium">{t.role}</p>
                   </div>
                 </div>
               </div>
             ))}
           </div>
-          <div class="flex justify-center items-center gap-2 mt-6" id="testimonials-dots">
+          <div class="flex justify-center items-center gap-2 mt-5" id="testimonials-dots">
             {testimonials.map((_, i) => (
               <button
                 class="testimonial-dot rounded-full transition-all duration-300"
@@ -417,26 +439,26 @@ const faqItems = [
         </div>
 
         <!-- Desktop grid -->
-        <div class="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {testimonials.map((t, i) => (
             <div
-              class="scroll-animate opacity-0 flex flex-col bg-zinc-900 rounded-[1.5rem] p-6 border border-zinc-800 hover:border-[#81b344]/30 hover:shadow-md transition-[border-color,box-shadow] duration-300 relative overflow-hidden"
+              class="scroll-animate opacity-0 flex flex-col bg-zinc-900 rounded-[1.5rem] p-5 border border-zinc-800 hover:border-[#81b344]/30 hover:shadow-md transition-[border-color,box-shadow] duration-300 relative overflow-hidden"
               style={`animation-delay:${i * 100}ms`}
             >
-              <i data-lucide="quote" class="absolute -top-1 -right-1 w-8 h-8 text-[#81b344] opacity-25 fill-[#81b344]" aria-hidden="true"></i>
-              <div class="flex gap-1 mb-5" aria-label={`Hodnocení: ${t.rating} z 5`}>
+              <i data-lucide="quote" class="absolute -top-1 -right-1 w-7 h-7 text-[#81b344] opacity-25 fill-[#81b344]" aria-hidden="true"></i>
+              <div class="flex gap-1 mb-4" aria-label={`Hodnocení: ${t.rating} z 5`}>
                 {Array.from({length: t.rating}).map(() => (
-                  <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400" aria-hidden="true"></i>
+                  <i data-lucide="star" class="w-3.5 h-3.5 text-amber-400 fill-amber-400" aria-hidden="true"></i>
                 ))}
               </div>
-              <p class="text-[13.5px] text-zinc-400 font-medium leading-relaxed mb-6 flex-grow">"{t.text}"</p>
-              <div class="flex items-center gap-3 mt-auto pt-5 border-t border-zinc-800">
-                <div class="flex-shrink-0 w-10 h-10 rounded-full bg-[#81b344]/15 flex items-center justify-center" aria-hidden="true">
-                  <span class="text-[13px] font-extrabold text-[#81b344]">{t.initials}</span>
+              <p class="text-[13px] text-zinc-400 font-medium leading-relaxed mb-5 flex-grow">"{t.text}"</p>
+              <div class="flex items-center gap-3 mt-auto pt-4 border-t border-zinc-800">
+                <div class="flex-shrink-0 w-9 h-9 rounded-full bg-[#81b344]/15 flex items-center justify-center" aria-hidden="true">
+                  <span class="text-[12px] font-extrabold text-[#81b344]">{t.initials}</span>
                 </div>
                 <div>
-                  <p class="text-[13.5px] font-bold text-white leading-tight">{t.name}</p>
-                  <p class="text-[12px] text-zinc-500 font-medium">{t.role}</p>
+                  <p class="text-[13px] font-bold text-white leading-tight">{t.name}</p>
+                  <p class="text-[11px] text-zinc-500 font-medium">{t.role}</p>
                 </div>
               </div>
             </div>
@@ -446,39 +468,39 @@ const faqItems = [
     </section>
 
     <!-- 6. JAK TO FUNGUJE -->
-    <section id="jak-to-funguje" class="py-20 md:py-32 bg-zinc-50 relative overflow-hidden scroll-mt-20 md:scroll-mt-24">
+    <section id="jak-to-funguje" class="py-16 md:py-20 lg:py-28 bg-zinc-50 relative overflow-hidden scroll-mt-20 md:scroll-mt-24">
       <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10 text-center">
 
-        <div class="scroll-animate opacity-0 max-w-3xl mx-auto mb-20 lg:mb-28">
-          <p class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-4">Proces spolupráce</p>
-          <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1] mb-6">
+        <div class="scroll-animate opacity-0 max-w-2xl mx-auto mb-14 lg:mb-20">
+          <p class="text-[12px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-3">Proces spolupráce</p>
+          <h2 class="fluid-h2 font-extrabold text-zinc-950 tracking-tighter leading-[1.15] mb-4">
             Od poptávky k čistotě <br class="hidden md:block" /> během <span class="text-[#6a9438]">pár dnů.</span>
           </h2>
-          <p class="text-lg md:text-[20px] text-zinc-600 font-medium leading-relaxed max-w-2xl mx-auto">
+          <p class="text-[15px] md:text-[16px] text-zinc-600 font-medium leading-relaxed max-w-xl mx-auto">
             Jednoduchý a transparentní proces bez zbytečných průtahů.
           </p>
         </div>
 
-        <div class="relative max-w-5xl mx-auto">
+        <div class="relative max-w-4xl mx-auto">
           <div class="process-line hidden lg:block" aria-hidden="true"></div>
-          <div class="grid lg:grid-cols-4 gap-12 lg:gap-6 relative z-10">
+          <div class="grid lg:grid-cols-4 gap-10 lg:gap-5 relative z-10">
             {[
-              { step: "1", title: "Nezávazná\npoptávka",  desc: "Zavolejte nám nebo vyplňte formulář. Probereme vaši představu a typ objektu.",     delay: 0   },
-              { step: "2", title: "Prohlídka\na nacenění", desc: "Přijedeme na místo, zhodnotíme stav a navrhneme přesný plán úklidu i kalkulaci.", delay: 120 },
-              { step: "3", title: "Nastavení\naplikace",   desc: "Předáme přístupy do webové aplikace, zadáme rozsah prací, termíny a kontaktní osoby.",  delay: 240 },
+              { step: "1", title: "Nezávazná\npoptávka",   desc: "Zavolejte nám nebo vyplňte formulář. Probereme vaši představu a typ objektu.",                    delay: 0   },
+              { step: "2", title: "Prohlídka\na nacenění", desc: "Přijedeme na místo, zhodnotíme stav a navrhneme přesný plán úklidu i kalkulaci.",                delay: 120 },
+              { step: "3", title: "Nastavení\naplikace",   desc: "Předáme přístupy do webové aplikace, zadáme rozsah prací, termíny a kontaktní osoby.",           delay: 240 },
             ].map(({ step, title, desc, delay }) => (
               <div class="flex flex-col items-center text-center scroll-animate opacity-0" style={`animation-delay:${delay}ms`}>
-                <div class="w-20 h-20 rounded-full bg-white border-2 border-zinc-200 shadow-sm flex items-center justify-center text-[24px] font-extrabold text-zinc-400 mb-6 relative z-10">{step}</div>
-                <h3 class="text-[20px] font-bold text-zinc-950 leading-snug tracking-tight mb-3 whitespace-pre-line">{title}</h3>
-                <p class="text-[15px] text-zinc-600 font-medium leading-relaxed px-2">{desc}</p>
+                <div class="w-16 h-16 rounded-full bg-white border-2 border-zinc-200 shadow-sm flex items-center justify-center text-[20px] font-extrabold text-zinc-400 mb-5 relative z-10">{step}</div>
+                <h3 class="text-[16px] font-bold text-zinc-950 leading-snug tracking-tight mb-2 whitespace-pre-line">{title}</h3>
+                <p class="text-[13px] text-zinc-600 font-medium leading-relaxed px-1">{desc}</p>
               </div>
             ))}
             <div class="flex flex-col items-center text-center scroll-animate opacity-0" style="animation-delay:360ms">
-              <div class="w-20 h-20 rounded-full bg-[#81b344] shadow-md flex items-center justify-center text-white mb-6 relative z-10">
-                <i data-lucide="check" class="w-8 h-8" style="stroke-width:3" aria-hidden="true"></i>
+              <div class="w-16 h-16 rounded-full bg-[#81b344] shadow-md flex items-center justify-center text-white mb-5 relative z-10">
+                <i data-lucide="check" class="w-7 h-7" style="stroke-width:3" aria-hidden="true"></i>
               </div>
-              <h3 class="text-[20px] font-bold text-zinc-950 leading-snug tracking-tight mb-3">Pravidelný<br />a čistý chod</h3>
-              <p class="text-[15px] text-zinc-600 font-medium leading-relaxed px-2">Přebíráme zodpovědnost. Vy se věnujete své práci, my se staráme o zbytek.</p>
+              <h3 class="text-[16px] font-bold text-zinc-950 leading-snug tracking-tight mb-2">Pravidelný<br />a čistý chod</h3>
+              <p class="text-[13px] text-zinc-600 font-medium leading-relaxed px-1">Přebíráme zodpovědnost. Vy se věnujete své práci, my se staráme o zbytek.</p>
             </div>
           </div>
         </div>
@@ -486,36 +508,42 @@ const faqItems = [
     </section>
 
     <!-- 7. FAQ -->
-    <section class="py-20 md:py-32 bg-white relative overflow-hidden">
-      <div class="max-w-[860px] mx-auto px-5 md:px-8 lg:px-12">
-        <div class="scroll-animate opacity-0 text-center mb-16">
-          <p class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-4">Časté otázky</p>
-          <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1]">
+    <section class="py-16 md:py-20 lg:py-28 bg-white relative overflow-hidden" itemscope itemtype="https://schema.org/FAQPage">
+      <div class="max-w-[800px] mx-auto px-5 md:px-8 lg:px-12">
+        <div class="scroll-animate opacity-0 text-center mb-12">
+          <p class="text-[12px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-3">Časté otázky</p>
+          <h2 class="fluid-h2 font-extrabold text-zinc-950 tracking-tighter leading-[1.15]">
             Máte <span class="text-[#6a9438]">otázky?</span>
           </h2>
         </div>
-        <div class="flex flex-col gap-4" id="faq-list">
+        <div class="flex flex-col gap-3" id="faq-list">
           {faqItems.map((item, i) => (
             <div
               class="faq-item scroll-animate opacity-0 bg-zinc-50 border border-zinc-200 rounded-2xl transition-colors duration-200 overflow-hidden"
               style={`animation-delay:${i * 70}ms`}
+              itemscope
+              itemprop="mainEntity"
+              itemtype="https://schema.org/Question"
             >
               <button
-                class="faq-trigger w-full flex items-center justify-between gap-4 px-7 py-5 text-left cursor-pointer select-none"
+                class="faq-trigger w-full flex items-center justify-between gap-4 px-6 py-4 text-left cursor-pointer select-none"
                 aria-expanded="false"
                 aria-controls={`faq-body-${i}`}
               >
-                <span class="text-[16px] md:text-[17px] font-bold text-zinc-900">{item.q}</span>
-                <span class="faq-icon flex-shrink-0 w-8 h-8 rounded-full bg-zinc-200 transition-colors duration-200 flex items-center justify-center border border-transparent">
-                  <i data-lucide="plus" class="faq-icon-plus w-4 h-4 text-zinc-600 transition-all duration-300" aria-hidden="true"></i>
-                  <i data-lucide="x" class="faq-icon-x w-4 h-4 text-[#81b344] hidden transition-all duration-300" aria-hidden="true"></i>
+                <span class="text-[14px] md:text-[15px] font-bold text-zinc-900" itemprop="name">{item.q}</span>
+                <span class="faq-icon flex-shrink-0 w-7 h-7 rounded-full bg-zinc-200 transition-colors duration-200 flex items-center justify-center border border-transparent">
+                  <i data-lucide="plus" class="faq-icon-plus w-3.5 h-3.5 text-zinc-600 transition-all duration-300" aria-hidden="true"></i>
+                  <i data-lucide="x" class="faq-icon-x w-3.5 h-3.5 text-[#81b344] hidden transition-all duration-300" aria-hidden="true"></i>
                 </span>
               </button>
               <div
                 id={`faq-body-${i}`}
                 class="faq-body max-h-0 overflow-hidden"
+                itemscope
+                itemprop="acceptedAnswer"
+                itemtype="https://schema.org/Answer"
               >
-                <p class="text-[15px] text-zinc-600 font-medium leading-relaxed px-7 pb-6 pt-1">{item.a}</p>
+                <p class="text-[13px] md:text-[14px] text-zinc-600 font-medium leading-relaxed px-6 pb-5 pt-1" itemprop="text">{item.a}</p>
               </div>
             </div>
           ))}
@@ -524,45 +552,45 @@ const faqItems = [
     </section>
 
     <!-- 8. O NÁS -->
-    <section id="o-nas" class="pt-16 pb-24 md:pt-24 md:pb-36 bg-zinc-50 relative overflow-hidden">
+    <section id="o-nas" class="py-16 md:py-20 lg:py-28 bg-zinc-50 relative overflow-hidden">
       <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12 relative z-10">
 
-        <div class="scroll-animate opacity-0 text-center max-w-3xl mx-auto mb-14">
-          <p class="text-[13px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-4">Poznejte nás</p>
-          <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-zinc-950 tracking-tighter leading-[1.1]">
+        <div class="scroll-animate opacity-0 text-center max-w-2xl mx-auto mb-12">
+          <p class="text-[12px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-3">Poznejte nás</p>
+          <h2 class="fluid-h2 font-extrabold text-zinc-950 tracking-tighter leading-[1.15]">
             Úklid nemá být vaše starost, <br class="hidden md:block" /> ale <span class="text-[#81b344]">naše vizitka.</span>
           </h2>
         </div>
 
-        <div class="flex flex-col gap-10">
+        <div class="flex flex-col gap-8">
 
           <!-- Tomáš -->
-          <div class="scroll-animate opacity-0 bg-white rounded-[2rem] p-8 sm:p-12 border border-zinc-200 shadow-sm flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12">
-            <div class="flex-shrink-0 flex flex-col items-center text-center w-44">
-              <div class="relative w-32 h-32 md:w-44 md:h-44 rounded-full overflow-hidden border-4 border-[#81b344]/15 bg-zinc-100 shadow-sm mb-4">
+          <div class="scroll-animate opacity-0 bg-white rounded-[1.75rem] p-7 sm:p-10 border border-zinc-200 shadow-sm flex flex-col md:flex-row items-center md:items-start gap-7 md:gap-10">
+            <div class="flex-shrink-0 flex flex-col items-center text-center w-36 md:w-40">
+              <div class="relative w-28 h-28 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-[#81b344]/15 bg-zinc-100 shadow-sm mb-3">
                 <img
                   src="/tomas-kytka.webp"
-                  alt="Tomáš Kytka, zakladatel PrimeClean"
+                  alt="Tomáš Kytka, zakladatel PrimeClean Brno"
                   width="192" height="192"
                   class="w-full h-full object-cover object-top"
                   loading="lazy"
                   decoding="async"
                 />
               </div>
-              <p class="text-[18px] font-extrabold text-zinc-900 leading-tight tracking-tight">Tomáš Kytka</p>
-              <p class="text-xs text-zinc-500 font-bold uppercase tracking-[0.12em] mt-1">Zakladatel &amp; jednatel</p>
+              <p class="text-[16px] font-extrabold text-zinc-900 leading-tight tracking-tight">Tomáš Kytka</p>
+              <p class="text-[11px] text-zinc-500 font-bold uppercase tracking-[0.12em] mt-1">Zakladatel &amp; jednatel</p>
             </div>
-            <div class="flex-1 text-center md:text-left md:bg-zinc-50 md:rounded-2xl md:p-8">
-              <p class="text-[16px] text-zinc-600 font-medium leading-relaxed mb-4">
+            <div class="flex-1 text-center md:text-left md:bg-zinc-50 md:rounded-2xl md:p-7">
+              <p class="text-[14px] md:text-[15px] text-zinc-600 font-medium leading-relaxed mb-3">
                 Jsem detailista. Tři roky v auto detailingu mě naučily, že rozdíl mezi „hotovo" a „perfektně čisté" spočívá v detailech, které většina lidí přehlíží. Právě tuhle nekompromisní preciznost, na kterou jsem byl zvyklý u luxusních vozů, jsem přenesl i do světa firemního úklidu.
               </p>
-              <p class="text-[16px] text-zinc-600 font-medium leading-relaxed mb-4">
+              <p class="text-[14px] md:text-[15px] text-zinc-600 font-medium leading-relaxed mb-3">
                 Při budování PrimeClean jsem měl jasný cíl: odstranit z oboru povrchnost a nedůvěru. Vím, že dokud klient neuvidí výsledky na vlastní oči, nebude stoprocentně klidný.
               </p>
-              <p class="text-[16px] text-zinc-600 font-medium leading-relaxed mb-8">
+              <p class="text-[14px] md:text-[15px] text-zinc-600 font-medium leading-relaxed mb-7">
                 Proto jsme zavedli absolutní transparentnost díky naší webové aplikaci. Chci, abyste každé ráno přicházeli do firmy s jistotou, že je o vše postaráno se stejným zápalem, jako by šlo o výstavní veterán. Vy se soustřeďte na svůj byznys, čistotu nechte na nás – do posledního detailu.
               </p>
-              <a href="/kontakt" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[15px] font-bold text-white transition-all duration-300 ease-out bg-[#81b344] rounded-xl hover:bg-[#6a9438] hover:-translate-y-1 shadow-md shadow-[#81b344]/20">
+              <a href="/kontakt" class="inline-flex items-center justify-center gap-2 px-6 py-3 text-[14px] font-bold text-white transition-all duration-300 ease-out bg-[#81b344] rounded-xl hover:bg-[#6a9438] hover:-translate-y-1 shadow-md shadow-[#81b344]/20">
                 Domluvit osobní schůzku
                 <i data-lucide="arrow-right" class="w-4 h-4" aria-hidden="true"></i>
               </a>
@@ -570,29 +598,29 @@ const faqItems = [
           </div>
 
           <!-- Martina -->
-          <div class="scroll-animate opacity-0 bg-white rounded-[2rem] p-8 sm:p-12 border border-zinc-200 shadow-sm flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12" style="animation-delay:120ms">
-            <div class="flex-shrink-0 flex flex-col items-center text-center w-44">
-              <div class="relative w-32 h-32 md:w-44 md:h-44 rounded-full overflow-hidden border-4 border-[#81b344]/15 bg-zinc-100 shadow-sm mb-4">
+          <div class="scroll-animate opacity-0 bg-white rounded-[1.75rem] p-7 sm:p-10 border border-zinc-200 shadow-sm flex flex-col md:flex-row items-center md:items-start gap-7 md:gap-10" style="animation-delay:120ms">
+            <div class="flex-shrink-0 flex flex-col items-center text-center w-36 md:w-40">
+              <div class="relative w-28 h-28 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-[#81b344]/15 bg-zinc-100 shadow-sm mb-3">
                 <img
                   src="/martina-backova.webp"
-                  alt="Martina Bačková, péče o zákazníky a organizace"
+                  alt="Martina Bačková, péče o zákazníky PrimeClean"
                   width="192" height="192"
                   class="w-full h-full object-cover object-top"
                   loading="lazy"
                   decoding="async"
                 />
               </div>
-              <p class="text-[18px] font-extrabold text-zinc-900 leading-tight tracking-tight">Martina Bačková</p>
-              <p class="text-xs text-zinc-500 font-bold uppercase tracking-[0.12em] mt-1">Péče o zákazníky &amp; organizace</p>
+              <p class="text-[16px] font-extrabold text-zinc-900 leading-tight tracking-tight">Martina Bačková</p>
+              <p class="text-[11px] text-zinc-500 font-bold uppercase tracking-[0.12em] mt-1">Péče o zákazníky &amp; organizace</p>
             </div>
-            <div class="flex-1 text-center md:text-left md:bg-zinc-50 md:rounded-2xl md:p-8">
-              <p class="text-[16px] text-zinc-600 font-medium leading-relaxed mb-4 italic">
+            <div class="flex-1 text-center md:text-left md:bg-zinc-50 md:rounded-2xl md:p-7">
+              <p class="text-[14px] md:text-[15px] text-zinc-600 font-medium leading-relaxed mb-3 italic">
                 „Možná nemám zkušenosti z auto detailingu jako Tomáš, ale mám přirozený talent vnést řád i do toho největšího chaosu."
               </p>
-              <p class="text-[16px] text-zinc-600 font-medium leading-relaxed mb-4">
+              <p class="text-[14px] md:text-[15px] text-zinc-600 font-medium leading-relaxed mb-3">
                 Zatímco se Tomáš soustředí na nekompromisní čistotu a technické standardy, já jsem tu pro vás. Mým úkolem v PrimeClean je dohlížet na to, aby celá spolupráce šlapala jako hodinky. Mám na starosti kompletní logistiku, vedení našich týmů a především komunikaci s vámi – našimi klienty.
               </p>
-              <p class="text-[16px] text-zinc-600 font-medium leading-relaxed">
+              <p class="text-[14px] md:text-[15px] text-zinc-600 font-medium leading-relaxed">
                 Věřím, že precizní výsledek potřebuje precizní plán. Starám se o to, aby naše sliby nebyly jen slova, ale realita, kterou uvidíte každé ráno při příchodu do své kanceláře. Jsem tu, abych zajistila, že o vaše potřeby bude postaráno s maximálním zápalem a bez zbytečných starostí z vaší strany.
               </p>
             </div>
@@ -632,21 +660,18 @@ const faqItems = [
 
   function initFaq() {
     document.querySelectorAll('.faq-item').forEach(item => {
-      const trigger   = item.querySelector('.faq-trigger')   as HTMLButtonElement | null;
-      const body      = item.querySelector('.faq-body')      as HTMLElement | null;
-      const iconWrap  = item.querySelector('.faq-icon')      as HTMLElement | null;
-      const iconPlus  = item.querySelector('.faq-icon-plus') as HTMLElement | null;
-      const iconX     = item.querySelector('.faq-icon-x')    as HTMLElement | null;
+      const trigger  = item.querySelector('.faq-trigger')   as HTMLButtonElement | null;
+      const body     = item.querySelector('.faq-body')      as HTMLElement | null;
+      const iconWrap = item.querySelector('.faq-icon')      as HTMLElement | null;
+      const iconPlus = item.querySelector('.faq-icon-plus') as HTMLElement | null;
+      const iconX    = item.querySelector('.faq-icon-x')    as HTMLElement | null;
       if (!trigger || !body) return;
 
       trigger.addEventListener('click', () => {
         const open = trigger.getAttribute('aria-expanded') === 'true';
-
         if (open) {
           body.style.maxHeight = body.scrollHeight + 'px';
-          requestAnimationFrame(() => requestAnimationFrame(() => {
-            body.style.maxHeight = '0px';
-          }));
+          requestAnimationFrame(() => requestAnimationFrame(() => { body.style.maxHeight = '0px'; }));
           trigger.setAttribute('aria-expanded', 'false');
           item.classList.remove('border-[#81b344]/40', 'bg-white');
           item.classList.add('bg-zinc-50', 'border-zinc-200');
@@ -673,14 +698,10 @@ const faqItems = [
   function initCountUp() {
     const section = document.querySelector<HTMLElement>('.count-up-container');
     if (!section) return;
-
     if (isLowEnd()) {
-      section.querySelectorAll<HTMLElement>('.count-up').forEach(el => {
-        el.textContent = el.dataset.target ?? '0';
-      });
+      section.querySelectorAll<HTMLElement>('.count-up').forEach(el => { el.textContent = el.dataset.target ?? '0'; });
       return;
     }
-
     let done = false;
     const run = () => {
       if (done) return;
@@ -699,7 +720,6 @@ const faqItems = [
         requestAnimationFrame(step);
       });
     };
-
     const r = section.getBoundingClientRect();
     if (r.top < window.innerHeight && r.bottom > 0) { run(); return; }
     const obs = new IntersectionObserver(entries => {
@@ -712,7 +732,6 @@ const faqItems = [
     const track = document.getElementById('testimonials-track') as HTMLElement | null;
     const dots  = document.querySelectorAll<HTMLElement>('.testimonial-dot');
     if (!track || !dots.length) return;
-
     let rafId = 0;
     const updateDots = () => {
       const cards = track.children;
@@ -724,12 +743,10 @@ const faqItems = [
         dot.style.background = i === active ? '#81b344' : '#3f3f46';
       });
     };
-
     track.addEventListener('scroll', () => {
       cancelAnimationFrame(rafId);
       rafId = requestAnimationFrame(updateDots);
     }, { passive: true });
-
     dots.forEach((dot, i) => {
       dot.addEventListener('click', () => {
         const cards = track.children;
@@ -748,6 +765,16 @@ const faqItems = [
 </script>
 
 <style>
+  /*
+    FLUID TYPOGRAPHY — clamp(min, preferred, max)
+    H1:      32px → 88px  (plynule přes 6vw)
+    H2:      22px → 40px  (plynule přes 3.5vw)
+    H3-app:  22px → 36px  (plynule přes 3vw)
+  */
+  .fluid-h1 { font-size: clamp(2rem, 4.5vw, 4.5rem); }
+  .fluid-h2 { font-size: clamp(1.625rem, 3vw, 2.75rem); }
+  .fluid-h3-app { font-size: clamp(1.375rem, 3vw, 2.25rem); }
+
   @media (min-width: 768px) {
     .hero-blob {
       pointer-events: none;
@@ -789,7 +816,7 @@ const faqItems = [
 
   .process-line {
     position: absolute;
-    top: 40px; left: 12.5%; right: 12.5%;
+    top: 32px; left: 12.5%; right: 12.5%;
     height: 2px; z-index: 0;
     background-image: repeating-linear-gradient(
       90deg, #d4e8b8 0, #d4e8b8 10px, transparent 10px, transparent 22px
@@ -805,7 +832,6 @@ const faqItems = [
   }
 
   #testimonials-track::-webkit-scrollbar { display: none; }
-
   .faq-body { transition: max-height 0.35s cubic-bezier(0.25, 1, 0.4, 1); }
 
   @media (prefers-reduced-motion: reduce) {
@@ -815,8 +841,7 @@ const faqItems = [
       transform: none !important;
       transition: none !important;
     }
-    .animate-pulse { animation: none !important; }
-    .faq-body      { transition: none !important; }
+    .faq-body { transition: none !important; }
   }
 
   :global(.low-end) .animate-fade-in-up,
@@ -826,7 +851,6 @@ const faqItems = [
     opacity: 1 !important;
     transform: none !important;
   }
-  :global(.low-end) .animate-pulse { animation: none !important; }
-  :global(.low-end) img             { transition: none !important; }
-  :global(.low-end) .faq-body       { transition: none !important; }
+  :global(.low-end) img       { transition: none !important; }
+  :global(.low-end) .faq-body { transition: none !important; }
 </style>

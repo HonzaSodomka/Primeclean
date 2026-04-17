@@ -16,7 +16,9 @@ const {
   ogImage = '/og-image.jpg',
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, 'https://www.primeclean.cz');
+// Astro.site místo hardcoded URL — čte z astro.config.mjs
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://www.primeclean.cz');
+const ogImageURL   = new URL(ogImage, Astro.site ?? 'https://www.primeclean.cz').href;
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
@@ -50,7 +52,7 @@ const localBusinessSchema = {
     }
   ],
   "priceRange": "$$",
-  "image": "https://www.primeclean.cz/og-image.jpg",
+  "image": ogImageURL,
   "sameAs": []
 };
 ---
@@ -59,54 +61,78 @@ const localBusinessSchema = {
 <html lang="cs" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+
+    <!-- Robots: default povoluje indexaci, lze přepsat per-page prop -->
+    <meta name="robots" content="index, follow" />
+
     <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
+    <!-- title první = rychlejší paint tab-titlu -->
+    <title>{title}</title>
+
     <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={canonicalURL} />
-    <meta property="og:title" content={title} />
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content={canonicalURL} />
+    <meta property="og:title"       content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImage} />
-    <meta property="og:locale" content="cs_CZ" />
-    <meta property="og:site_name" content="PrimeClean" />
+    <meta property="og:image"       content={ogImageURL} />
+    <meta property="og:image:width"  content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale"      content="cs_CZ" />
+    <meta property="og:site_name"   content="PrimeClean" />
 
     <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:title"       content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image"       content={ogImageURL} />
 
     <!-- LocalBusiness JSON-LD -->
     <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
 
+    <!-- Google Fonts — non-blocking load -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" /></noscript>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" />
+    </noscript>
 
-    <title>{title}</title>
-
+    <!-- Low-end/reduced-motion detekce — musí být před renderem -->
     <script is:inline>
       (function () {
-        const cores = navigator.hardwareConcurrency || 4;
-        const ram = navigator.deviceMemory || 4;
-        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        if (cores <= 2 || ram <= 2 || reducedMotion) {
+        var cores = navigator.hardwareConcurrency || 4;
+        var ram   = navigator.deviceMemory || 4;
+        var rm    = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (cores <= 2 || ram <= 2 || rm) {
           document.documentElement.classList.add('low-end');
         }
       })();
     </script>
   </head>
+
   <body class="bg-zinc-50 text-zinc-900 antialiased selection:bg-[#81b344]/20 selection:text-[#5a7a2e]">
     <Header />
     <slot />
     <Footer />
     <CookieBanner />
-    <script src="https://unpkg.com/lucide@0.488.0/dist/umd/lucide.min.js" defer></script>
+
+    <!--
+      Lucide — ukotvená verze (ne @latest) + defer
+      Až budete mít >5 stránek, zvažte: npm i lucide + import jen použitých ikon.
+    -->
+    <script
+      src="https://unpkg.com/lucide@0.488.0/dist/umd/lucide.min.js"
+      defer
+    ></script>
     <script is:inline>
       document.addEventListener('DOMContentLoaded', function () {
         if (typeof lucide !== 'undefined') lucide.createIcons();
