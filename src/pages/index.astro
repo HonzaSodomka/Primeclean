@@ -190,21 +190,21 @@ const faqItems = [
       </div>
     </section>
 
-    <!-- 1b. TRUST BADGE BAR -->
-    <section class="bg-white border-y border-zinc-100 py-4">
-      <div class="max-w-[1200px] mx-auto px-5 md:px-8 lg:px-12">
-        <div class="scroll-animate opacity-0 grid grid-cols-2 md:flex md:flex-wrap items-center justify-center gap-y-3 gap-x-8 md:gap-x-10">
-          {trustBadges.map(badge => (
-            <div class="flex items-center gap-2 text-zinc-600 justify-center md:justify-start">
-              <span class="text-[#81b344] flex-shrink-0" aria-hidden="true">
-                <i data-lucide={badge.icon} class="w-5 h-5"></i>
-              </span>
-              <span class="text-[13px] font-semibold whitespace-nowrap">{badge.label}</span>
-            </div>
-          ))}
+    <!-- TRUST BADGE BAR -->
+<section class="bg-white border-y border-zinc-100 py-4">
+  <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12">
+    <div class="scroll-animate opacity-0 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 md:gap-x-10">
+      {trustBadges.map(badge => (
+        <div class="flex items-center gap-2 text-zinc-600">
+          <span class="text-[#81b344] flex-shrink-0" aria-hidden="true">
+            <i data-lucide={badge.icon} class="w-4 h-4"></i>
+          </span>
+          <span class="text-[12px] sm:text-[13px] font-semibold whitespace-nowrap">{badge.label}</span>
         </div>
-      </div>
-    </section>
+      ))}
+    </div>
+  </div>
+</section>
 
     <!-- 2. SLUŽBY -->
     <section id="sluzby" class="py-16 md:py-20 lg:py-28 bg-zinc-50 relative overflow-hidden scroll-mt-20 md:scroll-mt-24">
