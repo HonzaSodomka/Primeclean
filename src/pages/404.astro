@@ -1,0 +1,92 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Stránka nenalezena | PrimeClean"
+  description="Stránka, kterou hledáte, neexistuje nebo byla přesunuta."
+>
+  <main class="bg-zinc-50 mt-24 py-24 md:py-32 relative overflow-hidden selection:bg-[#81b344]/30 selection:text-zinc-900">
+
+    <div class="hero-blob hero-blob--tr" aria-hidden="true"></div>
+    <div class="hero-blob hero-blob--bl" aria-hidden="true"></div>
+
+    <div class="max-w-[600px] mx-auto px-5 md:px-8 text-center relative z-10">
+
+      <!-- Číslo -->
+      <p class="text-[clamp(5rem,18vw,9rem)] font-extrabold leading-none tracking-tighter text-zinc-200 select-none mb-4">
+        404
+      </p>
+
+      <!-- Text -->
+      <h1 class="text-2xl md:text-3xl font-extrabold text-zinc-950 tracking-tight leading-tight mb-4">
+        Tuhle stránku jsme nenašli
+      </h1>
+      <p class="text-[15px] md:text-[16px] text-zinc-500 font-medium leading-relaxed mb-10 max-w-md mx-auto">
+        Stránka možná neexistuje nebo byla přesunuta. Pomůžeme vám najít cestu zpět.
+      </p>
+
+      <!-- CTA tlačítka -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 mb-14">
+        <a
+          href="/"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[15px] font-bold text-white bg-[#81b344] hover:bg-[#6a9438] hover:-translate-y-1 rounded-xl shadow-md shadow-[#81b344]/20 transition-all duration-300 ease-out"
+        >
+          <i data-lucide="house" class="w-4 h-4" aria-hidden="true"></i>
+          Zpět na hlavní stránku
+        </a>
+        <a
+          href="/kontakt"
+          class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[15px] font-bold text-zinc-700 bg-white border-2 border-zinc-200 hover:border-zinc-300 hover:bg-zinc-50 hover:-translate-y-1 rounded-xl transition-all duration-300 ease-out"
+        >
+          <i data-lucide="mail" class="w-4 h-4" aria-hidden="true"></i>
+          Napsat nám
+        </a>
+      </div>
+
+      <!-- Rychlé odkazy -->
+      <div class="pt-10 border-t border-zinc-200">
+        <p class="text-[11px] font-bold uppercase tracking-[0.2em] text-zinc-400 mb-5">Nebo přejít na</p>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          {[
+            { href: '/sluzby',    label: 'Služby',    icon: 'sparkles'   },
+            { href: '/cenik',     label: 'Ceník',     icon: 'tag'        },
+            { href: '/aplikace',  label: 'Aplikace',  icon: 'smartphone' },
+            { href: '/reference', label: 'Reference', icon: 'star'       },
+          ].map(({ href, label, icon }) => (
+            <a
+              href={href}
+              class="group flex flex-col items-center gap-2 p-4 bg-white hover:bg-zinc-50 border border-zinc-200 hover:border-[#81b344]/30 hover:-translate-y-0.5 rounded-2xl transition-all duration-200 shadow-sm"
+            >
+              <i data-lucide={icon} class="w-4 h-4 text-zinc-400 group-hover:text-[#81b344] transition-colors duration-200" aria-hidden="true"></i>
+              <span class="text-[13px] font-bold text-zinc-600 group-hover:text-zinc-900 transition-colors duration-200">{label}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </main>
+</Layout>
+
+<style>
+  @media (min-width: 768px) {
+    .hero-blob {
+      pointer-events: none;
+      position: absolute;
+      border-radius: 9999px;
+    }
+    .hero-blob--tr {
+      top: -8rem; right: -8rem;
+      width: 500px; height: 500px;
+      background: rgb(129 179 68 / 0.05);
+      filter: blur(80px);
+    }
+    .hero-blob--bl {
+      bottom: -5rem; left: -5rem;
+      width: 350px; height: 350px;
+      background: rgb(129 179 68 / 0.04);
+      filter: blur(60px);
+    }
+  }
+</style>

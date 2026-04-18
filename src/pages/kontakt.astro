@@ -252,20 +252,35 @@ const trustBadges = [
       btnIcon?.classList.add('hidden');
       btnSpinner?.classList.remove('hidden');
 
-      // TODO: nahrad skutečným fetch() na backend / Formspree / Netlify Forms
-      await new Promise(resolve => setTimeout(resolve, 900));
+      try {
+        await (window as any).emailjs.send(
+          'service_7zu3vqg',
+          'template_owsjbme',
+          {
+            from_name:    (document.getElementById('name')    as HTMLInputElement).value,
+            company:      (document.getElementById('company') as HTMLInputElement).value,
+            from_email:   (document.getElementById('email')   as HTMLInputElement).value,
+            phone:        (document.getElementById('phone')   as HTMLInputElement).value,
+            service_type: (document.getElementById('service') as HTMLSelectElement).value,
+            message:      (document.getElementById('message') as HTMLTextAreaElement).value,
+          }
+        );
 
-      form.classList.add('hidden');
-      success.classList.remove('hidden');
+        form.classList.add('hidden');
+        success.classList.remove('hidden');
+
+      } catch (err) {
+        console.error('EmailJS error:', err);
+        btnText.textContent = 'Odeslání selhalo, zkuste znovu';
+        btnIcon?.classList.remove('hidden');
+        btnSpinner?.classList.add('hidden');
+        submitBtn.disabled = false;
+      }
     });
   });
 </script>
 
 <style>
-  /*
-    FLUID TYPOGRAPHY — stejný systém jako ostatní stránky
-    fluid-h1: clamp(2rem, 4.5vw, 4.5rem)
-  */
   .fluid-h1 { font-size: clamp(2rem, 4.5vw, 4.5rem); }
 
   @keyframes softFadeUp {

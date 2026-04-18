@@ -13,7 +13,7 @@ interface Props {
 const {
   title,
   description = 'Profesionální úklid Brno a okolí | PrimeClean',
-  ogImage = '/og-image.png', // ✅ ZMĚNA: bylo .jpg
+  ogImage = '/og-image.png',
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://www.primeclean.cz');
@@ -52,11 +52,10 @@ const localBusinessSchema = {
   ],
   "priceRange": "$$",
   "image": ogImageURL,
-  "sameAs": [ // ✅ ZMĚNA: přidány profily
+  "sameAs": [
     "https://www.instagram.com/primeclean_brno/",
     "https://share.google/T9IQZWtAqGfdk9Iy2"
   ]
-  // aggregateRating záměrně vynecháno — Google to řeší sám z Business profilu
 };
 ---
 
@@ -125,6 +124,19 @@ const localBusinessSchema = {
           document.documentElement.classList.add('low-end');
         }
       })();
+    </script>
+
+    <!-- EmailJS SDK -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+      defer
+    ></script>
+    <script is:inline>
+      document.addEventListener('DOMContentLoaded', function () {
+        if (typeof emailjs !== 'undefined') {
+          emailjs.init({ publicKey: 'XpozlxpDRpCtGyw07' });
+        }
+      });
     </script>
   </head>
 

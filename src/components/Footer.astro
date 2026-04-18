@@ -15,7 +15,7 @@
         </p>
       </div>
 
-      <!-- Navigace (lg:col-start-6 = záměrná mezera za Brand sloupcem) -->
+      <!-- Navigace -->
       <div class="md:col-span-4 lg:col-span-3 lg:col-start-6">
         <h4 class="text-[12px] font-bold text-white uppercase tracking-[0.2em] mb-6">Navigace</h4>
         <ul class="space-y-3.5">
@@ -70,9 +70,15 @@
     </div>
 
     <div class="pt-8 border-t border-zinc-800/80 flex flex-col md:flex-row items-center justify-between gap-6">
-      <p class="text-[13px] text-zinc-500 font-medium">
-        &copy; <span id="footer-year"></span> PrimeClean. Všechna práva vyhrazena.
-      </p>
+      <div class="flex flex-col md:flex-row items-center gap-4 md:gap-6">
+        <p class="text-[13px] text-zinc-500 font-medium">
+          &copy; <span id="footer-year"></span> PrimeClean. Všechna práva vyhrazena.
+        </p>
+        <span class="hidden md:block text-zinc-700">|</span>
+        <p class="text-[13px] text-zinc-600 font-medium">
+          Realizováno <a href="https://webresent.cz" target="_blank" rel="noopener noreferrer" class="text-zinc-400 hover:text-[#81b344] transition-colors duration-200 underline underline-offset-4 decoration-zinc-700 hover:decoration-[#81b344]">Webresent</a>
+        </p>
+      </div>
 
       <div class="flex items-center gap-6">
         <button
