@@ -13,7 +13,7 @@ interface Props {
 const {
   title,
   description = 'Profesionální úklid Brno a okolí | PrimeClean',
-  ogImage = '/og-image.jpg',
+  ogImage = '/og-image.png', // ✅ ZMĚNA: bylo .jpg
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://www.primeclean.cz');
@@ -52,7 +52,11 @@ const localBusinessSchema = {
   ],
   "priceRange": "$$",
   "image": ogImageURL,
-  "sameAs": []
+  "sameAs": [ // ✅ ZMĚNA: přidány profily
+    "https://www.instagram.com/primeclean_brno/",
+    "https://share.google/T9IQZWtAqGfdk9Iy2"
+  ]
+  // aggregateRating záměrně vynecháno — Google to řeší sám z Business profilu
 };
 ---
 
