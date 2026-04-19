@@ -80,21 +80,12 @@
         </p>
       </div>
 
-      <div class="flex items-center gap-6">
-        <button
-          id="open-cookie-banner"
-          class="text-[13px] text-zinc-500 hover:text-zinc-300 font-medium transition-colors duration-200 underline underline-offset-4 decoration-zinc-700 hover:decoration-zinc-400"
-        >
-          Nastavení cookies
-        </button>
-
-        <button id="scrollToTop" aria-label="Přejít na začátek stránky" class="inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-wider text-zinc-400 hover:text-white transition-colors group">
-          Zpět nahoru
-          <div class="w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center border border-zinc-800 group-hover:bg-[#81b344] group-hover:border-[#81b344] transition-all duration-300">
-            <i data-lucide="chevron-up" class="w-4 h-4" aria-hidden="true"></i>
-          </div>
-        </button>
-      </div>
+      <button id="scrollToTop" aria-label="Přejít na začátek stránky" class="inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-wider text-zinc-400 hover:text-white transition-colors group">
+        Zpět nahoru
+        <div class="w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center border border-zinc-800 group-hover:bg-[#81b344] group-hover:border-[#81b344] transition-all duration-300">
+          <i data-lucide="chevron-up" class="w-4 h-4" aria-hidden="true"></i>
+        </div>
+      </button>
     </div>
   </div>
 </footer>
@@ -105,24 +96,9 @@
 </script>
 
 <script>
-  declare global {
-    interface Window {
-      openCookieBanner: () => void;
-    }
-  }
-
   document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('scrollToTop')?.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-
-    const cookieBtn = document.getElementById('open-cookie-banner') as HTMLButtonElement | null;
-    if (cookieBtn) {
-      cookieBtn.addEventListener('click', () => {
-        if (typeof window.openCookieBanner === 'function') {
-          window.openCookieBanner();
-        }
-      });
-    }
   });
 </script>

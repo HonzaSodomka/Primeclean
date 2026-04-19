@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.primeclean.cz/sitemap.xml
+Sitemap: https://primeclean.cz/sitemap.xml
