@@ -35,7 +35,6 @@ const trustBadges = [
 >
   <main class="bg-white selection:bg-[#81b344]/30 selection:text-zinc-900">
 
-    <!-- ─── FORM + SIDEBAR ─────────────────────────────────────────────────────── -->
     <section class="pt-28 md:pt-36 pb-16 md:pb-20 lg:pb-28 bg-white">
       <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12">
         <div class="grid lg:grid-cols-[1fr_380px] gap-9 xl:gap-14 items-start">
@@ -125,7 +124,6 @@ const trustBadges = [
           <!-- SIDEBAR -->
           <aside class="flex flex-col gap-5 lg:sticky lg:top-28">
 
-            <!-- Karta zakladatele -->
             <div class="scroll-animate opacity-0 bg-zinc-100 rounded-[1.75rem] p-6 border border-zinc-200" style="animation-delay:150ms">
               <div class="flex items-center gap-3.5 mb-5">
                 <div class="relative flex-shrink-0 w-12 h-12 rounded-full overflow-hidden border-2 border-[#81b344]/30 bg-zinc-300">
@@ -141,7 +139,6 @@ const trustBadges = [
               </p>
             </div>
 
-            <!-- Co vás čeká -->
             <div class="scroll-animate opacity-0" style="animation-delay:250ms">
               <div class="bg-zinc-50 rounded-[1.75rem] p-6 border border-zinc-100">
                 <p class="text-[11px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-5">Co vás čeká</p>
@@ -161,7 +158,6 @@ const trustBadges = [
               </div>
             </div>
 
-            <!-- Trust badges -->
             <div class="scroll-animate opacity-0 grid grid-cols-2 gap-2.5" style="animation-delay:350ms">
               {trustBadges.map(badge => (
                 <div class="flex flex-col items-start gap-2.5 p-4 bg-zinc-50 rounded-2xl border border-zinc-100 hover:border-[#81b344]/20 hover:bg-white hover:shadow-sm transition-all duration-200">
@@ -199,6 +195,8 @@ const trustBadges = [
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
+    // ── EmailJS init ──────────────────────────────────────────────
+
     const isLowEnd = document.documentElement.classList.contains('low-end');
 
     if (isLowEnd) {
@@ -254,8 +252,8 @@ const trustBadges = [
 
       try {
         await (window as any).emailjs.send(
-          'service_8fveeuj',
-          'template_owsjbme',
+          'service_15lmv8v',
+          'template_mug9tki',
           {
             from_name:    (document.getElementById('name')    as HTMLInputElement).value,
             company:      (document.getElementById('company') as HTMLInputElement).value,
