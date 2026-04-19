@@ -3,7 +3,7 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  site: 'https://www.primeclean.cz',
+  site: 'https://primeclean.cz',
   trailingSlash: 'never',
 
   build: {
