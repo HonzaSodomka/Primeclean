@@ -15,15 +15,15 @@ const {
   ogImage = '/og-image.png',
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://www.primeclean.cz');
-const ogImageURL   = new URL(ogImage, Astro.site ?? 'https://www.primeclean.cz').href;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://primeclean.cz');
+const ogImageURL   = new URL(ogImage, Astro.site ?? 'https://primeclean.cz').href;
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "PrimeClean",
   "description": "Profesionální úklid Brno a okolí — kanceláře, SVJ a Airbnb apartmány.",
-  "url": "https://www.primeclean.cz",
+  "url": "https://primeclean.cz",
   "telephone": "+420773102770",
   "email": "info@primeclean.cz",
   "address": {
