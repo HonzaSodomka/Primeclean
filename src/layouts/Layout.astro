@@ -16,7 +16,10 @@ const {
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://primeclean.cz');
-const ogImageURL   = new URL(ogImage, Astro.site ?? 'https://primeclean.cz').href;
+const ogImageURL = new URL(ogImage, Astro.site ?? 'https://primeclean.cz').href;
+
+// ✅ načtení env proměnné ve frontmatter
+const emailjsPublicKey = import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY;
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
@@ -44,7 +47,7 @@ const localBusinessSchema = {
   "openingHoursSpecification": [
     {
       "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
       "opens": "08:00",
       "closes": "20:00"
     }
@@ -82,24 +85,27 @@ const localBusinessSchema = {
     <title>{title}</title>
 
     <!-- Open Graph -->
-    <meta property="og:type"         content="website" />
-    <meta property="og:url"          content={canonicalURL} />
-    <meta property="og:title"        content={title} />
-    <meta property="og:description"  content={description} />
-    <meta property="og:image"        content={ogImageURL} />
-    <meta property="og:image:width"  content="1200" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:locale"       content="cs_CZ" />
-    <meta property="og:site_name"    content="PrimeClean" />
+    <meta property="og:locale" content="cs_CZ" />
+    <meta property="og:site_name" content="PrimeClean" />
 
     <!-- Twitter Card -->
-    <meta name="twitter:card"        content="summary_large_image" />
-    <meta name="twitter:title"       content={title} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image"       content={ogImageURL} />
+    <meta name="twitter:image" content={ogImageURL} />
 
     <!-- LocalBusiness JSON-LD -->
-    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(localBusinessSchema)}
+    />
 
     <!-- Google Fonts — non-blocking load -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -111,15 +117,18 @@ const localBusinessSchema = {
       onload="this.media='all'"
     />
     <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" />
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      />
     </noscript>
 
     <!-- Low-end/reduced-motion detekce — musí být před renderem -->
     <script is:inline>
       (function () {
         var cores = navigator.hardwareConcurrency || 4;
-        var ram   = navigator.deviceMemory || 4;
-        var rm    = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var ram = navigator.deviceMemory || 4;
+        var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         if (cores <= 2 || ram <= 2 || rm) {
           document.documentElement.classList.add('low-end');
         }
@@ -131,10 +140,12 @@ const localBusinessSchema = {
       src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
       defer
     ></script>
-    <script is:inline>
+
+    <!-- ✅ env proměnná předaná z frontmatter do inline scriptu -->
+    <script is:inline define:vars={{ emailjsPublicKey }}>
       document.addEventListener('DOMContentLoaded', function () {
-        if (typeof emailjs !== 'undefined') {
-          emailjs.init({ publicKey: import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY });
+        if (typeof emailjs !== 'undefined' && emailjsPublicKey) {
+          emailjs.init({ publicKey: emailjsPublicKey });
         }
       });
     </script>

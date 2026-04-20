@@ -1,31 +1,34 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
+const emailjsServiceId = import.meta.env.PUBLIC_EMAILJS_SERVICE_ID;
+const emailjsTemplateId = import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID;
+
 const contactItems = [
-  { label: 'Telefon',         value: '+420 773 102 770',   href: 'tel:+420773102770',         icon: 'phone'   },
-  { label: 'E-mail',          value: 'info@primeclean.cz', href: 'mailto:info@primeclean.cz', icon: 'mail'    },
-  { label: 'Pracovní doba',   value: 'Po–Pá, 8:00–20:00', href: null,                        icon: 'clock'   },
-  { label: 'Oblast působení', value: 'Brno a okolí',       href: null,                        icon: 'map-pin' },
+  { label: 'Telefon', value: '+420 773 102 770', href: 'tel:+420773102770', icon: 'phone' },
+  { label: 'E-mail', value: 'info@primeclean.cz', href: 'mailto:info@primeclean.cz', icon: 'mail' },
+  { label: 'Pracovní doba', value: 'Po–Pá, 8:00–20:00', href: null, icon: 'clock' },
+  { label: 'Oblast působení', value: 'Brno a okolí', href: null, icon: 'map-pin' },
 ];
 
 const services = [
-  { value: 'kancelare', label: 'Kanceláře a firmy'  },
-  { value: 'svj',       label: 'SVJ a bytové domy'  },
-  { value: 'airbnb',    label: 'Airbnb a apartmány' },
-  { value: 'jine',      label: 'Jiné / Nevím ještě' },
+  { value: 'kancelare', label: 'Kanceláře a firmy' },
+  { value: 'svj', label: 'SVJ a bytové domy' },
+  { value: 'airbnb', label: 'Airbnb a apartmány' },
+  { value: 'jine', label: 'Jiné / Nevím ještě' },
 ];
 
 const sidebarPerks = [
-  { title: 'Odpověď do 1 pracovního dne',  desc: 'Ozveme se s konkrétním návrhem, ne obecnou nabídkou.' },
-  { title: 'Prohlídka objektu zdarma',     desc: 'Přijedeme na místo a připravíme nacenění na míru.'    },
-  { title: 'Jasná smlouva bez překvapení', desc: 'Rozsah, cena i podmínky — vše domluvné předem.'       },
+  { title: 'Odpověď do 1 pracovního dne', desc: 'Ozveme se s konkrétním návrhem, ne obecnou nabídkou.' },
+  { title: 'Prohlídka objektu zdarma', desc: 'Přijedeme na místo a připravíme nacenění na míru.' },
+  { title: 'Jasná smlouva bez překvapení', desc: 'Rozsah, cena i podmínky — vše domluvné předem.' },
 ];
 
 const trustBadges = [
-  { label: 'Pojištění 5 mil. Kč',    icon: 'shield-check' },
-  { label: 'Prověřený personál',     icon: 'user-check'   },
-  { label: 'Fotoreport po úklidu',   icon: 'camera'       },
-  { label: 'Pravidelný harmonogram', icon: 'clock'        },
+  { label: 'Pojištění 5 mil. Kč', icon: 'shield-check' },
+  { label: 'Prověřený personál', icon: 'user-check' },
+  { label: 'Fotoreport po úklidu', icon: 'camera' },
+  { label: 'Pravidelný harmonogram', icon: 'clock' },
 ];
 ---
 
@@ -34,12 +37,9 @@ const trustBadges = [
   description="Poptejte úklid kanceláří, SVJ nebo Airbnb v Brně. Odpovíme do 1 pracovního dne, prohlídka a nacenění zdarma. Bez DPH, bez překvapení."
 >
   <main class="bg-white selection:bg-[#81b344]/30 selection:text-zinc-900">
-
     <section class="pt-28 md:pt-36 pb-16 md:pb-20 lg:pb-28 bg-white">
       <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12">
         <div class="grid lg:grid-cols-[1fr_380px] gap-9 xl:gap-14 items-start">
-
-          <!-- FORM -->
           <div class="scroll-animate opacity-0">
             <div class="mb-8">
               <p class="text-[12px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-3">Kontaktní formulář</p>
@@ -52,7 +52,6 @@ const trustBadges = [
             </div>
 
             <form id="contact-form" novalidate class="flex flex-col gap-5">
-
               <div class="grid sm:grid-cols-2 gap-5">
                 <div class="flex flex-col gap-1.5">
                   <label for="name" class="field-label">Jméno a příjmení <span class="text-[#81b344]" aria-hidden="true">*</span></label>
@@ -80,7 +79,7 @@ const trustBadges = [
                 <div class="relative">
                   <select id="service" name="service" required class="field-input w-full appearance-none cursor-pointer pr-12">
                     <option value="" disabled selected>Vyberte typ služby</option>
-                    {services.map(s => <option value={s.value}>{s.label}</option>)}
+                    {services.map((s) => <option value={s.value}>{s.label}</option>)}
                   </select>
                   <i data-lucide="chevron-down" class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-400" style="stroke-width:2.5" aria-hidden="true"></i>
                 </div>
@@ -101,7 +100,6 @@ const trustBadges = [
                   Odeslaním souhlasíte se <a href="/gdpr" class="underline hover:text-zinc-600 transition-colors">zpracováním<br class="hidden sm:block" /> osobních údajů</a> za účelem odpovědi.
                 </p>
               </div>
-
             </form>
 
             <div id="form-success" class="hidden">
@@ -121,9 +119,7 @@ const trustBadges = [
             </div>
           </div>
 
-          <!-- SIDEBAR -->
           <aside class="flex flex-col gap-5 lg:sticky lg:top-28">
-
             <div class="scroll-animate opacity-0 bg-zinc-100 rounded-[1.75rem] p-6 border border-zinc-200" style="animation-delay:150ms">
               <div class="flex items-center gap-3.5 mb-5">
                 <div class="relative flex-shrink-0 w-12 h-12 rounded-full overflow-hidden border-2 border-[#81b344]/30 bg-zinc-300">
@@ -143,7 +139,7 @@ const trustBadges = [
               <div class="bg-zinc-50 rounded-[1.75rem] p-6 border border-zinc-100">
                 <p class="text-[11px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-5">Co vás čeká</p>
                 <ul class="flex flex-col gap-4" role="list">
-                  {sidebarPerks.map(item => (
+                  {sidebarPerks.map((item) => (
                     <li class="flex gap-3.5">
                       <span class="flex-shrink-0 mt-0.5 w-5 h-5 rounded-full bg-[#81b344] flex items-center justify-center text-zinc-950" aria-hidden="true">
                         <i data-lucide="check" class="w-3 h-3" style="stroke-width:3.5"></i>
@@ -159,24 +155,22 @@ const trustBadges = [
             </div>
 
             <div class="scroll-animate opacity-0 grid grid-cols-2 gap-2.5" style="animation-delay:350ms">
-              {trustBadges.map(badge => (
+              {trustBadges.map((badge) => (
                 <div class="flex flex-col items-start gap-2.5 p-4 bg-zinc-50 rounded-2xl border border-zinc-100 hover:border-[#81b344]/20 hover:bg-white hover:shadow-sm transition-all duration-200">
                   <i data-lucide={badge.icon} class="w-4 h-4 text-[#81b344]" aria-hidden="true"></i>
                   <span class="text-[12.5px] font-bold text-zinc-800 leading-snug">{badge.label}</span>
                 </div>
               ))}
             </div>
-
           </aside>
         </div>
       </div>
     </section>
 
-    <!-- KONTAKTNÍ PRUH -->
     <section class="bg-[#81b344] py-10 md:py-12">
       <div class="max-w-[1100px] mx-auto px-5 md:px-8 lg:px-12">
         <div class="scroll-animate opacity-0 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0 md:divide-x md:divide-white/20">
-          {contactItems.map(item => (
+          {contactItems.map((item) => (
             <div class="flex flex-col gap-1.5 md:px-7 first:pl-0 last:pr-0">
               <span class="text-[10px] font-bold text-white/60 uppercase tracking-[0.12em]">{item.label}</span>
               {item.href ? (
@@ -189,18 +183,15 @@ const trustBadges = [
         </div>
       </div>
     </section>
-
   </main>
 </Layout>
 
-<script>
+<script define:vars={{ emailjsServiceId, emailjsTemplateId }}>
   document.addEventListener('DOMContentLoaded', () => {
-    // ── EmailJS init ──────────────────────────────────────────────
-
     const isLowEnd = document.documentElement.classList.contains('low-end');
 
     if (isLowEnd) {
-      document.querySelectorAll<HTMLElement>('.opacity-0').forEach(el => {
+      document.querySelectorAll('.opacity-0').forEach((el) => {
         el.style.opacity = '1';
         el.style.transform = 'none';
         el.style.animation = 'none';
@@ -208,42 +199,46 @@ const trustBadges = [
       });
     } else {
       const observer = new IntersectionObserver(
-        entries => entries.forEach(entry => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add('animate-fade-in-up');
-          entry.target.classList.remove('opacity-0');
-          observer.unobserve(entry.target);
-        }),
-        { threshold: 0, rootMargin: '0px 0px -5% 0px' },
+        (entries) =>
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('animate-fade-in-up');
+            entry.target.classList.remove('opacity-0');
+            observer.unobserve(entry.target);
+          }),
+        { threshold: 0, rootMargin: '0px 0px -5% 0px' }
       );
-      document.querySelectorAll('.scroll-animate').forEach(el => observer.observe(el));
+
+      document.querySelectorAll('.scroll-animate').forEach((el) => observer.observe(el));
     }
 
-    const form       = document.getElementById('contact-form')  as HTMLFormElement | null;
-    const success    = document.getElementById('form-success')  as HTMLElement | null;
-    const submitBtn  = document.getElementById('submit-btn')    as HTMLButtonElement | null;
-    const btnText    = document.getElementById('btn-text')      as HTMLElement | null;
-    const btnIcon    = document.getElementById('btn-icon')      as HTMLElement | null;
-    const btnSpinner = document.getElementById('btn-spinner')   as HTMLElement | null;
+    const form = document.getElementById('contact-form');
+    const success = document.getElementById('form-success');
+    const submitBtn = document.getElementById('submit-btn');
+    const btnText = document.getElementById('btn-text');
+    const btnIcon = document.getElementById('btn-icon');
+    const btnSpinner = document.getElementById('btn-spinner');
 
     if (!form || !success || !submitBtn || !btnText) return;
 
-    form.querySelectorAll<HTMLElement>('input, select, textarea').forEach(field => {
+    form.querySelectorAll('input, select, textarea').forEach((field) => {
       field.addEventListener('input', () => field.classList.remove('field-error'));
     });
 
-    form.addEventListener('submit', async e => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       let valid = true;
-      form.querySelectorAll<HTMLInputElement | HTMLSelectElement>('[required]').forEach(field => {
+      form.querySelectorAll('[required]').forEach((field) => {
         field.classList.remove('field-error');
         if (!field.value.trim() || (field.tagName === 'SELECT' && field.value === '')) {
           field.classList.add('field-error');
           valid = false;
         }
       });
+
       if (!valid) return;
+      if (typeof emailjs === 'undefined') return;
 
       submitBtn.disabled = true;
       btnText.textContent = 'Odesílám…';
@@ -251,22 +246,17 @@ const trustBadges = [
       btnSpinner?.classList.remove('hidden');
 
       try {
-        await (window as any).emailjs.send(
-          import.meta.env.PUBLIC_EMAILJS_SERVICE_ID,
-          import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID,
-          {
-            from_name:    (document.getElementById('name')    as HTMLInputElement).value,
-            company:      (document.getElementById('company') as HTMLInputElement).value,
-            from_email:   (document.getElementById('email')   as HTMLInputElement).value,
-            phone:        (document.getElementById('phone')   as HTMLInputElement).value,
-            service_type: (document.getElementById('service') as HTMLSelectElement).value,
-            message:      (document.getElementById('message') as HTMLTextAreaElement).value,
-          }
-        );
+        await emailjs.send(emailjsServiceId, emailjsTemplateId, {
+          from_name: document.getElementById('name')?.value || '',
+          company: document.getElementById('company')?.value || '',
+          from_email: document.getElementById('email')?.value || '',
+          phone: document.getElementById('phone')?.value || '',
+          service_type: document.getElementById('service')?.value || '',
+          message: document.getElementById('message')?.value || '',
+        });
 
         form.classList.add('hidden');
         success.classList.remove('hidden');
-
       } catch (err) {
         console.error('EmailJS error:', err);
         btnText.textContent = 'Odeslání selhalo, zkuste znovu';
@@ -283,14 +273,17 @@ const trustBadges = [
 
   @keyframes softFadeUp {
     from { opacity: 0; transform: translateY(18px); }
-    to   { opacity: 1; transform: translateY(0); }
+    to { opacity: 1; transform: translateY(0); }
   }
+
   .animate-fade-in-up {
     animation: softFadeUp 0.75s cubic-bezier(0.25, 1, 0.4, 1) both;
   }
+
   @keyframes spin {
     to { transform: rotate(360deg); }
   }
+
   .animate-spin {
     animation: spin 0.8s linear infinite;
   }
@@ -302,6 +295,7 @@ const trustBadges = [
     text-transform: uppercase;
     letter-spacing: 0.08em;
   }
+
   .field-input {
     width: 100%;
     padding: 0.875rem 1.125rem;
@@ -314,12 +308,15 @@ const trustBadges = [
     outline: none;
     transition: background-color 200ms, border-color 200ms, box-shadow 200ms;
   }
+
   .field-input::placeholder { color: rgb(161 161 170); }
+
   .field-input:focus {
     background-color: #fff;
     border-color: #81b344;
     box-shadow: 0 0 0 4px rgb(129 179 68 / 0.1);
   }
+
   .field-error {
     border-color: rgb(248 113 113) !important;
     box-shadow: 0 0 0 4px rgb(248 113 113 / 0.1) !important;
@@ -334,6 +331,7 @@ const trustBadges = [
       transform: none !important;
       transition: none !important;
     }
+
     .animate-pulse,
     .animate-spin { animation: none !important; }
   }
@@ -345,7 +343,9 @@ const trustBadges = [
     opacity: 1 !important;
     transform: none !important;
   }
+
   :global(.low-end) .animate-pulse,
   :global(.low-end) .animate-spin { animation: none !important; }
-  :global(.low-end) img            { transition: none !important; }
+
+  :global(.low-end) img { transition: none !important; }
 </style>
