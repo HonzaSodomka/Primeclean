@@ -252,8 +252,8 @@ const trustBadges = [
 
       try {
         await (window as any).emailjs.send(
-          'service_15lmv8v',
-          'template_mug9tki',
+          import.meta.env.PUBLIC_EMAILJS_SERVICE_ID,
+          import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID,
           {
             from_name:    (document.getElementById('name')    as HTMLInputElement).value,
             company:      (document.getElementById('company') as HTMLInputElement).value,

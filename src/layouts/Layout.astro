@@ -133,7 +133,7 @@ const localBusinessSchema = {
     <script is:inline>
       document.addEventListener('DOMContentLoaded', function () {
         if (typeof emailjs !== 'undefined') {
-          emailjs.init({ publicKey: 'DPY777O8mfYpXeJZg' });
+          emailjs.init({ publicKey: import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY });
         }
       });
     </script>
