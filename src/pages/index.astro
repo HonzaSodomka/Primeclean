@@ -158,7 +158,6 @@ const servicesSchema = {
     }
   ]
 };
-
 ---
 
 <Layout
@@ -169,22 +168,6 @@ const servicesSchema = {
   <script type="application/ld+json" set:html={JSON.stringify(servicesSchema)} slot="head" />
 
   <main class="bg-white selection:bg-[#81b344]/30 selection:text-zinc-900">
-
-    <!-- SEO: skrytý blok pro vyhledávače, vizuálně neviditelný -->
-    <div class="sr-only" aria-hidden="true">
-      <h2>Úklid Brno — profesionální úklidová firma</h2>
-      <p>PrimeClean zajišťuje profesionální úklid v Brně a okolí. Nabízíme úklid kanceláří Brno, úklid SVJ Brno, úklid bytových domů Brno a úklid Airbnb apartmánů v Brně. Spolehlivá úklidová firma Brno s pojištěním 5 mil. Kč a fotodokumentací po každém úklidu.</p>
-      <h3>Úklid SVJ Brno</h3>
-      <p>Pravidelný úklid společných prostor SVJ a bytových domů v Brně a okolí. Úklid vchodů, chodeb, schodišť, výtahů a sklepních prostor. Spolehlivé řešení pro správce nemovitostí a bytová družstva.</p>
-      <h3>Úklid kanceláří Brno</h3>
-      <p>Pravidelný úklid kancelářských prostor, firem a administrativních budov v Brně. Stálý tým, jasný harmonogram a kontrola kvality přes webovou aplikaci. Úklid firem Brno bez starostí.</p>
-      <h3>Úklid Airbnb Brno</h3>
-      <p>Profesionální úklid apartmánů a bytů pro krátkodobé pronájmy v Brně. Rychlá příprava mezi pobyty hostů, fotoreport a online přehled. Úklid pro hostitele Airbnb v Brně.</p>
-      <h3>Časté dotazy — úklid Brno</h3>
-      <p>Hledáte spolehlivou úklidovou firmu Brno? Zajímá vás cena pravidelného úklidu kanceláří Brno? Potřebujete pojištěnou úklidovou firmu v Brně? PrimeClean nabízí pravidelný úklid kanceláří Brno, úklid společných prostor SVJ Brno, úklid Airbnb apartmánů Brno a úklid po rekonstrukci Brno. Naše úklidová firma Brno a okolí pracuje výhradně s kmenovými zaměstnanci, ne brigádníky.</p>
-      <h3>Proč PrimeClean — úklidová firma Brno</h3>
-      <p>PrimeClean je spolehlivá úklidová firma v Brně s více než 5 lety zkušeností. Poskytujeme úklid pro firmy Brno, správu nemovitostí Brno a úklid krátkodobých pronájmů Brno. Recenze úklidové firmy PrimeClean Brno potvrzují vysokou kvalitu a spolehlivost služeb.</p>
-    </div>
 
     <!-- 1. HERO -->
     <section class="relative pt-24 pb-16 md:pt-32 md:pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-zinc-50">
@@ -199,7 +182,7 @@ const servicesSchema = {
         </div>
 
         <h1 class="fluid-h1 font-extrabold text-zinc-950 tracking-tighter leading-[1.05] mb-5 md:mb-6 opacity-0 animate-fade-in-up" style="animation-delay:150ms">
-          Úklid pro Brno a okolí<br class="hidden sm:block" />
+          Úklid kanceláří, SVJ a Airbnb v Brně<br class="hidden sm:block" />
           <span class="text-[#6a9438]">spolehlivě a bez starostí.</span>
         </h1>
 
@@ -431,8 +414,8 @@ const servicesSchema = {
         <div class="scroll-animate opacity-0 text-center max-w-xl mx-auto mb-12">
           <p class="text-[12px] font-bold text-[#81b344] tracking-[0.2em] uppercase mb-3">Co říkají klienti</p>
           <h2 id="reviews-heading" class="fluid-h2 font-extrabold text-white tracking-tighter leading-[1.15] mb-4">
-  Zkušenosti <span class="text-[#81b344]">našich klientů.</span>
-</h2>
+            Zkušenosti <span class="text-[#81b344]">našich klientů.</span>
+          </h2>
           <div class="flex items-center justify-center gap-1">
             {[1,2,3,4,5].map(() => (
               <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-amber-400" aria-hidden="true"></i>
