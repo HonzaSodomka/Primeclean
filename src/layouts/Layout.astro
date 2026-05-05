@@ -18,14 +18,13 @@ const {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://primeclean.cz');
 const ogImageURL = new URL(ogImage, Astro.site ?? 'https://primeclean.cz').href;
 
-// ✅ načtení env proměnné ve frontmatter
 const emailjsPublicKey = import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY;
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
+  "@type": ["LocalBusiness", "CleaningService"],
   "name": "PrimeClean",
-  "description": "Profesionální úklid Brno a okolí — kanceláře, SVJ a Airbnb apartmány.",
+  "description": "Profesionální úklidová firma Brno a okolí. Zajišťujeme pravidelný úklid kanceláří, SVJ, bytových domů a Airbnb apartmánů. Pojištění 5 mil. Kč, prověřený personál, fotoreport po každém úklidu.",
   "url": "https://primeclean.cz",
   "telephone": "+420773102770",
   "email": "info@primeclean.cz",
@@ -54,6 +53,39 @@ const localBusinessSchema = {
   ],
   "priceRange": "$$",
   "image": ogImageURL,
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "4",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Anatolij Ramaldan" },
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "reviewBody": "Jako hostitel na Airbnb potřebuju mít jistotu, že je apartmán vždy perfektně připravený a v naprostém pořádku. PrimeClean to zvládá spolehlivě i na poslední chvíli. Díky fotkám v aplikaci mám klid, i když zrovna nejsem v Brně."
+    },
+    {
+      "@type": "Review",
+      "author": { "@type": "Organization", "name": "Autoškola TiGO s.r.o." },
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "reviewBody": "S touto úklidovou firmou máme velmi dobrou zkušenost. Už přibližně 3 měsíce se starají o čistotu naší kanceláře i učebny a vždy odvedou skvělou práci. Velké plus je komunikace — domluva je vždy rychlá a bez problémů."
+    },
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Magdalena Kopecká" },
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "reviewBody": "Konečně úklidovka, co u práce i přemýšlí. Nejen že je všude čisto, ale hlavně nám v jejich appce přistávají fotky a hlášení, když je v baráku něco špatně. Máme o všem přehled dřív, než si začnou lidi stěžovat."
+    },
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Petr Zeman" },
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+      "reviewBody": "Po špatné zkušenosti s nespolehlivou firmou jsem konečně narazil na úklidovou firmu, na kterou je opravdu spoleh. Vše je vždy perfektně uklizené, termíny dodržují a komunikace je bezproblémová."
+    }
+  ],
   "sameAs": [
     "https://www.instagram.com/primeclean_brno/",
     "https://share.google/T9IQZWtAqGfdk9Iy2",
@@ -107,6 +139,9 @@ const localBusinessSchema = {
       set:html={JSON.stringify(localBusinessSchema)}
     />
 
+    <!-- Slot pro stránkově specifické JSON-LD (Service schema z index.astro apod.) -->
+    <slot name="head" />
+
     <!-- Google Fonts — non-blocking load -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -141,7 +176,7 @@ const localBusinessSchema = {
       defer
     ></script>
 
-    <!-- ✅ env proměnná předaná z frontmatter do inline scriptu -->
+    <!-- env proměnná předaná z frontmatter do inline scriptu -->
     <script is:inline define:vars={{ emailjsPublicKey }}>
       document.addEventListener('DOMContentLoaded', function () {
         if (typeof emailjs !== 'undefined' && emailjsPublicKey) {
