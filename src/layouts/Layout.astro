@@ -23,6 +23,7 @@ const emailjsPublicKey = import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY;
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": ["LocalBusiness", "CleaningService"],
+  "@id": "https://primeclean.cz/#organization",
   "name": "PrimeClean",
   "description": "Profesionální úklidová firma Brno a okolí. Zajišťujeme pravidelný úklid kanceláří, SVJ, bytových domů a Airbnb apartmánů. Pojištění 5 mil. Kč, prověřený personál, fotoreport po každém úklidu.",
   "url": "https://primeclean.cz",
@@ -30,6 +31,7 @@ const localBusinessSchema = {
   "email": "info@primeclean.cz",
   "address": {
     "@type": "PostalAddress",
+    "postalCode": "602 00",
     "addressLocality": "Brno",
     "addressRegion": "Jihomoravský kraj",
     "addressCountry": "CZ"
@@ -104,6 +106,9 @@ const localBusinessSchema = {
     <meta name="robots" content="index, follow" />
 
     <link rel="canonical" href={canonicalURL} />
+
+    <!-- Preload LCP hero image -->
+    <link rel="preload" as="image" href="/hero-image.webp" fetchpriority="high" />
 
     <!-- Favicony -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
