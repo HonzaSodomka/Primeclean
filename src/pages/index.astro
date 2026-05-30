@@ -446,7 +446,7 @@ const servicesSchema = {
                 style="scroll-snap-align:center;width:82vw;max-width:320px;"
               >
                 <i data-lucide="quote" class="absolute -top-1 -right-1 w-7 h-7 text-[#81b344] opacity-25 fill-[#81b344]" aria-hidden="true"></i>
-                <div class="flex gap-1 mb-4" aria-label={`Hodnocení: ${t.rating} z 5`}>
+                <div class="flex gap-1 mb-4" role="img" aria-label={`Hodnocení: ${t.rating} z 5`}>
                   {Array.from({length: t.rating}).map(() => (
                     <i data-lucide="star" class="w-3.5 h-3.5 text-amber-400 fill-amber-400" aria-hidden="true"></i>
                   ))}
@@ -484,7 +484,7 @@ const servicesSchema = {
               style={`animation-delay:${i * 100}ms`}
             >
               <i data-lucide="quote" class="absolute -top-1 -right-1 w-7 h-7 text-[#81b344] opacity-25 fill-[#81b344]" aria-hidden="true"></i>
-              <div class="flex gap-1 mb-4" aria-label={`Hodnocení: ${t.rating} z 5`}>
+              <div class="flex gap-1 mb-4" role="img" aria-label={`Hodnocení: ${t.rating} z 5`}>
                 {Array.from({length: t.rating}).map(() => (
                   <i data-lucide="star" class="w-3.5 h-3.5 text-amber-400 fill-amber-400" aria-hidden="true"></i>
                 ))}
